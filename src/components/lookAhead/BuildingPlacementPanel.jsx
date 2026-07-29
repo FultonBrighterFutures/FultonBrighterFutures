@@ -8,6 +8,7 @@ export default function BuildingPlacementPanel({
   open = false,
   typeId = null,
   stickerId = null,
+  metric = 'energy',
   onClose,
   onDrop,
   screenToGround,
@@ -106,6 +107,7 @@ export default function BuildingPlacementPanel({
               <SelectedBuildingOrb
                 typeId={typeId}
                 stickerId={stickerId}
+                metric={metric}
                 className="selected-building-orb--placement"
               />
             )}
@@ -122,6 +124,7 @@ export default function BuildingPlacementPanel({
           <SelectedBuildingOrb
             typeId={typeId}
             stickerId={stickerId}
+            metric={metric}
             className="selected-building-orb--ghost"
           />
         </div>

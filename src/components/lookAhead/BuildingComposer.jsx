@@ -11,6 +11,7 @@ export default function BuildingComposer({
   isStickerOpen = false,
   isPlacing = false,
   isReady = false,
+  activeMetric = 'energy',
   onSelectType,
   onOpenSticker,
   onCloseSticker,
@@ -28,7 +29,11 @@ export default function BuildingComposer({
     <div className="building-composer">
       <div className="building-composer-body">
         <div className="building-composer-row">
-          <BuildingPreview typeId={selectedType} stickerId={selectedStickerId} />
+          <BuildingPreview
+            typeId={selectedType}
+            stickerId={selectedStickerId}
+            metric={activeMetric}
+          />
           <BuildingTypeGrid selectedType={selectedType} onSelect={onSelectType} />
         </div>
 
@@ -91,6 +96,7 @@ export default function BuildingComposer({
         open={isPlacing}
         typeId={selectedType}
         stickerId={selectedStickerId}
+        metric={activeMetric}
         onClose={onCancelPlacing}
         onDrop={onDrop}
         screenToGround={screenToGround}

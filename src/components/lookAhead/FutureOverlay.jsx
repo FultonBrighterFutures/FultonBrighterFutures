@@ -77,6 +77,7 @@ export default function FutureOverlay({
             isStickerOpen={isStickerOpen}
             isPlacing={isPlacing}
             isReady={isReady}
+            activeMetric={activeMetric}
             onSelectType={onSelectType}
             onOpenSticker={onOpenSticker}
             onCloseSticker={onCloseSticker}

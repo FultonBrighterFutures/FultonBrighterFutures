@@ -7,8 +7,9 @@ const RING_TINT = 0x9a9a9a
 
 /**
  * Animated building visual for UI chrome (timeline building count, etc.).
+ * @param {boolean} [tintRings=true] gray ring tint (timeline); false uses theme matcaps
  */
-export default function StaticBuildingIcon({ className = '', theme = 'neutral' }) {
+export default function StaticBuildingIcon({ className = '', theme = 'neutral', tintRings = true }) {
   const containerRef = useRef(null)
 
   useEffect(() => {
@@ -41,8 +42,10 @@ export default function StaticBuildingIcon({ className = '', theme = 'neutral' }
       scale: 0.9,
       animateRings: true,
     })
-    building.ring1Material.color.set(RING_TINT)
-    building.ring2Material.color.set(RING_TINT)
+    if (tintRings) {
+      building.ring1Material.color.set(RING_TINT)
+      building.ring2Material.color.set(RING_TINT)
+    }
     building.settledVisible()
     scene.add(building.group)
 
@@ -83,9 +86,11 @@ export default function StaticBuildingIcon({ className = '', theme = 'neutral' }
       resizeObserver.disconnect()
       building.dispose()
       renderer.dispose()
-      container.removeChild(renderer.domElement)
+      if (renderer.domElement.parentNode === container) {
+        container.removeChild(renderer.domElement)
+      }
     }
-  }, [theme])
+  }, [theme, tintRings])
 
   return (
     <div

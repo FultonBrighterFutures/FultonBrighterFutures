@@ -1,6 +1,6 @@
 import SelectedBuildingOrb from './SelectedBuildingOrb'
 
-export default function BuildingPreview({ typeId = null, stickerId = null }) {
+export default function BuildingPreview({ typeId = null, stickerId = null, metric = 'energy' }) {
   return (
     <div
       className={`building-preview${typeId ? ' building-preview--filled' : ''}`}
@@ -13,7 +13,7 @@ export default function BuildingPreview({ typeId = null, stickerId = null }) {
 
       {typeId ? (
         <div className="building-preview-content">
-          <SelectedBuildingOrb typeId={typeId} stickerId={stickerId} />
+          <SelectedBuildingOrb typeId={typeId} stickerId={stickerId} metric={metric} />
         </div>
       ) : (
         <p className="building-preview-empty">Choose Building Type</p>

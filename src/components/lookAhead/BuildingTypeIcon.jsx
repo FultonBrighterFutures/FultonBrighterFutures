@@ -8,8 +8,8 @@ import './BuildingTypeIcon.css'
 export default function BuildingTypeIcon({ type, lit = false }) {
   const uid = useId().replace(/:/g, '')
   const paintId = `building-glow-${type}-${uid}`
-  const fill = lit ? '#FFF4DC' : 'white'
-  const fillOpacity = lit ? 0.78 : 0.1
+  const fill = lit ? '#FFFCF5' : 'white'
+  const fillOpacity = lit ? 0.92 : 0.1
 
   switch (type) {
     case 'office':
