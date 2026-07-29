@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { TIMELINE_YEARS } from '../constants/timeline'
+import { TIMELINE_ITEMS } from '../constants/timeline'
 import ChromeCtaArrow from './ChromeCtaArrow'
 import BuildingsCount from './BuildingsCount'
 import TimelineYearStrip from './TimelineYearStrip'
@@ -10,12 +10,12 @@ const WHEEL_COOLDOWN_MS = 420
 const SWIPE_THRESHOLD = 48
 const COMET_TRAIL_MS = 275
 
-function useTimelineScrollCarousel({ year, onYearChange, enabled }) {
-  const yearRef = useRef(year)
-  const onYearChangeRef = useRef(onYearChange)
+function useTimelineScrollCarousel({ activeItemId, onItemChange, onActivity, enabled }) {
+  const activeItemIdRef = useRef(activeItemId)
+  const onItemChangeRef = useRef(onItemChange)
 
-  yearRef.current = year
-  onYearChangeRef.current = onYearChange
+  activeItemIdRef.current = activeItemId
+  onItemChangeRef.current = onItemChange
 
   useEffect(() => {
     if (!enabled) return
@@ -25,12 +25,14 @@ function useTimelineScrollCarousel({ year, onYearChange, enabled }) {
     let cooldownId = null
     let touchStartY = 0
 
-    const stepYear = (direction) => {
-      const currentIndex = TIMELINE_YEARS.indexOf(yearRef.current)
+    const stepTimeline = (direction) => {
+      const currentIndex = TIMELINE_ITEMS.findIndex(
+        (item) => item.id === activeItemIdRef.current,
+      )
       const nextIndex = currentIndex + direction
-      if (nextIndex < 0 || nextIndex >= TIMELINE_YEARS.length) return false
+      if (nextIndex < 0 || nextIndex >= TIMELINE_ITEMS.length) return false
 
-      onYearChangeRef.current(TIMELINE_YEARS[nextIndex])
+      onItemChangeRef.current(TIMELINE_ITEMS[nextIndex].id)
       accumulated = 0
       cooldown = true
       cooldownId = window.setTimeout(() => {
@@ -50,17 +52,19 @@ function useTimelineScrollCarousel({ year, onYearChange, enabled }) {
     const onWheel = (event) => {
       if (shouldIgnoreEvent(event.target)) return
 
+      onActivity?.()
       event.preventDefault()
       if (cooldown) return
 
       accumulated += event.deltaY
       if (Math.abs(accumulated) < WHEEL_THRESHOLD) return
 
-      stepYear(accumulated > 0 ? 1 : -1)
+      stepTimeline(accumulated > 0 ? 1 : -1)
     }
 
     const onTouchStart = (event) => {
       if (shouldIgnoreEvent(event.target)) return
+      onActivity?.()
       touchStartY = event.touches[0]?.clientY ?? 0
     }
 
@@ -72,7 +76,7 @@ function useTimelineScrollCarousel({ year, onYearChange, enabled }) {
       const deltaY = touchStartY - touchEndY
       if (Math.abs(deltaY) < SWIPE_THRESHOLD) return
 
-      stepYear(deltaY > 0 ? 1 : -1)
+      stepTimeline(deltaY > 0 ? 1 : -1)
     }
 
     window.addEventListener('wheel', onWheel, { passive: false })
@@ -85,36 +89,40 @@ function useTimelineScrollCarousel({ year, onYearChange, enabled }) {
       window.removeEventListener('touchend', onTouchEnd)
       if (cooldownId) window.clearTimeout(cooldownId)
     }
-  }, [enabled])
+  }, [enabled, onActivity])
 }
 
 export default function Timeline({
   year,
-  onYearChange,
+  activeItemId,
+  onItemChange,
   lookAheadActive = false,
   onLookAhead,
   scrollEnabled = false,
+  onActivity,
+  suppressEventText = false,
 }) {
-  const previousYearRef = useRef(year)
+  const previousItemRef = useRef(activeItemId)
   const [cometTrail, setCometTrail] = useState(null)
 
   useTimelineScrollCarousel({
-    year,
-    onYearChange,
+    activeItemId,
+    onItemChange,
+    onActivity,
     enabled: scrollEnabled && !lookAheadActive,
   })
 
   useEffect(() => {
     if (lookAheadActive) {
-      previousYearRef.current = year
+      previousItemRef.current = activeItemId
       setCometTrail(null)
       return
     }
 
-    const fromYear = previousYearRef.current
-    const fromIndex = TIMELINE_YEARS.indexOf(fromYear)
-    const toIndex = TIMELINE_YEARS.indexOf(year)
-    previousYearRef.current = year
+    const fromItemId = previousItemRef.current
+    const fromIndex = TIMELINE_ITEMS.findIndex((item) => item.id === fromItemId)
+    const toIndex = TIMELINE_ITEMS.findIndex((item) => item.id === activeItemId)
+    previousItemRef.current = activeItemId
 
     if (fromIndex < 0 || toIndex < 0 || fromIndex === toIndex) return
 
@@ -126,18 +134,23 @@ export default function Timeline({
     }, COMET_TRAIL_MS)
 
     return () => window.clearTimeout(timeoutId)
-  }, [year, lookAheadActive])
+  }, [activeItemId, lookAheadActive])
 
   return (
-    <section className="timeline" aria-label="Year timeline">
+    <section
+      className="timeline"
+      aria-label="Year timeline"
+      onPointerDownCapture={onActivity}
+    >
       <BuildingsCount year={year} />
 
       <div className="timeline-nav">
         <TimelineYearStrip
-          year={year}
+          activeItemId={activeItemId}
           lookAheadActive={lookAheadActive}
           cometTrail={cometTrail}
-          onYearChange={onYearChange}
+          onItemChange={onItemChange}
+          suppressEventText={suppressEventText}
         />
 
         <div className="timeline-look-ahead">

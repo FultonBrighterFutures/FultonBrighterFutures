@@ -71,7 +71,7 @@ body {
   /* Footer stays in flow; timeline chrome overlays above it */
   --site-footer-height: 45px;
   /* How far above the footer the triptych canvas ends (clears buildings-count text) */
-  --site-timeline-scene-inset: 100px;
+  --site-timeline-scene-inset: 140px;
 
   @media (max-width: 1024px) {
     height: auto;

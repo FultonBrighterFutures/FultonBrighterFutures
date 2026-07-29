@@ -61,6 +61,7 @@ export default function ThreePanel({
   placementMode = false,
   onBaselineTotals,
   onFutureApi,
+  onInteraction,
 }) {
   const containerRef = useRef(null)
   const applyYearRef = useRef(null)
@@ -238,7 +239,13 @@ export default function ThreePanel({
   }, [variant, onBaselineTotals])
 
   return (
-    <div className={`three-panel three-panel--${variant}`} ref={containerRef} role="img" aria-label={label}>
+    <div
+      className={`three-panel three-panel--${variant}`}
+      ref={containerRef}
+      role="img"
+      aria-label={label}
+      onPointerDown={onInteraction}
+    >
       {yearTotalLabel && variant !== 'future' && (
         <div className={`scene-year-total scene-year-total--${variant}`} aria-live="polite">
           <span className="scene-year-total__label">

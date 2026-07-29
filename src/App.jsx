@@ -5,11 +5,22 @@ import SiteMenu from './components/SiteMenu'
 import ContentPage from './components/ContentPage'
 import FutureOverlay from './components/FutureOverlay'
 import { useLookAheadBuilder } from './hooks/useLookAheadBuilder'
-import { DEFAULT_YEAR, TIMELINE_YEARS } from './constants/timeline'
+import {
+  DEFAULT_TIMELINE_ITEM_ID,
+  DEFAULT_YEAR,
+  DATA_START_YEAR,
+  TIMELINE_EVENTS_BY_YEAR,
+  TIMELINE_ITEMS,
+  TIMELINE_YEARS,
+} from './constants/timeline'
 import './App.css'
+
+// change to make carousel timeline go faster or slower
+const AUTO_ADVANCE_DELAY_MS = 10_000
 
 function App() {
   const [year, setYear] = useState(DEFAULT_YEAR)
+  const [activeTimelineItemId, setActiveTimelineItemId] = useState(DEFAULT_TIMELINE_ITEM_ID)
   const [lookAheadActive, setLookAheadActive] = useState(false)
   const [showFuture, setShowFuture] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -23,6 +34,8 @@ function App() {
     annualCo2Lbs: 0,
     annualSavings: 0,
   })
+  const [inactivityResetKey, setInactivityResetKey] = useState(0)
+  const [isLeaving2020, setIsLeaving2020] = useState(false)
 
   const futureApiRef = useRef(null)
   const {
@@ -63,7 +76,9 @@ function App() {
   const closeContent = () => {
     setContentActive(false)
     resetLookAhead()
+    setIsLeaving2020(false)
     setYear(DEFAULT_YEAR)
+    setActiveTimelineItemId(DEFAULT_TIMELINE_ITEM_ID)
   }
 
   const openContent = (viewId) => {
@@ -75,9 +90,15 @@ function App() {
     })
   }
 
-  const handleYearChange = (nextYear) => {
+  const handleTimelineItemChange = (itemId) => {
+    const nextItem = TIMELINE_ITEMS.find((item) => item.id === itemId)
+    if (!nextItem) return
+
+    const shouldAnimateFrom2020 = year === 2020 && nextItem.visualizationYear === 2021
     closeContent()
-    setYear(nextYear)
+    setIsLeaving2020(shouldAnimateFrom2020)
+    setActiveTimelineItemId(nextItem.id)
+    setYear(shouldAnimateFrom2020 ? 2020 : nextItem.visualizationYear)
   }
 
   const handleGoBack = () => {
@@ -88,16 +109,19 @@ function App() {
 
     resetLookAhead()
     setYear(DEFAULT_YEAR)
+    setActiveTimelineItemId(DEFAULT_TIMELINE_ITEM_ID)
   }
 
   const handleLookAhead = () => {
     setContentActive(false)
     resetBuilder()
+    setIsLeaving2020(false)
     setLookAheadActive(true)
     setShowFuture(true)
     setFutureMetric('energy')
     setSelectedFutureBuilding(null)
     setYear(TIMELINE_YEARS[TIMELINE_YEARS.length - 1])
+    setActiveTimelineItemId(`year-${TIMELINE_YEARS[TIMELINE_YEARS.length - 1]}`)
   }
 
   const handleNavigate = (viewId) => {
@@ -132,6 +156,10 @@ function App() {
     [placeBuilding],
   )
 
+  const handleVisualizationActivity = useCallback(() => {
+    setInactivityResetKey((current) => current + 1)
+  }, [])
+
   useEffect(() => {
     if (!menuOpen) return
 
@@ -163,6 +191,22 @@ function App() {
     return () => window.removeEventListener('keydown', handleClearBuildings)
   }, [clearUserBuildings])
 
+  useEffect(() => {
+    if (!isMainView || lookAheadActive || menuOpen) return
+
+    const timeoutId = window.setTimeout(() => {
+      const currentIndex = TIMELINE_ITEMS.findIndex((item) => item.id === activeTimelineItemId)
+      const nextIndex = currentIndex < 0 ? 0 : (currentIndex + 1) % TIMELINE_ITEMS.length
+      const nextItem = TIMELINE_ITEMS[nextIndex]
+      const shouldAnimateFrom2020 = year === 2020 && nextItem.visualizationYear === 2021
+      setIsLeaving2020(shouldAnimateFrom2020)
+      setActiveTimelineItemId(nextItem.id)
+      setYear(shouldAnimateFrom2020 ? 2020 : nextItem.visualizationYear)
+    }, AUTO_ADVANCE_DELAY_MS)
+
+    return () => window.clearTimeout(timeoutId)
+  }, [activeTimelineItemId, inactivityResetKey, isMainView, lookAheadActive, menuOpen, year])
+
   return (
     <>
       <header className="site-header">
@@ -187,16 +231,56 @@ function App() {
             <div className={`scene-carousel${lookAheadActive ? ' scene-carousel--future' : ''}`}>
               <section id="main" className="triptych" aria-hidden={lookAheadActive}>
                 <div id="energy" className="triptych-panel triptych-panel--energy">
-                  <ThreePanel variant="energy" label="Energy scene" year={year} />
+                  <ThreePanel
+                    variant="energy"
+                    label="Energy scene"
+                    year={year}
+                    onInteraction={handleVisualizationActivity}
+                  />
                 </div>
 
                 <div id="co2" className="triptych-panel triptych-panel--co2">
-                  <ThreePanel variant="co2" label="CO2 scene" year={year} />
+                  <ThreePanel
+                    variant="co2"
+                    label="CO2 scene"
+                    year={year}
+                    onInteraction={handleVisualizationActivity}
+                  />
                 </div>
 
                 <div id="saving" className="triptych-panel triptych-panel--saving">
-                  <ThreePanel variant="saving" label="Saving scene" year={year} />
+                  <ThreePanel
+                    variant="saving"
+                    label="Saving scene"
+                    year={year}
+                    onInteraction={handleVisualizationActivity}
+                  />
                 </div>
+                {(year < DATA_START_YEAR || isLeaving2020) && (
+                  <div
+                    className={`triptych-blackout${
+                      isLeaving2020 ? ' triptych-blackout--exiting' : ''
+                    }`}
+                    aria-label="Solar performance data begins in 2021"
+                    onAnimationEnd={(event) => {
+                      if (event.target === event.currentTarget) {
+                        setYear(2021)
+                        setIsLeaving2020(false)
+                      }
+                    }}
+                  >
+                    {!isLeaving2020 && (
+                      <p className="triptych-blackout__event">
+                        <span className="triptych-blackout__date">
+                          {TIMELINE_EVENTS_BY_YEAR[2020].dateLabel}
+                        </span>
+                        <span className="triptych-blackout__copy">
+                          {TIMELINE_EVENTS_BY_YEAR[2020].copy}
+                        </span>
+                      </p>
+                    )}
+                  </div>
+                )}
               </section>
 
               {showFuture && (
@@ -256,15 +340,29 @@ function App() {
         </div>
       </main>
 
+      {isLeaving2020 && (
+        <p className="triptych-blackout__event timeline-transition-event" aria-hidden="true">
+          <span className="triptych-blackout__date">
+            {TIMELINE_EVENTS_BY_YEAR[2020].dateLabel}
+          </span>
+          <span className="triptych-blackout__copy">
+            {TIMELINE_EVENTS_BY_YEAR[2020].copy}
+          </span>
+        </p>
+      )}
+
       {isMainView && !lookAheadActive && (
         <div className="chrome-carousel">
           <div className="timeline-stage">
             <Timeline
               year={year}
-              onYearChange={handleYearChange}
+              activeItemId={activeTimelineItemId}
+              onItemChange={handleTimelineItemChange}
               lookAheadActive={lookAheadActive}
               onLookAhead={handleLookAhead}
               scrollEnabled={isMainView && !lookAheadActive && !menuOpen}
+              onActivity={handleVisualizationActivity}
+              suppressEventText={isLeaving2020}
             />
           </div>
         </div>
