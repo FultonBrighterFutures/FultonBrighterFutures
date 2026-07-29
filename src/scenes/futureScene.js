@@ -19,13 +19,14 @@ import {
   subscribeTriptychCamera,
 } from './co2Camera'
 import { getGlobalElapsedTime } from './sceneAnimation'
-import {
+  import {
   addLights,
   createCamera,
   createRenderer,
   fitTopDownCamera,
   isBuildingActive,
   scaleBuildingByMetric,
+  activeMetricRange,
   commitSceneBuildings,
 } from './shared'
 import { Building, updateBuildingThemeMatcap } from '../components/building/index.js'
@@ -35,6 +36,7 @@ import {
   MAX_DRAG_DISTANCE,
   COLLISION_RADIUS,
   applyDragReleaseLaunch,
+  applyHoldDurationLaunch,
   stepMapBuildingPhysics,
 } from './buildingPhysics.js'
 
@@ -42,8 +44,12 @@ const LOOK_AHEAD_YEAR = 2026
 const BUILDING_SCALE = 0.18
 const USER_BUILDING_SCALE = 0.28
 const MAP_BASE_ROTATION = (-3 * Math.PI) / 4
-const RING_GREY = 0x9a9a9a
-const RING_USER = 0xff9f2e
+
+function metricToBuildingTheme(metric) {
+  if (metric === 'co2') return 'co2'
+  if (metric === 'money') return 'savings'
+  return 'energy'
+}
 
 const stickerTextureCache = new Map()
 const stickerTextureLoader = new THREE.TextureLoader()
@@ -210,6 +216,35 @@ export function createFutureScene() {
     })
   }
 
+  /** Update scales/pulse from current totals without year enter/exit transitions. */
+  const refreshBuildingPresentation = () => {
+    const buildingsList = state.data.buildings ?? []
+    const statsById = new Map(buildingsList.map((building) => [building.id, building]))
+    const { min, max } = activeMetricRange(buildingsList, (building) => building.annualKwh)
+
+    buildingEntries.forEach((entry, id) => {
+      const stats = statsById.get(id)
+      if (!stats) return
+      if (!isBuildingActive(stats) && !entry.isUserBuilding) return
+
+      entry.building.setScale(
+        scaleBuildingByMetric(
+          stats.annualKwh,
+          min,
+          max,
+          entry.isUserBuilding ? USER_BUILDING_SCALE : BUILDING_SCALE,
+        ),
+      )
+      entry.building.setPulseFromMetric(stats.annualKwh, min, max, id)
+
+      if (entry.isUserBuilding && !entry.building.shouldRender()) {
+        entry.building.settledVisible()
+      }
+    })
+
+    syncAllParticles()
+  }
+
   const mergeSceneData = () => {
     const userStats = state.userBuildings.map((building) => ({
       id: building.id,
@@ -266,14 +301,15 @@ export function createFutureScene() {
   }
 
   const createUserEntry = (building) => {
+    const buildingTheme = metricToBuildingTheme(state.particleTheme)
     const mesh = new Building({
-      theme: 'energy',
+      theme: buildingTheme,
       position: { x: building.x, y: 0, z: building.z },
       scale: USER_BUILDING_SCALE,
     })
 
-    mesh.ring1Material.color.setHex(RING_USER)
-    mesh.ring2Material.color.setHex(RING_USER)
+    mesh.ring1Material.color.setHex(0xffffff)
+    mesh.ring2Material.color.setHex(0xffffff)
     mesh.settledVisible()
     mapGroup.add(mesh.group)
 
@@ -370,11 +406,8 @@ export function createFutureScene() {
 
     mergeSceneData()
     if (state.ready) {
-      commitYear({
-        year: LOOK_AHEAD_YEAR,
-        data: state.data,
-        progress: yearProgress(LOOK_AHEAD_YEAR),
-      })
+      // Incremental update only — avoid commitYear (full scene re-transition).
+      refreshBuildingPresentation()
     }
   }
 
@@ -428,10 +461,28 @@ export function createFutureScene() {
     })
   }
 
+  const applyMetricAppearance = () => {
+    const buildingTheme = metricToBuildingTheme(state.particleTheme)
+
+    buildingEntries.forEach((entry) => {
+      if (entry.isUserBuilding) {
+        // User buildings: metric-colored sphere + rings
+        entry.building.setTheme(buildingTheme)
+        entry.building.ring1Material.color.setHex(0xffffff)
+        entry.building.ring2Material.color.setHex(0xffffff)
+        return
+      }
+
+      // Baseline buildings: gray sphere, metric-colored rings only
+      entry.building.setRingTheme(buildingTheme)
+    })
+  }
+
   const setParticleTheme = (theme) => {
     if (!PARTICLE_METRIC[theme]) return
     state.particleTheme = theme
     syncAllParticles()
+    applyMetricAppearance()
   }
 
   const setBuildingSelectHandler = (handler) => {
@@ -442,6 +493,25 @@ export function createFutureScene() {
   const setBaselineTotalsHandler = (handler) => {
     baselineTotalsHandler = typeof handler === 'function' ? handler : null
     if (state.ready) notifyBaselineTotals()
+  }
+
+  const launchBuildingFromHold = (buildingId, holdSeconds) => {
+    const entry = buildingEntries.get(buildingId)
+    if (!entry?.isUserBuilding) return false
+    applyHoldDurationLaunch(entry, holdSeconds)
+    return true
+  }
+
+  const selectBuildingById = (buildingId) => {
+    const entry = buildingEntries.get(buildingId)
+    if (!entry) return false
+
+    const stats = (state.data.buildings ?? []).find((building) => building.id === buildingId)
+    if (!entry.isUserBuilding && !isBuildingActive(stats)) return false
+
+    selectedId = buildingId
+    notifyBuildingSelect()
+    return true
   }
 
   const setPlacementMode = (enabled) => {
@@ -535,8 +605,6 @@ export function createFutureScene() {
           scale: BUILDING_SCALE,
         })
 
-        building.ring1Material.color.setHex(RING_GREY)
-        building.ring2Material.color.setHex(RING_GREY)
         building.group.visible = false
         mapGroup.add(building.group)
 
@@ -572,6 +640,8 @@ export function createFutureScene() {
         })
         buildingObjects.push(building.group, pickTarget)
       })
+
+      applyMetricAppearance()
 
       await applyCameraSetup()
 
@@ -775,10 +845,11 @@ export function createFutureScene() {
     stepBuildingPhysics(dt)
 
     let visibleNeutral = 0
-    let visibleEnergy = 0
+    let visibleMetric = 0
+    const metricTheme = metricToBuildingTheme(state.particleTheme)
     buildingEntries.forEach((entry) => {
       if (!entry.building.shouldRender()) return
-      if (entry.isUserBuilding) visibleEnergy++
+      if (entry.isUserBuilding) visibleMetric++
       else visibleNeutral++
       entry.building.update(animationTime, transitionTime)
       entry.particles.animate(speed)
@@ -787,8 +858,9 @@ export function createFutureScene() {
     if (visibleNeutral > 0) {
       updateBuildingThemeMatcap('neutral', animationTime, 1.5 * speed)
     }
-    if (visibleEnergy > 0) {
-      updateBuildingThemeMatcap('energy', animationTime, 1.5 * speed)
+    if (visibleMetric > 0 || visibleNeutral > 0) {
+      // Metric theme matcap for user spheres; ring textures shared by all buildings
+      updateBuildingThemeMatcap(metricTheme, animationTime, 1.5 * speed)
     }
   }
 
@@ -804,6 +876,8 @@ export function createFutureScene() {
     syncUserBuildings,
     screenToGround,
     setPlacementMode,
+    launchBuildingFromHold,
+    selectBuildingById,
     setupInteraction,
     disposeInteraction,
     objects: buildingObjects,

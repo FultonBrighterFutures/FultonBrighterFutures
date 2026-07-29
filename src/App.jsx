@@ -117,6 +117,14 @@ function App() {
     return futureApiRef.current?.screenToGround?.(clientX, clientY) ?? null
   }, [])
 
+  const launchBuildingFromHold = useCallback((buildingId, holdSeconds) => {
+    return futureApiRef.current?.launchBuildingFromHold?.(buildingId, holdSeconds) ?? false
+  }, [])
+
+  const selectFutureBuildingById = useCallback((buildingId) => {
+    return futureApiRef.current?.selectBuildingById?.(buildingId) ?? false
+  }, [])
+
   const handleDropBuilding = useCallback(
     (point) => {
       placeBuilding(point)
@@ -227,6 +235,8 @@ function App() {
                       onCancelPlacing={cancelPlacing}
                       onDrop={handleDropBuilding}
                       screenToGround={screenToGround}
+                      onLaunchBuildingFromHold={launchBuildingFromHold}
+                      onSelectBuilding={selectFutureBuildingById}
                     />
                   )}
                 </section>

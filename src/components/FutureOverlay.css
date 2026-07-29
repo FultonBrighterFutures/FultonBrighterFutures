@@ -95,6 +95,27 @@
   white-space: nowrap;
 }
 
+.future-metric-sub--delta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+}
+
+.future-metric-sub-icon {
+  display: grid;
+  place-items: center;
+  width: 0.7em;
+  height: 0.7em;
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+.future-metric-sub-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 /* Reuse main-scene building label look; only reposition for Look Ahead. */
 .future-building-info.energy-building-label,
 .future-building-info.co2-building-label,
@@ -102,7 +123,7 @@
   position: absolute;
   left: 0;
   right: auto;
-  bottom: var(--future-bottom-clearance);
+  bottom: calc(var(--future-bottom-clearance) - 200px);
   align-items: flex-start;
   text-align: left;
 }
@@ -188,11 +209,43 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 12px;
+  padding: 0;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
   background: transparent;
   flex-shrink: 0;
+  overflow: visible;
+}
+
+.future-building-card-hit {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin: 0;
+  padding: 10px 12px;
+  border: none;
+  border-radius: inherit;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.future-building-card-hit:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.future-building-card-hit:active {
+  background: rgba(255, 175, 70, 0.08);
+}
+
+.future-building-card-text {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .future-building-card-icon {
@@ -343,7 +396,9 @@
   border-right-width: 1.5px;
 }
 
+/* Preview content and empty label share one grid cell so the label stays centered */
 .building-preview-empty {
+  grid-area: 1 / 1;
   margin: 0;
   padding: 0 6px;
   font-size: 10px;
@@ -354,6 +409,7 @@
 }
 
 .building-preview-content {
+  grid-area: 1 / 1;
   display: grid;
   place-items: center;
   width: 100%;
@@ -403,7 +459,7 @@
   justify-content: center;
   gap: 3px;
   padding: 4px;
-  background: rgba(10, 10, 12, 0.72);
+  background: transparent;
   transition:
     border-color 0.2s ease,
     box-shadow 0.2s ease,
@@ -455,7 +511,7 @@
   display: grid;
   place-items: center;
   padding: 5px;
-  background: rgba(10, 10, 12, 0.72);
+  background: transparent;
   box-sizing: border-box;
 }
 
@@ -469,7 +525,7 @@
   padding: 10px 12px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 999px;
-  background: rgba(10, 10, 12, 0.72);
+  background: transparent;
   color: #d6d9df;
   font-size: 10px;
 }
@@ -707,12 +763,12 @@
 .future-chrome-bottom {
   position: absolute;
   left: var(--future-pad-x);
-  right: calc(var(--future-sidebar-width) + var(--future-pad-x));
+  right: var(--future-sidebar-width);
   bottom: var(--future-pad-y);
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  grid-template-columns: auto minmax(0, 1fr);
   align-items: center;
-  gap: clamp(10px, 2vw, 20px);
+  column-gap: 0;
   pointer-events: none;
   z-index: 3;
 }
@@ -945,6 +1001,7 @@
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.92) 28%, #000 100%);
     z-index: 5;
     grid-template-columns: auto minmax(0, 1fr);
+    column-gap: 12px;
   }
 
   .future-overlay-back,

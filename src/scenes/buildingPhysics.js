@@ -55,6 +55,41 @@ export function applyDragReleaseLaunch(entry) {
   entry.velZ = velZ
 }
 
+/** Hold this long on a list card to match a max-distance map drag. */
+export const HOLD_SECONDS_FOR_MAX_PULL = 1.25
+
+/**
+ * Simulate a drag-pull + release using hold duration as pull distance.
+ * Direction is a stable hash of the building id so repeats feel consistent.
+ */
+export function applyHoldDurationLaunch(entry, holdSeconds) {
+  if (!entry) return
+
+  const clampedHold = Math.max(0, Number(holdSeconds) || 0)
+  const t = Math.min(clampedHold / HOLD_SECONDS_FOR_MAX_PULL, 1)
+  const distance = t * MAX_DRAG_DISTANCE
+  if (distance < MIN_LAUNCH_DISTANCE) return
+
+  const seed = String(entry.id ?? '')
+  let hash = 0
+  for (let i = 0; i < seed.length; i += 1) {
+    hash = (hash * 31 + seed.charCodeAt(i)) >>> 0
+  }
+  const angle = (hash % 360) * (Math.PI / 180)
+
+  const offsetX = Math.cos(angle) * distance
+  const offsetZ = Math.sin(angle) * distance
+  const y = entry.building.group.position.y
+
+  entry.physX = entry.homeX + offsetX
+  entry.physZ = entry.homeZ + offsetZ
+  entry.building.setPosition(entry.physX, y, entry.physZ)
+  entry.building.targetX = entry.physX
+  entry.building.targetZ = entry.physZ
+
+  applyDragReleaseLaunch(entry)
+}
+
 /**
  * One physics tick for visible map buildings.
  * Dragged building stays kinematic (pointer-driven); others spring home + collide.

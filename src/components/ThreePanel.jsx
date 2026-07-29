@@ -70,6 +70,8 @@ export default function ThreePanel({
   const syncUserBuildingsRef = useRef(null)
   const setPlacementModeRef = useRef(null)
   const screenToGroundRef = useRef(null)
+  const launchBuildingFromHoldRef = useRef(null)
+  const selectBuildingByIdRef = useRef(null)
   const onBuildingSelectRef = useRef(onBuildingSelect)
   const onBaselineTotalsRef = useRef(onBaselineTotals)
   const onFutureApiRef = useRef(onFutureApi)
@@ -99,6 +101,8 @@ export default function ThreePanel({
       syncUserBuildings,
       screenToGround,
       setPlacementMode,
+      launchBuildingFromHold,
+      selectBuildingById,
     } = sceneApi
 
     applyYearRef.current = applyYear
@@ -108,6 +112,8 @@ export default function ThreePanel({
     syncUserBuildingsRef.current = syncUserBuildings ?? null
     setPlacementModeRef.current = setPlacementMode ?? null
     screenToGroundRef.current = screenToGround ?? null
+    launchBuildingFromHoldRef.current = launchBuildingFromHold ?? null
+    selectBuildingByIdRef.current = selectBuildingById ?? null
 
     setBuildingSelectHandlerRef.current?.((building) => {
       onBuildingSelectRef.current?.(building)
@@ -120,6 +126,10 @@ export default function ThreePanel({
       onFutureApiRef.current?.({
         screenToGround: (clientX, clientY) => screenToGroundRef.current?.(clientX, clientY) ?? null,
         setPlacementMode: (enabled) => setPlacementModeRef.current?.(enabled),
+        launchBuildingFromHold: (buildingId, holdSeconds) =>
+          launchBuildingFromHoldRef.current?.(buildingId, holdSeconds) ?? false,
+        selectBuildingById: (buildingId) =>
+          selectBuildingByIdRef.current?.(buildingId) ?? false,
       })
     }
 
@@ -163,6 +173,8 @@ export default function ThreePanel({
       syncUserBuildingsRef.current = null
       setPlacementModeRef.current = null
       screenToGroundRef.current = null
+      launchBuildingFromHoldRef.current = null
+      selectBuildingByIdRef.current = null
       if (variant === 'future') {
         onFutureApiRef.current?.(null)
       }

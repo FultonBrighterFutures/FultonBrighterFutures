@@ -17,6 +17,7 @@ export default function SelectedBuildingOrb({
   typeId,
   stickerId = null,
   metric = 'energy',
+  active = true,
   className = '',
 }) {
   const sticker = getFutureSticker(stickerId)
@@ -24,7 +25,9 @@ export default function SelectedBuildingOrb({
 
   return (
     <div
-      className={`selected-building-orb selected-building-orb--${theme}${className ? ` ${className}` : ''}`}
+      className={`selected-building-orb selected-building-orb--${theme}${
+        active ? '' : ' selected-building-orb--inactive'
+      }${className ? ` ${className}` : ''}`}
       aria-hidden="true"
     >
       <div className="selected-building-orb__scene">

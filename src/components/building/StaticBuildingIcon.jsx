@@ -11,6 +11,22 @@ const RING_TINT = 0x9a9a9a
  */
 export default function StaticBuildingIcon({ className = '', theme = 'neutral', tintRings = true }) {
   const containerRef = useRef(null)
+  const buildingRef = useRef(null)
+  const themeRef = useRef(theme)
+  const tintRingsRef = useRef(tintRings)
+
+  themeRef.current = theme
+  tintRingsRef.current = tintRings
+
+  useEffect(() => {
+    const building = buildingRef.current
+    if (!building) return
+
+    building.setTheme(theme)
+    const ringTint = tintRings ? RING_TINT : 0xffffff
+    building.ring1Material.color.setHex(ringTint)
+    building.ring2Material.color.setHex(ringTint)
+  }, [theme, tintRings])
 
   useEffect(() => {
     const container = containerRef.current
@@ -38,15 +54,15 @@ export default function StaticBuildingIcon({ className = '', theme = 'neutral', 
     container.appendChild(renderer.domElement)
 
     const building = new Building({
-      theme,
+      theme: themeRef.current,
       scale: 0.9,
       animateRings: true,
     })
-    if (tintRings) {
-      building.ring1Material.color.set(RING_TINT)
-      building.ring2Material.color.set(RING_TINT)
-    }
+    const ringTint = tintRingsRef.current ? RING_TINT : 0xffffff
+    building.ring1Material.color.setHex(ringTint)
+    building.ring2Material.color.setHex(ringTint)
     building.settledVisible()
+    buildingRef.current = building
     scene.add(building.group)
 
     let frameId = 0
@@ -68,7 +84,7 @@ export default function StaticBuildingIcon({ className = '', theme = 'neutral', 
       if (!resize()) return
 
       const time = clock.getElapsedTime()
-      updateBuildingThemeMatcap(theme, time, 1.5)
+      updateBuildingThemeMatcap(themeRef.current, time, 1.5)
       building.update(time)
       renderer.render(scene, camera)
     }
@@ -85,12 +101,14 @@ export default function StaticBuildingIcon({ className = '', theme = 'neutral', 
       cancelAnimationFrame(frameId)
       resizeObserver.disconnect()
       building.dispose()
+      buildingRef.current = null
       renderer.dispose()
+      renderer.forceContextLoss()
       if (renderer.domElement.parentNode === container) {
         container.removeChild(renderer.domElement)
       }
     }
-  }, [theme, tintRings])
+  }, [])
 
   return (
     <div

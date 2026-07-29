@@ -267,6 +267,21 @@ export class Building
         this._applyThemeTextures()
     }
 
+    /** Update ring matcaps only — leaves the sphere theme unchanged. */
+    setRingTheme(themeName)
+    {
+        if (!BUILDING_THEMES[themeName])
+        {
+            throw new Error(`Unknown building theme "${themeName}". Use: ${Object.keys(BUILDING_THEMES).join(', ')}`)
+        }
+
+        const ringTexture = loadRingTexture(themeName)
+        this.ring1Material.matcap = ringTexture
+        this.ring2Material.matcap = ringTexture
+        this.ring1Material.color.setHex(0xffffff)
+        this.ring2Material.color.setHex(0xffffff)
+    }
+
     setPosition(x, y, z)
     {
         this.group.position.set(x, y, z)

@@ -47,6 +47,8 @@ export default function FutureOverlay({
   onCancelPlacing,
   onDrop,
   screenToGround,
+  onLaunchBuildingFromHold,
+  onSelectBuilding,
 }) {
   return (
     <div className="future-overlay" aria-label="Look Ahead controls">
@@ -68,7 +70,11 @@ export default function FutureOverlay({
             </p>
           </header>
 
-          <FutureBuildingLog buildings={userBuildings} />
+          <FutureBuildingLog
+            buildings={userBuildings}
+            onLaunchFromHold={onLaunchBuildingFromHold}
+            onSelectBuilding={onSelectBuilding}
+          />
 
           <BuildingComposer
             selectedType={selectedType}

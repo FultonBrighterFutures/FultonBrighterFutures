@@ -14,6 +14,11 @@
   inset: 0;
   z-index: 0;
   pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.selected-building-orb--inactive .selected-building-orb__scene {
+  opacity: 0;
 }
 
 .selected-building-orb__three.static-building-icon {

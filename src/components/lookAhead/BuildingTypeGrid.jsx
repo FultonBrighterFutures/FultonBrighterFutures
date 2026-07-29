@@ -16,7 +16,7 @@ export default function BuildingTypeGrid({ selectedType = null, onSelect }) {
           >
             <span className="building-type-btn-face">
               <span className="building-type-btn-icon">
-                <BuildingTypeIcon type={type.id} />
+                <BuildingTypeIcon type={type.id} lit={isSelected} />
               </span>
               <span className="building-type-btn-label">{type.label}</span>
             </span>
