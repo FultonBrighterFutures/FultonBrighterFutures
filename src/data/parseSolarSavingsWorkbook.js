@@ -208,6 +208,11 @@ export function calcSolarSavingsTotals(
     ...new Set(monthlyCost.map((entry) => entry.year)),
   ].sort((a, b) => a - b)
 
+  const savingsRates = extractLatestSavingsRates(
+    { elecRates, csRates },
+    parseDateCode,
+  )
+
   return {
     buildings: Array.from(buildingMap.values()).sort((a, b) =>
       a.name.localeCompare(b.name),
@@ -216,7 +221,76 @@ export function calcSolarSavingsTotals(
     costYears,
     savingsByYear: roundedByYear,
     totalSavings,
+    savingsRates,
     savingsFormula:
       'kWh × (Elec Rate − CS Rate); each month uses that month’s rates when available',
   }
+}
+
+/**
+ * Average Elec / CS rates across buildings for the most recent month that
+ * has both rates. Used for Look Ahead hypothetical building savings:
+ *   savings ($) = kWh × (Elec Rate − CS Rate)
+ *
+ * @param {{ elecRates: unknown[][], csRates: unknown[][] }} sheets
+ * @param {(serial: number) => { y: number, m: number, d: number } | null} parseDateCode
+ * @returns {{
+ *   elecRate: number,
+ *   csRate: number,
+ *   savingsPerKwh: number,
+ *   year: number,
+ *   month: number,
+ * } | null}
+ */
+export function extractLatestSavingsRates({ elecRates, csRates }, parseDateCode) {
+  const elecIndex = indexRowsByYearMonth(elecRates, parseDateCode)
+  const csIndex = indexRowsByYearMonth(csRates, parseDateCode)
+  const elecKeys = sortedRateKeys(elecIndex)
+  const csKeys = sortedRateKeys(csIndex)
+  const sharedLast = Math.min(
+    lastBuildingColumn(elecRates[1] ?? []),
+    lastBuildingColumn(csRates[1] ?? []),
+  )
+
+  if (!elecKeys.length || !csKeys.length || sharedLast < 1) return null
+
+  // Walk newest → oldest until we find a month with paired Elec + CS values.
+  const candidates = [...new Set([...elecKeys, ...csKeys])].sort((a, b) => {
+    const [ay, am] = a.split('-').map(Number)
+    const [by, bm] = b.split('-').map(Number)
+    return by - ay || bm - am
+  })
+
+  for (const key of candidates) {
+    const [year, month] = key.split('-').map(Number)
+    const elecRow = resolveRateRow(elecIndex, elecKeys, year, month)
+    const csRow = resolveRateRow(csIndex, csKeys, year, month)
+    if (elecRow == null || csRow == null) continue
+
+    const elecValues = []
+    const csValues = []
+    for (let col = 1; col <= sharedLast; col++) {
+      const elec = toNumber(elecRates[elecRow][col])
+      const cs = toNumber(csRates[csRow][col])
+      if (elec == null || cs == null || elec <= 0 || cs < 0) continue
+      elecValues.push(elec)
+      csValues.push(cs)
+    }
+
+    if (!elecValues.length) continue
+
+    const elecRate =
+      elecValues.reduce((sum, value) => sum + value, 0) / elecValues.length
+    const csRate = csValues.reduce((sum, value) => sum + value, 0) / csValues.length
+
+    return {
+      elecRate,
+      csRate,
+      savingsPerKwh: elecRate - csRate,
+      year,
+      month,
+    }
+  }
+
+  return null
 }

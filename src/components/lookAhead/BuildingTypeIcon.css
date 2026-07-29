@@ -1,0 +1,5 @@
+/* Office glyph is taller than the others — keep it visually balanced */
+.building-type-icon--office {
+  transform: scale(0.8);
+  transform-origin: center;
+}

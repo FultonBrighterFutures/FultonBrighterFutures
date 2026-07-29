@@ -181,7 +181,8 @@
 
 /* Savings — same green as savings panel stats / buildings */
 .ref-tag--dataset,
-.ref-tag--interactive {
+.ref-tag--interactive,
+.ref-tag--federal {
   background: rgba(74, 222, 128, 0.14);
   border-color: rgba(74, 222, 128, 0.45);
   color: #4ade80;
@@ -193,14 +194,17 @@
 .ref-tag--three,
 .ref-tag--timeline,
 .ref-tag--code,
-.ref-tag--lib {
+.ref-tag--lib,
+.ref-tag--utility {
   background: rgba(77, 148, 255, 0.14);
   border-color: rgba(77, 148, 255, 0.45);
   color: #4d94ff;
 }
 
 /* Energy — same orange as energy panel stats / buildings */
-.ref-tag--experience {
+.ref-tag--experience,
+.ref-tag--guide,
+.ref-tag--market {
   background: rgba(255, 179, 71, 0.14);
   border-color: rgba(255, 179, 71, 0.45);
   color: #ffb347;

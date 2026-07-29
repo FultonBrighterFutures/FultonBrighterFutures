@@ -51,13 +51,31 @@ function formatYearTotal(variant, data) {
   return null
 }
 
-export default function ThreePanel({ variant, label, year, particleTheme, onBuildingSelect }) {
+export default function ThreePanel({
+  variant,
+  label,
+  year,
+  particleTheme,
+  onBuildingSelect,
+  userBuildings,
+  placementMode = false,
+  onBaselineTotals,
+  onFutureApi,
+}) {
   const containerRef = useRef(null)
   const applyYearRef = useRef(null)
   const setParticleThemeRef = useRef(null)
   const setBuildingSelectHandlerRef = useRef(null)
+  const setBaselineTotalsHandlerRef = useRef(null)
+  const syncUserBuildingsRef = useRef(null)
+  const setPlacementModeRef = useRef(null)
+  const screenToGroundRef = useRef(null)
   const onBuildingSelectRef = useRef(onBuildingSelect)
+  const onBaselineTotalsRef = useRef(onBaselineTotals)
+  const onFutureApiRef = useRef(onFutureApi)
   onBuildingSelectRef.current = onBuildingSelect
+  onBaselineTotalsRef.current = onBaselineTotals
+  onFutureApiRef.current = onFutureApi
   const [yearTotalLabel, setYearTotalLabel] = useState(null)
 
   useEffect(() => {
@@ -65,6 +83,7 @@ export default function ThreePanel({ variant, label, year, particleTheme, onBuil
     const createScene = sceneFactories[variant]
     if (!container || !createScene) return
 
+    const sceneApi = variant === 'future' ? createScene() : createScene(year)
     const {
       scene,
       camera,
@@ -76,13 +95,34 @@ export default function ThreePanel({ variant, label, year, particleTheme, onBuil
       disposeInteraction,
       setParticleTheme,
       setBuildingSelectHandler,
-    } = variant === 'future' ? createScene() : createScene(year)
+      setBaselineTotalsHandler,
+      syncUserBuildings,
+      screenToGround,
+      setPlacementMode,
+    } = sceneApi
+
     applyYearRef.current = applyYear
     setParticleThemeRef.current = setParticleTheme ?? null
     setBuildingSelectHandlerRef.current = setBuildingSelectHandler ?? null
+    setBaselineTotalsHandlerRef.current = setBaselineTotalsHandler ?? null
+    syncUserBuildingsRef.current = syncUserBuildings ?? null
+    setPlacementModeRef.current = setPlacementMode ?? null
+    screenToGroundRef.current = screenToGround ?? null
+
     setBuildingSelectHandlerRef.current?.((building) => {
       onBuildingSelectRef.current?.(building)
     })
+    setBaselineTotalsHandlerRef.current?.((totals) => {
+      onBaselineTotalsRef.current?.(totals)
+    })
+
+    if (variant === 'future') {
+      onFutureApiRef.current?.({
+        screenToGround: (clientX, clientY) => screenToGroundRef.current?.(clientX, clientY) ?? null,
+        setPlacementMode: (enabled) => setPlacementModeRef.current?.(enabled),
+      })
+    }
+
     renderer.domElement.setAttribute('aria-label', label)
     container.appendChild(renderer.domElement)
     setupInteraction?.(renderer.domElement)
@@ -119,6 +159,13 @@ export default function ThreePanel({ variant, label, year, particleTheme, onBuil
       applyYearRef.current = null
       setParticleThemeRef.current = null
       setBuildingSelectHandlerRef.current = null
+      setBaselineTotalsHandlerRef.current = null
+      syncUserBuildingsRef.current = null
+      setPlacementModeRef.current = null
+      screenToGroundRef.current = null
+      if (variant === 'future') {
+        onFutureApiRef.current?.(null)
+      }
     }
     // year intentionally omitted — scene updates via applyYear effect, not remount
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -160,6 +207,23 @@ export default function ThreePanel({ variant, label, year, particleTheme, onBuil
     if (variant !== 'future' || !particleTheme) return
     setParticleThemeRef.current?.(particleTheme)
   }, [variant, particleTheme])
+
+  useEffect(() => {
+    if (variant !== 'future') return
+    syncUserBuildingsRef.current?.(userBuildings ?? [])
+  }, [variant, userBuildings])
+
+  useEffect(() => {
+    if (variant !== 'future') return
+    setPlacementModeRef.current?.(placementMode)
+  }, [variant, placementMode])
+
+  useEffect(() => {
+    if (variant !== 'future') return
+    setBaselineTotalsHandlerRef.current?.((totals) => {
+      onBaselineTotalsRef.current?.(totals)
+    })
+  }, [variant, onBaselineTotals])
 
   return (
     <div className={`three-panel three-panel--${variant}`} ref={containerRef} role="img" aria-label={label}>

@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import ThreePanel from './components/ThreePanel'
 import Timeline from './components/Timeline'
 import SiteMenu from './components/SiteMenu'
 import ContentPage from './components/ContentPage'
 import FutureOverlay from './components/FutureOverlay'
+import { useLookAheadBuilder } from './hooks/useLookAheadBuilder'
 import { DEFAULT_YEAR, TIMELINE_YEARS } from './constants/timeline'
 import './App.css'
 
@@ -17,6 +18,33 @@ function App() {
   const [contentActive, setContentActive] = useState(false)
   const [futureMetric, setFutureMetric] = useState('energy')
   const [selectedFutureBuilding, setSelectedFutureBuilding] = useState(null)
+  const [baselineTotals, setBaselineTotals] = useState({
+    annualKwh: 0,
+    annualCo2Lbs: 0,
+    annualSavings: 0,
+  })
+
+  const futureApiRef = useRef(null)
+  const {
+    selectedType,
+    selectedStickerId,
+    pendingStickerId,
+    setPendingStickerId,
+    userBuildings,
+    addedTotals,
+    isReady,
+    isPlacing,
+    isStickerOpen,
+    selectType,
+    openStickerPicker,
+    closeStickerPicker,
+    confirmSticker,
+    beginPlacing,
+    cancelPlacing,
+    placeBuilding,
+    reset: resetBuilder,
+    clearUserBuildings,
+  } = useLookAheadBuilder()
 
   const isMainView = !contentActive
 
@@ -26,16 +54,20 @@ function App() {
       ? contentView
       : 'main'
 
-  const closeContent = () => {
-    setContentActive(false)
+  const resetLookAhead = useCallback(() => {
     setLookAheadActive(false)
     setSelectedFutureBuilding(null)
+    resetBuilder()
+  }, [resetBuilder])
+
+  const closeContent = () => {
+    setContentActive(false)
+    resetLookAhead()
     setYear(DEFAULT_YEAR)
   }
 
   const openContent = (viewId) => {
-    setLookAheadActive(false)
-    setSelectedFutureBuilding(null)
+    resetLookAhead()
     setContentView(viewId)
     setShowContent(true)
     requestAnimationFrame(() => {
@@ -54,13 +86,13 @@ function App() {
       return
     }
 
-    setLookAheadActive(false)
-    setSelectedFutureBuilding(null)
+    resetLookAhead()
     setYear(DEFAULT_YEAR)
   }
 
   const handleLookAhead = () => {
     setContentActive(false)
+    resetBuilder()
     setLookAheadActive(true)
     setShowFuture(true)
     setFutureMetric('energy')
@@ -77,6 +109,21 @@ function App() {
     openContent(viewId)
   }
 
+  const handleFutureApi = useCallback((api) => {
+    futureApiRef.current = api
+  }, [])
+
+  const screenToGround = useCallback((clientX, clientY) => {
+    return futureApiRef.current?.screenToGround?.(clientX, clientY) ?? null
+  }, [])
+
+  const handleDropBuilding = useCallback(
+    (point) => {
+      placeBuilding(point)
+    },
+    [placeBuilding],
+  )
+
   useEffect(() => {
     if (!menuOpen) return
 
@@ -89,6 +136,24 @@ function App() {
     window.addEventListener('keydown', handleEscape)
     return () => window.removeEventListener('keydown', handleEscape)
   }, [menuOpen])
+
+  // Debug: press C to clear persisted Look Ahead buildings
+  useEffect(() => {
+    const handleClearBuildings = (event) => {
+      if (event.key !== 'c' && event.key !== 'C') return
+      if (event.metaKey || event.ctrlKey || event.altKey) return
+      const tag = event.target?.tagName
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || event.target?.isContentEditable) return
+
+      event.preventDefault()
+      clearUserBuildings()
+      setSelectedFutureBuilding(null)
+      console.info('[Look Ahead] Cleared persisted user buildings')
+    }
+
+    window.addEventListener('keydown', handleClearBuildings)
+    return () => window.removeEventListener('keydown', handleClearBuildings)
+  }, [clearUserBuildings])
 
   return (
     <>
@@ -133,6 +198,10 @@ function App() {
                     label="Future scene"
                     particleTheme={futureMetric}
                     onBuildingSelect={setSelectedFutureBuilding}
+                    userBuildings={userBuildings}
+                    placementMode={isPlacing}
+                    onBaselineTotals={setBaselineTotals}
+                    onFutureApi={handleFutureApi}
                   />
                   {lookAheadActive && (
                     <FutureOverlay
@@ -140,6 +209,24 @@ function App() {
                       activeMetric={futureMetric}
                       onMetricChange={setFutureMetric}
                       selectedBuilding={selectedFutureBuilding}
+                      baselineTotals={baselineTotals}
+                      addedTotals={addedTotals}
+                      userBuildings={userBuildings}
+                      selectedType={selectedType}
+                      selectedStickerId={selectedStickerId}
+                      pendingStickerId={pendingStickerId}
+                      isStickerOpen={isStickerOpen}
+                      isPlacing={isPlacing}
+                      isReady={isReady}
+                      onSelectType={selectType}
+                      onOpenSticker={openStickerPicker}
+                      onCloseSticker={closeStickerPicker}
+                      onSelectPendingSticker={setPendingStickerId}
+                      onConfirmSticker={confirmSticker}
+                      onBeginPlacing={beginPlacing}
+                      onCancelPlacing={cancelPlacing}
+                      onDrop={handleDropBuilding}
+                      screenToGround={screenToGround}
                     />
                   )}
                 </section>

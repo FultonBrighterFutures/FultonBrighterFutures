@@ -101,6 +101,7 @@ function computeSavingsTotals(savingsPack, energyMonthly) {
       totalSavings: 0,
       savingsByYear: {},
       savingsFormula: null,
+      savingsRates: null,
       savingsWorkbookName: null,
     }
   }
@@ -118,6 +119,7 @@ function computeSavingsTotals(savingsPack, energyMonthly) {
       totalSavings: 0,
       savingsByYear: {},
       savingsFormula: null,
+      savingsRates: null,
       savingsWorkbookName: savingsPack.name,
     }
   }
@@ -178,6 +180,7 @@ const dataset = {
   totalSavings: savingsTotals.totalSavings,
   savingsByYear: savingsTotals.savingsByYear,
   savingsFormula: savingsTotals.savingsFormula,
+  savingsRates: savingsTotals.savingsRates ?? null,
   totalCo2SavedLbs: co2Totals.totalCo2SavedLbs,
   co2ByYear: co2Totals.co2ByYear,
   emissionRateLbPerMWh,
@@ -212,6 +215,12 @@ console.log(
     .join(', ')}`,
 )
 console.log(`Total savings: $${Math.round(dataset.totalSavings).toLocaleString()}`)
+if (dataset.savingsRates) {
+  const { elecRate, csRate, savingsPerKwh, year, month } = dataset.savingsRates
+  console.log(
+    `Latest rates (${year}-${month}): Elec $${elecRate.toFixed(4)}/kWh, CS $${csRate.toFixed(4)}/kWh, savings $${savingsPerKwh.toFixed(4)}/kWh`,
+  )
+}
 if (dataset.savingsByYear && Object.keys(dataset.savingsByYear).length) {
   console.log(
     `Savings by year: ${Object.entries(dataset.savingsByYear)

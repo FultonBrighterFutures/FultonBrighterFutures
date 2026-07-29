@@ -3,10 +3,13 @@ import { yearProgress } from '../constants/timeline'
 import {
   loadBuildingPositions,
   loadSolarDataset,
+  loadMapMask,
+  clampToMask,
   mapCo2YearData,
   mapEnergyYearData,
   mapSavingYearData,
 } from '../data'
+import { getFutureSticker } from '../data/futureStickers.js'
 import {
   applyCo2Camera,
   getLiveTriptychCamera,
@@ -37,12 +40,48 @@ import {
 
 const LOOK_AHEAD_YEAR = 2026
 const BUILDING_SCALE = 0.18
+const USER_BUILDING_SCALE = 0.28
 const MAP_BASE_ROTATION = (-3 * Math.PI) / 4
 const RING_GREY = 0x9a9a9a
+const RING_USER = 0xff9f2e
+
+const stickerTextureCache = new Map()
+const stickerTextureLoader = new THREE.TextureLoader()
+
+function getStickerTexture(src) {
+  if (!src) return null
+  if (stickerTextureCache.has(src)) return stickerTextureCache.get(src)
+
+  const texture = stickerTextureLoader.load(src)
+  texture.colorSpace = THREE.SRGBColorSpace
+  texture.needsUpdate = true
+  stickerTextureCache.set(src, texture)
+  return texture
+}
+
+function createStickerSprite(stickerId) {
+  const sticker = getFutureSticker(stickerId)
+  if (!sticker?.src) return null
+
+  const texture = getStickerTexture(sticker.src)
+  if (!texture) return null
+
+  const material = new THREE.SpriteMaterial({
+    map: texture,
+    transparent: true,
+    depthTest: false,
+    depthWrite: false,
+  })
+  const sprite = new THREE.Sprite(material)
+  sprite.scale.setScalar(0.7)
+  sprite.position.set(0.55, 0.65, 0)
+  sprite.userData.isStickerSprite = true
+  return sprite
+}
 
 /**
  * Future / Look Ahead scene — same building map as the main 2026 view,
- * with grey (neutral) buildings and tab-colored particle clouds.
+ * with grey (neutral) buildings, tab-colored particle clouds, and user adds.
  */
 export function createFutureScene() {
   const scene = new THREE.Scene()
@@ -51,10 +90,19 @@ export function createFutureScene() {
   const state = {
     year: LOOK_AHEAD_YEAR,
     data: { buildings: [] },
+    baselineBuildings: [],
     metricsById: new Map(),
     particleTheme: 'energy',
     ready: false,
     mapBounds: null,
+    mapMask: null,
+    baselineTotals: {
+      annualKwh: 0,
+      annualCo2Lbs: 0,
+      annualSavings: 0,
+    },
+    userBuildings: [],
+    placementMode: false,
   }
 
   addLights(scene, 0xfff4e0)
@@ -72,6 +120,7 @@ export function createFutureScene() {
   let domElement = null
   let selectedId = null
   let buildingSelectHandler = null
+  let baselineTotalsHandler = null
   let dragState = null
   let suppressNextClick = false
   let lastPhysicsTime = null
@@ -92,7 +141,7 @@ export function createFutureScene() {
     const metrics = state.metricsById.get(focusedId) ?? {}
     const stats = (state.data.buildings ?? []).find((building) => building.id === focusedId)
 
-    if (!isBuildingActive(stats)) return null
+    if (!isBuildingActive(stats) && !entry?.isUserBuilding) return null
 
     return {
       id: focusedId,
@@ -103,11 +152,16 @@ export function createFutureScene() {
       energyLabel: formatEnergyKwh(metrics.annualKwh ?? stats?.annualKwh ?? 0),
       co2Label: formatCo2Lbs(metrics.annualCo2Lbs ?? 0),
       moneyLabel: formatDollars(metrics.annualSavings ?? 0),
+      isUserBuilding: Boolean(entry?.isUserBuilding),
     }
   }
 
   const notifyBuildingSelect = () => {
     buildingSelectHandler?.(getSelectedBuildingPayload())
+  }
+
+  const notifyBaselineTotals = () => {
+    baselineTotalsHandler?.({ ...state.baselineTotals })
   }
 
   const clearBuildingSelection = () => {
@@ -156,6 +210,174 @@ export function createFutureScene() {
     })
   }
 
+  const mergeSceneData = () => {
+    const userStats = state.userBuildings.map((building) => ({
+      id: building.id,
+      name: building.name,
+      annualKwh: building.annualKwh,
+      annualCo2Lbs: building.annualCo2Lbs,
+      annualSavings: building.annualSavings,
+      active: true,
+    }))
+
+    state.data = {
+      ...state.data,
+      buildings: [...state.baselineBuildings, ...userStats],
+      totalAnnualKwh:
+        (state.baselineTotals.annualKwh ?? 0) +
+        userStats.reduce((sum, b) => sum + (b.annualKwh ?? 0), 0),
+      totalAnnualCo2Lbs:
+        (state.baselineTotals.annualCo2Lbs ?? 0) +
+        userStats.reduce((sum, b) => sum + (b.annualCo2Lbs ?? 0), 0),
+      totalAnnualSavings:
+        (state.baselineTotals.annualSavings ?? 0) +
+        userStats.reduce((sum, b) => sum + (b.annualSavings ?? 0), 0),
+    }
+  }
+
+  const disposeUserEntry = (entry) => {
+    if (entry.stickerSprite) {
+      entry.building.group.remove(entry.stickerSprite)
+      entry.stickerSprite.material.map = null
+      entry.stickerSprite.material.dispose()
+      entry.stickerSprite = null
+    }
+    entry.particles.dispose()
+    mapGroup.remove(entry.building.group)
+    const groupIndex = buildingObjects.indexOf(entry.building.group)
+    if (groupIndex >= 0) buildingObjects.splice(groupIndex, 1)
+    const pickIndex = buildingObjects.indexOf(entry.pickTarget)
+    if (pickIndex >= 0) buildingObjects.splice(pickIndex, 1)
+  }
+
+  const attachSticker = (entry, stickerId) => {
+    if (entry.stickerSprite) {
+      entry.building.group.remove(entry.stickerSprite)
+      entry.stickerSprite.material.map = null
+      entry.stickerSprite.material.dispose()
+      entry.stickerSprite = null
+    }
+
+    const sprite = createStickerSprite(stickerId)
+    if (!sprite) return
+    entry.stickerSprite = sprite
+    entry.stickerId = stickerId
+    entry.building.group.add(sprite)
+  }
+
+  const createUserEntry = (building) => {
+    const mesh = new Building({
+      theme: 'energy',
+      position: { x: building.x, y: 0, z: building.z },
+      scale: USER_BUILDING_SCALE,
+    })
+
+    mesh.ring1Material.color.setHex(RING_USER)
+    mesh.ring2Material.color.setHex(RING_USER)
+    mesh.settledVisible()
+    mapGroup.add(mesh.group)
+
+    const particles = createBuildingParticles({
+      color: PARTICLE_METRIC.energy.color,
+    })
+    mesh.group.add(particles.points)
+
+    for (const part of [mesh.sphere, mesh.ring1, mesh.ring2]) {
+      part.userData.futureBuildingId = building.id
+      part.userData.isUserBuilding = true
+    }
+
+    const pickTarget = new THREE.Mesh(
+      new THREE.SphereGeometry(1.15, 10, 10),
+      new THREE.MeshBasicMaterial({ visible: false, depthWrite: false }),
+    )
+    pickTarget.userData.futureBuildingId = building.id
+    pickTarget.userData.isUserBuilding = true
+    mesh.group.add(pickTarget)
+
+    const entry = {
+      id: building.id,
+      name: building.name,
+      building: mesh,
+      particles,
+      pickTarget,
+      homeX: building.x,
+      homeZ: building.z,
+      physX: building.x,
+      physZ: building.z,
+      velX: 0,
+      velZ: 0,
+      isUserBuilding: true,
+      stickerId: building.stickerId ?? null,
+      stickerSprite: null,
+    }
+
+    if (building.stickerId) {
+      attachSticker(entry, building.stickerId)
+    }
+
+    buildingEntries.set(building.id, entry)
+    buildingObjects.push(mesh.group, pickTarget)
+
+    state.metricsById.set(building.id, {
+      annualKwh: building.annualKwh ?? 0,
+      annualCo2Lbs: building.annualCo2Lbs ?? 0,
+      annualSavings: building.annualSavings ?? 0,
+    })
+
+    return entry
+  }
+
+  const syncUserBuildings = (list = []) => {
+    state.userBuildings = Array.isArray(list) ? list : []
+    const nextIds = new Set(state.userBuildings.map((building) => building.id))
+
+    buildingEntries.forEach((entry, id) => {
+      if (!entry.isUserBuilding) return
+      if (nextIds.has(id)) return
+      disposeUserEntry(entry)
+      buildingEntries.delete(id)
+      state.metricsById.delete(id)
+      if (selectedId === id) clearBuildingSelection()
+    })
+
+    state.userBuildings.forEach((building) => {
+      const existing = buildingEntries.get(building.id)
+      if (!existing) {
+        createUserEntry(building)
+        return
+      }
+
+      existing.name = building.name
+      existing.homeX = building.x
+      existing.homeZ = building.z
+      existing.physX = building.x
+      existing.physZ = building.z
+      existing.building.targetX = building.x
+      existing.building.targetZ = building.z
+      existing.building.setPosition(building.x, existing.building.group.position.y, building.z)
+
+      state.metricsById.set(building.id, {
+        annualKwh: building.annualKwh ?? 0,
+        annualCo2Lbs: building.annualCo2Lbs ?? 0,
+        annualSavings: building.annualSavings ?? 0,
+      })
+
+      if (existing.stickerId !== building.stickerId) {
+        attachSticker(existing, building.stickerId)
+      }
+    })
+
+    mergeSceneData()
+    if (state.ready) {
+      commitYear({
+        year: LOOK_AHEAD_YEAR,
+        data: state.data,
+        progress: yearProgress(LOOK_AHEAD_YEAR),
+      })
+    }
+  }
+
   const commitYear = ({ year, data = {}, progress = yearProgress(year) }) => {
     const statsById = new Map((data.buildings ?? []).map((building) => [building.id, building]))
     const transitionTime = getGlobalElapsedTime()
@@ -165,7 +387,20 @@ export function createFutureScene() {
       buildingsList: data.buildings ?? [],
       getMetricValue: (building) => building.annualKwh,
       getScale: (stats, min, max) =>
-        scaleBuildingByMetric(stats.annualKwh, min, max, BUILDING_SCALE),
+        scaleBuildingByMetric(
+          stats.annualKwh,
+          min,
+          max,
+          stats?.id?.startsWith?.('user-') ? USER_BUILDING_SCALE : BUILDING_SCALE,
+        ),
+    })
+
+    // Keep user buildings firmly visible after year commits.
+    buildingEntries.forEach((entry) => {
+      if (!entry.isUserBuilding) return
+      if (!entry.building.shouldRender()) {
+        entry.building.settledVisible()
+      }
     })
 
     mapGroup.rotation.y = MAP_BASE_ROTATION + progress * 0.015 - 0.0075
@@ -177,15 +412,14 @@ export function createFutureScene() {
       return
     }
     const stats = statsById.get(focusedId)
-    if (!isBuildingActive(stats)) {
+    if (!isBuildingActive(stats) && !buildingEntries.get(focusedId)?.isUserBuilding) {
       clearBuildingSelection()
       return
     }
     notifyBuildingSelect()
   }
 
-  const applyYear = (payload) => {
-    // Look Ahead is locked to 2026 baseline; ignore timeline year changes.
+  const applyYear = () => {
     if (!state.ready) return
     commitYear({
       year: LOOK_AHEAD_YEAR,
@@ -205,13 +439,63 @@ export function createFutureScene() {
     notifyBuildingSelect()
   }
 
+  const setBaselineTotalsHandler = (handler) => {
+    baselineTotalsHandler = typeof handler === 'function' ? handler : null
+    if (state.ready) notifyBaselineTotals()
+  }
+
+  const setPlacementMode = (enabled) => {
+    state.placementMode = Boolean(enabled)
+    if (state.placementMode && dragState) {
+      dragState = null
+    }
+  }
+
+  const screenToGround = (clientX, clientY) => {
+    if (!domElement) return null
+    const rect = domElement.getBoundingClientRect()
+    if (rect.width === 0 || rect.height === 0) return null
+
+    pointer.x = ((clientX - rect.left) / rect.width) * 2 - 1
+    pointer.y = -((clientY - rect.top) / rect.height) * 2 + 1
+    raycaster.setFromCamera(pointer, camera)
+
+    const hit = raycaster.ray.intersectPlane(dragPlane, dragPlaneHit)
+    if (!hit) return null
+
+    mapGroup.updateMatrixWorld()
+    const local = mapGroup.worldToLocal(dragPlaneHit.clone())
+
+    if (state.mapBounds) {
+      const { xMin, xMax, zMin, zMax } = state.mapBounds
+      const pad = 0.15
+      if (
+        local.x < xMin - pad ||
+        local.x > xMax + pad ||
+        local.z < zMin - pad ||
+        local.z > zMax + pad
+      ) {
+        return null
+      }
+    }
+
+    if (state.mapMask) {
+      const clamped = clampToMask(local.x, local.z, state.mapMask)
+      return { x: clamped.x, z: clamped.z }
+    }
+
+    return { x: local.x, z: local.z }
+  }
+
   const initBuildings = async () => {
     try {
-      const [{ buildings, bounds }, dataset] = await Promise.all([
+      const [{ buildings, bounds }, dataset, mask] = await Promise.all([
         loadBuildingPositions(),
         loadSolarDataset(),
+        loadMapMask(),
       ])
       state.mapBounds = bounds
+      state.mapMask = mask
 
       const energyData = mapEnergyYearData(dataset, LOOK_AHEAD_YEAR)
       const co2Data = mapCo2YearData(dataset, LOOK_AHEAD_YEAR)
@@ -220,7 +504,13 @@ export function createFutureScene() {
       const co2ById = new Map((co2Data.buildings ?? []).map((b) => [b.id, b]))
       const savingById = new Map((savingData.buildings ?? []).map((b) => [b.id, b]))
 
-      state.data = energyData
+      state.baselineBuildings = energyData.buildings ?? []
+      state.baselineTotals = {
+        annualKwh: energyData.totalAnnualKwh ?? 0,
+        annualCo2Lbs: co2Data.totalAnnualCo2Lbs ?? 0,
+        annualSavings: savingData.totalAnnualSavings ?? 0,
+      }
+
       state.metricsById = new Map(
         (energyData.buildings ?? []).map((building) => {
           const co2 = co2ById.get(building.id)
@@ -235,6 +525,8 @@ export function createFutureScene() {
           ]
         }),
       )
+
+      mergeSceneData()
 
       buildings.forEach((position) => {
         const building = new Building({
@@ -276,6 +568,7 @@ export function createFutureScene() {
           physZ: position.z,
           velX: 0,
           velZ: 0,
+          isUserBuilding: false,
         })
         buildingObjects.push(building.group, pickTarget)
       })
@@ -289,6 +582,7 @@ export function createFutureScene() {
         progress: yearProgress(LOOK_AHEAD_YEAR),
       })
       mapGroup.visible = true
+      notifyBaselineTotals()
     } catch (error) {
       console.warn('[futureScene] Failed to load Look Ahead buildings', error)
     }
@@ -361,6 +655,8 @@ export function createFutureScene() {
   }
 
   const onPointerDown = (event) => {
+    if (state.placementMode) return
+
     const hitId = pickBuildingAt(event)
     if (!hitId || !domElement) return
     const entry = buildingEntries.get(hitId)
@@ -385,6 +681,7 @@ export function createFutureScene() {
   }
 
   const onPointerMove = (event) => {
+    if (state.placementMode) return
     if (!dragState || event.pointerId !== dragState.pointerId) return
     const currentLocalPoint = getLocalPointOnGround(event)
     if (!currentLocalPoint) return
@@ -416,6 +713,7 @@ export function createFutureScene() {
   const onPointerLeave = () => {}
 
   const onPointerClick = (event) => {
+    if (state.placementMode) return
     if (suppressNextClick) {
       suppressNextClick = false
       return
@@ -455,9 +753,14 @@ export function createFutureScene() {
     dragState = null
     suppressNextClick = false
     buildingSelectHandler?.(null)
+    baselineTotalsHandler = null
 
     buildingEntries.forEach((entry) => {
       entry.particles.dispose()
+      if (entry.stickerSprite) {
+        entry.stickerSprite.material.map = null
+        entry.stickerSprite.material.dispose()
+      }
     })
   }
 
@@ -471,16 +774,21 @@ export function createFutureScene() {
     lastPhysicsTime = now
     stepBuildingPhysics(dt)
 
-    let visibleCount = 0
+    let visibleNeutral = 0
+    let visibleEnergy = 0
     buildingEntries.forEach((entry) => {
       if (!entry.building.shouldRender()) return
-      visibleCount++
+      if (entry.isUserBuilding) visibleEnergy++
+      else visibleNeutral++
       entry.building.update(animationTime, transitionTime)
       entry.particles.animate(speed)
     })
 
-    if (visibleCount > 0) {
+    if (visibleNeutral > 0) {
       updateBuildingThemeMatcap('neutral', animationTime, 1.5 * speed)
+    }
+    if (visibleEnergy > 0) {
+      updateBuildingThemeMatcap('energy', animationTime, 1.5 * speed)
     }
   }
 
@@ -492,6 +800,10 @@ export function createFutureScene() {
     applyYear,
     setParticleTheme,
     setBuildingSelectHandler,
+    setBaselineTotalsHandler,
+    syncUserBuildings,
+    screenToGround,
+    setPlacementMode,
     setupInteraction,
     disposeInteraction,
     objects: buildingObjects,

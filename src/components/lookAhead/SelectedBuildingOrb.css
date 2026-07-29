@@ -1,0 +1,194 @@
+.selected-building-orb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  max-width: 140px;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+}
+
+.selected-building-orb__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 1;
+  filter: drop-shadow(0 0 18px rgba(255, 174, 0, 0.55)) drop-shadow(0 0 42px rgba(255, 175, 70, 0.35));
+}
+
+.selected-building-orb__glow {
+  transform-origin: 119.5px 120px;
+  animation: selected-orb-breathe 2.8s ease-in-out infinite;
+}
+
+.selected-building-orb__ring--outer {
+  transform-origin: 119.54px 120.055px;
+  animation: selected-orb-ring-outer 2.8s ease-in-out infinite;
+}
+
+.selected-building-orb__ring--mid {
+  transform-origin: 119.13px 119.64px;
+  animation: selected-orb-ring-mid 2.8s ease-in-out infinite;
+  animation-delay: -0.9s;
+}
+
+.selected-building-orb__core {
+  transform-origin: 119.13px 119.64px;
+  animation: selected-orb-core 2.8s ease-in-out infinite;
+}
+
+/* Expanding amber radar rings (BuildingREAD ready state) */
+.selected-building-orb__pulse {
+  position: absolute;
+  inset: 18%;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 175, 70, 0.55);
+  box-shadow:
+    0 0 10px rgba(255, 174, 0, 0.35),
+    inset 0 0 12px rgba(255, 175, 70, 0.12);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  animation: selected-orb-pulse-ring 2.8s ease-out infinite;
+}
+
+.selected-building-orb__pulse--2 {
+  animation-delay: 0.9s;
+}
+
+.selected-building-orb__pulse--3 {
+  animation-delay: 1.8s;
+}
+
+.selected-building-orb__icon {
+  position: relative;
+  z-index: 2;
+  width: 22%;
+  max-width: 34px;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  filter:
+    drop-shadow(0 0 6px rgba(255, 220, 140, 0.85))
+    drop-shadow(0 0 14px rgba(255, 175, 70, 0.55));
+  animation: selected-orb-icon-float 2.8s ease-in-out infinite;
+}
+
+.selected-building-orb__icon svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  display: block;
+}
+
+.selected-building-orb__sticker {
+  position: absolute;
+  right: 18%;
+  bottom: 18%;
+  z-index: 3;
+  width: 22%;
+  aspect-ratio: 1;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.45));
+}
+
+.selected-building-orb__sticker img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+@keyframes selected-orb-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 0.9;
+  }
+}
+
+@keyframes selected-orb-ring-outer {
+  0%,
+  100% {
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes selected-orb-ring-mid {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes selected-orb-core {
+  0%,
+  100% {
+    fill-opacity: 0.14;
+  }
+  50% {
+    fill-opacity: 0.26;
+  }
+}
+
+@keyframes selected-orb-pulse-ring {
+  0% {
+    transform: scale(0.72);
+    opacity: 0.7;
+  }
+  70% {
+    opacity: 0.25;
+  }
+  100% {
+    transform: scale(1.55);
+    opacity: 0;
+  }
+}
+
+@keyframes selected-orb-icon-float {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-2%) scale(1.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .selected-building-orb__glow,
+  .selected-building-orb__ring--outer,
+  .selected-building-orb__ring--mid,
+  .selected-building-orb__core,
+  .selected-building-orb__pulse,
+  .selected-building-orb__icon {
+    animation: none;
+  }
+}
+
+.selected-building-orb--placement {
+  max-width: 160px;
+  width: min(42vw, 160px);
+}
+
+.selected-building-orb--ghost {
+  max-width: 96px;
+  width: 96px;
+}
+
+.selected-building-orb--ghost .selected-building-orb__pulse {
+  display: none;
+}

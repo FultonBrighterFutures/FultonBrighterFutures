@@ -120,6 +120,89 @@ const refs = {
         'Lightweight particle system library. Evaluated for ambient light scatter, energy drift effects, and background atmosphere rendering.',
     },
   ],
+  lookAhead: [
+    {
+      id: 'gsa-production',
+      title: 'Solar Energy Production Estimates for Georgia\'s Climate',
+      publisher: 'Georgia Solar Authority',
+      year: '2024',
+      type: 'Industry guide',
+      url: 'https://georgiasolarauthority.com/solar-energy-production-estimates-for-georgia-climate',
+      description:
+        'Georgia peak-sun-hour ranges and NREL PVWatts context for Atlanta / central Georgia. Informed the ~1,350 kWh per kW-year yield used for Look Ahead building energy estimates.',
+      featured: true,
+    },
+    {
+      id: 'nrel-pvwatts',
+      title: 'PVWatts Calculator',
+      publisher: 'National Renewable Energy Laboratory (NREL)',
+      year: '2024',
+      type: 'Federal tool',
+      url: 'https://pvwatts.nrel.gov/',
+      description:
+        'Industry-standard rooftop PV production model. Cited alongside Georgia Solar Authority guidance for Atlanta metro annual generation per installed kilowatt.',
+    },
+    {
+      id: 'digital-windmill-ga',
+      title: 'Solar in Georgia: Costs, Incentives & Installers (2026)',
+      publisher: 'Digital Windmill',
+      year: '2026',
+      type: 'Market report',
+      url: 'https://www.digitalwindmill.com/renewable-energy/solar-in-georgia-costs-incentives-top-installers-2026',
+      description:
+        'Atlanta-area yield (~1,300–1,400 kWh/kW-year) and typical residential system sizes (7–10 kW). Used to size the Look Ahead home building archetype (~8 kW / ~20 panels).',
+    },
+    {
+      id: 'energysage-atlanta',
+      title: 'Atlanta, GA Solar Panel Cost: 2026 Prices and Savings',
+      publisher: 'EnergySage',
+      year: '2026',
+      type: 'Market data',
+      url: 'https://www.energysage.com/local-data/solar-panel-cost/ga/fulton-county/atlanta/',
+      description:
+        'Fulton County / Atlanta residential system-size and cost benchmarks. Cross-checked Look Ahead home and small-commercial capacity assumptions.',
+    },
+    {
+      id: 'gsa-commercial',
+      title: 'Commercial Solar Energy Systems in Georgia',
+      publisher: 'Georgia Solar Authority',
+      year: '2024',
+      type: 'Industry guide',
+      url: 'https://georgiasolarauthority.com/commercial-solar-energy-systems-in-georgia',
+      description:
+        'Defines small commercial (10–100 kW) vs large commercial ranges in Georgia. Informed Look Ahead office (~20 kW) and shop (~12 kW) illustrative rooftop sizes.',
+    },
+    {
+      id: 'surgepv-schools',
+      title: 'Solar Design for School 2026: K-12 Rooftop Guide',
+      publisher: 'SurgePV',
+      year: '2026',
+      type: 'Industry guide',
+      url: 'https://www.surgepv.com/blog/solar-design-for-school',
+      description:
+        'K-12 rooftop capacity guidance (often 200–500 kW for a full school). Scaled down to an illustrative ~40 kW Look Ahead school add so one drop does not overwhelm the county baseline viz.',
+    },
+    {
+      id: 'georgia-power-rooftop',
+      title: 'Commercial Rooftop Solar Installations',
+      publisher: 'Georgia Power',
+      year: '2024',
+      type: 'Utility resource',
+      url: 'https://www.georgiapower.com/business/products-programs/business-solutions/commercial-solar-solutions/commercial-rooftop-installations.html',
+      description:
+        'Georgia Power commercial rooftop program overview. Contextual reference for how behind-the-meter solar offsets utility purchases in Georgia.',
+    },
+    {
+      id: 'epa-egrid',
+      title: 'eGRID — Emissions & Generation Resource Integrated Database',
+      publisher: 'U.S. Environmental Protection Agency',
+      year: '2023',
+      type: 'Federal dataset',
+      url: 'https://www.epa.gov/egrid/download-data',
+      description:
+        'Source of the SRSO CO₂ emission factor (lb/MWh) used in the Savings workbook and reused for Look Ahead CO₂ saved = (kWh / 1000) × rate.',
+    },
+  ],
 }
 
 const TYPE_CLASS = {
@@ -133,10 +216,19 @@ const TYPE_CLASS = {
   Tutorial: 'ref-tag--tutorial',
   'Code library': 'ref-tag--code',
   'JavaScript library': 'ref-tag--lib',
+  'Industry guide': 'ref-tag--guide',
+  'Federal tool': 'ref-tag--federal',
+  'Market report': 'ref-tag--market',
+  'Market data': 'ref-tag--market',
+  'Utility resource': 'ref-tag--utility',
+  'Federal dataset': 'ref-tag--dataset',
 }
 
 const TOTAL =
-  refs.primary.length + refs.visualization.length + refs.technical.length
+  refs.primary.length +
+  refs.visualization.length +
+  refs.technical.length +
+  refs.lookAhead.length
 
 function Tag({ type }) {
   const typeClass = TYPE_CLASS[type] || 'ref-tag--default'
@@ -214,13 +306,20 @@ export default function ReferencePage() {
           References
         </h1>
         <p className="content-page-text reference-page-intro">
-          Source data, design precedents, and technical libraries used in the development of this
-          solar data visualization. {TOTAL} total references across three categories.
+          Source data, design precedents, technical libraries, and Look Ahead methodology sources
+          used in the development of this solar data visualization. {TOTAL} total references across
+          four categories.
         </p>
       </header>
 
       <Section label="Primary data sources" count={refs.primary.length}>
         {refs.primary.map((r) => (
+          <RefCard key={r.id} item={r} />
+        ))}
+      </Section>
+
+      <Section label="Look Ahead building estimates" count={refs.lookAhead.length}>
+        {refs.lookAhead.map((r) => (
           <RefCard key={r.id} item={r} />
         ))}
       </Section>
