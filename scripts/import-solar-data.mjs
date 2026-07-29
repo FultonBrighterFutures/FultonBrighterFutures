@@ -41,11 +41,23 @@ function mergeBuildingCatalog(energyBuildings, costBuildings) {
   return Array.from(buildingMap.values()).sort((a, b) => a.name.localeCompare(b.name))
 }
 
+/** Parse trailing date from names like "Solar Monthly Savings 2026-7-24.xlsx". */
+function parseSavingsFileDate(name) {
+  const match = name.match(/(\d{4})-(\d{1,2})-(\d{1,2})\.xlsx$/i)
+  if (!match) return 0
+  return Date.UTC(Number(match[1]), Number(match[2]) - 1, Number(match[3]))
+}
+
+/** Prefer the newest dated Solar Monthly Savings workbook in public/data/. */
 function findSavingsWorkbookName() {
-  return readdirSync(dataDir).find(
+  const matches = readdirSync(dataDir).filter(
     (name) =>
       /^Solar Monthly Savings.*\.xlsx$/i.test(name) && !name.startsWith('~$'),
   )
+  if (!matches.length) return null
+
+  matches.sort((a, b) => parseSavingsFileDate(b) - parseSavingsFileDate(a))
+  return matches[0]
 }
 
 function sheetRows(workbook, sheetName) {
@@ -83,6 +95,9 @@ function computeSavingsTotals(savingsPack, energyMonthly) {
   if (!savingsPack) {
     console.warn('[import-data] Solar Monthly Savings workbook not found — totalSavings omitted.')
     return {
+      buildings: [],
+      monthlyCost: [],
+      costYears: [],
       totalSavings: 0,
       savingsByYear: {},
       savingsFormula: null,
@@ -97,6 +112,9 @@ function computeSavingsTotals(savingsPack, energyMonthly) {
   if (!kWh || !elecRates || !csRates) {
     console.warn('[import-data] Savings workbook missing kWh / Elec Rates / CS Rates sheets.')
     return {
+      buildings: [],
+      monthlyCost: [],
+      costYears: [],
       totalSavings: 0,
       savingsByYear: {},
       savingsFormula: null,
@@ -142,11 +160,21 @@ const savingsTotals = computeSavingsTotals(savingsPack, energyData.monthly)
 const emissionRateLbPerMWh = findEmissionRateLbPerMWh(savingsPack?.workbook)
 const co2Totals = summarizeCo2Totals(energyData.kwhByYear, emissionRateLbPerMWh)
 
+// Prefer rate-based monthly savings (kWh × (Elec − CS)) when the Savings
+// workbook is available; fall back to solar-cost.xlsx dollar rows otherwise.
+const rateBasedSavings = savingsTotals.monthlyCost?.length > 0
+const savingsBuildings = savingsTotals.buildings ?? []
+const monthlyCost = rateBasedSavings ? savingsTotals.monthlyCost : costData.monthlyCost
+const costYears = rateBasedSavings ? savingsTotals.costYears : costData.costYears
+
 const dataset = {
   ...energyData,
-  buildings: mergeBuildingCatalog(energyData.buildings, costData.buildings),
-  monthlyCost: costData.monthlyCost,
-  costYears: costData.costYears,
+  buildings: mergeBuildingCatalog(
+    energyData.buildings,
+    rateBasedSavings ? savingsBuildings : costData.buildings,
+  ),
+  monthlyCost,
+  costYears,
   totalSavings: savingsTotals.totalSavings,
   savingsByYear: savingsTotals.savingsByYear,
   savingsFormula: savingsTotals.savingsFormula,
@@ -156,7 +184,9 @@ const dataset = {
   emissionRateSource: 'Excel $AM$3 — eGRID SRSO CO₂ rate (lb/MWh)',
   sourceFiles: {
     energy: 'solar-data.xlsx',
-    cost: 'solar-cost.xlsx',
+    cost: rateBasedSavings
+      ? (savingsTotals.savingsWorkbookName ?? 'Solar Monthly Savings *.xlsx')
+      : 'solar-cost.xlsx',
     emissionRate: savingsTotals.savingsWorkbookName ?? 'Solar Monthly Savings *.xlsx',
     savings: savingsTotals.savingsWorkbookName ?? 'Solar Monthly Savings *.xlsx',
   },

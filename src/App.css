@@ -3,7 +3,8 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 40;
+  /* Above timeline chrome (40) and footer (41) so the menu overlay covers them */
+  z-index: 50;
   display: flex;
   align-items: center;
   border-bottom: none;
@@ -23,9 +24,12 @@
   flex-direction: column;
   flex-grow: 1;
   min-height: 0;
+  box-sizing: border-box;
+}
+
+.site-main--with-timeline {
   /* Keep scene bottom just above the buildings-count text in the overlaid timeline */
   padding-bottom: var(--site-timeline-scene-inset, 50px);
-  box-sizing: border-box;
 }
 
 .view-carousel {
@@ -350,6 +354,17 @@
 
 .scene-year-total--saving .scene-year-total__value {
   background-image: linear-gradient(180deg, #12a312 0%, #b6f5a0 100%);
+}
+
+.scene-year-total__subtitle {
+  margin: 8px 0 0;
+  font-family: Anybody, var(--heading), sans-serif;
+  font-size: clamp(10px, 1.1vw, 11px);
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: 0;
+  color: #9aa0ab;
+  white-space: nowrap;
 }
 
 .scene-year-total--energy,

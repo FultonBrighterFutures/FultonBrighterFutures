@@ -102,7 +102,11 @@ function App() {
         />
       </header>
 
-      <main className="site-main">
+      <main
+        className={`site-main${
+          isMainView && !lookAheadActive ? ' site-main--with-timeline' : ''
+        }`}
+      >
         <div className={`view-carousel${contentActive ? ' view-carousel--content' : ''}`}>
           <div className="main-view-stage" aria-hidden={contentActive}>
             {isMainView && <div className="ticks"></div>}

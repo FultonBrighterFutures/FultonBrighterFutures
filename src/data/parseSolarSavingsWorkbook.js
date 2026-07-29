@@ -6,8 +6,10 @@ import { resolveBuildingRecord } from './buildingRegistry.js'
  *   savings ($) = kWh × (Elec Rate − CS Rate)
  *
  * Sheets are column-aligned (same building in column B/C/… on each tab).
- * Years through 2025 use that month’s rates. 2026 uses December 2025 rates
- * applied to production rows from solar-data.xlsx.
+ * “CS Rates” is Cherry Street (community solar) contract rate.
+ * Each month uses that month’s rates when present; otherwise the most recent
+ * prior rate for the same building. Energy-workbook monthly rows fill any
+ * months missing from the savings kWh sheet (same rate fallback).
  */
 
 function excelYearMonth(serial, parseDateCode) {
@@ -56,6 +58,35 @@ function indexRowsByYearMonth(rows, parseDateCode) {
   return index
 }
 
+/** Sorted "YYYY-M" keys from a year-month row index. */
+function sortedRateKeys(rateIndex) {
+  return [...rateIndex.keys()].sort((a, b) => {
+    const [ay, am] = a.split('-').map(Number)
+    const [by, bm] = b.split('-').map(Number)
+    return ay - by || am - bm
+  })
+}
+
+/**
+ * Prefer the exact month’s rate row; otherwise the most recent prior month.
+ * @param {Map<string, number>} rateIndex
+ * @param {string[]} keysSorted
+ * @param {number} year
+ * @param {number} month
+ */
+function resolveRateRow(rateIndex, keysSorted, year, month) {
+  const exact = rateIndex.get(`${year}-${month}`)
+  if (exact != null) return exact
+
+  let fallback = null
+  for (const key of keysSorted) {
+    const [y, m] = key.split('-').map(Number)
+    if (y > year || (y === year && m > month)) break
+    fallback = rateIndex.get(key)
+  }
+  return fallback
+}
+
 /**
  * @param {object} workbookSheets
  * @param {unknown[][]} workbookSheets.kWh
@@ -78,10 +109,22 @@ export function calcSolarSavingsTotals(
   const kWhIndex = indexRowsByYearMonth(kWh, parseDateCode)
   const elecIndex = indexRowsByYearMonth(elecRates, parseDateCode)
   const csIndex = indexRowsByYearMonth(csRates, parseDateCode)
-  const dec2025ElecRow = elecIndex.get('2025-12')
-  const dec2025CsRow = csIndex.get('2025-12')
+  const elecKeys = sortedRateKeys(elecIndex)
+  const csKeys = sortedRateKeys(csIndex)
+
+  const colByBuildingId = new Map()
+  const buildingMap = new Map()
+  for (let col = 1; col <= sharedLast; col++) {
+    const record = resolveBuildingRecord(String(kWh[1][col] ?? ''))
+    colByBuildingId.set(record.id, col)
+    if (!buildingMap.has(record.id)) {
+      buildingMap.set(record.id, record)
+    }
+  }
 
   const savingsByYear = {}
+  const monthlyCost = []
+  const coveredMonths = new Set()
 
   const yearsInWorkbook = new Set()
   for (const key of kWhIndex.keys()) {
@@ -89,61 +132,65 @@ export function calcSolarSavingsTotals(
   }
 
   for (const year of [...yearsInWorkbook].sort((a, b) => a - b)) {
-    if (year >= 2026) continue
-
     let total = 0
     for (let month = 1; month <= 12; month++) {
       const key = `${year}-${month}`
       const kWhRow = kWhIndex.get(key)
       if (kWhRow == null) continue
 
-      const elecRow = elecIndex.get(key) ?? dec2025ElecRow
-      const csRow = csIndex.get(key) ?? dec2025CsRow
+      coveredMonths.add(key)
+      const elecRow = resolveRateRow(elecIndex, elecKeys, year, month)
+      const csRow = resolveRateRow(csIndex, csKeys, year, month)
 
       for (let col = 1; col <= sharedLast; col++) {
         const kwh = toNumber(kWh[kWhRow][col])
         if (kwh == null || kwh <= 0) continue
 
-        let elec = elecRow != null ? toNumber(elecRates[elecRow][col]) : null
-        let cs = csRow != null ? toNumber(csRates[csRow][col]) : null
-        if (elec == null && dec2025ElecRow != null) {
-          elec = toNumber(elecRates[dec2025ElecRow][col])
-        }
-        if (cs == null && dec2025CsRow != null) {
-          cs = toNumber(csRates[dec2025CsRow][col])
-        }
+        const elec = elecRow != null ? toNumber(elecRates[elecRow][col]) : null
+        const cs = csRow != null ? toNumber(csRates[csRow][col]) : null
         if (elec == null || cs == null) continue
 
-        total += kwh * (elec - cs)
+        const dollars = kwh * (elec - cs)
+        total += dollars
+
+        const building = resolveBuildingRecord(String(kWh[1][col] ?? ''))
+        monthlyCost.push({
+          buildingId: building.id,
+          year,
+          month,
+          dollars,
+        })
       }
     }
 
     savingsByYear[year] = total
   }
 
-  // 2026: energy monthly kWh × December 2025 rates
-  if (dec2025ElecRow != null && dec2025CsRow != null && energyMonthly.length) {
-    const colByBuildingId = new Map()
-    for (let col = 1; col <= sharedLast; col++) {
-      const record = resolveBuildingRecord(String(kWh[1][col] ?? ''))
-      colByBuildingId.set(record.id, col)
-    }
-
-    let total2026 = 0
+  // Fill months present in solar-data.xlsx energy but missing from savings kWh.
+  if (energyMonthly.length && sharedLast > 0) {
     for (const entry of energyMonthly) {
-      if (entry.year !== 2026 || !(entry.kWh > 0)) continue
+      if (!(entry.kWh > 0)) continue
+      const key = `${entry.year}-${entry.month}`
+      if (coveredMonths.has(key)) continue
+
       const col = colByBuildingId.get(entry.buildingId)
       if (col == null) continue
 
-      const elec = toNumber(elecRates[dec2025ElecRow][col])
-      const cs = toNumber(csRates[dec2025CsRow][col])
+      const elecRow = resolveRateRow(elecIndex, elecKeys, entry.year, entry.month)
+      const csRow = resolveRateRow(csIndex, csKeys, entry.year, entry.month)
+      const elec = elecRow != null ? toNumber(elecRates[elecRow][col]) : null
+      const cs = csRow != null ? toNumber(csRates[csRow][col]) : null
       if (elec == null || cs == null) continue
 
-      total2026 += entry.kWh * (elec - cs)
-    }
-
-    if (total2026 > 0) {
-      savingsByYear[2026] = total2026
+      const dollars = entry.kWh * (elec - cs)
+      savingsByYear[entry.year] = (savingsByYear[entry.year] ?? 0) + dollars
+      monthlyCost.push({
+        buildingId: entry.buildingId,
+        year: entry.year,
+        month: entry.month,
+        dollars,
+      })
+      coveredMonths.add(key)
     }
   }
 
@@ -157,9 +204,19 @@ export function calcSolarSavingsTotals(
       .map(([year, value]) => [year, Math.round(value)]),
   )
 
+  const costYears = [
+    ...new Set(monthlyCost.map((entry) => entry.year)),
+  ].sort((a, b) => a - b)
+
   return {
+    buildings: Array.from(buildingMap.values()).sort((a, b) =>
+      a.name.localeCompare(b.name),
+    ),
+    monthlyCost,
+    costYears,
     savingsByYear: roundedByYear,
     totalSavings,
-    savingsFormula: 'kWh × (Elec Rate − CS Rate); 2026 uses December 2025 rates',
+    savingsFormula:
+      'kWh × (Elec Rate − CS Rate); each month uses that month’s rates when available',
   }
 }

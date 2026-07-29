@@ -30,6 +30,11 @@
       "rawName": "Animal Services Facility"
     },
     {
+      "id": "auburn-ave-research-library",
+      "name": "Auburn Ave Research Library",
+      "rawName": "Auburn Ave Research Library"
+    },
+    {
       "id": "auburn-avenue-research-branch",
       "name": "Auburn Avenue Research Branch",
       "rawName": "Auburn Avenue Research Branch"
@@ -58,6 +63,11 @@
       "id": "buckhead-branch",
       "name": "Buckhead Branch",
       "rawName": "Buckhead Branch"
+    },
+    {
+      "id": "buckhead-library",
+      "name": "Buckhead Library",
+      "rawName": "Buckhead Library"
     },
     {
       "id": "cascade-sw-library",
@@ -105,6 +115,11 @@
       "rawName": "Hapeville Branch"
     },
     {
+      "id": "hapeville-library",
+      "name": "Hapeville Library",
+      "rawName": "Hapeville Library"
+    },
+    {
       "id": "juvenile-justice-center",
       "name": "Juvenile Justice Center",
       "rawName": "Powell Juvenile Justice Center/Mechanicsville Lib"
@@ -112,7 +127,7 @@
     {
       "id": "maxwell-rd-driver-services",
       "name": "Maxwell Rd (Driver Services)",
-      "rawName": "Driver Services"
+      "rawName": "Maxwell Rd (Driver Services)"
     },
     {
       "id": "medical-examiner",
@@ -133,6 +148,11 @@
       "id": "milton-library",
       "name": "Milton Library",
       "rawName": "Milton Branch"
+    },
+    {
+      "id": "ne-spruill-oaks-library",
+      "name": "Ne Spruill Oaks Library",
+      "rawName": "NE Spruill Oaks Library"
     },
     {
       "id": "neighborhood-union-health",
@@ -160,6 +180,11 @@
       "rawName": "Northside Branch"
     },
     {
+      "id": "northside-library",
+      "name": "Northside Library",
+      "rawName": "Northside Library"
+    },
+    {
       "id": "northwest-library",
       "name": "Northwest Library",
       "rawName": "Northwest Branch"
@@ -168,6 +193,11 @@
       "id": "ocee-branch",
       "name": "Ocee Branch",
       "rawName": "Ocee Branch"
+    },
+    {
+      "id": "ocee-library",
+      "name": "Ocee Library",
+      "rawName": "Ocee Library"
     },
     {
       "id": "palmetto-library",
@@ -4367,4384 +4397,4432 @@
   },
   "monthlyCost": [
     {
+      "buildingId": "alpharetta-library",
+      "year": 2021,
+      "month": 4,
+      "dollars": 387.4679999999999
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2021,
+      "month": 4,
+      "dollars": 317.97599999999994
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2021,
+      "month": 4,
+      "dollars": 239.91239999999993
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2021,
+      "month": 5,
+      "dollars": 718.5239999999998
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2021,
+      "month": 5,
+      "dollars": 259.7559999999999
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2021,
+      "month": 5,
+      "dollars": 488.41799999999995
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2021,
+      "month": 6,
+      "dollars": 990.2592
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2021,
+      "month": 6,
+      "dollars": 413.84999999999997
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2021,
+      "month": 6,
+      "dollars": 926.31
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2021,
+      "month": 7,
+      "dollars": 573.3376
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2021,
+      "month": 7,
+      "dollars": 519.8724999999998
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2021,
+      "month": 7,
+      "dollars": 660.5836999999998
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2021,
+      "month": 8,
+      "dollars": 835.5382
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2021,
+      "month": 8,
+      "dollars": 379.34259999999995
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2021,
+      "month": 8,
+      "dollars": 1069.992
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2021,
+      "month": 9,
+      "dollars": 747.45
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2021,
+      "month": 9,
+      "dollars": 74.98399999999998
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2021,
+      "month": 9,
+      "dollars": 764.3449999999999
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2021,
+      "month": 10,
+      "dollars": 161.78399999999996
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2021,
+      "month": 10,
+      "dollars": 426.972
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2021,
+      "month": 10,
+      "dollars": 194.9939999999999
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2021,
+      "month": 10,
+      "dollars": 276.1919999999999
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2021,
+      "month": 11,
+      "dollars": 119.51999999999994
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2021,
+      "month": 11,
+      "dollars": 276.544
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2021,
+      "month": 11,
+      "dollars": 186.8939999999999
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2021,
+      "month": 11,
+      "dollars": 270.3359999999999
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2021,
+      "month": 12,
+      "dollars": 82.39199999999998
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2021,
+      "month": 12,
+      "dollars": 137.74999999999997
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2021,
+      "month": 12,
+      "dollars": 99.27999999999993
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2021,
+      "month": 12,
+      "dollars": 178.82799999999997
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2021,
+      "month": 12,
+      "dollars": 164.86499999999998
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2021,
+      "month": 12,
+      "dollars": 99.86200000000001
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2022,
+      "month": 1,
+      "dollars": 212.87199999999999
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2022,
+      "month": 1,
+      "dollars": 214.16199999999995
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2022,
+      "month": 1,
+      "dollars": 154.8719999999999
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2022,
+      "month": 1,
+      "dollars": 567.9319999999999
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2022,
+      "month": 1,
+      "dollars": 252.798
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2022,
+      "month": 1,
+      "dollars": 50.027999999999984
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2022,
+      "month": 2,
+      "dollars": 257.00399999999996
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2022,
+      "month": 2,
+      "dollars": 349.6499999999999
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2022,
+      "month": 2,
+      "dollars": 171.2879999999999
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2022,
+      "month": 2,
+      "dollars": 644.684
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2022,
+      "month": 2,
+      "dollars": 274.68399999999997
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2022,
+      "month": 2,
+      "dollars": 148.98399999999998
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2022,
+      "month": 3,
+      "dollars": 429.2079999999999
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2022,
+      "month": 3,
+      "dollars": 579.3059999999999
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2022,
+      "month": 3,
+      "dollars": 249.64199999999983
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2022,
+      "month": 3,
+      "dollars": 253.8739999999999
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2022,
+      "month": 3,
+      "dollars": 442.47
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2022,
+      "month": 3,
+      "dollars": 76.60799999999996
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2022,
+      "month": 3,
+      "dollars": 513.4319999999999
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2022,
+      "month": 4,
+      "dollars": 444.81510000000003
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2022,
+      "month": 4,
+      "dollars": 363.9032000000001
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2022,
+      "month": 4,
+      "dollars": 252.36769999999999
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2022,
+      "month": 4,
+      "dollars": 240.4999999999999
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2022,
+      "month": 4,
+      "dollars": 503.2579999999999
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2022,
+      "month": 4,
+      "dollars": 83.09399999999997
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2022,
+      "month": 4,
+      "dollars": 1388.7999999999997
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2022,
+      "month": 5,
+      "dollars": 277.1799000000001
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2022,
+      "month": 5,
+      "dollars": 613.2599
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2022,
+      "month": 5,
+      "dollars": 274.23629999999997
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2022,
+      "month": 5,
+      "dollars": 235.45799999999986
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2022,
+      "month": 5,
+      "dollars": 589.1479999999999
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2022,
+      "month": 5,
+      "dollars": 52.17399999999997
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2022,
+      "month": 5,
+      "dollars": 1543.7319999999997
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2022,
+      "month": 6,
+      "dollars": 1522.1560000000002
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2022,
+      "month": 6,
+      "dollars": 542.4881
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2022,
+      "month": 6,
+      "dollars": 1077.7294000000002
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2022,
+      "month": 6,
+      "dollars": 1274.392
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2022,
+      "month": 6,
+      "dollars": 533.074
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2022,
+      "month": 6,
+      "dollars": 257.145
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2022,
+      "month": 6,
+      "dollars": 1433.0559999999998
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2022,
+      "month": 7,
+      "dollars": 1041.2965800000002
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2022,
+      "month": 7,
+      "dollars": 318.63976
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2022,
+      "month": 7,
+      "dollars": 838.7676900000001
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2022,
+      "month": 7,
+      "dollars": 991.8854999999999
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2022,
+      "month": 7,
+      "dollars": 470.23339999999996
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2022,
+      "month": 7,
+      "dollars": 229.8472
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2022,
+      "month": 7,
+      "dollars": 1285.3649999999998
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2022,
+      "month": 8,
+      "dollars": 760.5061800000001
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2022,
+      "month": 8,
+      "dollars": 385.03619
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2022,
+      "month": 8,
+      "dollars": 884.7338600000002
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2022,
+      "month": 8,
+      "dollars": 834.6449999999999
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2022,
+      "month": 8,
+      "dollars": 425.1902
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2022,
+      "month": 8,
+      "dollars": 205.9788
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2022,
+      "month": 8,
+      "dollars": 1094.0217999999998
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2022,
+      "month": 9,
+      "dollars": 863.6451
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2022,
+      "month": 9,
+      "dollars": 487.6588800000001
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2022,
+      "month": 9,
+      "dollars": 908.0203200000002
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2022,
+      "month": 9,
+      "dollars": 807.6646999999998
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2022,
+      "month": 9,
+      "dollars": 425.89450000000005
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2022,
+      "month": 9,
+      "dollars": 217.01810000000003
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2022,
+      "month": 9,
+      "dollars": 1170.3691999999996
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2022,
+      "month": 10,
+      "dollars": 270.13752
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2022,
+      "month": 10,
+      "dollars": 522.6507000000001
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2022,
+      "month": 10,
+      "dollars": 213.06168
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2022,
+      "month": 10,
+      "dollars": 182.938
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2022,
+      "month": 10,
+      "dollars": 405.1476
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2022,
+      "month": 10,
+      "dollars": 60.363499999999995
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2022,
+      "month": 10,
+      "dollars": 1235.5022
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2022,
+      "month": 11,
+      "dollars": 151.80572
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2022,
+      "month": 11,
+      "dollars": 378.66590999999994
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2022,
+      "month": 11,
+      "dollars": 132.49469999999997
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2022,
+      "month": 11,
+      "dollars": 127.15353
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2022,
+      "month": 11,
+      "dollars": 260.64
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2022,
+      "month": 11,
+      "dollars": 38.59109999999999
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2022,
+      "month": 11,
+      "dollars": 634.0659999999999
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2022,
+      "month": 12,
+      "dollars": 98.87268000000003
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2022,
+      "month": 12,
+      "dollars": 304.0766
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2022,
+      "month": 12,
+      "dollars": 97.38749999999999
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2022,
+      "month": 12,
+      "dollars": 120.95673000000002
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2022,
+      "month": 12,
+      "dollars": 166.30212
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2022,
+      "month": 12,
+      "dollars": 28.495170000000005
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2022,
+      "month": 12,
+      "dollars": 530.1924999999999
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2023,
+      "month": 1,
+      "dollars": 125.57753999999998
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2023,
+      "month": 1,
+      "dollars": 459.6737200000001
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2023,
+      "month": 1,
+      "dollars": 104.18079999999998
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2023,
+      "month": 1,
+      "dollars": 132.33191000000002
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2023,
+      "month": 1,
+      "dollars": 215.38782000000003
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2023,
+      "month": 1,
+      "dollars": 34.57885000000001
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2023,
+      "month": 1,
+      "dollars": 634.8079999999999
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2023,
+      "month": 2,
+      "dollars": 169.5267
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2023,
+      "month": 2,
+      "dollars": 585.8678
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2023,
+      "month": 2,
+      "dollars": 169.9002
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2023,
+      "month": 2,
+      "dollars": 121.78800000000001
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2023,
+      "month": 2,
+      "dollars": 272.37629999999996
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2023,
+      "month": 2,
+      "dollars": 39.85670000000001
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2023,
+      "month": 2,
+      "dollars": 665.8379999999999
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2023,
+      "month": 3,
+      "dollars": 227.2077
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2023,
+      "month": 3,
+      "dollars": 776.5767000000002
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2023,
+      "month": 3,
+      "dollars": 270.7497
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2023,
+      "month": 3,
+      "dollars": 186.0138
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2023,
+      "month": 3,
+      "dollars": 440.51489999999995
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2023,
+      "month": 3,
+      "dollars": 63.92620000000002
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2023,
+      "month": 3,
+      "dollars": 870.0708000000001
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2023,
+      "month": 4,
+      "dollars": 282.51550000000003
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2023,
+      "month": 4,
+      "dollars": 477.34190000000007
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2023,
+      "month": 4,
+      "dollars": 359.1957000000001
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2023,
+      "month": 4,
+      "dollars": 165.88469999999998
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2023,
+      "month": 4,
+      "dollars": 456.8993000000001
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2023,
+      "month": 4,
+      "dollars": 73.689
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2023,
+      "month": 4,
+      "dollars": 1000.2906000000002
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2023,
+      "month": 5,
+      "dollars": 289.8161
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2023,
+      "month": 5,
+      "dollars": 364.9908
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2023,
+      "month": 5,
+      "dollars": 292.7463
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2023,
+      "month": 5,
+      "dollars": 162.15669999999997
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2023,
+      "month": 5,
+      "dollars": 470.13460000000003
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2023,
+      "month": 5,
+      "dollars": 71.90320000000003
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2023,
+      "month": 5,
+      "dollars": 1044.7786000000003
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2023,
+      "month": 6,
+      "dollars": 919.9872
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2023,
+      "month": 6,
+      "dollars": 405.0319
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2023,
+      "month": 6,
+      "dollars": 1099.7921999999999
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2023,
+      "month": 6,
+      "dollars": 769.3374000000002
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2023,
+      "month": 6,
+      "dollars": 421.8681
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2023,
+      "month": 6,
+      "dollars": 250.53600000000003
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2023,
+      "month": 6,
+      "dollars": 989.4423000000002
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2023,
+      "month": 7,
+      "dollars": 945.7538999999999
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2023,
+      "month": 7,
+      "dollars": 495.40819999999997
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2023,
+      "month": 7,
+      "dollars": 1381.2606
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2023,
+      "month": 7,
+      "dollars": 1075.9567000000002
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2023,
+      "month": 7,
+      "dollars": 646.7406000000001
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2023,
+      "month": 7,
+      "dollars": 307.8171
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2023,
+      "month": 7,
+      "dollars": 1158.0107000000003
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2023,
+      "month": 8,
+      "dollars": 961.9701
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2023,
+      "month": 8,
+      "dollars": 410.76619999999997
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2023,
+      "month": 8,
+      "dollars": 1211.4378000000002
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2023,
+      "month": 8,
+      "dollars": 1180.426
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2023,
+      "month": 8,
+      "dollars": 642.6168000000001
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2023,
+      "month": 8,
+      "dollars": 314.45820000000003
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2023,
+      "month": 8,
+      "dollars": 932.1900000000002
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2023,
+      "month": 9,
+      "dollars": 909.3021000000001
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2023,
+      "month": 9,
+      "dollars": 400.0337
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2023,
+      "month": 9,
+      "dollars": 984.6862
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2023,
+      "month": 9,
+      "dollars": 1101.7761
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2023,
+      "month": 9,
+      "dollars": 534.4086000000001
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2023,
+      "month": 9,
+      "dollars": 272.83500000000004
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2023,
+      "month": 9,
+      "dollars": 807.9313000000001
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2023,
+      "month": 10,
+      "dollars": 293.03119999999996
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2023,
+      "month": 10,
+      "dollars": 291.2634
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2023,
+      "month": 10,
+      "dollars": 317.5902
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2023,
+      "month": 10,
+      "dollars": 356.1129000000001
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2023,
+      "month": 10,
+      "dollars": 453.72800000000007
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2023,
+      "month": 10,
+      "dollars": 84.77120000000002
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2023,
+      "month": 10,
+      "dollars": 811.3149000000002
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2023,
+      "month": 11,
+      "dollars": 194.12270000000004
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2023,
+      "month": 11,
+      "dollars": 182.54320000000004
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2023,
+      "month": 11,
+      "dollars": 256.6858
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2023,
+      "month": 11,
+      "dollars": 308.2323
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2023,
+      "month": 11,
+      "dollars": 341.45610000000005
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2023,
+      "month": 11,
+      "dollars": 60.61770000000001
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2023,
+      "month": 11,
+      "dollars": 545.2962000000001
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2023,
+      "month": 12,
+      "dollars": 129.5319
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2023,
+      "month": 12,
+      "dollars": 174.78720000000004
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2023,
+      "month": 12,
+      "dollars": 235.6476
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2023,
+      "month": 12,
+      "dollars": 260.9134
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2023,
+      "month": 12,
+      "dollars": 258.6726
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2023,
+      "month": 12,
+      "dollars": 54.116099999999996
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2023,
+      "month": 12,
+      "dollars": 416.8089
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2024,
+      "month": 1,
+      "dollars": 131.6796
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2024,
+      "month": 1,
+      "dollars": 220.21349999999998
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2024,
+      "month": 1,
+      "dollars": 302.08290000000005
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2024,
+      "month": 1,
+      "dollars": 240.65560000000002
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2024,
+      "month": 1,
+      "dollars": 210.8976
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2024,
+      "month": 1,
+      "dollars": 61.468100000000014
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2024,
+      "month": 1,
+      "dollars": 564.0558000000001
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2024,
+      "month": 2,
+      "dollars": 176.1466
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2024,
+      "month": 2,
+      "dollars": 249.05399999999997
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2024,
+      "month": 2,
+      "dollars": 335.1118
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2024,
+      "month": 2,
+      "dollars": 299.35620000000006
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2024,
+      "month": 2,
+      "dollars": 360.5393
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2024,
+      "month": 2,
+      "dollars": 84.1379
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2024,
+      "month": 2,
+      "dollars": 626.4174
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2024,
+      "month": 3,
+      "dollars": 261.2447
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2024,
+      "month": 3,
+      "dollars": 437.3941000000001
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2024,
+      "month": 3,
+      "dollars": 384.0192
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2024,
+      "month": 3,
+      "dollars": 403.6061000000001
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2024,
+      "month": 3,
+      "dollars": 472.3047
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2024,
+      "month": 3,
+      "dollars": 107.4766
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2024,
+      "month": 3,
+      "dollars": 831.6585000000001
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2024,
+      "month": 4,
+      "dollars": 360.2169999999999
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2024,
+      "month": 4,
+      "dollars": 470.3454
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2024,
+      "month": 4,
+      "dollars": 418.4561999999999
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2024,
+      "month": 4,
+      "dollars": 440.95560000000006
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2024,
+      "month": 4,
+      "dollars": 572.9920000000001
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2024,
+      "month": 4,
+      "dollars": 117.2736
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2024,
+      "month": 4,
+      "dollars": 989.1720000000001
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2024,
+      "month": 5,
+      "dollars": 368.2559999999999
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2024,
+      "month": 5,
+      "dollars": 580.0168000000001
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2024,
+      "month": 5,
+      "dollars": 490.6452
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2024,
+      "month": 5,
+      "dollars": 611.1468000000001
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2024,
+      "month": 5,
+      "dollars": 627.9603
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2024,
+      "month": 5,
+      "dollars": 103.04580000000001
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2024,
+      "month": 5,
+      "dollars": 1059.0363000000002
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2024,
+      "month": 6,
+      "dollars": 1354.8587999999997
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2024,
+      "month": 6,
+      "dollars": 616.701
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2024,
+      "month": 6,
+      "dollars": 1489.7904
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2024,
+      "month": 6,
+      "dollars": 1840.8271
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2024,
+      "month": 6,
+      "dollars": 735.5063
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2024,
+      "month": 6,
+      "dollars": 392.11469999999997
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2024,
+      "month": 6,
+      "dollars": 1169.0775000000003
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2024,
+      "month": 7,
+      "dollars": 1006.6264
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2024,
+      "month": 7,
+      "dollars": 497.64
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2024,
+      "month": 7,
+      "dollars": 1472.5871999999997
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2024,
+      "month": 7,
+      "dollars": 1594.124
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2024,
+      "month": 7,
+      "dollars": 664.1019
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2024,
+      "month": 7,
+      "dollars": 340.4144
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2024,
+      "month": 7,
+      "dollars": 996.2102000000002
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2024,
+      "month": 8,
+      "dollars": 1297.7975999999996
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2024,
+      "month": 8,
+      "dollars": 601.5473999999999
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2024,
+      "month": 8,
+      "dollars": 1693.9259999999997
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2024,
+      "month": 8,
+      "dollars": 1828.1724
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2024,
+      "month": 8,
+      "dollars": 795.8032
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2024,
+      "month": 8,
+      "dollars": 407.3139
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2024,
+      "month": 8,
+      "dollars": 1135.6632000000002
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2024,
+      "month": 9,
+      "dollars": 798.4596000000001
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2024,
+      "month": 9,
+      "dollars": 370.4942
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2024,
+      "month": 9,
+      "dollars": 956.8314
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2024,
+      "month": 9,
+      "dollars": 1007.1018
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2024,
+      "month": 9,
+      "dollars": 478.7706
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2024,
+      "month": 9,
+      "dollars": 264.37080000000003
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2024,
+      "month": 9,
+      "dollars": 746.9385000000001
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2024,
+      "month": 10,
+      "dollars": 337.74719999999996
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2024,
+      "month": 10,
+      "dollars": 326.20520000000005
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2024,
+      "month": 10,
+      "dollars": 481.9878
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2024,
+      "month": 10,
+      "dollars": 549.4056
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2024,
+      "month": 10,
+      "dollars": 596.1186
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2024,
+      "month": 10,
+      "dollars": 143.36670000000004
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2024,
+      "month": 10,
+      "dollars": 877.1388000000002
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2024,
+      "month": 11,
+      "dollars": 191.44440000000003
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2024,
+      "month": 11,
+      "dollars": 172.086
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2024,
+      "month": 11,
+      "dollars": 232.0164
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2024,
+      "month": 11,
+      "dollars": 351.2712
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2024,
+      "month": 11,
+      "dollars": 339.7479
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2024,
+      "month": 11,
+      "dollars": 77.83020000000002
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2024,
+      "month": 11,
+      "dollars": 475.6675
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2024,
+      "month": 12,
+      "dollars": 156.6208
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2024,
+      "month": 12,
+      "dollars": 197.54680000000005
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2024,
+      "month": 12,
+      "dollars": 346.66239999999993
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2024,
+      "month": 12,
+      "dollars": 269.24799999999993
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2024,
+      "month": 12,
+      "dollars": 275.4576
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2024,
+      "month": 12,
+      "dollars": 100.66239999999999
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2024,
+      "month": 12,
+      "dollars": 543.647
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2025,
+      "month": 1,
+      "dollars": 177.0816
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2025,
+      "month": 1,
+      "dollars": 202.66160000000002
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2025,
+      "month": 1,
+      "dollars": 353.98819999999995
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2025,
+      "month": 1,
+      "dollars": 310.02639999999997
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2025,
+      "month": 1,
+      "dollars": 225.90720000000002
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2025,
+      "month": 1,
+      "dollars": 97.71999999999998
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2025,
+      "month": 1,
+      "dollars": 657.4078000000002
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2025,
+      "month": 2,
+      "dollars": 292.5648
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2025,
+      "month": 2,
+      "dollars": 281.91599999999994
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2025,
+      "month": 2,
+      "dollars": 422.15039999999993
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2025,
+      "month": 2,
+      "dollars": 414.1476
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2025,
+      "month": 2,
+      "dollars": 417.80959999999993
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2025,
+      "month": 2,
+      "dollars": 114.80559999999998
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2025,
+      "month": 2,
+      "dollars": 700.5306000000002
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2025,
+      "month": 3,
+      "dollars": 443.2672
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2025,
+      "month": 3,
+      "dollars": 436.58099999999996
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2025,
+      "month": 3,
+      "dollars": 557.3280000000001
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2025,
+      "month": 3,
+      "dollars": 624.7024
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2025,
+      "month": 3,
+      "dollars": 628.1772
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2025,
+      "month": 3,
+      "dollars": 162.48599999999996
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2025,
+      "month": 3,
+      "dollars": 1072.3167999999998
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2025,
+      "month": 4,
+      "dollars": 426.378
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2025,
+      "month": 4,
+      "dollars": 349.46319999999986
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2025,
+      "month": 4,
+      "dollars": 576.4748
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2025,
+      "month": 4,
+      "dollars": 759.6989999999998
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2025,
+      "month": 4,
+      "dollars": 692.1719999999999
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2025,
+      "month": 4,
+      "dollars": 144.30300000000003
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2025,
+      "month": 4,
+      "dollars": 956.8836000000001
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2025,
+      "month": 5,
+      "dollars": 371.2887999999999
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2025,
+      "month": 5,
+      "dollars": 407.6175
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2025,
+      "month": 5,
+      "dollars": 559.0552
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2025,
+      "month": 5,
+      "dollars": 621.4488
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2025,
+      "month": 5,
+      "dollars": 677.4834
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2025,
+      "month": 5,
+      "dollars": 125.3276
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2025,
+      "month": 5,
+      "dollars": 835.1872000000001
+    },
+    {
+      "buildingId": "milton-library",
+      "year": 2025,
+      "month": 5,
+      "dollars": 3.0160000000000027
+    },
+    {
+      "buildingId": "e-roswell-library",
+      "year": 2025,
+      "month": 5,
+      "dollars": 25.258999999999997
+    },
+    {
+      "buildingId": "maxwell-rd-driver-services",
+      "year": 2025,
+      "month": 5,
+      "dollars": 42.432
+    },
+    {
+      "buildingId": "benson-senior-center",
+      "year": 2025,
+      "month": 5,
+      "dollars": 112.97500000000004
+    },
+    {
+      "buildingId": "aviation-cultural-center",
+      "year": 2025,
+      "month": 5,
+      "dollars": 55.4
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2025,
+      "month": 6,
+      "dollars": 1092.4074
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2025,
+      "month": 6,
+      "dollars": 349.22079999999994
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2025,
+      "month": 6,
+      "dollars": 1530.8484999999998
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2025,
+      "month": 6,
+      "dollars": 1851.8388
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2025,
+      "month": 6,
+      "dollars": 694.737
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2025,
+      "month": 6,
+      "dollars": 342.44699999999995
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2025,
+      "month": 6,
+      "dollars": 833.7078
+    },
+    {
+      "buildingId": "milton-library",
+      "year": 2025,
+      "month": 6,
+      "dollars": -143.158
+    },
+    {
+      "buildingId": "e-roswell-library",
+      "year": 2025,
+      "month": 6,
+      "dollars": 414.96999999999986
+    },
+    {
+      "buildingId": "maxwell-rd-driver-services",
+      "year": 2025,
+      "month": 6,
+      "dollars": 1962.6960000000001
+    },
+    {
+      "buildingId": "benson-senior-center",
+      "year": 2025,
+      "month": 6,
+      "dollars": 609.3049999999997
+    },
+    {
+      "buildingId": "aviation-cultural-center",
+      "year": 2025,
+      "month": 6,
+      "dollars": 573.986
+    },
+    {
+      "buildingId": "mills-senior-center",
+      "year": 2025,
+      "month": 6,
+      "dollars": 147.67999999999995
+    },
+    {
+      "buildingId": "dogwood-library",
+      "year": 2025,
+      "month": 6,
+      "dollars": 177.868
+    },
+    {
+      "buildingId": "cascade-sw-library",
+      "year": 2025,
+      "month": 6,
+      "dollars": 331.01800000000003
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2025,
+      "month": 7,
+      "dollars": 1099.9599
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2025,
+      "month": 7,
+      "dollars": 354.6278999999999
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2025,
+      "month": 7,
+      "dollars": 1513.3068999999998
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2025,
+      "month": 7,
+      "dollars": 1516.8747999999998
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2025,
+      "month": 7,
+      "dollars": 753.5615999999999
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2025,
+      "month": 7,
+      "dollars": 388.1318
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2025,
+      "month": 7,
+      "dollars": 998.0904
+    },
+    {
+      "buildingId": "milton-library",
+      "year": 2025,
+      "month": 7,
+      "dollars": 170.20399999999995
+    },
+    {
+      "buildingId": "e-roswell-library",
+      "year": 2025,
+      "month": 7,
+      "dollars": 185.65399999999997
+    },
+    {
+      "buildingId": "maxwell-rd-driver-services",
+      "year": 2025,
+      "month": 7,
+      "dollars": 2032.5500000000002
+    },
+    {
+      "buildingId": "benson-senior-center",
+      "year": 2025,
+      "month": 7,
+      "dollars": 647.4659999999997
+    },
+    {
+      "buildingId": "aviation-cultural-center",
+      "year": 2025,
+      "month": 7,
+      "dollars": 780.7099999999999
+    },
+    {
+      "buildingId": "mills-senior-center",
+      "year": 2025,
+      "month": 7,
+      "dollars": 651.0349999999999
+    },
+    {
+      "buildingId": "dogwood-library",
+      "year": 2025,
+      "month": 7,
+      "dollars": 341.73099999999994
+    },
+    {
+      "buildingId": "cascade-sw-library",
+      "year": 2025,
+      "month": 7,
+      "dollars": 353.141
+    },
+    {
+      "buildingId": "ponce-de-leon-jp-library",
+      "year": 2025,
+      "month": 7,
+      "dollars": 230.769
+    },
+    {
+      "buildingId": "board-of-health",
+      "year": 2025,
+      "month": 7,
+      "dollars": 471.663
+    },
+    {
+      "buildingId": "dogwood-senior-center",
+      "year": 2025,
+      "month": 7,
+      "dollars": 408.60599999999994
+    },
+    {
+      "buildingId": "animal-services",
+      "year": 2025,
+      "month": 7,
+      "dollars": 172.42399999999986
+    },
+    {
+      "buildingId": "adamsville-ac-library",
+      "year": 2025,
+      "month": 7,
+      "dollars": 215.682
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2025,
+      "month": 8,
+      "dollars": 805.3425
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2025,
+      "month": 8,
+      "dollars": 286.30969999999996
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2025,
+      "month": 8,
+      "dollars": 1069.1720999999998
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2025,
+      "month": 8,
+      "dollars": 1560.0366000000001
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2025,
+      "month": 8,
+      "dollars": 567.0368
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2025,
+      "month": 8,
+      "dollars": 301.7846
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2025,
+      "month": 8,
+      "dollars": 657.1866
+    },
+    {
+      "buildingId": "milton-library",
+      "year": 2025,
+      "month": 8,
+      "dollars": 120.46599999999995
+    },
+    {
+      "buildingId": "e-roswell-library",
+      "year": 2025,
+      "month": 8,
+      "dollars": 229.30600000000007
+    },
+    {
+      "buildingId": "maxwell-rd-driver-services",
+      "year": 2025,
+      "month": 8,
+      "dollars": 1097.1449999999998
+    },
+    {
+      "buildingId": "benson-senior-center",
+      "year": 2025,
+      "month": 8,
+      "dollars": 398.23200000000014
+    },
+    {
+      "buildingId": "aviation-cultural-center",
+      "year": 2025,
+      "month": 8,
+      "dollars": 658.578
+    },
+    {
+      "buildingId": "mills-senior-center",
+      "year": 2025,
+      "month": 8,
+      "dollars": 566.1629999999999
+    },
+    {
+      "buildingId": "dogwood-library",
+      "year": 2025,
+      "month": 8,
+      "dollars": 287.49
+    },
+    {
+      "buildingId": "cascade-sw-library",
+      "year": 2025,
+      "month": 8,
+      "dollars": 655.959
+    },
+    {
+      "buildingId": "juvenile-justice-center",
+      "year": 2025,
+      "month": 8,
+      "dollars": -52.44000000000005
+    },
+    {
+      "buildingId": "ponce-de-leon-jp-library",
+      "year": 2025,
+      "month": 8,
+      "dollars": 544.576
+    },
+    {
+      "buildingId": "board-of-health",
+      "year": 2025,
+      "month": 8,
+      "dollars": 1538.544
+    },
+    {
+      "buildingId": "dogwood-senior-center",
+      "year": 2025,
+      "month": 8,
+      "dollars": 310.488
+    },
+    {
+      "buildingId": "college-park-library",
+      "year": 2025,
+      "month": 8,
+      "dollars": 22.567999999999984
+    },
+    {
+      "buildingId": "animal-services",
+      "year": 2025,
+      "month": 8,
+      "dollars": 174.3199999999999
+    },
+    {
+      "buildingId": "adamsville-ac-library",
+      "year": 2025,
+      "month": 8,
+      "dollars": 321.816
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2025,
+      "month": 9,
+      "dollars": 812.7673
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2025,
+      "month": 9,
+      "dollars": 287.98889999999994
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2025,
+      "month": 9,
+      "dollars": 1098.4677
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2025,
+      "month": 9,
+      "dollars": 1169.6383999999998
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2025,
+      "month": 9,
+      "dollars": 620.76
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2025,
+      "month": 9,
+      "dollars": 319.54519999999997
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2025,
+      "month": 9,
+      "dollars": 1068.2112
+    },
+    {
+      "buildingId": "milton-library",
+      "year": 2025,
+      "month": 9,
+      "dollars": 4.153000000000004
+    },
+    {
+      "buildingId": "e-roswell-library",
+      "year": 2025,
+      "month": 9,
+      "dollars": 231.48400000000007
+    },
+    {
+      "buildingId": "maxwell-rd-driver-services",
+      "year": 2025,
+      "month": 9,
+      "dollars": 1215.9239999999998
+    },
+    {
+      "buildingId": "benson-senior-center",
+      "year": 2025,
+      "month": 9,
+      "dollars": 432.0240000000001
+    },
+    {
+      "buildingId": "aviation-cultural-center",
+      "year": 2025,
+      "month": 9,
+      "dollars": 701.5989999999999
+    },
+    {
+      "buildingId": "mills-senior-center",
+      "year": 2025,
+      "month": 9,
+      "dollars": 808.696
+    },
+    {
+      "buildingId": "dogwood-library",
+      "year": 2025,
+      "month": 9,
+      "dollars": 316.764
+    },
+    {
+      "buildingId": "cascade-sw-library",
+      "year": 2025,
+      "month": 9,
+      "dollars": 601.3579999999998
+    },
+    {
+      "buildingId": "south-fulton-service-center",
+      "year": 2025,
+      "month": 9,
+      "dollars": 137.10000000000002
+    },
+    {
+      "buildingId": "juvenile-justice-center",
+      "year": 2025,
+      "month": 9,
+      "dollars": 16.833000000000016
+    },
+    {
+      "buildingId": "ponce-de-leon-jp-library",
+      "year": 2025,
+      "month": 9,
+      "dollars": 508.4819999999999
+    },
+    {
+      "buildingId": "new-beginnings-senior-center",
+      "year": 2025,
+      "month": 9,
+      "dollars": 143.754
+    },
+    {
+      "buildingId": "medical-examiner",
+      "year": 2025,
+      "month": 9,
+      "dollars": 1.6499999999999992
+    },
+    {
+      "buildingId": "gladys-dennard-library",
+      "year": 2025,
+      "month": 9,
+      "dollars": 441.35999999999996
+    },
+    {
+      "buildingId": "board-of-health",
+      "year": 2025,
+      "month": 9,
+      "dollars": 1635.4620000000002
+    },
+    {
+      "buildingId": "dogwood-senior-center",
+      "year": 2025,
+      "month": 9,
+      "dollars": 298.776
+    },
+    {
+      "buildingId": "college-park-library",
+      "year": 2025,
+      "month": 9,
+      "dollars": 194.75899999999996
+    },
+    {
+      "buildingId": "animal-services",
+      "year": 2025,
+      "month": 9,
+      "dollars": -130.2140000000001
+    },
+    {
+      "buildingId": "adamsville-ac-library",
+      "year": 2025,
+      "month": 9,
+      "dollars": 329.448
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2025,
+      "month": 10,
+      "dollars": 289.58669999999995
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2025,
+      "month": 10,
+      "dollars": 435.4753999999999
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2025,
+      "month": 10,
+      "dollars": 378.74399999999997
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2025,
+      "month": 10,
+      "dollars": 205.5274
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2025,
+      "month": 10,
+      "dollars": 484.34059999999994
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2025,
+      "month": 10,
+      "dollars": 110.75440000000002
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2025,
+      "month": 10,
+      "dollars": 612.276
+    },
+    {
+      "buildingId": "milton-library",
+      "year": 2025,
+      "month": 10,
+      "dollars": 33.999999999999986
+    },
+    {
+      "buildingId": "e-roswell-library",
+      "year": 2025,
+      "month": 10,
+      "dollars": 171.98000000000005
+    },
+    {
+      "buildingId": "maxwell-rd-driver-services",
+      "year": 2025,
+      "month": 10,
+      "dollars": 801.9699999999997
+    },
+    {
+      "buildingId": "benson-senior-center",
+      "year": 2025,
+      "month": 10,
+      "dollars": 469.9599999999998
+    },
+    {
+      "buildingId": "aviation-cultural-center",
+      "year": 2025,
+      "month": 10,
+      "dollars": 558.03
+    },
+    {
+      "buildingId": "mills-senior-center",
+      "year": 2025,
+      "month": 10,
+      "dollars": 587.958
+    },
+    {
+      "buildingId": "dogwood-library",
+      "year": 2025,
+      "month": 10,
+      "dollars": 54.92500000000002
+    },
+    {
+      "buildingId": "cascade-sw-library",
+      "year": 2025,
+      "month": 10,
+      "dollars": 442.9899999999998
+    },
+    {
+      "buildingId": "south-fulton-service-center",
+      "year": 2025,
+      "month": 10,
+      "dollars": 285.15199999999993
+    },
+    {
+      "buildingId": "juvenile-justice-center",
+      "year": 2025,
+      "month": 10,
+      "dollars": 29.578000000000028
+    },
+    {
+      "buildingId": "ponce-de-leon-jp-library",
+      "year": 2025,
+      "month": 10,
+      "dollars": 394.998
+    },
+    {
+      "buildingId": "new-beginnings-senior-center",
+      "year": 2025,
+      "month": 10,
+      "dollars": 142.59799999999996
+    },
+    {
+      "buildingId": "medical-examiner",
+      "year": 2025,
+      "month": 10,
+      "dollars": 342.3959999999999
+    },
+    {
+      "buildingId": "gladys-dennard-library",
+      "year": 2025,
+      "month": 10,
+      "dollars": 697.1299999999999
+    },
+    {
+      "buildingId": "board-of-health",
+      "year": 2025,
+      "month": 10,
+      "dollars": 1306.669
+    },
+    {
+      "buildingId": "dogwood-senior-center",
+      "year": 2025,
+      "month": 10,
+      "dollars": 249.088
+    },
+    {
+      "buildingId": "college-park-library",
+      "year": 2025,
+      "month": 10,
+      "dollars": 156.83999999999995
+    },
+    {
+      "buildingId": "animal-services",
+      "year": 2025,
+      "month": 10,
+      "dollars": 28.824000000000026
+    },
+    {
+      "buildingId": "adamsville-ac-library",
+      "year": 2025,
+      "month": 10,
+      "dollars": 43.39600000000001
+    },
+    {
+      "buildingId": "sandy-springs-library",
+      "year": 2025,
+      "month": 10,
+      "dollars": 719.2349999999999
+    },
+    {
+      "buildingId": "qls-senior-center",
+      "year": 2025,
+      "month": 10,
+      "dollars": 24.569999999999997
+    },
+    {
       "buildingId": "adams-park-library",
       "year": 2025,
-      "month": 9,
-      "dollars": 8.5477
-    },
-    {
-      "buildingId": "adams-park-library",
-      "year": 2025,
       "month": 10,
-      "dollars": 265.9926
-    },
-    {
-      "buildingId": "adams-park-library",
-      "year": 2025,
-      "month": 11,
-      "dollars": 283.8568
-    },
-    {
-      "buildingId": "adams-park-library",
-      "year": 2025,
-      "month": 12,
-      "dollars": 206.4819
-    },
-    {
-      "buildingId": "adams-park-library",
-      "year": 2026,
-      "month": 1,
-      "dollars": 259.7067
-    },
-    {
-      "buildingId": "adams-park-library",
-      "year": 2026,
-      "month": 2,
-      "dollars": 314.1643
-    },
-    {
-      "buildingId": "adams-park-library",
-      "year": 2026,
-      "month": 3,
-      "dollars": 493.35
-    },
-    {
-      "buildingId": "adams-park-library",
-      "year": 2026,
-      "month": 4,
-      "dollars": 580.52
-    },
-    {
-      "buildingId": "adams-park-library",
-      "year": 2026,
-      "month": 5,
-      "dollars": 550.51
-    },
-    {
-      "buildingId": "adamsville-ac-library",
-      "year": 2025,
-      "month": 6,
-      "dollars": 7.7681
-    },
-    {
-      "buildingId": "adamsville-ac-library",
-      "year": 2025,
-      "month": 7,
-      "dollars": 244.3045
-    },
-    {
-      "buildingId": "adamsville-ac-library",
-      "year": 2025,
-      "month": 8,
-      "dollars": 349.7914
-    },
-    {
-      "buildingId": "adamsville-ac-library",
-      "year": 2025,
-      "month": 9,
-      "dollars": 353.9789
-    },
-    {
-      "buildingId": "adamsville-ac-library",
-      "year": 2025,
-      "month": 10,
-      "dollars": 260.3014
-    },
-    {
-      "buildingId": "adamsville-ac-library",
-      "year": 2025,
-      "month": 11,
-      "dollars": 181.5709
-    },
-    {
-      "buildingId": "adamsville-ac-library",
-      "year": 2025,
-      "month": 12,
-      "dollars": 132.9603
-    },
-    {
-      "buildingId": "adamsville-ac-library",
-      "year": 2026,
-      "month": 1,
-      "dollars": 173.2506
-    },
-    {
-      "buildingId": "adamsville-ac-library",
-      "year": 2026,
-      "month": 2,
-      "dollars": 222.5739
-    },
-    {
-      "buildingId": "adamsville-ac-library",
-      "year": 2026,
-      "month": 3,
-      "dollars": 350.98
-    },
-    {
-      "buildingId": "adamsville-ac-library",
-      "year": 2026,
-      "month": 4,
-      "dollars": 426.31
-    },
-    {
-      "buildingId": "adamsville-ac-library",
-      "year": 2026,
-      "month": 5,
-      "dollars": 409.86
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2021,
-      "month": 5,
-      "dollars": 719.2313
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2021,
-      "month": 6,
-      "dollars": 598.3087
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2021,
-      "month": 7,
-      "dollars": 646.3123
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2021,
-      "month": 8,
-      "dollars": 595.1844
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2021,
-      "month": 9,
-      "dollars": 524.4136
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2021,
-      "month": 10,
-      "dollars": 419.8537
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2021,
-      "month": 11,
-      "dollars": 412.1279
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2021,
-      "month": 12,
-      "dollars": 243.158
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2022,
-      "month": 1,
-      "dollars": 342.147
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2022,
-      "month": 2,
-      "dollars": 412.2075
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2022,
-      "month": 3,
-      "dollars": 582.384
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2022,
-      "month": 4,
-      "dollars": 618.9193
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2022,
-      "month": 5,
-      "dollars": 681.9509
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2022,
-      "month": 6,
-      "dollars": 683.3655
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2022,
-      "month": 7,
-      "dollars": 647.3349
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2022,
-      "month": 8,
-      "dollars": 566.2526
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2022,
-      "month": 9,
-      "dollars": 570.7246
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2022,
-      "month": 10,
-      "dollars": 513.3981
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2022,
-      "month": 11,
-      "dollars": 332.8446
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2022,
-      "month": 12,
-      "dollars": 244.8913
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2023,
-      "month": 1,
-      "dollars": 280.573
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2023,
-      "month": 2,
-      "dollars": 326.1221
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2023,
-      "month": 3,
-      "dollars": 523.8479
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2023,
-      "month": 4,
-      "dollars": 572.9863
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2023,
-      "month": 5,
-      "dollars": 628.0047
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2023,
-      "month": 6,
-      "dollars": 609.3148
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2023,
-      "month": 7,
-      "dollars": 662.6717
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2023,
-      "month": 8,
-      "dollars": 592.571
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2023,
-      "month": 9,
-      "dollars": 528.4267
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2023,
-      "month": 10,
-      "dollars": 442.7838
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2023,
-      "month": 11,
-      "dollars": 332.4401
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2023,
-      "month": 12,
-      "dollars": 276.8475
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2024,
-      "month": 1,
-      "dollars": 325.2678
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2024,
-      "month": 2,
-      "dollars": 387.8103
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2024,
-      "month": 3,
-      "dollars": 501.597
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2024,
-      "month": 4,
-      "dollars": 574.1605
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2024,
-      "month": 5,
-      "dollars": 604.2085
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2024,
-      "month": 6,
-      "dollars": 742.4922
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2024,
-      "month": 7,
-      "dollars": 612.1451
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2024,
-      "month": 8,
-      "dollars": 721.1814
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2024,
-      "month": 9,
-      "dollars": 462.5042
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2024,
-      "month": 10,
-      "dollars": 546.4792
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2024,
-      "month": 11,
-      "dollars": 322.432
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2024,
-      "month": 12,
-      "dollars": 314.2697
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2025,
-      "month": 1,
-      "dollars": 353.3118
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2025,
-      "month": 2,
-      "dollars": 408.9292
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2025,
-      "month": 3,
-      "dollars": 573.7345
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2025,
-      "month": 4,
-      "dollars": 590.7425
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2025,
-      "month": 5,
-      "dollars": 562.7788
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2025,
-      "month": 6,
-      "dollars": 646.3684
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2025,
-      "month": 7,
-      "dollars": 704.0312
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2025,
-      "month": 8,
-      "dollars": 538.8297
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2025,
-      "month": 9,
-      "dollars": 550.5776
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2025,
-      "month": 10,
-      "dollars": 443.8823
+      "dollars": 106.173
     },
     {
       "buildingId": "alpharetta-library",
       "year": 2025,
       "month": 11,
-      "dollars": 375.8368
+      "dollars": 222.52039999999994
     },
     {
-      "buildingId": "alpharetta-library",
-      "year": 2025,
-      "month": 12,
-      "dollars": 289.8772
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2026,
-      "month": 1,
-      "dollars": 321.1274
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2026,
-      "month": 2,
-      "dollars": 375.5649
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2026,
-      "month": 3,
-      "dollars": 545.29
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2026,
-      "month": 4,
-      "dollars": 648.44
-    },
-    {
-      "buildingId": "alpharetta-library",
-      "year": 2026,
-      "month": 5,
-      "dollars": 605.09
-    },
-    {
-      "buildingId": "animal-services",
-      "year": 2025,
-      "month": 6,
-      "dollars": 79.9548
-    },
-    {
-      "buildingId": "animal-services",
-      "year": 2025,
-      "month": 7,
-      "dollars": 2463.3123
-    },
-    {
-      "buildingId": "animal-services",
-      "year": 2025,
-      "month": 8,
-      "dollars": 2011.3206
-    },
-    {
-      "buildingId": "animal-services",
-      "year": 2025,
-      "month": 9,
-      "dollars": 2121.3862
-    },
-    {
-      "buildingId": "animal-services",
-      "year": 2025,
-      "month": 10,
-      "dollars": 1643.7904
-    },
-    {
-      "buildingId": "animal-services",
+      "buildingId": "wolf-creek-library",
       "year": 2025,
       "month": 11,
-      "dollars": 1191.7089
+      "dollars": 383.31359999999995
     },
     {
-      "buildingId": "animal-services",
-      "year": 2025,
-      "month": 12,
-      "dollars": 1098.534
-    },
-    {
-      "buildingId": "animal-services",
-      "year": 2026,
-      "month": 1,
-      "dollars": 1227.0972
-    },
-    {
-      "buildingId": "animal-services",
-      "year": 2026,
-      "month": 2,
-      "dollars": 1411.2556
-    },
-    {
-      "buildingId": "animal-services",
-      "year": 2026,
-      "month": 3,
-      "dollars": 2074.83
-    },
-    {
-      "buildingId": "animal-services",
-      "year": 2026,
-      "month": 4,
-      "dollars": 2440.3
-    },
-    {
-      "buildingId": "animal-services",
-      "year": 2026,
-      "month": 5,
-      "dollars": 2271.37
-    },
-    {
-      "buildingId": "auburn-avenue-research-branch",
-      "year": 2026,
-      "month": 5,
-      "dollars": 243.34
-    },
-    {
-      "buildingId": "aviation-cultural-center",
-      "year": 2025,
-      "month": 4,
-      "dollars": 2.0552
-    },
-    {
-      "buildingId": "aviation-cultural-center",
-      "year": 2025,
-      "month": 5,
-      "dollars": 84.1068
-    },
-    {
-      "buildingId": "aviation-cultural-center",
-      "year": 2025,
-      "month": 6,
-      "dollars": 681.5941
-    },
-    {
-      "buildingId": "aviation-cultural-center",
-      "year": 2025,
-      "month": 7,
-      "dollars": 937.6323
-    },
-    {
-      "buildingId": "aviation-cultural-center",
-      "year": 2025,
-      "month": 8,
-      "dollars": 716.5869
-    },
-    {
-      "buildingId": "aviation-cultural-center",
-      "year": 2025,
-      "month": 9,
-      "dollars": 747.7441
-    },
-    {
-      "buildingId": "aviation-cultural-center",
-      "year": 2025,
-      "month": 10,
-      "dollars": 581.3783
-    },
-    {
-      "buildingId": "aviation-cultural-center",
+      "buildingId": "metropolitan-library",
       "year": 2025,
       "month": 11,
-      "dollars": 499.2817
+      "dollars": 369.3932
     },
     {
-      "buildingId": "aviation-cultural-center",
+      "buildingId": "northwest-library",
       "year": 2025,
-      "month": 12,
-      "dollars": 377.552
+      "month": 11,
+      "dollars": 156.61229999999998
     },
     {
-      "buildingId": "aviation-cultural-center",
-      "year": 2026,
-      "month": 1,
-      "dollars": 422.2185
-    },
-    {
-      "buildingId": "aviation-cultural-center",
-      "year": 2026,
-      "month": 2,
-      "dollars": 495.3001
-    },
-    {
-      "buildingId": "aviation-cultural-center",
-      "year": 2026,
-      "month": 3,
-      "dollars": 667.12
-    },
-    {
-      "buildingId": "aviation-cultural-center",
-      "year": 2026,
-      "month": 4,
-      "dollars": 861.47
-    },
-    {
-      "buildingId": "aviation-cultural-center",
-      "year": 2026,
-      "month": 5,
-      "dollars": 823.8
-    },
-    {
-      "buildingId": "benson-senior-center",
+      "buildingId": "southeast-atlanta-library",
       "year": 2025,
-      "month": 4,
-      "dollars": 16.7642
+      "month": 11,
+      "dollars": 397.8707999999999
     },
     {
-      "buildingId": "benson-senior-center",
+      "buildingId": "neighborhood-union-health",
       "year": 2025,
-      "month": 5,
-      "dollars": 578.2701
+      "month": 11,
+      "dollars": 97.32760000000002
     },
     {
-      "buildingId": "benson-senior-center",
+      "buildingId": "college-park-regional-health",
       "year": 2025,
-      "month": 6,
-      "dollars": 2262.466
+      "month": 11,
+      "dollars": 519.232
     },
     {
-      "buildingId": "benson-senior-center",
+      "buildingId": "milton-library",
       "year": 2025,
-      "month": 7,
-      "dollars": 2385.9645
+      "month": 11,
+      "dollars": 247.06499999999997
     },
     {
-      "buildingId": "benson-senior-center",
+      "buildingId": "e-roswell-library",
       "year": 2025,
-      "month": 8,
-      "dollars": 1915.6492
+      "month": 11,
+      "dollars": 173.07500000000005
     },
     {
-      "buildingId": "benson-senior-center",
+      "buildingId": "maxwell-rd-driver-services",
       "year": 2025,
-      "month": 9,
-      "dollars": 2057.3547
-    },
-    {
-      "buildingId": "benson-senior-center",
-      "year": 2025,
-      "month": 10,
-      "dollars": 1739.7126
+      "month": 11,
+      "dollars": 553.2569999999996
     },
     {
       "buildingId": "benson-senior-center",
       "year": 2025,
       "month": 11,
-      "dollars": 1563.5748
+      "dollars": 315.3070000000001
     },
     {
-      "buildingId": "benson-senior-center",
-      "year": 2025,
-      "month": 12,
-      "dollars": 1229.6924
-    },
-    {
-      "buildingId": "benson-senior-center",
-      "year": 2026,
-      "month": 1,
-      "dollars": 1346.9664
-    },
-    {
-      "buildingId": "benson-senior-center",
-      "year": 2026,
-      "month": 2,
-      "dollars": 1469.2551
-    },
-    {
-      "buildingId": "benson-senior-center",
-      "year": 2026,
-      "month": 3,
-      "dollars": 1998.7
-    },
-    {
-      "buildingId": "benson-senior-center",
-      "year": 2026,
-      "month": 4,
-      "dollars": 2323.58
-    },
-    {
-      "buildingId": "benson-senior-center",
-      "year": 2026,
-      "month": 5,
-      "dollars": 2131.11
-    },
-    {
-      "buildingId": "buckhead-branch",
-      "year": 2026,
-      "month": 1,
-      "dollars": 6.6071
-    },
-    {
-      "buildingId": "buckhead-branch",
-      "year": 2026,
-      "month": 2,
-      "dollars": 178.3929
-    },
-    {
-      "buildingId": "buckhead-branch",
-      "year": 2026,
-      "month": 3,
-      "dollars": 815.24
-    },
-    {
-      "buildingId": "buckhead-branch",
-      "year": 2026,
-      "month": 4,
-      "dollars": 937.25
-    },
-    {
-      "buildingId": "buckhead-branch",
-      "year": 2026,
-      "month": 5,
-      "dollars": 916.32
-    },
-    {
-      "buildingId": "cascade-sw-library",
-      "year": 2025,
-      "month": 5,
-      "dollars": 66.7843
-    },
-    {
-      "buildingId": "cascade-sw-library",
-      "year": 2025,
-      "month": 6,
-      "dollars": 2013.807
-    },
-    {
-      "buildingId": "cascade-sw-library",
-      "year": 2025,
-      "month": 7,
-      "dollars": 2371.19
-    },
-    {
-      "buildingId": "cascade-sw-library",
-      "year": 2025,
-      "month": 8,
-      "dollars": 1848.339
-    },
-    {
-      "buildingId": "cascade-sw-library",
-      "year": 2025,
-      "month": 9,
-      "dollars": 2019.221
-    },
-    {
-      "buildingId": "cascade-sw-library",
-      "year": 2025,
-      "month": 10,
-      "dollars": 1636.5227
-    },
-    {
-      "buildingId": "cascade-sw-library",
+      "buildingId": "aviation-cultural-center",
       "year": 2025,
       "month": 11,
-      "dollars": 1371.4989
+      "dollars": 425.054
     },
     {
-      "buildingId": "cascade-sw-library",
-      "year": 2025,
-      "month": 12,
-      "dollars": 1000.7543
-    },
-    {
-      "buildingId": "cascade-sw-library",
-      "year": 2026,
-      "month": 1,
-      "dollars": 1166.5735
-    },
-    {
-      "buildingId": "cascade-sw-library",
-      "year": 2026,
-      "month": 2,
-      "dollars": 1354.1293
-    },
-    {
-      "buildingId": "cascade-sw-library",
-      "year": 2026,
-      "month": 3,
-      "dollars": 1908.66
-    },
-    {
-      "buildingId": "cascade-sw-library",
-      "year": 2026,
-      "month": 4,
-      "dollars": 2216.17
-    },
-    {
-      "buildingId": "cascade-sw-library",
-      "year": 2026,
-      "month": 5,
-      "dollars": 2047.58
-    },
-    {
-      "buildingId": "cleveland-ave-library",
-      "year": 2025,
-      "month": 10,
-      "dollars": 1.403
-    },
-    {
-      "buildingId": "cleveland-ave-library",
+      "buildingId": "mills-senior-center",
       "year": 2025,
       "month": 11,
-      "dollars": 49.2415
-    },
-    {
-      "buildingId": "cleveland-ave-library",
-      "year": 2025,
-      "month": 12,
-      "dollars": 266.8187
-    },
-    {
-      "buildingId": "cleveland-ave-library",
-      "year": 2026,
-      "month": 1,
-      "dollars": 318.8286
-    },
-    {
-      "buildingId": "cleveland-ave-library",
-      "year": 2026,
-      "month": 2,
-      "dollars": 359.9582
-    },
-    {
-      "buildingId": "cleveland-ave-library",
-      "year": 2026,
-      "month": 3,
-      "dollars": 520.49
-    },
-    {
-      "buildingId": "cleveland-ave-library",
-      "year": 2026,
-      "month": 4,
-      "dollars": 606.97
-    },
-    {
-      "buildingId": "cleveland-ave-library",
-      "year": 2026,
-      "month": 5,
-      "dollars": 574.89
-    },
-    {
-      "buildingId": "college-park-library",
-      "year": 2025,
-      "month": 7,
-      "dollars": 3.2845
-    },
-    {
-      "buildingId": "college-park-library",
-      "year": 2025,
-      "month": 8,
-      "dollars": 111.1895
-    },
-    {
-      "buildingId": "college-park-library",
-      "year": 2025,
-      "month": 9,
-      "dollars": 376.6631
-    },
-    {
-      "buildingId": "college-park-library",
-      "year": 2025,
-      "month": 10,
-      "dollars": 299.5189
-    },
-    {
-      "buildingId": "college-park-library",
-      "year": 2025,
-      "month": 11,
-      "dollars": 255.9585
-    },
-    {
-      "buildingId": "college-park-library",
-      "year": 2025,
-      "month": 12,
-      "dollars": 198.6358
-    },
-    {
-      "buildingId": "college-park-library",
-      "year": 2026,
-      "month": 1,
-      "dollars": 222.6986
-    },
-    {
-      "buildingId": "college-park-library",
-      "year": 2026,
-      "month": 2,
-      "dollars": 261.6011
-    },
-    {
-      "buildingId": "college-park-library",
-      "year": 2026,
-      "month": 3,
-      "dollars": 410.32
-    },
-    {
-      "buildingId": "college-park-library",
-      "year": 2026,
-      "month": 4,
-      "dollars": 460.81
-    },
-    {
-      "buildingId": "college-park-library",
-      "year": 2026,
-      "month": 5,
-      "dollars": 420.33
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2022,
-      "month": 2,
-      "dollars": 16.1023
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2022,
-      "month": 3,
-      "dollars": 524.2044
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2022,
-      "month": 4,
-      "dollars": 1235.4736
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2022,
-      "month": 5,
-      "dollars": 1319.307
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2022,
-      "month": 6,
-      "dollars": 1314.6214
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2022,
-      "month": 7,
-      "dollars": 1194.8029
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2022,
-      "month": 8,
-      "dollars": 1052.1524
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2022,
-      "month": 9,
-      "dollars": 1104.2383
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2022,
-      "month": 10,
-      "dollars": 1038.0744
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2022,
-      "month": 11,
-      "dollars": 521.6565
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2022,
-      "month": 12,
-      "dollars": 524.0681
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2023,
-      "month": 1,
-      "dollars": 614.6933
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2023,
-      "month": 2,
-      "dollars": 673.8393
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2023,
-      "month": 3,
-      "dollars": 1048.2778
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2023,
-      "month": 4,
-      "dollars": 1105.1532
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2023,
-      "month": 5,
-      "dollars": 1130.9855
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2023,
-      "month": 6,
-      "dollars": 1159.8949
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2023,
-      "month": 7,
-      "dollars": 1267.6764
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2023,
-      "month": 8,
-      "dollars": 1139.6061
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2023,
-      "month": 9,
-      "dollars": 992.6748
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2023,
-      "month": 10,
-      "dollars": 882.3735
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2023,
-      "month": 11,
-      "dollars": 666.5538
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2023,
-      "month": 12,
-      "dollars": 582.3812
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2024,
-      "month": 1,
-      "dollars": 681.0141
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2024,
-      "month": 2,
-      "dollars": 734.3532
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2024,
-      "month": 3,
-      "dollars": 949.6033
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2024,
-      "month": 4,
-      "dollars": 1111.9424
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2024,
-      "month": 5,
-      "dollars": 1126.54
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2024,
-      "month": 6,
-      "dollars": 1263.581
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2024,
-      "month": 7,
-      "dollars": 1145.966
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2024,
-      "month": 8,
-      "dollars": 1335.2725
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2024,
-      "month": 9,
-      "dollars": 887.2427
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2024,
-      "month": 10,
-      "dollars": 1063.2176
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2024,
-      "month": 11,
-      "dollars": 629.858
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2024,
-      "month": 12,
-      "dollars": 670.5791
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2025,
-      "month": 1,
-      "dollars": 699.0961
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2025,
-      "month": 2,
-      "dollars": 786.5613
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2025,
-      "month": 3,
-      "dollars": 1142.0632
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2025,
-      "month": 4,
-      "dollars": 1116.2373
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2025,
-      "month": 5,
-      "dollars": 1069.2541
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2025,
-      "month": 6,
-      "dollars": 1102.2915
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2025,
-      "month": 7,
-      "dollars": 1259.5851
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2025,
-      "month": 8,
-      "dollars": 927.7715
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2025,
-      "month": 9,
-      "dollars": 1018.1033
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2025,
-      "month": 10,
-      "dollars": 854.1599
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2025,
-      "month": 11,
-      "dollars": 774.0993
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2025,
-      "month": 12,
-      "dollars": 585.046
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2026,
-      "month": 1,
-      "dollars": 637.6518
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2026,
-      "month": 2,
-      "dollars": 752.9386
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2026,
-      "month": 3,
-      "dollars": 1099.64
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2026,
-      "month": 4,
-      "dollars": 1274.47
-    },
-    {
-      "buildingId": "college-park-regional-health",
-      "year": 2026,
-      "month": 5,
-      "dollars": 1134.93
-    },
-    {
-      "buildingId": "dogwood-library",
-      "year": 2025,
-      "month": 5,
-      "dollars": 6.4323
-    },
-    {
-      "buildingId": "dogwood-library",
-      "year": 2025,
-      "month": 6,
-      "dollars": 199.6071
-    },
-    {
-      "buildingId": "dogwood-library",
-      "year": 2025,
-      "month": 7,
-      "dollars": 402.2377
-    },
-    {
-      "buildingId": "dogwood-library",
-      "year": 2025,
-      "month": 8,
-      "dollars": 315.9562
-    },
-    {
-      "buildingId": "dogwood-library",
-      "year": 2025,
-      "month": 9,
-      "dollars": 334.207
-    },
-    {
-      "buildingId": "dogwood-library",
-      "year": 2025,
-      "month": 10,
-      "dollars": 251.6857
+      "dollars": 580.59
     },
     {
       "buildingId": "dogwood-library",
       "year": 2025,
       "month": 11,
-      "dollars": 213.5463
+      "dollars": 67.39199999999998
     },
     {
-      "buildingId": "dogwood-library",
-      "year": 2025,
-      "month": 12,
-      "dollars": 169.1848
-    },
-    {
-      "buildingId": "dogwood-library",
-      "year": 2026,
-      "month": 1,
-      "dollars": 190.2206
-    },
-    {
-      "buildingId": "dogwood-library",
-      "year": 2026,
-      "month": 2,
-      "dollars": 221.5523
-    },
-    {
-      "buildingId": "dogwood-library",
-      "year": 2026,
-      "month": 3,
-      "dollars": 327.98
-    },
-    {
-      "buildingId": "dogwood-library",
-      "year": 2026,
-      "month": 4,
-      "dollars": 386.98
-    },
-    {
-      "buildingId": "dogwood-library",
-      "year": 2026,
-      "month": 5,
-      "dollars": 351.79
-    },
-    {
-      "buildingId": "dogwood-senior-center",
-      "year": 2025,
-      "month": 6,
-      "dollars": 12.3235
-    },
-    {
-      "buildingId": "dogwood-senior-center",
-      "year": 2025,
-      "month": 7,
-      "dollars": 378.1759
-    },
-    {
-      "buildingId": "dogwood-senior-center",
-      "year": 2025,
-      "month": 8,
-      "dollars": 263.7866
-    },
-    {
-      "buildingId": "dogwood-senior-center",
-      "year": 2025,
-      "month": 9,
-      "dollars": 288.693
-    },
-    {
-      "buildingId": "dogwood-senior-center",
-      "year": 2025,
-      "month": 10,
-      "dollars": 222.417
-    },
-    {
-      "buildingId": "dogwood-senior-center",
+      "buildingId": "cascade-sw-library",
       "year": 2025,
       "month": 11,
-      "dollars": 174.5608
+      "dollars": 927.696
     },
     {
-      "buildingId": "dogwood-senior-center",
-      "year": 2025,
-      "month": 12,
-      "dollars": 156.0695
-    },
-    {
-      "buildingId": "dogwood-senior-center",
-      "year": 2026,
-      "month": 1,
-      "dollars": 170.8381
-    },
-    {
-      "buildingId": "dogwood-senior-center",
-      "year": 2026,
-      "month": 2,
-      "dollars": 201.0956
-    },
-    {
-      "buildingId": "dogwood-senior-center",
-      "year": 2026,
-      "month": 3,
-      "dollars": 314.18
-    },
-    {
-      "buildingId": "dogwood-senior-center",
-      "year": 2026,
-      "month": 4,
-      "dollars": 366.16
-    },
-    {
-      "buildingId": "dogwood-senior-center",
-      "year": 2026,
-      "month": 5,
-      "dollars": 353.05
-    },
-    {
-      "buildingId": "maxwell-rd-driver-services",
-      "year": 2025,
-      "month": 4,
-      "dollars": 9.8381
-    },
-    {
-      "buildingId": "maxwell-rd-driver-services",
-      "year": 2025,
-      "month": 5,
-      "dollars": 437.0979
-    },
-    {
-      "buildingId": "maxwell-rd-driver-services",
-      "year": 2025,
-      "month": 6,
-      "dollars": 4267.5263
-    },
-    {
-      "buildingId": "maxwell-rd-driver-services",
-      "year": 2025,
-      "month": 7,
-      "dollars": 4640.3551
-    },
-    {
-      "buildingId": "maxwell-rd-driver-services",
-      "year": 2025,
-      "month": 8,
-      "dollars": 3611.2816
-    },
-    {
-      "buildingId": "maxwell-rd-driver-services",
-      "year": 2025,
-      "month": 9,
-      "dollars": 3653.0804
-    },
-    {
-      "buildingId": "maxwell-rd-driver-services",
-      "year": 2025,
-      "month": 10,
-      "dollars": 2957.6296
-    },
-    {
-      "buildingId": "maxwell-rd-driver-services",
+      "buildingId": "south-fulton-service-center",
       "year": 2025,
       "month": 11,
-      "dollars": 2343.2113
+      "dollars": 533.025
     },
     {
-      "buildingId": "maxwell-rd-driver-services",
-      "year": 2025,
-      "month": 12,
-      "dollars": 2027.1293
-    },
-    {
-      "buildingId": "maxwell-rd-driver-services",
-      "year": 2026,
-      "month": 1,
-      "dollars": 2212.3271
-    },
-    {
-      "buildingId": "maxwell-rd-driver-services",
-      "year": 2026,
-      "month": 2,
-      "dollars": 2609.4033
-    },
-    {
-      "buildingId": "maxwell-rd-driver-services",
-      "year": 2026,
-      "month": 3,
-      "dollars": 3710.36
-    },
-    {
-      "buildingId": "maxwell-rd-driver-services",
-      "year": 2026,
-      "month": 4,
-      "dollars": 4342.52
-    },
-    {
-      "buildingId": "maxwell-rd-driver-services",
-      "year": 2026,
-      "month": 5,
-      "dollars": 4122.74
-    },
-    {
-      "buildingId": "e-roswell-library",
-      "year": 2025,
-      "month": 4,
-      "dollars": 7.2081
-    },
-    {
-      "buildingId": "e-roswell-library",
-      "year": 2025,
-      "month": 5,
-      "dollars": 263.0279
-    },
-    {
-      "buildingId": "e-roswell-library",
-      "year": 2025,
-      "month": 6,
-      "dollars": 1405.9882
-    },
-    {
-      "buildingId": "e-roswell-library",
-      "year": 2025,
-      "month": 7,
-      "dollars": 1514.4919
-    },
-    {
-      "buildingId": "e-roswell-library",
-      "year": 2025,
-      "month": 8,
-      "dollars": 1200.3182
-    },
-    {
-      "buildingId": "e-roswell-library",
-      "year": 2025,
-      "month": 9,
-      "dollars": 1201.5954
-    },
-    {
-      "buildingId": "e-roswell-library",
-      "year": 2025,
-      "month": 10,
-      "dollars": 985.8363
-    },
-    {
-      "buildingId": "e-roswell-library",
+      "buildingId": "juvenile-justice-center",
       "year": 2025,
       "month": 11,
-      "dollars": 857.965
+      "dollars": 208.592
     },
     {
-      "buildingId": "e-roswell-library",
-      "year": 2025,
-      "month": 12,
-      "dollars": 666
-    },
-    {
-      "buildingId": "e-roswell-library",
-      "year": 2026,
-      "month": 1,
-      "dollars": 739.5324
-    },
-    {
-      "buildingId": "e-roswell-library",
-      "year": 2026,
-      "month": 2,
-      "dollars": 828.0766
-    },
-    {
-      "buildingId": "e-roswell-library",
-      "year": 2026,
-      "month": 3,
-      "dollars": 1155.75
-    },
-    {
-      "buildingId": "e-roswell-library",
-      "year": 2026,
-      "month": 4,
-      "dollars": 1383.34
-    },
-    {
-      "buildingId": "e-roswell-library",
-      "year": 2026,
-      "month": 5,
-      "dollars": 1299.45
-    },
-    {
-      "buildingId": "board-of-health",
-      "year": 2025,
-      "month": 6,
-      "dollars": 21.6016
-    },
-    {
-      "buildingId": "board-of-health",
-      "year": 2025,
-      "month": 7,
-      "dollars": 715.9949
-    },
-    {
-      "buildingId": "board-of-health",
-      "year": 2025,
-      "month": 8,
-      "dollars": 2111.2922
-    },
-    {
-      "buildingId": "board-of-health",
-      "year": 2025,
-      "month": 9,
-      "dollars": 2172.4629
-    },
-    {
-      "buildingId": "board-of-health",
-      "year": 2025,
-      "month": 10,
-      "dollars": 1803.5454
-    },
-    {
-      "buildingId": "board-of-health",
+      "buildingId": "ponce-de-leon-jp-library",
       "year": 2025,
       "month": 11,
-      "dollars": 1531.5633
+      "dollars": 265.55999999999995
     },
     {
-      "buildingId": "board-of-health",
-      "year": 2025,
-      "month": 12,
-      "dollars": 1185.7539
-    },
-    {
-      "buildingId": "board-of-health",
-      "year": 2026,
-      "month": 1,
-      "dollars": 1292.7026
-    },
-    {
-      "buildingId": "board-of-health",
-      "year": 2026,
-      "month": 2,
-      "dollars": 1495.1732
-    },
-    {
-      "buildingId": "board-of-health",
-      "year": 2026,
-      "month": 3,
-      "dollars": 2089.9
-    },
-    {
-      "buildingId": "board-of-health",
-      "year": 2026,
-      "month": 4,
-      "dollars": 2480.44
-    },
-    {
-      "buildingId": "board-of-health",
-      "year": 2026,
-      "month": 5,
-      "dollars": 2256.42
-    },
-    {
-      "buildingId": "gladys-dennard-library",
-      "year": 2025,
-      "month": 8,
-      "dollars": 37.5973
-    },
-    {
-      "buildingId": "gladys-dennard-library",
-      "year": 2025,
-      "month": 9,
-      "dollars": 1127.2675
-    },
-    {
-      "buildingId": "gladys-dennard-library",
-      "year": 2025,
-      "month": 10,
-      "dollars": 1136.6315
-    },
-    {
-      "buildingId": "gladys-dennard-library",
+      "buildingId": "new-beginnings-senior-center",
       "year": 2025,
       "month": 11,
-      "dollars": 837.0827
-    },
-    {
-      "buildingId": "gladys-dennard-library",
-      "year": 2025,
-      "month": 12,
-      "dollars": 522.3849
-    },
-    {
-      "buildingId": "gladys-dennard-library",
-      "year": 2026,
-      "month": 1,
-      "dollars": 633.5676
-    },
-    {
-      "buildingId": "gladys-dennard-library",
-      "year": 2026,
-      "month": 2,
-      "dollars": 903.3685
-    },
-    {
-      "buildingId": "gladys-dennard-library",
-      "year": 2026,
-      "month": 3,
-      "dollars": 1319.28
-    },
-    {
-      "buildingId": "gladys-dennard-library",
-      "year": 2026,
-      "month": 4,
-      "dollars": 1674.17
-    },
-    {
-      "buildingId": "gladys-dennard-library",
-      "year": 2026,
-      "month": 5,
-      "dollars": 1508.8
-    },
-    {
-      "buildingId": "hapeville-branch",
-      "year": 2026,
-      "month": 5,
-      "dollars": 266.92
-    },
-    {
-      "buildingId": "bowden-senior-center",
-      "year": 2025,
-      "month": 10,
-      "dollars": 26.3543
-    },
-    {
-      "buildingId": "bowden-senior-center",
-      "year": 2025,
-      "month": 11,
-      "dollars": 782.876
-    },
-    {
-      "buildingId": "bowden-senior-center",
-      "year": 2025,
-      "month": 12,
-      "dollars": 579.7929
-    },
-    {
-      "buildingId": "bowden-senior-center",
-      "year": 2026,
-      "month": 1,
-      "dollars": 681.1422
-    },
-    {
-      "buildingId": "bowden-senior-center",
-      "year": 2026,
-      "month": 2,
-      "dollars": 746.4246
-    },
-    {
-      "buildingId": "bowden-senior-center",
-      "year": 2026,
-      "month": 3,
-      "dollars": 1107.45
-    },
-    {
-      "buildingId": "bowden-senior-center",
-      "year": 2026,
-      "month": 4,
-      "dollars": 1337.45
-    },
-    {
-      "buildingId": "bowden-senior-center",
-      "year": 2026,
-      "month": 5,
-      "dollars": 1230.73
-    },
-    {
-      "buildingId": "medical-examiner",
-      "year": 2025,
-      "month": 8,
-      "dollars": 0.6327
-    },
-    {
-      "buildingId": "medical-examiner",
-      "year": 2025,
-      "month": 9,
-      "dollars": 53.6302
-    },
-    {
-      "buildingId": "medical-examiner",
-      "year": 2025,
-      "month": 10,
-      "dollars": 1088.7974
+      "dollars": 113.32999999999997
     },
     {
       "buildingId": "medical-examiner",
       "year": 2025,
       "month": 11,
-      "dollars": 902.2
+      "dollars": 340.001
     },
     {
-      "buildingId": "medical-examiner",
-      "year": 2025,
-      "month": 12,
-      "dollars": 721.8478
-    },
-    {
-      "buildingId": "medical-examiner",
-      "year": 2026,
-      "month": 1,
-      "dollars": 809.7158
-    },
-    {
-      "buildingId": "medical-examiner",
-      "year": 2026,
-      "month": 2,
-      "dollars": 933.4961
-    },
-    {
-      "buildingId": "medical-examiner",
-      "year": 2026,
-      "month": 3,
-      "dollars": 1013.04
-    },
-    {
-      "buildingId": "medical-examiner",
-      "year": 2026,
-      "month": 4,
-      "dollars": 1399.21
-    },
-    {
-      "buildingId": "medical-examiner",
-      "year": 2026,
-      "month": 5,
-      "dollars": 1433.71
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2021,
-      "month": 5,
-      "dollars": 1257.1043
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2021,
-      "month": 6,
-      "dollars": 1044.7057
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2021,
-      "month": 7,
-      "dollars": 982.021
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2021,
-      "month": 8,
-      "dollars": 1180.7573
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2021,
-      "month": 9,
-      "dollars": 901.0833
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2021,
-      "month": 10,
-      "dollars": 758.0754
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2021,
-      "month": 11,
-      "dollars": 715.7701
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2021,
-      "month": 12,
-      "dollars": 414.416
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2022,
-      "month": 1,
-      "dollars": 605.9357
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2022,
-      "month": 2,
-      "dollars": 671.8761
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2022,
-      "month": 3,
-      "dollars": 979.1915
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2022,
-      "month": 4,
-      "dollars": 1058.3652
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2022,
-      "month": 5,
-      "dollars": 1154.1233
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2022,
-      "month": 6,
-      "dollars": 1176.8533
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2022,
-      "month": 7,
-      "dollars": 1082.4231
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2022,
-      "month": 8,
-      "dollars": 957.4266
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2022,
-      "month": 9,
-      "dollars": 960.9503
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2022,
-      "month": 10,
-      "dollars": 885.4284
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2022,
-      "month": 11,
-      "dollars": 580.7581
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2022,
-      "month": 12,
-      "dollars": 439.5903
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2023,
-      "month": 1,
-      "dollars": 498.6756
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2023,
-      "month": 2,
-      "dollars": 564.4975
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2023,
-      "month": 3,
-      "dollars": 878.5411
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2023,
-      "month": 4,
-      "dollars": 944.7655
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2023,
-      "month": 5,
-      "dollars": 999.5396
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2023,
-      "month": 6,
-      "dollars": 1021.1042
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2023,
-      "month": 7,
-      "dollars": 1130.4629
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2023,
-      "month": 8,
-      "dollars": 990.0309
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2023,
-      "month": 9,
-      "dollars": 857.0505
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2023,
-      "month": 10,
-      "dollars": 727.378
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2023,
-      "month": 11,
-      "dollars": 560.9
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2023,
-      "month": 12,
-      "dollars": 475.8006
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2024,
-      "month": 1,
-      "dollars": 557.7818
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2024,
-      "month": 2,
-      "dollars": 640.0398
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2024,
-      "month": 3,
-      "dollars": 826.5966
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2024,
-      "month": 4,
-      "dollars": 960.6679
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2024,
-      "month": 5,
-      "dollars": 1037.1677
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2024,
-      "month": 6,
-      "dollars": 1243.5851
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2024,
-      "month": 7,
-      "dollars": 1073.0965
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2024,
-      "month": 8,
-      "dollars": 1243.684
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2024,
-      "month": 9,
-      "dollars": 766.4442
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2024,
-      "month": 10,
-      "dollars": 920.7621
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2024,
-      "month": 11,
-      "dollars": 446.2048
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2024,
-      "month": 12,
-      "dollars": 570.195
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2025,
-      "month": 1,
-      "dollars": 568.8602
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2025,
-      "month": 2,
-      "dollars": 695.2043
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2025,
-      "month": 3,
-      "dollars": 1004.1597
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2025,
-      "month": 4,
-      "dollars": 1053.9853
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2025,
-      "month": 5,
-      "dollars": 1011.8526
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2025,
-      "month": 6,
-      "dollars": 1023.4001
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2025,
-      "month": 7,
-      "dollars": 1060.9063
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2025,
-      "month": 8,
-      "dollars": 781.5003
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2025,
-      "month": 9,
-      "dollars": 900.5873
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2025,
-      "month": 10,
-      "dollars": 755.1629
-    },
-    {
-      "buildingId": "metropolitan-library",
+      "buildingId": "gladys-dennard-library",
       "year": 2025,
       "month": 11,
-      "dollars": 670.4993
+      "dollars": 398.46600000000007
     },
     {
-      "buildingId": "metropolitan-library",
-      "year": 2025,
-      "month": 12,
-      "dollars": 507.3735
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2026,
-      "month": 1,
-      "dollars": 578.3862
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2026,
-      "month": 2,
-      "dollars": 663.2251
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2026,
-      "month": 3,
-      "dollars": 970.36
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2026,
-      "month": 4,
-      "dollars": 1120.37
-    },
-    {
-      "buildingId": "metropolitan-library",
-      "year": 2026,
-      "month": 5,
-      "dollars": 1038.33
-    },
-    {
-      "buildingId": "mills-senior-center",
-      "year": 2025,
-      "month": 5,
-      "dollars": 17.691
-    },
-    {
-      "buildingId": "mills-senior-center",
-      "year": 2025,
-      "month": 6,
-      "dollars": 582.0429
-    },
-    {
-      "buildingId": "mills-senior-center",
-      "year": 2025,
-      "month": 7,
-      "dollars": 2123.9696
-    },
-    {
-      "buildingId": "mills-senior-center",
-      "year": 2025,
-      "month": 8,
-      "dollars": 1678.8718
-    },
-    {
-      "buildingId": "mills-senior-center",
-      "year": 2025,
-      "month": 9,
-      "dollars": 1886.6266
-    },
-    {
-      "buildingId": "mills-senior-center",
-      "year": 2025,
-      "month": 10,
-      "dollars": 1607.4158
-    },
-    {
-      "buildingId": "mills-senior-center",
+      "buildingId": "board-of-health",
       "year": 2025,
       "month": 11,
-      "dollars": 1471.1949
+      "dollars": 913.5119999999998
     },
     {
-      "buildingId": "mills-senior-center",
-      "year": 2025,
-      "month": 12,
-      "dollars": 1147.7197
-    },
-    {
-      "buildingId": "mills-senior-center",
-      "year": 2026,
-      "month": 1,
-      "dollars": 1252.0856
-    },
-    {
-      "buildingId": "mills-senior-center",
-      "year": 2026,
-      "month": 2,
-      "dollars": 1372.0821
-    },
-    {
-      "buildingId": "mills-senior-center",
-      "year": 2026,
-      "month": 3,
-      "dollars": 1872.32
-    },
-    {
-      "buildingId": "mills-senior-center",
-      "year": 2026,
-      "month": 4,
-      "dollars": 2113.59
-    },
-    {
-      "buildingId": "mills-senior-center",
-      "year": 2026,
-      "month": 5,
-      "dollars": 1904.29
-    },
-    {
-      "buildingId": "mills-senior-center",
-      "year": 2026,
-      "month": 6,
-      "dollars": 8514.367699999999
-    },
-    {
-      "buildingId": "milton-library",
-      "year": 2025,
-      "month": 4,
-      "dollars": 5.5942
-    },
-    {
-      "buildingId": "milton-library",
-      "year": 2025,
-      "month": 5,
-      "dollars": 185.5281
-    },
-    {
-      "buildingId": "milton-library",
-      "year": 2025,
-      "month": 6,
-      "dollars": 531.9383
-    },
-    {
-      "buildingId": "milton-library",
-      "year": 2025,
-      "month": 7,
-      "dollars": 571.5352
-    },
-    {
-      "buildingId": "milton-library",
-      "year": 2025,
-      "month": 8,
-      "dollars": 448.3942
-    },
-    {
-      "buildingId": "milton-library",
-      "year": 2025,
-      "month": 9,
-      "dollars": 474.2929
-    },
-    {
-      "buildingId": "milton-library",
-      "year": 2025,
-      "month": 10,
-      "dollars": 388.7948
-    },
-    {
-      "buildingId": "milton-library",
+      "buildingId": "dogwood-senior-center",
       "year": 2025,
       "month": 11,
-      "dollars": 309.2862
+      "dollars": 199.775
     },
     {
-      "buildingId": "milton-library",
-      "year": 2025,
-      "month": 12,
-      "dollars": 232.0763
-    },
-    {
-      "buildingId": "milton-library",
-      "year": 2026,
-      "month": 1,
-      "dollars": 264.7046
-    },
-    {
-      "buildingId": "milton-library",
-      "year": 2026,
-      "month": 2,
-      "dollars": 318.4652
-    },
-    {
-      "buildingId": "milton-library",
-      "year": 2026,
-      "month": 3,
-      "dollars": 463.45
-    },
-    {
-      "buildingId": "milton-library",
-      "year": 2026,
-      "month": 4,
-      "dollars": 524.86
-    },
-    {
-      "buildingId": "milton-library",
-      "year": 2026,
-      "month": 5,
-      "dollars": 485.15
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2021,
-      "month": 11,
-      "dollars": 2.301
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2021,
-      "month": 12,
-      "dollars": 72.4522
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2022,
-      "month": 1,
-      "dollars": 106.9293
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2022,
-      "month": 2,
-      "dollars": 119.6833
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2022,
-      "month": 3,
-      "dollars": 168.0495
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2022,
-      "month": 4,
-      "dollars": 176.5853
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2022,
-      "month": 5,
-      "dollars": 192.4711
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2022,
-      "month": 6,
-      "dollars": 192.9964
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2022,
-      "month": 7,
-      "dollars": 181.9977
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2022,
-      "month": 8,
-      "dollars": 156.8939
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2022,
-      "month": 9,
-      "dollars": 156.0716
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2022,
-      "month": 10,
-      "dollars": 144.373
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2022,
-      "month": 11,
-      "dollars": 99.087
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2022,
-      "month": 12,
-      "dollars": 74.2758
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2023,
-      "month": 1,
-      "dollars": 84.6574
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2023,
-      "month": 2,
-      "dollars": 95.6777
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2023,
-      "month": 3,
-      "dollars": 151.9821
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2023,
-      "month": 4,
-      "dollars": 163.6572
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2023,
-      "month": 5,
-      "dollars": 177.746
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2023,
-      "month": 6,
-      "dollars": 187.6785
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2023,
-      "month": 7,
-      "dollars": 190.4669
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2023,
-      "month": 8,
-      "dollars": 179.7759
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2023,
-      "month": 9,
-      "dollars": 155.0867
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2023,
-      "month": 10,
-      "dollars": 133.7698
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2023,
-      "month": 11,
-      "dollars": 101.5232
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2023,
-      "month": 12,
-      "dollars": 85.4757
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2024,
-      "month": 1,
-      "dollars": 100.7978
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2024,
-      "month": 2,
-      "dollars": 112.9696
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2024,
-      "month": 3,
-      "dollars": 145.4168
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2024,
-      "month": 4,
-      "dollars": 165.4892
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2024,
-      "month": 5,
-      "dollars": 173.8365
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2024,
-      "month": 6,
-      "dollars": 203.9006
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2024,
-      "month": 7,
-      "dollars": 174.6975
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2024,
-      "month": 8,
-      "dollars": 201.1618
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2024,
-      "month": 9,
-      "dollars": 131.0633
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2024,
-      "month": 10,
-      "dollars": 153.054
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2024,
-      "month": 11,
-      "dollars": 91.0461
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2024,
-      "month": 12,
-      "dollars": 98.0801
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2025,
-      "month": 1,
-      "dollars": 102.6937
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2025,
-      "month": 2,
-      "dollars": 116.4089
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2025,
-      "month": 3,
-      "dollars": 168.4845
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2025,
-      "month": 4,
-      "dollars": 171.1791
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2025,
-      "month": 5,
-      "dollars": 166.4578
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2025,
-      "month": 6,
-      "dollars": 177.709
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2025,
-      "month": 7,
-      "dollars": 189.0454
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2025,
-      "month": 8,
-      "dollars": 141.7319
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2025,
-      "month": 9,
-      "dollars": 154.7436
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2025,
-      "month": 10,
-      "dollars": 119.6228
-    },
-    {
-      "buildingId": "neighborhood-union-health",
+      "buildingId": "college-park-library",
       "year": 2025,
       "month": 11,
-      "dollars": 106.1091
+      "dollars": 53.88000000000002
     },
     {
-      "buildingId": "neighborhood-union-health",
-      "year": 2025,
-      "month": 12,
-      "dollars": 83.1338
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2026,
-      "month": 1,
-      "dollars": 94.1928
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2026,
-      "month": 2,
-      "dollars": 106.1101
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2026,
-      "month": 3,
-      "dollars": 156.33
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2026,
-      "month": 4,
-      "dollars": 180.18
-    },
-    {
-      "buildingId": "neighborhood-union-health",
-      "year": 2026,
-      "month": 5,
-      "dollars": 165.69
-    },
-    {
-      "buildingId": "new-beginnings-senior-center",
-      "year": 2025,
-      "month": 8,
-      "dollars": 7.065
-    },
-    {
-      "buildingId": "new-beginnings-senior-center",
-      "year": 2025,
-      "month": 9,
-      "dollars": 219.1821
-    },
-    {
-      "buildingId": "new-beginnings-senior-center",
-      "year": 2025,
-      "month": 10,
-      "dollars": 441.3252
-    },
-    {
-      "buildingId": "new-beginnings-senior-center",
+      "buildingId": "animal-services",
       "year": 2025,
       "month": 11,
-      "dollars": 368.5977
+      "dollars": 260.05000000000007
     },
     {
-      "buildingId": "new-beginnings-senior-center",
+      "buildingId": "adamsville-ac-library",
       "year": 2025,
-      "month": 12,
-      "dollars": 269.22
+      "month": 11,
+      "dollars": 17.544999999999995
     },
     {
-      "buildingId": "new-beginnings-senior-center",
-      "year": 2026,
-      "month": 1,
-      "dollars": 314.2521
+      "buildingId": "union-city-jail",
+      "year": 2025,
+      "month": 11,
+      "dollars": 250.21300000000002
     },
     {
-      "buildingId": "new-beginnings-senior-center",
-      "year": 2026,
-      "month": 2,
-      "dollars": 368.6079
+      "buildingId": "sandy-springs-library",
+      "year": 2025,
+      "month": 11,
+      "dollars": 746.0269999999999
     },
     {
-      "buildingId": "new-beginnings-senior-center",
-      "year": 2026,
-      "month": 3,
-      "dollars": 540.5
-    },
-    {
-      "buildingId": "new-beginnings-senior-center",
-      "year": 2026,
-      "month": 4,
-      "dollars": 652.63
-    },
-    {
-      "buildingId": "new-beginnings-senior-center",
-      "year": 2026,
-      "month": 5,
-      "dollars": 605.36
-    },
-    {
-      "buildingId": "new-beginnings-senior-center",
-      "year": 2026,
-      "month": 6,
-      "dollars": 2481.35
+      "buildingId": "qls-senior-center",
+      "year": 2025,
+      "month": 11,
+      "dollars": 474.39
     },
     {
       "buildingId": "north-fulton-service-center",
       "year": 2025,
-      "month": 10,
-      "dollars": 0.1113
+      "month": 11,
+      "dollars": 0.464
     },
     {
-      "buildingId": "north-fulton-service-center",
+      "buildingId": "bowden-senior-center",
       "year": 2025,
       "month": 11,
-      "dollars": 15.3222
+      "dollars": 226.87499999999991
     },
     {
-      "buildingId": "north-fulton-service-center",
-      "year": 2025,
-      "month": 12,
-      "dollars": 378.7655
-    },
-    {
-      "buildingId": "north-fulton-service-center",
-      "year": 2026,
-      "month": 1,
-      "dollars": 497.5324
-    },
-    {
-      "buildingId": "north-fulton-service-center",
-      "year": 2026,
-      "month": 2,
-      "dollars": 506.5586
-    },
-    {
-      "buildingId": "north-fulton-service-center",
-      "year": 2026,
-      "month": 3,
-      "dollars": 814.2
-    },
-    {
-      "buildingId": "north-fulton-service-center",
-      "year": 2026,
-      "month": 4,
-      "dollars": 1017.64
-    },
-    {
-      "buildingId": "north-fulton-service-center",
-      "year": 2026,
-      "month": 5,
-      "dollars": 944.84
-    },
-    {
-      "buildingId": "northeast-spruill-oaks-branch",
-      "year": 2025,
-      "month": 12,
-      "dollars": 14.9316
-    },
-    {
-      "buildingId": "northeast-spruill-oaks-branch",
-      "year": 2026,
-      "month": 1,
-      "dollars": 474.5259
-    },
-    {
-      "buildingId": "northeast-spruill-oaks-branch",
-      "year": 2026,
-      "month": 2,
-      "dollars": 717.5925
-    },
-    {
-      "buildingId": "northeast-spruill-oaks-branch",
-      "year": 2026,
-      "month": 3,
-      "dollars": 1085.83
-    },
-    {
-      "buildingId": "northeast-spruill-oaks-branch",
-      "year": 2026,
-      "month": 4,
-      "dollars": 1374.6
-    },
-    {
-      "buildingId": "northeast-spruill-oaks-branch",
-      "year": 2026,
-      "month": 5,
-      "dollars": 1310.2
-    },
-    {
-      "buildingId": "northside-branch",
-      "year": 2026,
-      "month": 3,
-      "dollars": 338.45
-    },
-    {
-      "buildingId": "northside-branch",
-      "year": 2026,
-      "month": 4,
-      "dollars": 440.45
-    },
-    {
-      "buildingId": "northside-branch",
-      "year": 2026,
-      "month": 5,
-      "dollars": 400.2
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2021,
-      "month": 9,
-      "dollars": 19.4894
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2021,
-      "month": 10,
-      "dollars": 604.3926
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2021,
-      "month": 11,
-      "dollars": 582.2745
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2021,
-      "month": 12,
-      "dollars": 334.4329
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2022,
-      "month": 1,
-      "dollars": 488.8356
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2022,
-      "month": 2,
-      "dollars": 555.6095
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2022,
-      "month": 3,
-      "dollars": 775.7938
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2022,
-      "month": 4,
-      "dollars": 843.2294
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2022,
-      "month": 5,
-      "dollars": 916.475
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2022,
-      "month": 6,
-      "dollars": 907.5896
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2022,
-      "month": 7,
-      "dollars": 854.6977
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2022,
-      "month": 8,
-      "dollars": 779.716
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2022,
-      "month": 9,
-      "dollars": 771.7414
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2022,
-      "month": 10,
-      "dollars": 708.0213
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2022,
-      "month": 11,
-      "dollars": 466.231
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2022,
-      "month": 12,
-      "dollars": 341.0178
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2023,
-      "month": 1,
-      "dollars": 391.2537
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2023,
-      "month": 2,
-      "dollars": 438.8383
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2023,
-      "month": 3,
-      "dollars": 700.1404
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2023,
-      "month": 4,
-      "dollars": 737.6959
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2023,
-      "month": 5,
-      "dollars": 776.5055
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2023,
-      "month": 6,
-      "dollars": 794.9744
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2023,
-      "month": 7,
-      "dollars": 860.5909
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2023,
-      "month": 8,
-      "dollars": 776.0463
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2023,
-      "month": 9,
-      "dollars": 690.8382
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2023,
-      "month": 10,
-      "dollars": 588.0845
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2023,
-      "month": 11,
-      "dollars": 443.5824
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2023,
-      "month": 12,
-      "dollars": 371.4152
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2024,
-      "month": 1,
-      "dollars": 434.0132
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2024,
-      "month": 2,
-      "dollars": 505.5838
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2024,
-      "month": 3,
-      "dollars": 654.7912
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2024,
-      "month": 4,
-      "dollars": 756.5233
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2024,
-      "month": 5,
-      "dollars": 805.9369
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2024,
-      "month": 6,
-      "dollars": 964.6336
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2024,
-      "month": 7,
-      "dollars": 836.6984
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2024,
-      "month": 8,
-      "dollars": 983.3777
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2024,
-      "month": 9,
-      "dollars": 618.6758
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2024,
-      "month": 10,
-      "dollars": 740.0719
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2024,
-      "month": 11,
-      "dollars": 431.8249
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2024,
-      "month": 12,
-      "dollars": 442.6755
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2025,
-      "month": 1,
-      "dollars": 467.069
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2025,
-      "month": 2,
-      "dollars": 548.0264
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2025,
-      "month": 3,
-      "dollars": 794.7151
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2025,
-      "month": 4,
-      "dollars": 821.1576
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2025,
-      "month": 5,
-      "dollars": 796.1607
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2025,
-      "month": 6,
-      "dollars": 869.9043
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2025,
-      "month": 7,
-      "dollars": 743.783
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2025,
-      "month": 8,
-      "dollars": 674.163
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2025,
-      "month": 9,
-      "dollars": 566.3705
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2025,
-      "month": 10,
-      "dollars": 256.3374
-    },
-    {
-      "buildingId": "northwest-library",
+      "buildingId": "cleveland-ave-library",
       "year": 2025,
       "month": 11,
-      "dollars": 235.9718
+      "dollars": 32.93999999999999
     },
     {
-      "buildingId": "northwest-library",
-      "year": 2025,
-      "month": 12,
-      "dollars": 403.4472
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2026,
-      "month": 1,
-      "dollars": 449.3939
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2026,
-      "month": 2,
-      "dollars": 520.9207
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2026,
-      "month": 3,
-      "dollars": 754.59
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2026,
-      "month": 4,
-      "dollars": 877.56
-    },
-    {
-      "buildingId": "northwest-library",
-      "year": 2026,
-      "month": 5,
-      "dollars": 821.02
-    },
-    {
-      "buildingId": "ocee-branch",
-      "year": 2025,
-      "month": 12,
-      "dollars": 9.4042
-    },
-    {
-      "buildingId": "ocee-branch",
-      "year": 2026,
-      "month": 1,
-      "dollars": 301.9797
-    },
-    {
-      "buildingId": "ocee-branch",
-      "year": 2026,
-      "month": 2,
-      "dollars": 536.0561
-    },
-    {
-      "buildingId": "ocee-branch",
-      "year": 2026,
-      "month": 3,
-      "dollars": 730.25
-    },
-    {
-      "buildingId": "ocee-branch",
-      "year": 2026,
-      "month": 4,
-      "dollars": 859.74
-    },
-    {
-      "buildingId": "ocee-branch",
-      "year": 2026,
-      "month": 5,
-      "dollars": 777.86
-    },
-    {
-      "buildingId": "palmetto-library",
+      "buildingId": "adams-park-library",
       "year": 2025,
       "month": 11,
-      "dollars": 5.5758
+      "dollars": 27.43399999999999
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2025,
+      "month": 12,
+      "dollars": 158.1195
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2025,
+      "month": 12,
+      "dollars": 288.93289999999996
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2025,
+      "month": 12,
+      "dollars": 269.5233
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2025,
+      "month": 12,
+      "dollars": 301.0585
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2025,
+      "month": 12,
+      "dollars": 229.71179999999998
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2025,
+      "month": 12,
+      "dollars": 75.35009999999998
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2025,
+      "month": 12,
+      "dollars": 492.11340000000007
+    },
+    {
+      "buildingId": "milton-library",
+      "year": 2025,
+      "month": 12,
+      "dollars": 12.071999999999983
+    },
+    {
+      "buildingId": "e-roswell-library",
+      "year": 2025,
+      "month": 12,
+      "dollars": -17.331000000000014
+    },
+    {
+      "buildingId": "maxwell-rd-driver-services",
+      "year": 2025,
+      "month": 12,
+      "dollars": 228.79999999999995
+    },
+    {
+      "buildingId": "benson-senior-center",
+      "year": 2025,
+      "month": 12,
+      "dollars": -21.34200000000002
+    },
+    {
+      "buildingId": "aviation-cultural-center",
+      "year": 2025,
+      "month": 12,
+      "dollars": 199.77499999999995
+    },
+    {
+      "buildingId": "mills-senior-center",
+      "year": 2025,
+      "month": 12,
+      "dollars": 627.0389999999999
+    },
+    {
+      "buildingId": "dogwood-library",
+      "year": 2025,
+      "month": 12,
+      "dollars": 76.284
     },
     {
       "buildingId": "palmetto-library",
       "year": 2025,
       "month": 12,
-      "dollars": 181.4674
+      "dollars": -1.5030000000000014
+    },
+    {
+      "buildingId": "cascade-sw-library",
+      "year": 2025,
+      "month": 12,
+      "dollars": 138.72
+    },
+    {
+      "buildingId": "south-fulton-service-center",
+      "year": 2025,
+      "month": 12,
+      "dollars": 324.0319999999999
+    },
+    {
+      "buildingId": "juvenile-justice-center",
+      "year": 2025,
+      "month": 12,
+      "dollars": 156.88
+    },
+    {
+      "buildingId": "ponce-de-leon-jp-library",
+      "year": 2025,
+      "month": 12,
+      "dollars": 170
+    },
+    {
+      "buildingId": "new-beginnings-senior-center",
+      "year": 2025,
+      "month": 12,
+      "dollars": 81.51499999999997
+    },
+    {
+      "buildingId": "medical-examiner",
+      "year": 2025,
+      "month": 12,
+      "dollars": 375.2399999999999
+    },
+    {
+      "buildingId": "gladys-dennard-library",
+      "year": 2025,
+      "month": 12,
+      "dollars": 203.535
+    },
+    {
+      "buildingId": "board-of-health",
+      "year": 2025,
+      "month": 12,
+      "dollars": 246.8160000000001
+    },
+    {
+      "buildingId": "dogwood-senior-center",
+      "year": 2025,
+      "month": 12,
+      "dollars": 191.055
+    },
+    {
+      "buildingId": "college-park-library",
+      "year": 2025,
+      "month": 12,
+      "dollars": 37.86200000000001
+    },
+    {
+      "buildingId": "animal-services",
+      "year": 2025,
+      "month": 12,
+      "dollars": 314.4899999999999
+    },
+    {
+      "buildingId": "adamsville-ac-library",
+      "year": 2025,
+      "month": 12,
+      "dollars": 3.440999999999987
+    },
+    {
+      "buildingId": "union-city-jail",
+      "year": 2025,
+      "month": 12,
+      "dollars": 810.819
+    },
+    {
+      "buildingId": "sandy-springs-library",
+      "year": 2025,
+      "month": 12,
+      "dollars": 580.2539999999999
+    },
+    {
+      "buildingId": "qls-senior-center",
+      "year": 2025,
+      "month": 12,
+      "dollars": 322.176
+    },
+    {
+      "buildingId": "north-fulton-service-center",
+      "year": 2025,
+      "month": 12,
+      "dollars": 133.66
+    },
+    {
+      "buildingId": "bowden-senior-center",
+      "year": 2025,
+      "month": 12,
+      "dollars": 170.47599999999994
+    },
+    {
+      "buildingId": "cleveland-ave-library",
+      "year": 2025,
+      "month": 12,
+      "dollars": 285.94399999999996
+    },
+    {
+      "buildingId": "adams-park-library",
+      "year": 2025,
+      "month": 12,
+      "dollars": 3.562000000000003
+    },
+    {
+      "buildingId": "se-neighborhood-senior-center",
+      "year": 2025,
+      "month": 12,
+      "dollars": 16.08
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2026,
+      "month": 1,
+      "dollars": 178.2675
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2026,
+      "month": 1,
+      "dollars": 247.93649999999997
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2026,
+      "month": 1,
+      "dollars": 313.8377
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2026,
+      "month": 1,
+      "dollars": 267.61889999999994
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2026,
+      "month": 1,
+      "dollars": 237.48539999999997
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2026,
+      "month": 1,
+      "dollars": 81.32790000000001
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2026,
+      "month": 1,
+      "dollars": 472.26640000000003
+    },
+    {
+      "buildingId": "milton-library",
+      "year": 2026,
+      "month": 1,
+      "dollars": 81.86399999999998
+    },
+    {
+      "buildingId": "e-roswell-library",
+      "year": 2026,
+      "month": 1,
+      "dollars": 19.12199999999993
+    },
+    {
+      "buildingId": "maxwell-rd-driver-services",
+      "year": 2026,
+      "month": 1,
+      "dollars": 114.13199999999983
+    },
+    {
+      "buildingId": "benson-senior-center",
+      "year": 2026,
+      "month": 1,
+      "dollars": -46.49600000000004
+    },
+    {
+      "buildingId": "aviation-cultural-center",
+      "year": 2026,
+      "month": 1,
+      "dollars": 163.48499999999999
+    },
+    {
+      "buildingId": "mills-senior-center",
+      "year": 2026,
+      "month": 1,
+      "dollars": 615.2579999999998
+    },
+    {
+      "buildingId": "dogwood-library",
+      "year": 2026,
+      "month": 1,
+      "dollars": 42.56199999999997
     },
     {
       "buildingId": "palmetto-library",
       "year": 2026,
       "month": 1,
-      "dollars": 444.1354
+      "dollars": -7.652000000000006
+    },
+    {
+      "buildingId": "cascade-sw-library",
+      "year": 2026,
+      "month": 1,
+      "dollars": 351.6799999999999
+    },
+    {
+      "buildingId": "south-fulton-service-center",
+      "year": 2026,
+      "month": 1,
+      "dollars": 465.231
+    },
+    {
+      "buildingId": "juvenile-justice-center",
+      "year": 2026,
+      "month": 1,
+      "dollars": 108.34999999999995
+    },
+    {
+      "buildingId": "ponce-de-leon-jp-library",
+      "year": 2026,
+      "month": 1,
+      "dollars": 176.84999999999997
+    },
+    {
+      "buildingId": "new-beginnings-senior-center",
+      "year": 2026,
+      "month": 1,
+      "dollars": 108.03999999999998
+    },
+    {
+      "buildingId": "medical-examiner",
+      "year": 2026,
+      "month": 1,
+      "dollars": 348.25
+    },
+    {
+      "buildingId": "gladys-dennard-library",
+      "year": 2026,
+      "month": 1,
+      "dollars": 167.52399999999992
+    },
+    {
+      "buildingId": "board-of-health",
+      "year": 2026,
+      "month": 1,
+      "dollars": 333.53999999999985
+    },
+    {
+      "buildingId": "dogwood-senior-center",
+      "year": 2026,
+      "month": 1,
+      "dollars": 201.39000000000001
+    },
+    {
+      "buildingId": "college-park-library",
+      "year": 2026,
+      "month": 1,
+      "dollars": 26.795999999999996
+    },
+    {
+      "buildingId": "animal-services",
+      "year": 2026,
+      "month": 1,
+      "dollars": 412.1909999999999
+    },
+    {
+      "buildingId": "adamsville-ac-library",
+      "year": 2026,
+      "month": 1,
+      "dollars": 0
+    },
+    {
+      "buildingId": "union-city-jail",
+      "year": 2026,
+      "month": 1,
+      "dollars": 906.5639999999997
+    },
+    {
+      "buildingId": "sandy-springs-library",
+      "year": 2026,
+      "month": 1,
+      "dollars": 630.0149999999999
+    },
+    {
+      "buildingId": "qls-senior-center",
+      "year": 2026,
+      "month": 1,
+      "dollars": 408.76
+    },
+    {
+      "buildingId": "north-fulton-service-center",
+      "year": 2026,
+      "month": 1,
+      "dollars": 184.986
+    },
+    {
+      "buildingId": "bowden-senior-center",
+      "year": 2026,
+      "month": 1,
+      "dollars": 199.64799999999994
+    },
+    {
+      "buildingId": "cleveland-ave-library",
+      "year": 2026,
+      "month": 1,
+      "dollars": 354.105
+    },
+    {
+      "buildingId": "adams-park-library",
+      "year": 2026,
+      "month": 1,
+      "dollars": 0
+    },
+    {
+      "buildingId": "se-neighborhood-senior-center",
+      "year": 2026,
+      "month": 1,
+      "dollars": 181.818
+    },
+    {
+      "buildingId": "ne-spruill-oaks-library",
+      "year": 2026,
+      "month": 1,
+      "dollars": 20.12499999999996
+    },
+    {
+      "buildingId": "ocee-library",
+      "year": 2026,
+      "month": 1,
+      "dollars": -38.025
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2026,
+      "month": 2,
+      "dollars": 244.52119999999996
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2026,
+      "month": 2,
+      "dollars": 368.4162999999999
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2026,
+      "month": 2,
+      "dollars": 385.39140000000003
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2026,
+      "month": 2,
+      "dollars": 331.82769999999994
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2026,
+      "month": 2,
+      "dollars": 377.68639999999994
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2026,
+      "month": 2,
+      "dollars": 100.06059999999998
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2026,
+      "month": 2,
+      "dollars": 604.8632
+    },
+    {
+      "buildingId": "milton-library",
+      "year": 2026,
+      "month": 2,
+      "dollars": 117.58799999999998
+    },
+    {
+      "buildingId": "e-roswell-library",
+      "year": 2026,
+      "month": 2,
+      "dollars": 67.12199999999996
+    },
+    {
+      "buildingId": "maxwell-rd-driver-services",
+      "year": 2026,
+      "month": 2,
+      "dollars": 705.0299999999996
+    },
+    {
+      "buildingId": "benson-senior-center",
+      "year": 2026,
+      "month": 2,
+      "dollars": -26.462000000000025
+    },
+    {
+      "buildingId": "aviation-cultural-center",
+      "year": 2026,
+      "month": 2,
+      "dollars": 267.5399999999999
+    },
+    {
+      "buildingId": "mills-senior-center",
+      "year": 2026,
+      "month": 2,
+      "dollars": 1014.586
+    },
+    {
+      "buildingId": "dogwood-library",
+      "year": 2026,
+      "month": 2,
+      "dollars": 87.78
     },
     {
       "buildingId": "palmetto-library",
       "year": 2026,
       "month": 2,
-      "dollars": 495.1414
+      "dollars": 26.78999999999996
+    },
+    {
+      "buildingId": "cascade-sw-library",
+      "year": 2026,
+      "month": 2,
+      "dollars": 682.248
+    },
+    {
+      "buildingId": "south-fulton-service-center",
+      "year": 2026,
+      "month": 2,
+      "dollars": 619.3950000000001
+    },
+    {
+      "buildingId": "juvenile-justice-center",
+      "year": 2026,
+      "month": 2,
+      "dollars": 168.25899999999996
+    },
+    {
+      "buildingId": "ponce-de-leon-jp-library",
+      "year": 2026,
+      "month": 2,
+      "dollars": 329.868
+    },
+    {
+      "buildingId": "new-beginnings-senior-center",
+      "year": 2026,
+      "month": 2,
+      "dollars": 216.05999999999997
+    },
+    {
+      "buildingId": "medical-examiner",
+      "year": 2026,
+      "month": 2,
+      "dollars": 479.82599999999985
+    },
+    {
+      "buildingId": "gladys-dennard-library",
+      "year": 2026,
+      "month": 2,
+      "dollars": 463.18199999999985
+    },
+    {
+      "buildingId": "board-of-health",
+      "year": 2026,
+      "month": 2,
+      "dollars": 377.5239999999998
+    },
+    {
+      "buildingId": "dogwood-senior-center",
+      "year": 2026,
+      "month": 2,
+      "dollars": 233.49
+    },
+    {
+      "buildingId": "college-park-library",
+      "year": 2026,
+      "month": 2,
+      "dollars": 146.25799999999995
+    },
+    {
+      "buildingId": "animal-services",
+      "year": 2026,
+      "month": 2,
+      "dollars": 685.9620000000001
+    },
+    {
+      "buildingId": "adamsville-ac-library",
+      "year": 2026,
+      "month": 2,
+      "dollars": 8.01199999999998
+    },
+    {
+      "buildingId": "union-city-jail",
+      "year": 2026,
+      "month": 2,
+      "dollars": 1137.829
+    },
+    {
+      "buildingId": "sandy-springs-library",
+      "year": 2026,
+      "month": 2,
+      "dollars": 747.966
+    },
+    {
+      "buildingId": "qls-senior-center",
+      "year": 2026,
+      "month": 2,
+      "dollars": 472.188
+    },
+    {
+      "buildingId": "north-fulton-service-center",
+      "year": 2026,
+      "month": 2,
+      "dollars": 210.128
+    },
+    {
+      "buildingId": "bowden-senior-center",
+      "year": 2026,
+      "month": 2,
+      "dollars": 235.58499999999992
+    },
+    {
+      "buildingId": "cleveland-ave-library",
+      "year": 2026,
+      "month": 2,
+      "dollars": 415.488
+    },
+    {
+      "buildingId": "adams-park-library",
+      "year": 2026,
+      "month": 2,
+      "dollars": 31.16299999999999
+    },
+    {
+      "buildingId": "se-neighborhood-senior-center",
+      "year": 2026,
+      "month": 2,
+      "dollars": 241.68
+    },
+    {
+      "buildingId": "ne-spruill-oaks-library",
+      "year": 2026,
+      "month": 2,
+      "dollars": 45.29699999999995
+    },
+    {
+      "buildingId": "ocee-library",
+      "year": 2026,
+      "month": 2,
+      "dollars": -62.842000000000056
+    },
+    {
+      "buildingId": "buckhead-library",
+      "year": 2026,
+      "month": 2,
+      "dollars": 122.07399999999998
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2026,
+      "month": 3,
+      "dollars": 335.3922999999999
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2026,
+      "month": 3,
+      "dollars": 580.1256999999999
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2026,
+      "month": 3,
+      "dollars": 583.7819999999998
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2026,
+      "month": 3,
+      "dollars": 403.1932
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2026,
+      "month": 3,
+      "dollars": 605.871
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2026,
+      "month": 3,
+      "dollars": 131.9208
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2026,
+      "month": 3,
+      "dollars": 824.36
+    },
+    {
+      "buildingId": "milton-library",
+      "year": 2026,
+      "month": 3,
+      "dollars": 193.44
+    },
+    {
+      "buildingId": "e-roswell-library",
+      "year": 2026,
+      "month": 3,
+      "dollars": 241.20000000000007
+    },
+    {
+      "buildingId": "maxwell-rd-driver-services",
+      "year": 2026,
+      "month": 3,
+      "dollars": 806.6000000000003
+    },
+    {
+      "buildingId": "benson-senior-center",
+      "year": 2026,
+      "month": 3,
+      "dollars": 34.76000000000003
+    },
+    {
+      "buildingId": "aviation-cultural-center",
+      "year": 2026,
+      "month": 3,
+      "dollars": 330.65699999999987
+    },
+    {
+      "buildingId": "mills-senior-center",
+      "year": 2026,
+      "month": 3,
+      "dollars": 1041.9839999999997
+    },
+    {
+      "buildingId": "dogwood-library",
+      "year": 2026,
+      "month": 3,
+      "dollars": 88.41199999999996
     },
     {
       "buildingId": "palmetto-library",
       "year": 2026,
       "month": 3,
-      "dollars": 709.55
+      "dollars": 117.23000000000002
+    },
+    {
+      "buildingId": "cascade-sw-library",
+      "year": 2026,
+      "month": 3,
+      "dollars": 531.1039999999998
+    },
+    {
+      "buildingId": "south-fulton-service-center",
+      "year": 2026,
+      "month": 3,
+      "dollars": 842.878
+    },
+    {
+      "buildingId": "juvenile-justice-center",
+      "year": 2026,
+      "month": 3,
+      "dollars": 265.11
+    },
+    {
+      "buildingId": "ponce-de-leon-jp-library",
+      "year": 2026,
+      "month": 3,
+      "dollars": 525.8249999999999
+    },
+    {
+      "buildingId": "new-beginnings-senior-center",
+      "year": 2026,
+      "month": 3,
+      "dollars": -14.100000000000012
+    },
+    {
+      "buildingId": "medical-examiner",
+      "year": 2026,
+      "month": 3,
+      "dollars": 361.1689999999999
+    },
+    {
+      "buildingId": "gladys-dennard-library",
+      "year": 2026,
+      "month": 3,
+      "dollars": 803.04
+    },
+    {
+      "buildingId": "board-of-health",
+      "year": 2026,
+      "month": 3,
+      "dollars": 1399.321
+    },
+    {
+      "buildingId": "dogwood-senior-center",
+      "year": 2026,
+      "month": 3,
+      "dollars": 273.2
+    },
+    {
+      "buildingId": "college-park-library",
+      "year": 2026,
+      "month": 3,
+      "dollars": 139.152
+    },
+    {
+      "buildingId": "animal-services",
+      "year": 2026,
+      "month": 3,
+      "dollars": 505.1759999999997
+    },
+    {
+      "buildingId": "adamsville-ac-library",
+      "year": 2026,
+      "month": 3,
+      "dollars": 9.155999999999965
+    },
+    {
+      "buildingId": "union-city-jail",
+      "year": 2026,
+      "month": 3,
+      "dollars": 1208.6099999999997
+    },
+    {
+      "buildingId": "sandy-springs-library",
+      "year": 2026,
+      "month": 3,
+      "dollars": 911.5959999999999
+    },
+    {
+      "buildingId": "qls-senior-center",
+      "year": 2026,
+      "month": 3,
+      "dollars": 614.346
+    },
+    {
+      "buildingId": "north-fulton-service-center",
+      "year": 2026,
+      "month": 3,
+      "dollars": 148.68000000000004
+    },
+    {
+      "buildingId": "bowden-senior-center",
+      "year": 2026,
+      "month": 3,
+      "dollars": 279.26999999999987
+    },
+    {
+      "buildingId": "cleveland-ave-library",
+      "year": 2026,
+      "month": 3,
+      "dollars": 547.646
+    },
+    {
+      "buildingId": "adams-park-library",
+      "year": 2026,
+      "month": 3,
+      "dollars": 128.69999999999993
+    },
+    {
+      "buildingId": "se-neighborhood-senior-center",
+      "year": 2026,
+      "month": 3,
+      "dollars": 326.298
+    },
+    {
+      "buildingId": "ne-spruill-oaks-library",
+      "year": 2026,
+      "month": 3,
+      "dollars": 18.884000000000018
+    },
+    {
+      "buildingId": "ocee-library",
+      "year": 2026,
+      "month": 3,
+      "dollars": -114.30000000000001
+    },
+    {
+      "buildingId": "buckhead-library",
+      "year": 2026,
+      "month": 3,
+      "dollars": 616.743
+    },
+    {
+      "buildingId": "northside-library",
+      "year": 2026,
+      "month": 3,
+      "dollars": 285.47099999999995
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2026,
+      "month": 4,
+      "dollars": 426.56000000000006
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2026,
+      "month": 4,
+      "dollars": 564.5764
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2026,
+      "month": 4,
+      "dollars": 558.6984000000001
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2026,
+      "month": 4,
+      "dollars": 764.1717000000001
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2026,
+      "month": 4,
+      "dollars": 719.5224000000001
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2026,
+      "month": 4,
+      "dollars": 161.74749999999995
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2026,
+      "month": 4,
+      "dollars": 903.9630999999999
+    },
+    {
+      "buildingId": "milton-library",
+      "year": 2026,
+      "month": 4,
+      "dollars": 100.40800000000003
+    },
+    {
+      "buildingId": "e-roswell-library",
+      "year": 2026,
+      "month": 4,
+      "dollars": 276.6670000000001
+    },
+    {
+      "buildingId": "maxwell-rd-driver-services",
+      "year": 2026,
+      "month": 4,
+      "dollars": 1397.1569999999997
+    },
+    {
+      "buildingId": "benson-senior-center",
+      "year": 2026,
+      "month": 4,
+      "dollars": 363.69000000000005
+    },
+    {
+      "buildingId": "aviation-cultural-center",
+      "year": 2026,
+      "month": 4,
+      "dollars": 734.1179999999999
+    },
+    {
+      "buildingId": "mills-senior-center",
+      "year": 2026,
+      "month": 4,
+      "dollars": 918.95
+    },
+    {
+      "buildingId": "dogwood-library",
+      "year": 2026,
+      "month": 4,
+      "dollars": 94.21999999999994
     },
     {
       "buildingId": "palmetto-library",
       "year": 2026,
       "month": 4,
-      "dollars": 818.46
+      "dollars": -14.234000000000012
+    },
+    {
+      "buildingId": "cascade-sw-library",
+      "year": 2026,
+      "month": 4,
+      "dollars": 539.5879999999996
+    },
+    {
+      "buildingId": "south-fulton-service-center",
+      "year": 2026,
+      "month": 4,
+      "dollars": 856.8
+    },
+    {
+      "buildingId": "juvenile-justice-center",
+      "year": 2026,
+      "month": 4,
+      "dollars": -163.66400000000016
+    },
+    {
+      "buildingId": "ponce-de-leon-jp-library",
+      "year": 2026,
+      "month": 4,
+      "dollars": 621.0269999999999
+    },
+    {
+      "buildingId": "new-beginnings-senior-center",
+      "year": 2026,
+      "month": 4,
+      "dollars": -130.52500000000003
+    },
+    {
+      "buildingId": "medical-examiner",
+      "year": 2026,
+      "month": 4,
+      "dollars": 632.6840000000001
+    },
+    {
+      "buildingId": "gladys-dennard-library",
+      "year": 2026,
+      "month": 4,
+      "dollars": 1251.988
+    },
+    {
+      "buildingId": "board-of-health",
+      "year": 2026,
+      "month": 4,
+      "dollars": 1423.5539999999999
+    },
+    {
+      "buildingId": "dogwood-senior-center",
+      "year": 2026,
+      "month": 4,
+      "dollars": 175.12000000000003
+    },
+    {
+      "buildingId": "college-park-library",
+      "year": 2026,
+      "month": 4,
+      "dollars": 116.20299999999993
+    },
+    {
+      "buildingId": "animal-services",
+      "year": 2026,
+      "month": 4,
+      "dollars": 445.6200000000001
+    },
+    {
+      "buildingId": "adamsville-ac-library",
+      "year": 2026,
+      "month": 4,
+      "dollars": 40.77699999999999
+    },
+    {
+      "buildingId": "union-city-jail",
+      "year": 2026,
+      "month": 4,
+      "dollars": 572.6879999999999
+    },
+    {
+      "buildingId": "sandy-springs-library",
+      "year": 2026,
+      "month": 4,
+      "dollars": 1126.008
+    },
+    {
+      "buildingId": "qls-senior-center",
+      "year": 2026,
+      "month": 4,
+      "dollars": 784.845
+    },
+    {
+      "buildingId": "north-fulton-service-center",
+      "year": 2026,
+      "month": 4,
+      "dollars": 212.37600000000006
+    },
+    {
+      "buildingId": "bowden-senior-center",
+      "year": 2026,
+      "month": 4,
+      "dollars": 337.2699999999998
+    },
+    {
+      "buildingId": "cleveland-ave-library",
+      "year": 2026,
+      "month": 4,
+      "dollars": 649.194
+    },
+    {
+      "buildingId": "adams-park-library",
+      "year": 2026,
+      "month": 4,
+      "dollars": 257.44800000000004
+    },
+    {
+      "buildingId": "se-neighborhood-senior-center",
+      "year": 2026,
+      "month": 4,
+      "dollars": 339.8909999999999
+    },
+    {
+      "buildingId": "ne-spruill-oaks-library",
+      "year": 2026,
+      "month": 4,
+      "dollars": 155.38899999999998
+    },
+    {
+      "buildingId": "ocee-library",
+      "year": 2026,
+      "month": 4,
+      "dollars": -127.09200000000001
+    },
+    {
+      "buildingId": "buckhead-library",
+      "year": 2026,
+      "month": 4,
+      "dollars": 831.3
+    },
+    {
+      "buildingId": "hapeville-library",
+      "year": 2026,
+      "month": 4,
+      "dollars": 6.400999999999999
+    },
+    {
+      "buildingId": "northside-library",
+      "year": 2026,
+      "month": 4,
+      "dollars": 360.0199999999999
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2026,
+      "month": 5,
+      "dollars": 333.8400000000001
+    },
+    {
+      "buildingId": "wolf-creek-library",
+      "year": 2026,
+      "month": 5,
+      "dollars": 464.3442000000001
+    },
+    {
+      "buildingId": "metropolitan-library",
+      "year": 2026,
+      "month": 5,
+      "dollars": 448.93460000000005
+    },
+    {
+      "buildingId": "northwest-library",
+      "year": 2026,
+      "month": 5,
+      "dollars": 538.1349999999999
+    },
+    {
+      "buildingId": "southeast-atlanta-library",
+      "year": 2026,
+      "month": 5,
+      "dollars": 609.1848
+    },
+    {
+      "buildingId": "neighborhood-union-health",
+      "year": 2026,
+      "month": 5,
+      "dollars": 128.671
+    },
+    {
+      "buildingId": "college-park-regional-health",
+      "year": 2026,
+      "month": 5,
+      "dollars": 682.7924999999998
+    },
+    {
+      "buildingId": "milton-library",
+      "year": 2026,
+      "month": 5,
+      "dollars": 7.031199999999972
+    },
+    {
+      "buildingId": "e-roswell-library",
+      "year": 2026,
+      "month": 5,
+      "dollars": 173.92460000000005
+    },
+    {
+      "buildingId": "maxwell-rd-driver-services",
+      "year": 2026,
+      "month": 5,
+      "dollars": 1149.3068999999998
+    },
+    {
+      "buildingId": "benson-senior-center",
+      "year": 2026,
+      "month": 5,
+      "dollars": 139.89359999999996
+    },
+    {
+      "buildingId": "aviation-cultural-center",
+      "year": 2026,
+      "month": 5,
+      "dollars": 489.50309999999996
+    },
+    {
+      "buildingId": "mills-senior-center",
+      "year": 2026,
+      "month": 5,
+      "dollars": 463.6519999999997
+    },
+    {
+      "buildingId": "dogwood-library",
+      "year": 2026,
+      "month": 5,
+      "dollars": 27.53099999999998
     },
     {
       "buildingId": "palmetto-library",
       "year": 2026,
       "month": 5,
-      "dollars": 744.86
+      "dollars": 51.81599999999995
     },
     {
-      "buildingId": "ponce-de-leon-jp-library",
-      "year": 2025,
-      "month": 6,
-      "dollars": 11.1181
-    },
-    {
-      "buildingId": "ponce-de-leon-jp-library",
-      "year": 2025,
-      "month": 7,
-      "dollars": 349.449
-    },
-    {
-      "buildingId": "ponce-de-leon-jp-library",
-      "year": 2025,
-      "month": 8,
-      "dollars": 493.0599
-    },
-    {
-      "buildingId": "ponce-de-leon-jp-library",
-      "year": 2025,
-      "month": 9,
-      "dollars": 470.922
-    },
-    {
-      "buildingId": "ponce-de-leon-jp-library",
-      "year": 2025,
-      "month": 10,
-      "dollars": 349.2543
-    },
-    {
-      "buildingId": "ponce-de-leon-jp-library",
-      "year": 2025,
-      "month": 11,
-      "dollars": 252.3232
-    },
-    {
-      "buildingId": "ponce-de-leon-jp-library",
-      "year": 2025,
-      "month": 12,
-      "dollars": 196.2328
-    },
-    {
-      "buildingId": "ponce-de-leon-jp-library",
-      "year": 2026,
-      "month": 1,
-      "dollars": 229.1798
-    },
-    {
-      "buildingId": "ponce-de-leon-jp-library",
-      "year": 2026,
-      "month": 2,
-      "dollars": 290.8309
-    },
-    {
-      "buildingId": "ponce-de-leon-jp-library",
-      "year": 2026,
-      "month": 3,
-      "dollars": 491.63
-    },
-    {
-      "buildingId": "ponce-de-leon-jp-library",
-      "year": 2026,
-      "month": 4,
-      "dollars": 580.64
-    },
-    {
-      "buildingId": "ponce-de-leon-jp-library",
+      "buildingId": "cascade-sw-library",
       "year": 2026,
       "month": 5,
-      "dollars": 532.22
+      "dollars": 872.445
     },
     {
-      "buildingId": "juvenile-justice-center",
-      "year": 2025,
-      "month": 7,
-      "dollars": 38.9071
-    },
-    {
-      "buildingId": "juvenile-justice-center",
-      "year": 2025,
-      "month": 8,
-      "dollars": 1231.7396
-    },
-    {
-      "buildingId": "juvenile-justice-center",
-      "year": 2025,
-      "month": 9,
-      "dollars": 1926.1359
-    },
-    {
-      "buildingId": "juvenile-justice-center",
-      "year": 2025,
-      "month": 10,
-      "dollars": 1695.8527
-    },
-    {
-      "buildingId": "juvenile-justice-center",
-      "year": 2025,
-      "month": 11,
-      "dollars": 1485.6582
-    },
-    {
-      "buildingId": "juvenile-justice-center",
-      "year": 2025,
-      "month": 12,
-      "dollars": 1131.401
-    },
-    {
-      "buildingId": "juvenile-justice-center",
+      "buildingId": "south-fulton-service-center",
       "year": 2026,
-      "month": 1,
-      "dollars": 1258.9944
-    },
-    {
-      "buildingId": "juvenile-justice-center",
-      "year": 2026,
-      "month": 2,
-      "dollars": 1435.2911
-    },
-    {
-      "buildingId": "juvenile-justice-center",
-      "year": 2026,
-      "month": 3,
-      "dollars": 2032.51
-    },
-    {
-      "buildingId": "juvenile-justice-center",
-      "year": 2026,
-      "month": 4,
-      "dollars": 2352.67
+      "month": 5,
+      "dollars": 629.1169999999998
     },
     {
       "buildingId": "juvenile-justice-center",
       "year": 2026,
       "month": 5,
-      "dollars": 2148.55
+      "dollars": -56.04900000000005
     },
     {
-      "buildingId": "qls-senior-center",
-      "year": 2025,
-      "month": 9,
-      "dollars": 1.0329
-    },
-    {
-      "buildingId": "qls-senior-center",
-      "year": 2025,
-      "month": 10,
-      "dollars": 48.3061
-    },
-    {
-      "buildingId": "qls-senior-center",
-      "year": 2025,
-      "month": 11,
-      "dollars": 514.7007
-    },
-    {
-      "buildingId": "qls-senior-center",
-      "year": 2025,
-      "month": 12,
-      "dollars": 387.2755
-    },
-    {
-      "buildingId": "qls-senior-center",
-      "year": 2026,
-      "month": 1,
-      "dollars": 431.3469
-    },
-    {
-      "buildingId": "qls-senior-center",
-      "year": 2026,
-      "month": 2,
-      "dollars": 480.3879
-    },
-    {
-      "buildingId": "qls-senior-center",
-      "year": 2026,
-      "month": 3,
-      "dollars": 692.65
-    },
-    {
-      "buildingId": "qls-senior-center",
-      "year": 2026,
-      "month": 4,
-      "dollars": 843.53
-    },
-    {
-      "buildingId": "qls-senior-center",
+      "buildingId": "ponce-de-leon-jp-library",
       "year": 2026,
       "month": 5,
-      "dollars": 810.29
+      "dollars": 485.94
     },
     {
-      "buildingId": "sandy-springs-library",
-      "year": 2025,
-      "month": 9,
-      "dollars": 27.4897
-    },
-    {
-      "buildingId": "sandy-springs-library",
-      "year": 2025,
-      "month": 10,
-      "dollars": 854.1726
-    },
-    {
-      "buildingId": "sandy-springs-library",
-      "year": 2025,
-      "month": 11,
-      "dollars": 877.179
-    },
-    {
-      "buildingId": "sandy-springs-library",
-      "year": 2025,
-      "month": 12,
-      "dollars": 689.8332
-    },
-    {
-      "buildingId": "sandy-springs-library",
+      "buildingId": "new-beginnings-senior-center",
       "year": 2026,
-      "month": 1,
-      "dollars": 752.9534
+      "month": 5,
+      "dollars": 94.75200000000001
     },
     {
-      "buildingId": "sandy-springs-library",
+      "buildingId": "medical-examiner",
       "year": 2026,
-      "month": 2,
-      "dollars": 813.1821
+      "month": 5,
+      "dollars": 461.2789999999999
     },
     {
-      "buildingId": "sandy-springs-library",
+      "buildingId": "gladys-dennard-library",
       "year": 2026,
-      "month": 3,
-      "dollars": 1069.73
+      "month": 5,
+      "dollars": 1102.0800000000002
     },
     {
-      "buildingId": "sandy-springs-library",
+      "buildingId": "board-of-health",
       "year": 2026,
-      "month": 4,
-      "dollars": 1245.11
+      "month": 5,
+      "dollars": 1039.913
+    },
+    {
+      "buildingId": "dogwood-senior-center",
+      "year": 2026,
+      "month": 5,
+      "dollars": 221.04
+    },
+    {
+      "buildingId": "college-park-library",
+      "year": 2026,
+      "month": 5,
+      "dollars": 138.88999999999996
+    },
+    {
+      "buildingId": "animal-services",
+      "year": 2026,
+      "month": 5,
+      "dollars": 177.75899999999987
+    },
+    {
+      "buildingId": "adamsville-ac-library",
+      "year": 2026,
+      "month": 5,
+      "dollars": 14.255999999999963
+    },
+    {
+      "buildingId": "union-city-jail",
+      "year": 2026,
+      "month": 5,
+      "dollars": 843.6779999999997
     },
     {
       "buildingId": "sandy-springs-library",
       "year": 2026,
       "month": 5,
-      "dollars": 1163
+      "dollars": 991.0739999999998
     },
     {
-      "buildingId": "south-fulton-service-center",
-      "year": 2025,
-      "month": 8,
-      "dollars": 26.2777
-    },
-    {
-      "buildingId": "south-fulton-service-center",
-      "year": 2025,
-      "month": 9,
-      "dollars": 789.8897
-    },
-    {
-      "buildingId": "south-fulton-service-center",
-      "year": 2025,
-      "month": 10,
-      "dollars": 862.3663
-    },
-    {
-      "buildingId": "south-fulton-service-center",
-      "year": 2025,
-      "month": 11,
-      "dollars": 808.8486
-    },
-    {
-      "buildingId": "south-fulton-service-center",
-      "year": 2025,
-      "month": 12,
-      "dollars": 585.3142
-    },
-    {
-      "buildingId": "south-fulton-service-center",
-      "year": 2026,
-      "month": 1,
-      "dollars": 685.3224
-    },
-    {
-      "buildingId": "south-fulton-service-center",
-      "year": 2026,
-      "month": 2,
-      "dollars": 808.0811
-    },
-    {
-      "buildingId": "south-fulton-service-center",
-      "year": 2026,
-      "month": 3,
-      "dollars": 1182.09
-    },
-    {
-      "buildingId": "south-fulton-service-center",
-      "year": 2026,
-      "month": 4,
-      "dollars": 1368.5
-    },
-    {
-      "buildingId": "south-fulton-service-center",
+      "buildingId": "qls-senior-center",
       "year": 2026,
       "month": 5,
-      "dollars": 1226.25
+      "dollars": 711.646
     },
     {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2021,
-      "month": 11,
-      "dollars": 4.279
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2021,
-      "month": 12,
-      "dollars": 134.6439
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2022,
-      "month": 1,
-      "dollars": 196.1721
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2022,
-      "month": 2,
-      "dollars": 225.7902
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2022,
-      "month": 3,
-      "dollars": 317.2555
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2022,
-      "month": 4,
-      "dollars": 343.1696
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2022,
-      "month": 5,
-      "dollars": 389.742
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2022,
-      "month": 6,
-      "dollars": 395.4051
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2022,
-      "month": 7,
-      "dollars": 360.2358
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2022,
-      "month": 8,
-      "dollars": 316.8571
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2022,
-      "month": 9,
-      "dollars": 312.5897
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2022,
-      "month": 10,
-      "dollars": 283.535
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2022,
-      "month": 11,
-      "dollars": 188.1385
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2022,
-      "month": 12,
-      "dollars": 137.5088
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2023,
-      "month": 1,
-      "dollars": 162.5756
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2023,
-      "month": 2,
-      "dollars": 190.2818
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2023,
-      "month": 3,
-      "dollars": 304.2728
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2023,
-      "month": 4,
-      "dollars": 330.2886
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2023,
-      "month": 5,
-      "dollars": 353.0627
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2023,
-      "month": 6,
-      "dollars": 354.4919
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2023,
-      "month": 7,
-      "dollars": 383.0953
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2023,
-      "month": 8,
-      "dollars": 344.818
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2023,
-      "month": 9,
-      "dollars": 296.8706
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2023,
-      "month": 10,
-      "dollars": 248.8439
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2023,
-      "month": 11,
-      "dollars": 190.4034
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2023,
-      "month": 12,
-      "dollars": 159.0787
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2024,
-      "month": 1,
-      "dollars": 187.5771
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2024,
-      "month": 2,
-      "dollars": 217.5747
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2024,
-      "month": 3,
-      "dollars": 280.3724
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2024,
-      "month": 4,
-      "dollars": 321.8063
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2024,
-      "month": 5,
-      "dollars": 331.1516
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2024,
-      "month": 6,
-      "dollars": 373.0123
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2024,
-      "month": 7,
-      "dollars": 350.7643
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2024,
-      "month": 8,
-      "dollars": 403.7782
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2024,
-      "month": 9,
-      "dollars": 243.9699
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2024,
-      "month": 10,
-      "dollars": 293.727
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2024,
-      "month": 11,
-      "dollars": 168.0394
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2024,
-      "month": 12,
-      "dollars": 180.3937
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2025,
-      "month": 1,
-      "dollars": 186.6769
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2025,
-      "month": 2,
-      "dollars": 224.1756
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2025,
-      "month": 3,
-      "dollars": 323.082
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2025,
-      "month": 4,
-      "dollars": 336.4316
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2025,
-      "month": 5,
-      "dollars": 324.8734
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2025,
-      "month": 6,
-      "dollars": 351.2262
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2025,
-      "month": 7,
-      "dollars": 390.483
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2025,
-      "month": 8,
-      "dollars": 286.0363
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2025,
-      "month": 9,
-      "dollars": 306.9051
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2025,
-      "month": 10,
-      "dollars": 236.0825
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2025,
-      "month": 11,
-      "dollars": 207.1923
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2025,
-      "month": 12,
-      "dollars": 156.4378
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2026,
-      "month": 1,
-      "dollars": 178.7293
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2026,
-      "month": 2,
-      "dollars": 209.1355
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2026,
-      "month": 3,
-      "dollars": 306.86
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
-      "year": 2026,
-      "month": 4,
-      "dollars": 350.1
-    },
-    {
-      "buildingId": "southeast-atlanta-library",
+      "buildingId": "north-fulton-service-center",
       "year": 2026,
       "month": 5,
-      "dollars": 328.7
+      "dollars": 98.59199999999997
     },
     {
-      "buildingId": "se-neighborhood-senior-center",
-      "year": 2025,
-      "month": 11,
-      "dollars": 0.4971
-    },
-    {
-      "buildingId": "se-neighborhood-senior-center",
-      "year": 2025,
-      "month": 12,
-      "dollars": 20.9894
-    },
-    {
-      "buildingId": "se-neighborhood-senior-center",
+      "buildingId": "bowden-senior-center",
       "year": 2026,
-      "month": 1,
-      "dollars": 191.0006
+      "month": 5,
+      "dollars": 96.31799999999994
     },
     {
-      "buildingId": "se-neighborhood-senior-center",
+      "buildingId": "cleveland-ave-library",
       "year": 2026,
-      "month": 2,
-      "dollars": 235.0929
+      "month": 5,
+      "dollars": 594.8810000000001
     },
     {
-      "buildingId": "se-neighborhood-senior-center",
+      "buildingId": "adams-park-library",
       "year": 2026,
-      "month": 3,
-      "dollars": 367.89
-    },
-    {
-      "buildingId": "se-neighborhood-senior-center",
-      "year": 2026,
-      "month": 4,
-      "dollars": 439.19
+      "month": 5,
+      "dollars": 306.36799999999994
     },
     {
       "buildingId": "se-neighborhood-senior-center",
       "year": 2026,
       "month": 5,
-      "dollars": 408.25
+      "dollars": 472.15000000000003
     },
     {
-      "buildingId": "union-city-jail",
-      "year": 2025,
-      "month": 10,
-      "dollars": 18.0973
-    },
-    {
-      "buildingId": "union-city-jail",
-      "year": 2025,
-      "month": 11,
-      "dollars": 568.4153
-    },
-    {
-      "buildingId": "union-city-jail",
-      "year": 2025,
-      "month": 12,
-      "dollars": 1316.2703
-    },
-    {
-      "buildingId": "union-city-jail",
-      "year": 2026,
-      "month": 1,
-      "dollars": 1824.3357
-    },
-    {
-      "buildingId": "union-city-jail",
-      "year": 2026,
-      "month": 2,
-      "dollars": 1548.0614
-    },
-    {
-      "buildingId": "union-city-jail",
-      "year": 2026,
-      "month": 3,
-      "dollars": 2138.31
-    },
-    {
-      "buildingId": "union-city-jail",
-      "year": 2026,
-      "month": 4,
-      "dollars": 1606.32
-    },
-    {
-      "buildingId": "union-city-jail",
+      "buildingId": "ne-spruill-oaks-library",
       "year": 2026,
       "month": 5,
-      "dollars": 2940.09
+      "dollars": 125.32299999999995
     },
     {
-      "buildingId": "wolf-creek-library",
-      "year": 2021,
+      "buildingId": "ocee-library",
+      "year": 2026,
       "month": 5,
-      "dollars": 551.7283
+      "dollars": -74.40400000000007
     },
     {
-      "buildingId": "wolf-creek-library",
-      "year": 2021,
+      "buildingId": "auburn-ave-research-library",
+      "year": 2026,
+      "month": 5,
+      "dollars": 21.15999999999999
+    },
+    {
+      "buildingId": "buckhead-library",
+      "year": 2026,
+      "month": 5,
+      "dollars": 741.0239999999999
+    },
+    {
+      "buildingId": "hapeville-library",
+      "year": 2026,
+      "month": 5,
+      "dollars": 83.55599999999998
+    },
+    {
+      "buildingId": "northside-library",
+      "year": 2026,
+      "month": 5,
+      "dollars": 375.84
+    },
+    {
+      "buildingId": "alpharetta-library",
+      "year": 2026,
       "month": 6,
-      "dollars": 933.4617
+      "dollars": 918.4782
     },
     {
       "buildingId": "wolf-creek-library",
-      "year": 2021,
-      "month": 7,
-      "dollars": 1072.7252
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2021,
-      "month": 8,
-      "dollars": 1001.8135
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2021,
-      "month": 9,
-      "dollars": 413.2568
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2021,
-      "month": 10,
-      "dollars": 710.9152
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2021,
-      "month": 11,
-      "dollars": 657.7112
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2021,
-      "month": 12,
-      "dollars": 391.3617
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2022,
-      "month": 1,
-      "dollars": 581.0551
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2022,
-      "month": 2,
-      "dollars": 667.6153
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2022,
-      "month": 3,
-      "dollars": 969.3573
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2022,
-      "month": 4,
-      "dollars": 949.0391
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2022,
-      "month": 5,
-      "dollars": 1135.0236
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2022,
+      "year": 2026,
       "month": 6,
-      "dollars": 1165.2555
+      "dollars": 520.2690000000001
     },
     {
-      "buildingId": "wolf-creek-library",
-      "year": 2022,
-      "month": 7,
-      "dollars": 985.1957
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2022,
-      "month": 8,
-      "dollars": 859.822
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2022,
-      "month": 9,
-      "dollars": 846.6268
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2022,
-      "month": 10,
-      "dollars": 855.7838
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2022,
-      "month": 11,
-      "dollars": 563.7069
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2022,
-      "month": 12,
-      "dollars": 428.7646
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2023,
-      "month": 1,
-      "dollars": 505.5064
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2023,
-      "month": 2,
-      "dollars": 567.775
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2023,
-      "month": 3,
-      "dollars": 861.9943
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2023,
-      "month": 4,
-      "dollars": 865.9989
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2023,
-      "month": 5,
-      "dollars": 843.9337
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2023,
+      "buildingId": "metropolitan-library",
+      "year": 2026,
       "month": 6,
-      "dollars": 893.56
+      "dollars": 1411.3603999999998
     },
     {
-      "buildingId": "wolf-creek-library",
-      "year": 2023,
-      "month": 7,
-      "dollars": 1084.3415
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2023,
-      "month": 8,
-      "dollars": 985.2143
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2023,
-      "month": 9,
-      "dollars": 803.1896
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2023,
-      "month": 10,
-      "dollars": 667.1717
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2023,
-      "month": 11,
-      "dollars": 506.921
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2023,
-      "month": 12,
-      "dollars": 439.3044
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2024,
-      "month": 1,
-      "dollars": 541.4653
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2024,
-      "month": 2,
-      "dollars": 583.6889
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2024,
-      "month": 3,
-      "dollars": 762.4773
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2024,
-      "month": 4,
-      "dollars": 909.7907
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2024,
-      "month": 5,
-      "dollars": 1018.0193
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2024,
+      "buildingId": "northwest-library",
+      "year": 2026,
       "month": 6,
-      "dollars": 1137.9179
+      "dollars": 1593.7088999999999
     },
     {
-      "buildingId": "wolf-creek-library",
-      "year": 2024,
-      "month": 7,
-      "dollars": 1050.5879
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2024,
-      "month": 8,
-      "dollars": 1218.9709
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2024,
-      "month": 9,
-      "dollars": 758.9125
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2024,
-      "month": 10,
-      "dollars": 849.8113
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2024,
-      "month": 11,
-      "dollars": 482.8864
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2024,
-      "month": 12,
-      "dollars": 524.7126
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2025,
-      "month": 1,
-      "dollars": 555.1426
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2025,
-      "month": 2,
-      "dollars": 633.3393
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2025,
-      "month": 3,
-      "dollars": 896.519
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2025,
-      "month": 4,
-      "dollars": 933.2371
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2025,
-      "month": 5,
-      "dollars": 718.2071
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2025,
+      "buildingId": "southeast-atlanta-library",
+      "year": 2026,
       "month": 6,
-      "dollars": 754.3087
+      "dollars": 635.4952999999999
     },
     {
-      "buildingId": "wolf-creek-library",
-      "year": 2025,
-      "month": 7,
-      "dollars": 830.3119
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2025,
-      "month": 8,
-      "dollars": 610.7497
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2025,
-      "month": 9,
-      "dollars": 659.8677
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2025,
-      "month": 10,
-      "dollars": 654.097
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2025,
-      "month": 11,
-      "dollars": 606.6634
-    },
-    {
-      "buildingId": "wolf-creek-library",
-      "year": 2025,
-      "month": 12,
-      "dollars": 462.7107
-    },
-    {
-      "buildingId": "wolf-creek-library",
+      "buildingId": "neighborhood-union-health",
       "year": 2026,
-      "month": 1,
-      "dollars": 520.2984
+      "month": 6,
+      "dollars": 331.5077
     },
     {
-      "buildingId": "wolf-creek-library",
+      "buildingId": "college-park-regional-health",
       "year": 2026,
-      "month": 2,
-      "dollars": 565.2161
+      "month": 6,
+      "dollars": 689.3186999999998
     },
     {
-      "buildingId": "wolf-creek-library",
+      "buildingId": "milton-library",
       "year": 2026,
-      "month": 3,
-      "dollars": 833.72
+      "month": 6,
+      "dollars": 27.94569999999999
     },
     {
-      "buildingId": "wolf-creek-library",
+      "buildingId": "e-roswell-library",
       "year": 2026,
-      "month": 4,
-      "dollars": 976.35
+      "month": 6,
+      "dollars": 180.59710000000007
     },
     {
-      "buildingId": "wolf-creek-library",
+      "buildingId": "maxwell-rd-driver-services",
       "year": 2026,
-      "month": 5,
-      "dollars": 956.6
+      "month": 6,
+      "dollars": 1382.1317999999999
+    },
+    {
+      "buildingId": "benson-senior-center",
+      "year": 2026,
+      "month": 6,
+      "dollars": 175.7349
+    },
+    {
+      "buildingId": "aviation-cultural-center",
+      "year": 2026,
+      "month": 6,
+      "dollars": 392.1938999999999
+    },
+    {
+      "buildingId": "mills-senior-center",
+      "year": 2026,
+      "month": 6,
+      "dollars": 330.48720000000014
+    },
+    {
+      "buildingId": "dogwood-library",
+      "year": 2026,
+      "month": 6,
+      "dollars": 300.4428
+    },
+    {
+      "buildingId": "palmetto-library",
+      "year": 2026,
+      "month": 6,
+      "dollars": 53.45599999999995
+    },
+    {
+      "buildingId": "cascade-sw-library",
+      "year": 2026,
+      "month": 6,
+      "dollars": 1186.2134999999998
+    },
+    {
+      "buildingId": "south-fulton-service-center",
+      "year": 2026,
+      "month": 6,
+      "dollars": 322.97299999999984
+    },
+    {
+      "buildingId": "juvenile-justice-center",
+      "year": 2026,
+      "month": 6,
+      "dollars": -140.84800000000013
+    },
+    {
+      "buildingId": "ponce-de-leon-jp-library",
+      "year": 2026,
+      "month": 6,
+      "dollars": 541.65
+    },
+    {
+      "buildingId": "new-beginnings-senior-center",
+      "year": 2026,
+      "month": 6,
+      "dollars": 98.10000000000001
+    },
+    {
+      "buildingId": "medical-examiner",
+      "year": 2026,
+      "month": 6,
+      "dollars": 378.98999999999984
+    },
+    {
+      "buildingId": "gladys-dennard-library",
+      "year": 2026,
+      "month": 6,
+      "dollars": 1127.8870000000002
+    },
+    {
+      "buildingId": "board-of-health",
+      "year": 2026,
+      "month": 6,
+      "dollars": 1016.3810000000001
+    },
+    {
+      "buildingId": "dogwood-senior-center",
+      "year": 2026,
+      "month": 6,
+      "dollars": 297.3101
+    },
+    {
+      "buildingId": "college-park-library",
+      "year": 2026,
+      "month": 6,
+      "dollars": 142.38599999999997
+    },
+    {
+      "buildingId": "animal-services",
+      "year": 2026,
+      "month": 6,
+      "dollars": -242.4699000000001
+    },
+    {
+      "buildingId": "adamsville-ac-library",
+      "year": 2026,
+      "month": 6,
+      "dollars": 350.79999999999995
+    },
+    {
+      "buildingId": "union-city-jail",
+      "year": 2026,
+      "month": 6,
+      "dollars": 416.848
+    },
+    {
+      "buildingId": "sandy-springs-library",
+      "year": 2026,
+      "month": 6,
+      "dollars": 1024.6
+    },
+    {
+      "buildingId": "qls-senior-center",
+      "year": 2026,
+      "month": 6,
+      "dollars": 689.185
+    },
+    {
+      "buildingId": "north-fulton-service-center",
+      "year": 2026,
+      "month": 6,
+      "dollars": 139.536
+    },
+    {
+      "buildingId": "bowden-senior-center",
+      "year": 2026,
+      "month": 6,
+      "dollars": 98.50499999999994
+    },
+    {
+      "buildingId": "cleveland-ave-library",
+      "year": 2026,
+      "month": 6,
+      "dollars": 629.7639999999999
+    },
+    {
+      "buildingId": "adams-park-library",
+      "year": 2026,
+      "month": 6,
+      "dollars": 393.41700000000003
+    },
+    {
+      "buildingId": "se-neighborhood-senior-center",
+      "year": 2026,
+      "month": 6,
+      "dollars": 408.87
+    },
+    {
+      "buildingId": "ne-spruill-oaks-library",
+      "year": 2026,
+      "month": 6,
+      "dollars": 134.66199999999995
+    },
+    {
+      "buildingId": "ocee-library",
+      "year": 2026,
+      "month": 6,
+      "dollars": -75.93300000000006
+    },
+    {
+      "buildingId": "auburn-ave-research-library",
+      "year": 2026,
+      "month": 6,
+      "dollars": 61.20000000000002
+    },
+    {
+      "buildingId": "buckhead-library",
+      "year": 2026,
+      "month": 6,
+      "dollars": 358.70599999999996
+    },
+    {
+      "buildingId": "hapeville-library",
+      "year": 2026,
+      "month": 6,
+      "dollars": 280.722
+    },
+    {
+      "buildingId": "northside-library",
+      "year": 2026,
+      "month": 6,
+      "dollars": 377.19
     }
   ],
   "costYears": [
@@ -8755,16 +8833,16 @@
     2025,
     2026
   ],
-  "totalSavings": 289422,
+  "totalSavings": 326587,
   "savingsByYear": {
     "2021": 13044,
     "2022": 39951,
     "2023": 39638,
     "2024": 47565,
-    "2025": 97575,
-    "2026": 51649
+    "2025": 93926,
+    "2026": 92462
   },
-  "savingsFormula": "kWh × (Elec Rate − CS Rate); 2026 uses December 2025 rates",
+  "savingsFormula": "kWh × (Elec Rate − CS Rate); each month uses that month’s rates when available",
   "totalCo2SavedLbs": 7524575,
   "co2ByYear": {
     "2021": 375929,
@@ -8778,11 +8856,11 @@
   "emissionRateSource": "Excel $AM$3 — eGRID SRSO CO₂ rate (lb/MWh)",
   "sourceFiles": {
     "energy": "solar-data.xlsx",
-    "cost": "solar-cost.xlsx",
-    "emissionRate": "Solar Monthly Savings 2026-2-9.xlsx",
-    "savings": "Solar Monthly Savings 2026-2-9.xlsx"
+    "cost": "Solar Monthly Savings 2026-7-24.xlsx",
+    "emissionRate": "Solar Monthly Savings 2026-7-24.xlsx",
+    "savings": "Solar Monthly Savings 2026-7-24.xlsx"
   },
-  "importedAt": "2026-07-24T19:29:31.222Z",
+  "importedAt": "2026-07-29T04:00:38.330Z",
   "sheetNames": [
     "2021",
     "2022",

@@ -65,7 +65,7 @@ export function mapCo2YearData(datasetOrRows, year) {
   }
 }
 
-// Saving scene — solar-cost.xlsx (via solar-data.json) → per-building cost savings ($).
+// Saving scene — kWh × (Elec Rate − CS Rate) from Savings workbook (via solar-data.json).
 export function mapSavingYearData(datasetOrRows, year) {
   if (isSolarDataset(datasetOrRows) && datasetOrRows.monthlyCost?.length) {
     return mapSolarSavingYear(datasetOrRows, year)
