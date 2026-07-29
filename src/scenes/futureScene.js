@@ -10,20 +10,12 @@ import {
   mapSavingYearData,
 } from '../data'
 import { getFutureSticker } from '../data/futureStickers.js'
-import {
-  applyCo2Camera,
-  getLiveTriptychCamera,
-  loadCo2Camera,
-  publishTriptychCamera,
-  serializeCo2Camera,
-  subscribeTriptychCamera,
-} from './co2Camera'
+import { applyCo2Camera, subscribeTriptychCamera } from './co2Camera'
 import { getGlobalElapsedTime } from './sceneAnimation'
   import {
   addLights,
   createCamera,
   createRenderer,
-  fitTopDownCamera,
   isBuildingActive,
   scaleBuildingByMetric,
   activeMetricRange,
@@ -44,6 +36,11 @@ const LOOK_AHEAD_YEAR = 2026
 const BUILDING_SCALE = 0.18
 const USER_BUILDING_SCALE = 0.28
 const MAP_BASE_ROTATION = (-3 * Math.PI) / 4
+const LOOK_AHEAD_CAMERA = {
+  position: [0.36, -7.633570423560478, 0.12],
+  target: [0.36, 0, 0.12],
+  up: [0, 0, -1],
+}
 
 function metricToBuildingTheme(metric) {
   if (metric === 'co2') return 'co2'
@@ -130,11 +127,9 @@ export function createFutureScene() {
   let dragState = null
   let suppressNextClick = false
   let lastPhysicsTime = null
-  const lookTarget = new THREE.Vector3(0, 0, 0)
 
   const unsubscribeCamera = subscribeTriptychCamera((next) => {
     applyCo2Camera(camera, next)
-    lookTarget.fromArray(next.target)
   })
 
   const getFocusedBuildingId = () => selectedId
@@ -175,28 +170,8 @@ export function createFutureScene() {
     notifyBuildingSelect()
   }
 
-  const applyCameraSetup = async () => {
-    const live = getLiveTriptychCamera()
-    if (live) {
-      applyCo2Camera(camera, live)
-      lookTarget.fromArray(live.target)
-      return
-    }
-
-    if (state.mapBounds) {
-      fitTopDownCamera(camera, state.mapBounds)
-      lookTarget.set(0, 0, 0)
-    }
-
-    const saved = await loadCo2Camera()
-    if (saved) {
-      applyCo2Camera(camera, saved)
-      lookTarget.fromArray(saved.target)
-      publishTriptychCamera(saved)
-      return
-    }
-
-    publishTriptychCamera(serializeCo2Camera(camera, lookTarget))
+  const applyCameraSetup = () => {
+    applyCo2Camera(camera, LOOK_AHEAD_CAMERA)
   }
 
   const syncParticlesForEntry = (entry) => {

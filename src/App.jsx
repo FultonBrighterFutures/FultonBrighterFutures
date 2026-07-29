@@ -16,7 +16,7 @@ import {
 import './App.css'
 
 // change to make carousel timeline go faster or slower
-const AUTO_ADVANCE_DELAY_MS = 10_000
+const AUTO_ADVANCE_DELAY_MS = 30_000
 
 function App() {
   const [year, setYear] = useState(DEFAULT_YEAR)
