@@ -1,0 +1,68 @@
+.fulton-county-backdrop {
+  position: absolute;
+  inset: 5% 14%;
+  z-index: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  user-select: none;
+}
+
+.fulton-county-backdrop__outline {
+  display: block;
+  width: min(58vw, 760px);
+  height: 70%;
+  object-fit: contain;
+  opacity: 0.2;
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+.future-stage .three-panel {
+  z-index: 1;
+}
+
+.fulton-county-backdrop-hud {
+  position: absolute;
+  top: calc(var(--site-header-height, 52px) + 12px);
+  right: 16px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.82);
+  color: #fff;
+  font-family: monospace;
+  font-size: 12px;
+  line-height: 1.35;
+  pointer-events: none;
+}
+
+.fulton-county-backdrop-hud strong,
+.fulton-county-backdrop-hud span,
+.fulton-county-backdrop-hud small {
+  display: block;
+}
+
+.fulton-county-backdrop-hud small {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 760px) {
+  .fulton-county-backdrop {
+    inset: 8% 4%;
+  }
+
+  .fulton-county-backdrop__outline {
+    width: min(82vw, 620px);
+    opacity: 0.16;
+  }
+
+  .fulton-county-backdrop-hud {
+    right: 8px;
+    max-width: calc(100% - 16px);
+  }
+}

@@ -1,6 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import SelectedBuildingOrb from './SelectedBuildingOrb'
 
+function isInsideDropZoneX(clientX, dropZoneBounds) {
+  // While placing, require measured tab bounds before accepting a drop.
+  if (!dropZoneBounds) return false
+  return clientX >= dropZoneBounds.clientLeft && clientX <= dropZoneBounds.clientRight
+}
+
 /**
  * Placement panel with pointer-capture drag ghost onto the map stage.
  */
@@ -9,6 +15,7 @@ export default function BuildingPlacementPanel({
   typeId = null,
   stickerId = null,
   metric = 'energy',
+  dropZoneBounds = null,
   onClose,
   onDrop,
   screenToGround,
@@ -61,7 +68,8 @@ export default function BuildingPlacementPanel({
     if (drag.settled) return
     drag.settled = true
 
-    const point = screenToGround?.(event.clientX, event.clientY)
+    const inDropColumn = isInsideDropZoneX(event.clientX, dropZoneBounds)
+    const point = inDropColumn ? screenToGround?.(event.clientX, event.clientY) : null
     clearDrag()
 
     if (point) {
@@ -85,11 +93,13 @@ export default function BuildingPlacementPanel({
         <div className="building-placement-panel">
           <button
             type="button"
-            className="look-ahead-panel-close"
+            className="look-ahead-panel-close look-ahead-panel-close--menu-style"
             onClick={onClose}
             aria-label="Cancel placement"
           >
-            ×
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 6L18 18M18 6L6 18" />
+            </svg>
           </button>
 
           <p className="building-placement-title">DRAG AND DROP YOUR BUILDING ONTO THE MAP</p>
