@@ -93,7 +93,7 @@ export default function FutureStats({
             <span>{copy.formatDeltaAmount(addedValue)}</span>
           </p>
         ) : (
-          <p className="future-metric-sub">Baseline 2026</p>
+          <p className="future-metric-sub">+0</p>
         )}
       </div>
 

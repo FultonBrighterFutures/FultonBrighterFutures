@@ -171,7 +171,6 @@
   align-items: flex-start;
   justify-content: center;
   width: 90%;
-  max-width: 67ch;
   min-height: 2.5rem;
   margin: 18px auto 0;
   color: rgba(255, 255, 255, 0.68);
@@ -191,10 +190,10 @@
 }
 
 .timeline-story__copy {
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   min-width: 0;
   font-weight: 400;
-  text-align: left;
+  text-align: center;
 }
 
 .timeline-look-ahead {
