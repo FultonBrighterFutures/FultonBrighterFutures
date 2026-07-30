@@ -14,6 +14,11 @@ import {
   TIMELINE_YEARS,
 } from './constants/timeline'
 import './App.css'
+import fultonCountyLogo from '../DesignAssets/Logos/FultonCountyLogo.png'
+import paflLogo from '../DesignAssets/Logos/PAFLLogo.png'
+import fbfLogo from '../DesignAssets/Logos/FBFLogo.svg'
+import BuildingCollage from '../DesignAssets/BuildingCollage.png'
+import StaticBuildingIcon from './components/building/StaticBuildingIcon'
 
 // change to make carousel timeline go faster or slower
 const AUTO_ADVANCE_DELAY_MS = 30_000
@@ -38,6 +43,8 @@ function App() {
   })
   const [inactivityResetKey, setInactivityResetKey] = useState(0)
   const [isLeaving2020, setIsLeaving2020] = useState(false)
+  const [hasStarted, setHasStarted] = useState(false)
+  const [introExiting, setIntroExiting] = useState(false)
 
   const futureApiRef = useRef(null)
   const {
@@ -62,6 +69,16 @@ function App() {
   } = useLookAheadBuilder()
 
   const isMainView = !contentActive
+
+  const handleEnter = () => {
+    if (introExiting) return
+    setIntroExiting(true)
+  }
+
+  const handleIntroExitEnd = (event) => {
+    if (!introExiting || event.target !== event.currentTarget) return
+    setHasStarted(true)
+  }
 
   const activeMenuView = lookAheadActive
     ? 'look-ahead'
@@ -163,6 +180,16 @@ function App() {
   }, [])
 
   useEffect(() => {
+    if (!introExiting) return
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const delay = reducedMotion ? 0 : 900
+    const timeoutId = window.setTimeout(() => setHasStarted(true), delay)
+
+    return () => window.clearTimeout(timeoutId)
+  }, [introExiting])
+
+  useEffect(() => {
     if (!menuOpen) return
 
     const handleEscape = (event) => {
@@ -211,6 +238,56 @@ function App() {
 
   return (
     <>
+      {!hasStarted ? (
+        <div
+          className={`intro-screen${introExiting ? ' intro-screen--exiting' : ''}`}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Intro screen"
+          onAnimationEnd={handleIntroExitEnd}
+        >
+          <StaticBuildingIcon className="intro-screen__building-visual" theme="energy" />
+          <img
+            className="intro-screen__logo intro-screen__logo--left"
+            src={fultonCountyLogo}
+            alt="Fulton County logo"
+          />
+          <img
+            className="intro-screen__logo intro-screen__logo--right"
+            src={paflLogo}
+            alt="PAFL logo"
+          />
+          <div className="intro-screen__content">
+            <img className="intro-screen__fbf-logo" src={fbfLogo} alt="FBF logo" />
+            <div className="intro-screen__stack">
+              <p className="intro-screen__copy">
+                Explore the growth of solar energy across Fulton County through an interactive 
+                visualization. Since 2021, each building with solar panels appears as a glowing 
+                orb sized by its footprint, gradually illuminating the county as adoption spreads. 
+                A timeline lets viewers watch this transformation unfold alongside key metrics 
+                including energy produced, CO₂ emissions reduced, and money saved.
+              </p>
+              <button
+                type="button"
+                className="chrome-cta intro-screen__button"
+                onClick={handleEnter}
+                disabled={introExiting}
+              >
+                <span className="chrome-cta-label">Enter</span>
+              </button>
+            </div>
+
+            <div className="intro-screen__visual">
+              <img
+                src={BuildingCollage}
+                alt="Collage of the building visualization"
+                className="intro-screen__image"
+              />
+            </div>
+          </div>
+        </div>
+      ) : (
+        <>
       <header className="site-header">
         <SiteMenu
           isOpen={menuOpen}
@@ -375,6 +452,8 @@ function App() {
       <footer className="site-footer">
         <p>&copy; 2026 Fulton County Solar Data</p>
       </footer>
+        </>
+      )}
     </>
   )
 }
