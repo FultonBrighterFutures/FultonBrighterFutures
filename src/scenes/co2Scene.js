@@ -181,8 +181,9 @@ export function createCo2Scene(initialYear) {
         animationTime: transitionTime,
         buildingsList: data.buildings ?? [],
         getMetricValue: getCo2Metric,
+        getScaleMetricValue: (building) => building.annualKwh,
         getScale: (stats, min, max) =>
-          scaleBuildingByMetric(getCo2Metric(stats), min, max, BUILDING_SCALE),
+          scaleBuildingByMetric(stats.annualKwh, min, max, BUILDING_SCALE),
       },
     )
 

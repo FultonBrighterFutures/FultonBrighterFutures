@@ -177,8 +177,10 @@ export function createSavingScene(initialYear) {
         animationTime: transitionTime,
         buildingsList: data.buildings ?? [],
         getMetricValue: (building) => building.annualSavings,
+        getScaleMetricValue: (building) => building.annualKwh,
+        scaleBuildingsList: data.energyBuildings ?? [],
         getScale: (stats, min, max) =>
-          scaleBuildingByMetric(stats.annualSavings, min, max, BUILDING_SCALE),
+          scaleBuildingByMetric(stats.annualKwh, min, max, BUILDING_SCALE),
       },
     )
 

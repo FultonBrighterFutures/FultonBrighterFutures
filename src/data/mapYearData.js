@@ -68,7 +68,18 @@ export function mapCo2YearData(datasetOrRows, year) {
 // Saving scene — kWh × (Elec Rate − CS Rate) from Savings workbook (via solar-data.json).
 export function mapSavingYearData(datasetOrRows, year) {
   if (isSolarDataset(datasetOrRows) && datasetOrRows.monthlyCost?.length) {
-    return mapSolarSavingYear(datasetOrRows, year)
+    const saving = mapSolarSavingYear(datasetOrRows, year)
+    const energy = mapSolarEnergyYear(datasetOrRows, year)
+    const energyById = new Map(energy.buildings.map((building) => [building.id, building]))
+
+    return {
+      ...saving,
+      buildings: saving.buildings.map((building) => ({
+        ...building,
+        annualKwh: energyById.get(building.id)?.annualKwh ?? 0,
+      })),
+      energyBuildings: energy.buildings,
+    }
   }
 
   const rows = datasetOrRows

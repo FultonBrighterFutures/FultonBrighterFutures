@@ -96,9 +96,17 @@ export function commitSceneBuildings(
   buildingEntries,
   statsById,
   year,
-  { animationTime, buildingsList, getMetricValue, getScale },
+  {
+    animationTime,
+    buildingsList,
+    getMetricValue,
+    getScale,
+    getScaleMetricValue = getMetricValue,
+    scaleBuildingsList = buildingsList,
+  },
 ) {
-  const { min, max } = activeMetricRange(buildingsList, getMetricValue)
+  const pulseRange = activeMetricRange(buildingsList, getMetricValue)
+  const scaleRange = activeMetricRange(scaleBuildingsList, getScaleMetricValue)
   const previousActiveIds = beginBuildingCommitForYear(year)
   const nextActiveIds = new Set()
   let enterStagger = 0
@@ -141,8 +149,13 @@ export function commitSceneBuildings(
     }
 
     nextActiveIds.add(id)
-    entry.building.setScale(getScale(stats, min, max))
-    entry.building.setPulseFromMetric(getMetricValue(stats), min, max, id)
+    entry.building.setScale(getScale(stats, scaleRange.min, scaleRange.max))
+    entry.building.setPulseFromMetric(
+      getMetricValue(stats),
+      pulseRange.min,
+      pulseRange.max,
+      id,
+    )
 
     if (!wasActive) {
       const transition = registerTransition(id, 'enter', animationTime, enterStagger, true)
