@@ -114,7 +114,7 @@
   position: relative;
   transition: opacity 0.55s ease;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 768px), (max-width: 1024px) and (orientation: portrait) {
     flex-direction: column;
   }
 }
@@ -225,7 +225,7 @@
     border-right: none;
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 768px), (max-width: 1024px) and (orientation: portrait) {
     flex: none;
     min-height: 320px;
 
@@ -325,7 +325,7 @@
   pointer-events: none;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 768px), (max-width: 1024px) and (orientation: portrait) {
   .scene-carousel--future .triptych-panel--energy {
     transform: translateY(-105%);
   }
@@ -380,6 +380,11 @@
   width: 100%;
   min-height: 0;
   overflow: hidden;
+  /* Own touch gestures so Edge/Surface Hub cannot pan the page instead of dragging buildings */
+  touch-action: none;
+  overscroll-behavior: contain;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .three-panel canvas {
@@ -388,6 +393,10 @@
   inset: 0;
   width: 100% !important;
   height: 100% !important;
+  touch-action: none;
+  overscroll-behavior: contain;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .scene-year-total {

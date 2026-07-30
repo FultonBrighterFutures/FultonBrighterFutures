@@ -904,8 +904,9 @@
   }
 }
 
-/* Tablet and below — stacked scrollable chrome over the map */
-@media (max-width: 1024px) {
+/* Phone / portrait only — stacked scrollable chrome over the map.
+   Landscape kiosks (Surface Hub) keep the desktop overlay so the map stays hittable. */
+@media (max-width: 768px), (max-width: 1024px) and (orientation: portrait) {
   .future-overlay {
     --future-sidebar-width: min(340px, 100%);
     display: flex;

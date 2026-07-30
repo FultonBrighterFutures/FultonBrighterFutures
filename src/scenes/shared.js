@@ -10,6 +10,11 @@ import {
 export function createRenderer() {
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+  // Prevent browser pan/scroll from claiming touch gestures on Surface Hub / Edge
+  const canvas = renderer.domElement
+  canvas.style.touchAction = 'none'
+  canvas.style.userSelect = 'none'
+  canvas.style.webkitUserSelect = 'none'
   return renderer
 }
 

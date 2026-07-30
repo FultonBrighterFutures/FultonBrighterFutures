@@ -12,7 +12,7 @@ import {
 import { getFutureSticker } from '../data/futureStickers.js'
 import { applyCo2Camera, subscribeTriptychCamera } from './co2Camera'
 import { getGlobalElapsedTime } from './sceneAnimation'
-  import {
+import {
   addLights,
   createCamera,
   createRenderer,
@@ -31,6 +31,13 @@ import {
   applyHoldDurationLaunch,
   stepMapBuildingPhysics,
 } from './buildingPhysics.js'
+import {
+  SCREEN_DRAG_THRESHOLD_PX,
+  releasePointerCaptureSafe,
+  screenDragDistance,
+  addScenePointerListeners,
+  removeScenePointerListeners,
+} from './pointerInteraction.js'
 
 const LOOK_AHEAD_YEAR = 2026
 const BUILDING_SCALE = 0.18
@@ -717,6 +724,8 @@ export function createFutureScene() {
       buildingId: hitId,
       pointerId: event.pointerId,
       startLocalPoint,
+      startClientX: event.clientX,
+      startClientY: event.clientY,
       originPosition: entry.building.group.position.clone(),
       moved: false,
     }
@@ -728,13 +737,17 @@ export function createFutureScene() {
   const onPointerMove = (event) => {
     if (state.placementMode) return
     if (!dragState || event.pointerId !== dragState.pointerId) return
+    event.preventDefault()
+
     const currentLocalPoint = getLocalPointOnGround(event)
     if (!currentLocalPoint) return
 
     const dx = currentLocalPoint.x - dragState.startLocalPoint.x
     const dz = currentLocalPoint.z - dragState.startLocalPoint.z
     const dragDelta = clampDragDelta(dx, dz)
-    if (Math.hypot(dragDelta.x, dragDelta.z) > 0.03) dragState.moved = true
+    if (screenDragDistance(dragState, event) > SCREEN_DRAG_THRESHOLD_PX) {
+      dragState.moved = true
+    }
 
     const entry = buildingEntries.get(dragState.buildingId)
     if (!entry) return
@@ -745,13 +758,29 @@ export function createFutureScene() {
     entry.building.setPosition(nextX, entry.building.group.position.y, nextZ)
   }
 
-  const onPointerUp = (event) => {
+  const endDrag = (event, { launch }) => {
     if (!dragState || event.pointerId !== dragState.pointerId) return
-    if (dragState.moved) {
+    if (launch && dragState.moved) {
       suppressNextClick = true
       applyDragReleaseLaunch(buildingEntries.get(dragState.buildingId))
+    } else if (dragState.moved) {
+      suppressNextClick = true
     }
-    domElement?.releasePointerCapture?.(event.pointerId)
+    releasePointerCaptureSafe(domElement, event.pointerId)
+    dragState = null
+  }
+
+  const onPointerUp = (event) => {
+    endDrag(event, { launch: true })
+  }
+
+  const onPointerCancel = (event) => {
+    endDrag(event, { launch: false })
+  }
+
+  const onLostPointerCapture = (event) => {
+    if (!dragState || event.pointerId !== dragState.pointerId) return
+    if (dragState.moved) suppressNextClick = true
     dragState = null
   }
 
@@ -769,31 +798,32 @@ export function createFutureScene() {
     clearBuildingSelection()
   }
 
+  const pointerHandlers = {
+    onPointerDown,
+    onPointerMove,
+    onPointerUp,
+    onPointerCancel,
+    onLostPointerCapture,
+    onPointerLeave,
+    onClick: onPointerClick,
+  }
+
   const setupInteraction = (element) => {
     domElement = element
-    element.addEventListener('pointerdown', onPointerDown)
-    element.addEventListener('pointermove', onPointerMove)
-    element.addEventListener('pointerup', onPointerUp)
-    element.addEventListener('pointerleave', onPointerLeave)
-    element.addEventListener('click', onPointerClick)
-    window.addEventListener('pointerup', onPointerUp)
-    window.addEventListener('pointercancel', onPointerUp)
+    addScenePointerListeners(element, pointerHandlers)
   }
 
   const disposeInteraction = () => {
     unsubscribeCamera()
 
     if (domElement) {
-      domElement.removeEventListener('pointerdown', onPointerDown)
-      domElement.removeEventListener('pointermove', onPointerMove)
-      domElement.removeEventListener('pointerup', onPointerUp)
-      domElement.removeEventListener('pointerleave', onPointerLeave)
-      domElement.removeEventListener('click', onPointerClick)
+      removeScenePointerListeners(domElement, pointerHandlers)
       domElement.style.cursor = ''
       domElement = null
+    } else {
+      removeScenePointerListeners(null, pointerHandlers)
     }
-    window.removeEventListener('pointerup', onPointerUp)
-    window.removeEventListener('pointercancel', onPointerUp)
+
     selectedId = null
     dragState = null
     suppressNextClick = false

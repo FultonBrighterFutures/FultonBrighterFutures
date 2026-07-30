@@ -21,6 +21,13 @@ import {
   applyDragReleaseLaunch,
   stepMapBuildingPhysics,
 } from './buildingPhysics.js'
+import {
+  SCREEN_DRAG_THRESHOLD_PX,
+  releasePointerCaptureSafe,
+  screenDragDistance,
+  addScenePointerListeners,
+  removeScenePointerListeners,
+} from './pointerInteraction.js'
 
 const BUILDING_SCALE = 0.18
 /** Rotate map so county spread runs bottom-left → top-right on screen */
@@ -389,6 +396,8 @@ export function createEnergyScene(initialYear) {
       buildingId: hitId,
       pointerId: event.pointerId,
       startLocalPoint,
+      startClientX: event.clientX,
+      startClientY: event.clientY,
       originPosition: entry.building.group.position.clone(),
       moved: false,
     }
@@ -399,6 +408,7 @@ export function createEnergyScene(initialYear) {
 
   const onPointerMove = (event) => {
     if (!dragState || event.pointerId !== dragState.pointerId) return
+    event.preventDefault()
 
     const currentLocalPoint = getLocalPointOnGround(event)
     if (!currentLocalPoint) return
@@ -406,9 +416,8 @@ export function createEnergyScene(initialYear) {
     const dx = currentLocalPoint.x - dragState.startLocalPoint.x
     const dz = currentLocalPoint.z - dragState.startLocalPoint.z
     const dragDelta = clampDragDelta(dx, dz)
-    const movedDistance = Math.hypot(dragDelta.x, dragDelta.z)
 
-    if (movedDistance > 0.03) {
+    if (screenDragDistance(dragState, event) > SCREEN_DRAG_THRESHOLD_PX) {
       dragState.moved = true
     }
 
@@ -422,18 +431,32 @@ export function createEnergyScene(initialYear) {
     entry.building.setPosition(nextX, entry.building.group.position.y, nextZ)
   }
 
-  const onPointerUp = (event) => {
+  const endDrag = (event, { launch }) => {
     if (!dragState || event.pointerId !== dragState.pointerId) return
 
-    if (dragState.moved) {
+    if (launch && dragState.moved) {
       suppressNextClick = true
       applyDragReleaseLaunch(buildingEntries.get(dragState.buildingId))
+    } else if (dragState.moved) {
+      // Browser cancelled the gesture (e.g. claimed as scroll) — do not launch.
+      suppressNextClick = true
     }
 
-    if (domElement) {
-      domElement.releasePointerCapture?.(event.pointerId)
-    }
+    releasePointerCaptureSafe(domElement, event.pointerId)
+    dragState = null
+  }
 
+  const onPointerUp = (event) => {
+    endDrag(event, { launch: true })
+  }
+
+  const onPointerCancel = (event) => {
+    endDrag(event, { launch: false })
+  }
+
+  const onLostPointerCapture = (event) => {
+    if (!dragState || event.pointerId !== dragState.pointerId) return
+    if (dragState.moved) suppressNextClick = true
     dragState = null
   }
 
@@ -458,6 +481,16 @@ export function createEnergyScene(initialYear) {
     refreshBuildingLabel()
   }
 
+  const pointerHandlers = {
+    onPointerDown,
+    onPointerMove,
+    onPointerUp,
+    onPointerCancel,
+    onLostPointerCapture,
+    onPointerLeave,
+    onClick: onPointerClick,
+  }
+
   const setupInteraction = (element) => {
     domElement = element
     const panel = element.parentElement
@@ -479,13 +512,7 @@ export function createEnergyScene(initialYear) {
       })
     }
 
-    element.addEventListener('pointerdown', onPointerDown)
-    element.addEventListener('pointermove', onPointerMove)
-    element.addEventListener('pointerup', onPointerUp)
-    element.addEventListener('pointerleave', onPointerLeave)
-    element.addEventListener('click', onPointerClick)
-    window.addEventListener('pointerup', onPointerUp)
-    window.addEventListener('pointercancel', onPointerUp)
+    addScenePointerListeners(element, pointerHandlers)
   }
 
   const disposeInteraction = () => {
@@ -494,17 +521,12 @@ export function createEnergyScene(initialYear) {
     unsubscribeCamera()
 
     if (domElement) {
-      domElement.removeEventListener('pointerdown', onPointerDown)
-      domElement.removeEventListener('pointermove', onPointerMove)
-      domElement.removeEventListener('pointerup', onPointerUp)
-      domElement.removeEventListener('pointerleave', onPointerLeave)
-      domElement.removeEventListener('click', onPointerClick)
+      removeScenePointerListeners(domElement, pointerHandlers)
       domElement.style.cursor = ''
       domElement = null
+    } else {
+      removeScenePointerListeners(null, pointerHandlers)
     }
-
-    window.removeEventListener('pointerup', onPointerUp)
-    window.removeEventListener('pointercancel', onPointerUp)
 
     labelEl?.remove()
     labelEl = null
