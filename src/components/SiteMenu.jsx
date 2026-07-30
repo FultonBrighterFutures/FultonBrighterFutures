@@ -1,10 +1,10 @@
 import './SiteMenu.css'
 
 const MENU_LINKS = [
-  { id: 'look-ahead', label: 'Looking Ahead', type: 'look-ahead' },
-  { id: 'artist-statement', label: 'Overview', type: 'navigate' },
-  { id: 'research', label: 'References', type: 'navigate' },
-  { id: 'team', label: 'Contact', type: 'navigate' },
+  { id: 'look-ahead', label: 'LOOKING AHEAD', type: 'look-ahead' },
+  { id: 'artist-statement', label: 'OVERVIEW', type: 'navigate' },
+  { id: 'research', label: 'REFERENCES', type: 'navigate' },
+  { id: 'team', label: 'CONTACT', type: 'navigate' },
 ]
 
 function MenuIcon({ name }) {

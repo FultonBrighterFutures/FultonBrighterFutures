@@ -369,24 +369,41 @@
   overflow: visible;
 }
 
+/*
+  Orbit items sit on the circumference of the outer ring drawn in .menu-rings
+  (viewBox 0 0 360 760, ring center at 6,380, radius 292). That SVG is scaled
+  to fill .menu-radial's height (preserveAspectRatio="xMinYMid meet"), so the
+  same scale factor applies to both axes: 1 viewBox unit = (100/760)vh.
+  `top` can stay a plain percentage (it cancels out to a container-relative
+  value), but `left` must be expressed in vh to track that same scale rather
+  than the container's width. Points below are evenly spaced at angles
+  -60deg, -20deg, 20deg, 60deg (measured from the ring's rightmost point).
+
+  --orbit-shift-x nudges all four points right (or left with a negative
+  value) together, in vh, without breaking their alignment to the ring.
+*/
+.menu-orbit-list {
+  --orbit-shift-x: 26vh;
+}
+
 .menu-orbit-item--look-ahead {
-  top: 19%;
-  left: 54%;
+  top: 16.73%;
+  left: calc(20vh + var(--orbit-shift-x));
 }
 
 .menu-orbit-item--artist-statement {
-  top: 36%;
-  left: 72%;
+  top: 36.86%;
+  left: calc(36.89vh + var(--orbit-shift-x));
 }
 
 .menu-orbit-item--research {
-  top: 53%;
-  left: 78%;
+  top: 63.14%;
+  left: calc(36.89vh + var(--orbit-shift-x));
 }
 
 .menu-orbit-item--team {
-  top: 70%;
-  left: 66%;
+  top: 83.27%;
+  left: calc(20vh + var(--orbit-shift-x));
 }
 
 .menu-orbit-button {
@@ -403,43 +420,6 @@
   cursor: pointer;
   color: #fff;
   text-align: left;
-  transition: transform 0.2s ease;
-
-  &::before {
-    content: '';
-    position: absolute;
-    left: var(--orbit-icon-size);
-    top: 50%;
-    width: 50vw;
-    max-width: calc(100vw - var(--orbit-icon-size));
-    height: calc(var(--orbit-icon-size) + 16px);
-    transform: translateY(-50%);
-    border-radius: 0 999px 999px 0;
-    background: linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.94) 0%,
-      rgba(0, 0, 0, 0.93) 18%,
-      rgba(0, 0, 0, 0.9) 32%,
-      rgba(0, 0, 0, 0.84) 48%,
-      rgba(0, 0, 0, 0.72) 58%,
-      rgba(0, 0, 0, 0.52) 68%,
-      rgba(0, 0, 0, 0.28) 78%,
-      rgba(0, 0, 0, 0.1) 88%,
-      rgba(0, 0, 0, 0) 100%
-    );
-    opacity: 0;
-    transition: opacity 0.25s ease;
-    pointer-events: none;
-    z-index: -1;
-  }
-
-  &:hover::before {
-    opacity: 1;
-  }
-
-  &:hover {
-    transform: scale(1.04);
-  }
 
   &:focus-visible {
     outline: 2px solid #e4b85a;
@@ -463,7 +443,8 @@
   color: #c3b380;
   transition:
     box-shadow 0.2s ease,
-    border-color 0.2s ease;
+    border-color 0.2s ease,
+    filter 0.25s ease;
 
   svg {
     width: 22px;
@@ -500,15 +481,20 @@
   }
 }
 
-.menu-orbit-item.is-active .menu-orbit-icon,
-.menu-orbit-button:hover .menu-orbit-icon {
+.menu-orbit-item.is-active .menu-orbit-icon {
   border-color: #ffaf46;
   box-shadow: 0 0 12px rgba(255, 175, 70, 0.38);
+}
+
+.menu-orbit-button:hover .menu-orbit-icon {
+  filter: drop-shadow(0 0 10px rgba(255, 165, 40, 0.85))
+    drop-shadow(0 0 20px rgba(255, 140, 20, 0.5));
 }
 
 .menu-orbit-label {
   position: relative;
   z-index: 1;
+  display: inline-block;
   font-family: 'Anybody', var(--heading), system-ui, sans-serif;
   font-size: clamp(22px, 3.6vh, 52.5px);
   font-style: normal;
@@ -516,10 +502,24 @@
   line-height: normal;
   color: #fff;
   max-width: 14em;
+  transform-origin: left center;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.12em;
+  transition:
+    font-weight 0.2s ease,
+    transform 0.2s ease,
+    text-decoration-color 0.2s ease;
 }
 
 .menu-orbit-item.is-active .menu-orbit-label {
   color: #fff;
+}
+
+.menu-orbit-button:hover .menu-orbit-label {
+  font-weight: 700;
+  transform: scale(1.08);
+  text-decoration-color: currentColor;
 }
 
 @media (max-width: 1024px) {
@@ -657,28 +657,12 @@
     gap: 8px;
     text-align: center;
     width: 100%;
-
-    &::before {
-      left: 50%;
-      top: var(--orbit-icon-size);
-      width: min(100%, 14rem);
-      height: calc(100% - var(--orbit-icon-size) + 2rem);
-      max-width: none;
-      transform: translateX(-50%);
-      border-radius: 0 0 12px 12px;
-      background: linear-gradient(
-        180deg,
-        rgba(0, 0, 0, 0.94) 0%,
-        rgba(0, 0, 0, 0.82) 35%,
-        rgba(0, 0, 0, 0.45) 65%,
-        rgba(0, 0, 0, 0) 100%
-      );
-    }
   }
 
   .menu-orbit-label {
     max-width: none;
     font-size: clamp(18px, 4vw, 28px);
+    transform-origin: center;
   }
 
   .menu-orbit-icon {
