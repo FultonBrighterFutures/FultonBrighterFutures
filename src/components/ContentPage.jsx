@@ -8,9 +8,9 @@ const CONTENT = {
   'artist-statement': {
     title: 'Overview',
     body: [
-      'Fulton Brighter Futures is an interactive data visualization representing the solar panel adoption across the Fulton county since 2021. Each solar-equipped building appears as a glowing orb sized by their footprint; together the orbs cluster into the county\'s shape. A timeline lets viewers watch adoption grow year by year, alongside energy generated, CO2 reduced, and money saved.', 
-      'The project exists online and as an interactive, digital installation at the Fulton County Government Center.his project explores the relationship between energy, carbon, and conservation through an interactive visual timeline.',
-      'Use the main site to move through years 2021\–2026, then look ahead to imagine what comes next.',
+      'Fulton Brighter Futures is an interactive data visualization representing solar panel adoption across Fulton County Government buildings since 2021. Each solar-equipped building appears as a glowing orb relative to its size; together the orbs cluster into the county\'s shape. A timeline lets viewers watch adoption grow year by year, alongside energy generated, CO2 reduced, and money saved.', 
+      'The project exists online and as a temporary, interactive, digital installation at the Fulton County Government Center. This project explores the relationship between energy, carbon, and conservation through an interactive visual timeline.',
+      'Use the main site to move through years 2021–2026, then look ahead to imagine what comes next.',
     ],
   },
   team: {
@@ -148,16 +148,20 @@ export default function ContentPage({ view, onBack }) {
               </p>
               <h2 className="content-page-title">Artist statement</h2>
               <p className="content-page-text">
-                Our vision for this project is to ultimately raise awareness among the general public 
-                regarding the beneficial use of solar energy. As Atlanta residents ourselves, we were 
-                not aware of the government efforts being made toward renewable energy, especially 
-                at a time when energy is constantly being drawn from the community to power data centers.
+                Thaís and DK are new media artists and recent graduates from the Georgia Institute 
+                of Technology. They became part of Fulton County as Summer interns and resident 
+                artists to bring this project to fruition. Their vision for this project is to 
+                ultimately raise awareness among the general public regarding the beneficial use 
+                of solar energy. As Atlanta residents themselves, they felt it important to inform 
+                the county residents of the efforts being made towards renewable energy, especially 
+                at a time when energy is constantly being drawn to power data centers. 
+
               </p>
               <p className="content-page-text">
-                We have observed people visit public areas such as parks and libraries, and our hope is 
-                that by placing this work in such a high-traffic public space, we can draw the attention 
-                of those people, even slightly, toward the work being done by Fulton County on solar 
-                energy.In addition to informing people, we also want viewers to take something home with 
+                They have observed people visit public areas such as parks and libraries, and their hope is 
+                that by placing this work in such a high-traffic public space, they can draw the attention 
+                those people, even slightly, toward the work being done by Fulton County on solar 
+                energy. In addition to informing people, they also want viewers to take something home with 
                 them: a sense of accomplishment, and the understanding that their efforts can and will 
                 lead to meaningful change for their community. 
               </p>
@@ -173,7 +177,7 @@ export default function ContentPage({ view, onBack }) {
                 <img src="/DesignAssets/TeamImages/DKT3.jpg" alt="Thais and DK in the field" className="content-page-inline-image" />
               </div>
               <p className="content-page-caption">
-                Thais &amp; DK in the field.
+                {/* Thais &amp; DK in the field. */}
               </p>
             </>
           )}

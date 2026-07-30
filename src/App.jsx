@@ -262,11 +262,11 @@ function App() {
             <img className="intro-screen__fbf-logo" src={fbfLogo} alt="FBF logo" />
             <div className="intro-screen__stack">
               <p className="intro-screen__copy">
-                Explore the growth of solar energy across Fulton County through an interactive 
-                visualization. Since 2021, each building with solar panels appears as a glowing 
-                orb sized by its footprint, gradually illuminating the county as adoption spreads. 
-                A timeline lets viewers watch this transformation unfold alongside key metrics 
-                including energy produced, CO₂ emissions reduced, and money saved.
+                Explore the growth of solar energy across Fulton County through an interactive visualization. 
+                Since 2021, each building enabled with solar panels appears as a glowing orb which is 
+                relative to the size of its footprint, gradually illuminating the county as adoption spreads. 
+                A timeline lets viewers watch this transformation unfold alongside key metrics including energy 
+                produced, CO₂ emissions reduced, and money saved. 
               </p>
               <button
                 type="button"
