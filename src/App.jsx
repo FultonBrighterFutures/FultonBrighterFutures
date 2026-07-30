@@ -23,7 +23,7 @@ import StaticBuildingIcon from './components/building/StaticBuildingIcon'
 // change to make carousel timeline go faster or slower
 const AUTO_ADVANCE_DELAY_MS = 30_000
 // Keep wheel/swipe timeline navigation available, but disabled for now.
-const TIMELINE_SCROLL_ENABLED = false
+const TIMELINE_SCROLL_ENABLED = true
 
 function App() {
   const [year, setYear] = useState(DEFAULT_YEAR)
@@ -305,7 +305,7 @@ function App() {
       >
         <div className={`view-carousel${contentActive ? ' view-carousel--content' : ''}`}>
           <div className="main-view-stage" aria-hidden={contentActive}>
-            {isMainView && <div className="ticks"></div>}
+            {isMainView && !lookAheadActive && <div className="ticks"></div>}
 
             <div className={`scene-carousel${lookAheadActive ? ' scene-carousel--future' : ''}`}>
               <section id="main" className="triptych" aria-hidden={lookAheadActive}>

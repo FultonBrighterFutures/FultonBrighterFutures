@@ -121,10 +121,12 @@
 .future-building-info.energy-building-label,
 .future-building-info.co2-building-label,
 .future-building-info.saving-building-label {
-  position: absolute;
-  left: 0;
+  position: fixed;
+  top: auto;
+  left: var(--future-pad-x);
   right: auto;
-  bottom: calc(var(--future-bottom-clearance) - 200px);
+  /* Keep the selected-building card 200px above the bottom edge. */
+  bottom: 200px;
   align-items: flex-start;
   text-align: left;
 }
@@ -613,6 +615,41 @@
   z-index: 2;
 }
 
+.look-ahead-panel-close--menu-style {
+  width: 38px;
+  height: 38px;
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(0, 0, 0, 0.45);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.look-ahead-panel-close--menu-style svg {
+  display: block;
+  width: 17px;
+  height: 17px;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  fill: none;
+}
+
+.look-ahead-panel-close--menu-style:hover {
+  background: rgba(0, 0, 0, 0.62);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #e4b85a;
+}
+
+.look-ahead-panel-close--menu-style:focus-visible {
+  outline: 2px solid #e4b85a;
+  outline-offset: 3px;
+}
+
 .sticker-picker,
 .building-placement {
   position: absolute;
@@ -656,7 +693,7 @@
 
 .sticker-picker-header {
   flex-shrink: 0;
-  padding-right: 28px;
+  padding-right: 46px;
 }
 
 .sticker-picker-title,
@@ -686,24 +723,26 @@
 }
 
 .sticker-picker-item {
-  aspect-ratio: 1;
+  position: relative;
   width: 100%;
-  height: auto;
-  max-height: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   background: rgba(16, 16, 20, 0.9);
-  display: grid;
-  place-items: center;
-  padding: 6px;
+  display: block;
+  padding: 0;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
+/* Absolute inset gives the icon a definite height; percentages do not resolve
+   reliably inside a button, which let tall stickers overflow the cell. */
 .sticker-picker-item-icon {
-  width: 72%;
-  height: 72%;
-  display: grid;
-  place-items: center;
+  position: absolute;
+  inset: 6px;
+  display: block;
 }
 
 .sticker-picker-item.is-selected {

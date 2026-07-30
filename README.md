@@ -13,7 +13,7 @@ A React + Vite website with three side-by-side Three.js scenes (energy, CO2, and
 | Change Look Ahead / Back / menu button style | **`src/index.css`** (`.chrome-cta`) |
 | Change page background or global colors | **`src/index.css`** |
 | Change Three.js scene visuals | **`src/scenes/{energy,co2,saving,future}Scene.js`** |
-| Adjust triptych camera framing (dev tool) | **`?triptychCamera=1`** or **Shift+C** — see [Triptych camera framing](#triptych-camera-framing-dev-tool) |
+| Adjust triptych or Look Ahead camera framing (dev tool) | **`?triptychCamera=1`** or **Shift+C** — see [Camera framing](#triptych-camera-framing-dev-tool) |
 | Replace / add CSV data per year | **`public/data/{energy,co2,saving}.csv`** |
 | Map CSV columns → scene values | **`src/data/mapYearData.js`** |
 
@@ -762,7 +762,7 @@ For a scene without timeline/CSV, follow **`futureScene.js`** (no `year` argumen
 
 ### Triptych camera framing (dev tool)
 
-All four map scenes share one camera pose from **`public/data/co2-camera.json`** (via **`src/scenes/co2Camera.js`**). Collaborators can nudge that framing in the browser without editing code.
+The three main triptych scenes share one camera pose from **`public/data/co2-camera.json`** (via **`src/scenes/co2Camera.js`**). The Look Ahead scene has a separate committed pose in **`src/scenes/futureScene.js`**. Collaborators can nudge either framing in the browser without editing camera coordinates by hand.
 
 **Edit mode is off by default** so visitors don’t accidentally pan the map. Turn it on with either:
 
@@ -790,6 +790,28 @@ When edit mode is on, a small HUD appears on the **energy** (left) panel and the
 4. Paste it into **`public/data/co2-camera.json`** and commit  
 
 Until you update that file, a local **S** save still wins on refresh (so you can iterate). Clear site data for the app, or overwrite the JSON and remove the `solar-dinosaur.co2-camera` `localStorage` entry, if you need to fall back to the committed file only.
+
+#### Repositioning the Look Ahead scene
+
+1. Open **Look Ahead**.
+2. Press **Shift+C** to enable camera editing.
+3. Use the same controls listed above:
+   - **Arrow keys** pan the scene.
+   - **Q / E** raise or lower it.
+   - **+ / −** zoom.
+   - Hold **Shift** with a movement key for a larger step.
+4. Press **S** to print the current camera JSON in the browser console.
+5. Copy the `position`, `target`, and `up` values into `LOOK_AHEAD_CAMERA` near the top of **`src/scenes/futureScene.js`**:
+
+```js
+const LOOK_AHEAD_CAMERA = {
+  position: [-0.6, -7.633570423560478, 0.48],
+  target: [-0.6, 0, 0.48],
+  up: [0, 0, -1],
+}
+```
+
+Do **not** paste a Look Ahead-only pose into **`public/data/co2-camera.json`**. That file controls the three main triptych scenes. Note that pressing **S** also saves the temporary editor pose to the shared `solar-dinosaur.co2-camera` local-storage entry; remove that entry after copying the values if you do not want it to override the triptych camera during local testing.
 
 ### Three.js reference
 

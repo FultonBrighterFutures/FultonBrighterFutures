@@ -44,8 +44,8 @@ const BUILDING_SCALE = 0.18
 const USER_BUILDING_SCALE = 0.28
 const MAP_BASE_ROTATION = (-3 * Math.PI) / 4
 const LOOK_AHEAD_CAMERA = {
-  position: [0.36, -7.633570423560478, 0.12],
-  target: [0.36, 0, 0.12],
+  position: [-0.6, -7.633570423560478, 0.48],
+  target: [-0.6, 0, 0.48],
   up: [0, 0, -1],
 }
 

@@ -67,7 +67,7 @@ body {
   max-width: none;
   margin: 0 auto;
   text-align: center;
-  border-inline: 1px solid var(--border);
+  border: none;
   /* Prefer dynamic viewport units on modern browsers; fall back for older Edge */
   min-height: 100vh;
   min-height: 100svh;

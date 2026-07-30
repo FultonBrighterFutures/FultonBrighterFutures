@@ -16,11 +16,13 @@ export default function StickerPicker({
       <div className="sticker-picker-panel">
         <button
           type="button"
-          className="look-ahead-panel-close"
+          className="look-ahead-panel-close look-ahead-panel-close--menu-style"
           onClick={onClose}
           aria-label="Close sticker picker"
         >
-          ×
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 6L18 18M18 6L6 18" />
+          </svg>
         </button>
 
         <header className="sticker-picker-header">
