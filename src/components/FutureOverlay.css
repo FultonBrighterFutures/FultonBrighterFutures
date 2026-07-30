@@ -811,8 +811,8 @@
   /* border: 1px solid rgba(255, 255, 255, 0.068); */
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.05) 0%,
-    rgba(255, 255, 255, 0.02) 45%,
+    rgba(243, 228, 228, 0.103) 0%,
+    rgba(255, 255, 255, 0) 45%,
     rgba(255, 255, 255, 0.05) 100%
   );
   /* box-shadow:

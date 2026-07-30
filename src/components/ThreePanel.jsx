@@ -256,7 +256,7 @@ export default function ThreePanel({
                 : 'TAX PAYER MONEY SAVED'}
           </span>
           <span className="scene-year-total__value">{yearTotalLabel}</span>
-          {variant === 'saving' && year === 2026 && (
+          {year === 2026 && (
             <span className="scene-year-total__subtitle">(Jan–Jun 2026)</span>
           )}
         </div>

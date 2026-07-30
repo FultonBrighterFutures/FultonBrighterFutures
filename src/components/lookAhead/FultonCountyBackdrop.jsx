@@ -6,6 +6,9 @@ const BACKDROP_STORAGE_KEY = 'solar-dinosaur.fulton-county-backdrop'
 const EDIT_STORAGE_KEY = 'solar-dinosaur.fulton-county-backdrop-edit'
 const EDIT_QUERY_PARAM = 'fultonBackdrop'
 
+// Set to true to show the Fulton County outline again.
+export const FULTON_COUNTY_OUTLINE_ENABLED = false
+
 const DEFAULT_BACKDROP = {
   x: -112,
   y: -96,
@@ -57,7 +60,7 @@ export default function FultonCountyBackdrop({ active = true }) {
   const [editEnabled, setEditEnabled] = useState(loadEditPreference)
 
   useEffect(() => {
-    if (!active) return
+    if (!active || !FULTON_COUNTY_OUTLINE_ENABLED) return
 
     const handleKeyDown = (event) => {
       if (
@@ -149,6 +152,8 @@ export default function FultonCountyBackdrop({ active = true }) {
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [active, backdrop, editEnabled])
+
+  if (!FULTON_COUNTY_OUTLINE_ENABLED) return null
 
   return (
     <>
