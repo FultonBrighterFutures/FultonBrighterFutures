@@ -21,6 +21,7 @@ export default function BuildingComposer({
   onCancelPlacing,
   onDrop,
   screenToGround,
+  dropZoneBounds = null,
 }) {
   const sticker = getFutureSticker(selectedStickerId)
   const hasSticker = Boolean(sticker)
@@ -97,6 +98,7 @@ export default function BuildingComposer({
         typeId={selectedType}
         stickerId={selectedStickerId}
         metric={activeMetric}
+        dropZoneBounds={dropZoneBounds}
         onClose={onCancelPlacing}
         onDrop={onDrop}
         screenToGround={screenToGround}

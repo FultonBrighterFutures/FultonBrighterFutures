@@ -14,6 +14,7 @@ A React + Vite website with three side-by-side Three.js scenes (energy, CO2, and
 | Change page background or global colors | **`src/index.css`** |
 | Change Three.js scene visuals | **`src/scenes/{energy,co2,saving,future}Scene.js`** |
 | Adjust triptych or Look Ahead camera framing (dev tool) | **`?triptychCamera=1`** or **Shift+C** — see [Camera framing](#triptych-camera-framing-dev-tool) |
+| Adjust Fulton County backdrop (dev tool) | Open Look Ahead and press **Shift+M** — see [Fulton backdrop](#repositioning-the-fulton-county-backdrop) |
 | Replace / add CSV data per year | **`public/data/{energy,co2,saving}.csv`** |
 | Map CSV columns → scene values | **`src/data/mapYearData.js`** |
 
@@ -812,6 +813,21 @@ const LOOK_AHEAD_CAMERA = {
 ```
 
 Do **not** paste a Look Ahead-only pose into **`public/data/co2-camera.json`**. That file controls the three main triptych scenes. Note that pressing **S** also saves the temporary editor pose to the shared `solar-dinosaur.co2-camera` local-storage entry; remove that entry after copying the values if you do not want it to override the triptych camera during local testing.
+
+#### Repositioning the Fulton County backdrop
+
+Open Look Ahead and press **Shift+M** to toggle the backdrop editor. You can also open the app with **`?fultonBackdrop=1`**; use **`?fultonBackdrop=0`** to force the editor off.
+
+| Key | Action |
+|-----|--------|
+| **I / J / K / L** | Move up / left / down / right (hold **Shift** for a larger step) |
+| **U / O** | Make the backdrop smaller / larger |
+| **[ / ]** | Reduce / increase opacity |
+| **P** | Save to `localStorage` and print the values in the browser console |
+| **0** | Reset the live values to the committed defaults |
+| **Shift+M** | Turn edit mode off |
+
+To persist the placement in the repository, press **P**, copy the printed values, and replace `DEFAULT_BACKDROP` near the top of **`src/components/lookAhead/FultonCountyBackdrop.jsx`**.
 
 ### Three.js reference
 

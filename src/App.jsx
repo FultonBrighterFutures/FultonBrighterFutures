@@ -19,6 +19,7 @@ import paflLogo from '../DesignAssets/Logos/PAFLLogo.png'
 import fbfLogo from '../DesignAssets/Logos/FBFLogo.svg'
 import BuildingCollage from '../DesignAssets/BuildingCollage.png'
 import StaticBuildingIcon from './components/building/StaticBuildingIcon'
+import FultonCountyBackdrop from './components/lookAhead/FultonCountyBackdrop'
 
 // change to make carousel timeline go faster or slower
 const AUTO_ADVANCE_DELAY_MS = 30_000
@@ -364,6 +365,7 @@ function App() {
 
               {showFuture && (
                 <section className="future-stage" aria-label="Future scene">
+                  <FultonCountyBackdrop active={lookAheadActive} />
                   <ThreePanel
                     variant="future"
                     label="Future scene"
