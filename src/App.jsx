@@ -17,6 +17,8 @@ import './App.css'
 
 // change to make carousel timeline go faster or slower
 const AUTO_ADVANCE_DELAY_MS = 30_000
+// Keep wheel/swipe timeline navigation available, but disabled for now.
+const TIMELINE_SCROLL_ENABLED = false
 
 function App() {
   const [year, setYear] = useState(DEFAULT_YEAR)
@@ -360,7 +362,9 @@ function App() {
               onItemChange={handleTimelineItemChange}
               lookAheadActive={lookAheadActive}
               onLookAhead={handleLookAhead}
-              scrollEnabled={isMainView && !lookAheadActive && !menuOpen}
+              scrollEnabled={
+                TIMELINE_SCROLL_ENABLED && isMainView && !lookAheadActive && !menuOpen
+              }
               onActivity={handleVisualizationActivity}
               suppressEventText={isLeaving2020}
             />
