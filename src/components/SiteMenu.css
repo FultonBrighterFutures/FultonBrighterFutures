@@ -2,6 +2,8 @@
   position: relative;
   display: flex;
   align-items: center;
+  /* Keep navigation menu typography at its original scale. */
+  font-size: 18px;
   --menu-edge-inset-x: clamp(24px, 4vw, 48px);
   --menu-edge-inset-y-top: 28px;
   --orbit-icon-size: 54px;

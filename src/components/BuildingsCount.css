@@ -17,7 +17,7 @@
 .buildings-count__value {
   color: #fff;
   font-family: Anybody;
-  font-size: 72px;
+  font-size: 4rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -35,7 +35,7 @@
 .buildings-count__label {
   color: #fff;
   font-family: Anybody;
-  font-size: 13.813px;
+  font-size: 0.7674rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -44,6 +44,6 @@
 
 @media (max-width: 1024px) {
   .buildings-count__value {
-    font-size: 56px;
+    font-size: 3.1111rem;
   }
 }

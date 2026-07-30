@@ -45,7 +45,7 @@
 }
 
 .content-page-title {
-  font-size: 32px;
+  font-size: 1.7778rem;
   line-height: 1.15;
   letter-spacing: -0.5px;
   margin: 0 0 32px;
@@ -53,7 +53,7 @@
 }
 
 .content-page-text {
-  font-size: 16px;
+  font-size: 0.8889rem;
   line-height: 1.6;
   margin: 0 0 16px;
   color: #a7a7a7;
@@ -83,7 +83,7 @@
 }
 
 .content-page-caption {
-  font-size: 14px;
+  font-size: 0.7778rem;
   font-weight: 600;
   line-height: 1.5;
   letter-spacing: 0.04em;
@@ -144,11 +144,11 @@
   }
 
   .content-page-title {
-    font-size: 26px;
+    font-size: 1.4444rem;
   }
 
   .content-page-text {
-    font-size: 16px;
+    font-size: 0.8889rem;
   }
 }
 
@@ -164,7 +164,7 @@
 }
 
 .team-intro {
-  font-size: 16px;
+  font-size: 0.8889rem;
   line-height: 1.6;
   color: #a7a7a7;
   max-width: none;
@@ -211,21 +211,21 @@
 }
 
 .team-member-name {
-  font-size: 22px;
+  font-size: 1.2222rem;
   font-weight: 700;
   margin: 0 0 4px;
   color: var(--text-h);
 }
 
 .team-member-title {
-  font-size: 14px;
+  font-size: 0.7778rem;
   font-weight: 500;
   color: var(--team-accent, #f2b330);
   margin: 0 0 12px;
 }
 
 .team-member-description {
-  font-size: 14px;
+  font-size: 0.7778rem;
   line-height: 1.5;
   color: var(--text);
   margin: 0;
@@ -242,7 +242,7 @@
 }
 
 .connect-label {
-  font-size: 11px;
+  font-size: 0.6111rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -284,6 +284,6 @@
   }
 
   .team-member-name {
-    font-size: 20px;
+    font-size: 1.1111rem;
   }
 }

@@ -2,7 +2,8 @@
   --future-pad-x: clamp(12px, 2.5vw, 40px);
   --future-pad-y: clamp(12px, 3vh, 48px);
   --future-bottom-clearance: clamp(72px, 12vh, 100px);
-  --future-sidebar-width: min(300px, 32vw);
+  /* 30% wider than the original 300px / 32vw sidebar. */
+  --future-sidebar-width: min(390px, 41.6vw);
   /* Match overlaid site header so sidebar/content stay clear of the menu */
   --future-header-clearance: var(--site-header-height, 52px);
 
@@ -50,7 +51,7 @@
 .future-metric-label {
   margin: 0;
   font-family: Anybody, var(--heading), sans-serif;
-  font-size: 18.953px;
+  font-size: 1.0529rem;
   font-weight: 700;
   letter-spacing: 0;
   line-height: normal;
@@ -61,7 +62,7 @@
 .future-metric-value {
   margin: 0;
   font-family: Anybody, var(--heading), sans-serif;
-  font-size: clamp(29px, 3.77vw, 49px);
+  font-size: clamp(1.6111rem, 3.77vw, 2.7222rem);
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.03em;
@@ -87,7 +88,7 @@
 .future-metric-sub {
   margin: 8px 0 0;
   font-family: Anybody, var(--heading), sans-serif;
-  font-size: clamp(14.5px, 1.6vw, 16px);
+  font-size: clamp(0.8056rem, 1.6vw, 0.8889rem);
   font-weight: 400;
   line-height: 1.45;
   letter-spacing: 0;
@@ -164,7 +165,7 @@
 
 .future-sidebar-title {
   margin: 0;
-  font-size: clamp(11px, 1.2vw, 13px);
+  font-size: clamp(0.6111rem, 1.2vw, 0.7222rem);
   font-weight: 600;
   letter-spacing: 0.12em;
   line-height: 1.25;
@@ -173,7 +174,7 @@
 
 .future-sidebar-subtitle {
   margin: 8px 0 0;
-  font-size: clamp(10px, 1.05vw, 11px);
+  font-size: clamp(0.5556rem, 1.05vw, 0.6111rem);
   line-height: 1.45;
   color: #9aa0ab;
   text-align: left;
@@ -309,14 +310,14 @@
 
 .future-building-card-title {
   margin: 0;
-  font-size: 12px;
+  font-size: 0.6667rem;
   font-weight: 600;
   color: #fff;
 }
 
 .future-building-card-message {
   margin: 2px 0 0;
-  font-size: 10px;
+  font-size: 0.5556rem;
   color: #8f939c;
 }
 
@@ -401,7 +402,7 @@
   grid-area: 1 / 1;
   margin: 0;
   padding: 0 6px;
-  font-size: 10px;
+  font-size: 0.6389rem;
   letter-spacing: 0.04em;
   color: #8f939c;
   text-align: center;
@@ -481,7 +482,7 @@
 }
 
 .building-type-btn-label {
-  font-size: 8px;
+  font-size: 0.5111rem;
   letter-spacing: 0.08em;
   line-height: 1;
 }
@@ -527,7 +528,7 @@
   border-radius: 999px;
   background: transparent;
   color: #d6d9df;
-  font-size: 10px;
+  font-size: 0.6389rem;
 }
 
 .future-sticker-btn:disabled {
@@ -563,7 +564,7 @@
   border-radius: 999px;
   background: rgba(80, 80, 88, 0.85);
   color: rgba(255, 255, 255, 0.55);
-  font-size: 13px;
+  font-size: 0.8305rem;
   font-weight: 600;
   transition:
     background 0.2s ease,
@@ -605,7 +606,7 @@
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.35);
   color: #fff;
-  font-size: 16px;
+  font-size: 1.0222rem;
   line-height: 1;
   display: grid;
   place-items: center;
@@ -661,7 +662,7 @@
 .sticker-picker-title,
 .building-placement-title {
   margin: 0;
-  font-size: 11px;
+  font-size: 0.7028rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   color: #fff;
@@ -669,7 +670,7 @@
 
 .sticker-picker-subtitle {
   margin: 4px 0 0;
-  font-size: 10px;
+  font-size: 0.6389rem;
   color: #9aa0ab;
   line-height: 1.35;
 }
@@ -718,7 +719,7 @@
   border-radius: 999px;
   background: transparent;
   color: #fff;
-  font-size: 12px;
+  font-size: 0.7667rem;
   font-weight: 600;
 }
 
@@ -805,7 +806,7 @@
   padding: clamp(8px, 1.2vh, 10px) clamp(6px, 1vw, 12px);
   border: none;
   background: transparent;
-  font-size: clamp(8px, 1vw, 10px);
+  font-size: clamp(0.4444rem, 1vw, 0.5556rem);
   letter-spacing: 0.08em;
   color: #6f7683;
 }

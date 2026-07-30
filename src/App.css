@@ -1,6 +1,8 @@
 .intro-screen {
   --intro-stack-gap: 40px;
   --intro-content-offset: 88px;
+  /* Keep intro typography at its original scale. */
+  font-size: 18px;
   position: fixed;
   inset: 0;
   z-index: 100;
@@ -65,7 +67,7 @@
 .intro-screen__copy {
   margin: 0;
   max-width: 900px;
-  font-size: 1rem;
+  font-size: 18px;
   line-height: 1.25;
   opacity: 1;
 }
@@ -417,8 +419,6 @@
   flex-direction: column;
   flex-grow: 1;
   min-height: 0;
-  /* Keep scene bottom just above the buildings-count text in the overlaid timeline */
-  padding-bottom: var(--site-timeline-scene-inset, 50px);
   box-sizing: border-box;
 }
 
@@ -478,7 +478,7 @@
   background: var(--bg);
 
   p {
-    font-size: 14px;
+    font-size: 0.7778rem;
     color: var(--text);
     margin: 0;
   }
@@ -710,7 +710,7 @@
   margin: 0;
   color: #fff;
   font-family: Anybody, var(--heading), sans-serif;
-  font-size: 13.071px;
+  font-size: 0.7262rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -722,7 +722,7 @@
 .scene-year-total__value {
   margin: 0;
   font-family: Anybody, var(--heading), sans-serif;
-  font-size: clamp(20px, 2.6vw, 34px);
+  font-size: clamp(1.1111rem, 2.6vw, 1.8889rem);
   font-style: normal;
   font-weight: 700;
   line-height: 1;
@@ -758,11 +758,11 @@
 
 @media (max-width: 1200px) {
   .scene-year-total__label {
-    font-size: clamp(10px, 1.1vw, 13.071px);
+    font-size: clamp(0.5556rem, 1.1vw, 0.7262rem);
   }
 
   .scene-year-total__value {
-    font-size: clamp(16px, 2.3vw, 28px);
+    font-size: clamp(0.8889rem, 2.3vw, 1.5556rem);
   }
 }
 
@@ -1066,7 +1066,7 @@
   background: var(--bg);
 
   p {
-    font-size: 14px;
+    font-size: 0.7778rem;
     color: var(--text);
     margin: 0;
   }
@@ -1118,14 +1118,14 @@
   margin: 0;
   color: rgba(255, 255, 255, 0.72);
   font-family: var(--heading);
-  font-size: clamp(13px, 1.2vw, 16px);
+  font-size: clamp(0.7222rem, 1.2vw, 0.8889rem);
   line-height: 1.5;
   text-align: center;
 }
 
 .triptych-blackout__date {
   color: #fff;
-  font-size: clamp(10.125px, 1.125vw, 15.75px);
+  font-size: clamp(0.5625rem, 1.1254vw, 0.875rem);
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -1395,7 +1395,7 @@
   margin: 0;
   color: #fff;
   font-family: Anybody, var(--heading), sans-serif;
-  font-size: 13.071px;
+  font-size: 0.7262rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -1407,7 +1407,7 @@
 .scene-year-total__value {
   margin: 0;
   font-family: Anybody, var(--heading), sans-serif;
-  font-size: clamp(20px, 2.6vw, 34px);
+  font-size: clamp(1.1111rem, 2.6vw, 1.8889rem);
   font-style: normal;
   font-weight: 700;
   line-height: 1;
@@ -1434,7 +1434,7 @@
 .scene-year-total__subtitle {
   margin: 8px 0 0;
   font-family: Anybody, var(--heading), sans-serif;
-  font-size: clamp(10px, 1.1vw, 11px);
+  font-size: clamp(0.5556rem, 1.1vw, 0.6111rem);
   font-weight: 400;
   line-height: 1.45;
   letter-spacing: 0;
@@ -1454,11 +1454,11 @@
 
 @media (max-width: 1200px) {
   .scene-year-total__label {
-    font-size: clamp(10px, 1.1vw, 13.071px);
+    font-size: clamp(0.5556rem, 1.1vw, 0.7262rem);
   }
 
   .scene-year-total__value {
-    font-size: clamp(16px, 2.3vw, 28px);
+    font-size: clamp(0.8889rem, 2.3vw, 1.5556rem);
   }
 }
 

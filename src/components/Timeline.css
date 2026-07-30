@@ -81,7 +81,7 @@
   color: rgba(255, 255, 255, 0.42);
   cursor: pointer;
   font-family: var(--heading);
-  font-size: 14px;
+  font-size: 0.7778rem;
   font-weight: 500;
 
   &:hover {
@@ -100,7 +100,7 @@
     color: #fff;
 
     .timeline-label {
-      font-size: clamp(28px, 3.2vw, 42px);
+      font-size: clamp(1.5556rem, 3.2vw, 2.3333rem);
       font-weight: 700;
       letter-spacing: -0.03em;
     }
@@ -175,7 +175,7 @@
   margin: 18px auto 0;
   color: rgba(255, 255, 255, 0.68);
   font-family: var(--heading);
-  font-size: clamp(10px, 0.9vw, 12px);
+  font-size: clamp(0.5556rem, 0.9vw, 0.6667rem);
   line-height: 1.4;
   text-align: center;
 }
@@ -234,7 +234,7 @@
   cursor: pointer;
   color: rgba(255, 255, 255, 0.42);
   font-family: var(--heading);
-  font-size: 14px;
+  font-size: 0.7778rem;
   font-weight: 500;
   transition: color 0.2s ease;
 
@@ -257,7 +257,7 @@
     color: #fff;
 
     .timeline-label {
-      font-size: clamp(28px, 3.2vw, 42px);
+      font-size: clamp(1.5556rem, 3.2vw, 2.3333rem);
       font-weight: 700;
       letter-spacing: -0.03em;
     }
@@ -463,24 +463,24 @@
   }
 
   .timeline-year {
-    font-size: 12px;
+    font-size: 0.6667rem;
 
     &.is-active .timeline-label {
-      font-size: clamp(22px, 5vw, 32px);
+      font-size: clamp(1.2222rem, 5vw, 1.7778rem);
     }
   }
 
   .timeline-item {
-    font-size: 12px;
+    font-size: 0.6667rem;
   }
 
   .timeline-item--year.is-active .timeline-label {
-    font-size: clamp(22px, 5vw, 32px);
+    font-size: clamp(1.2222rem, 5vw, 1.7778rem);
   }
 
   .timeline-story {
     min-height: 3.5rem;
-    font-size: 10px;
+    font-size: 0.5556rem;
   }
 
   .timeline-dot {
