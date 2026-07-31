@@ -1,3 +1,5 @@
+import { getBuildingDisplayName } from './buildingRegistry'
+
 const MASK_URL = '/assets/map-placement-mask.png'
 const WORLD_WIDTH = 5.5
 const MIN_ALPHA = 24
@@ -270,12 +272,15 @@ function separateBuildingPositions(
 }
 
 /**
+ * @param {string} [positionsUrl]
  * @returns {Promise<{ bounds: object, aspect: number, buildings: Array }>}
  */
-export async function loadBuildingPositions() {
-  const response = await fetch('/data/building-positions.json')
+export async function loadBuildingPositions(
+  positionsUrl = '/data/building-positions.json',
+) {
+  const response = await fetch(positionsUrl)
   if (!response.ok) {
-    throw new Error('Failed to load building positions')
+    throw new Error(`Failed to load building positions: ${positionsUrl}`)
   }
 
   const payload = await response.json()
@@ -283,13 +288,19 @@ export async function loadBuildingPositions() {
 
   const buildings = separateBuildingPositions(
     payload.buildings.map((building) => {
+      const namedBuilding = {
+        ...building,
+        name: getBuildingDisplayName(building.id),
+        displayName: getBuildingDisplayName(building.id),
+      }
+
       if (typeof building.u === 'number' && typeof building.v === 'number') {
         const scene = uvToScene(building.u, building.v, mask)
-        return { ...building, x: scene.x, z: scene.z }
+        return { ...namedBuilding, x: scene.x, z: scene.z }
       }
 
       const clamped = clampToMask(building.x, building.z, mask)
-      return { ...building, x: clamped.x, z: clamped.z }
+      return { ...namedBuilding, x: clamped.x, z: clamped.z }
     }),
     mask,
   )

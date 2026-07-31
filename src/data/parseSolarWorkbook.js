@@ -217,7 +217,7 @@ export function mapSolarEnergyYear(dataset, year) {
       building.id,
       {
         id: building.id,
-        name: building.name,
+        name: building.displayName ?? building.name,
         annualKwh: 0,
         cumulativeKwh: 0,
         active: false,

@@ -10,11 +10,8 @@ export function slugifyBuildingName(name) {
     .replace(/^-|-$/g, '')
 }
 
-/**
- * Canonical display names — source of truth for labels across all visualizations.
- * Matches public/data/building-positions.json where a map marker exists.
- */
-export const BUILDING_DISPLAY_NAMES = {
+/** Canonical building names, independent of workbook aliases and UI renames. */
+export const BUILDING_NAMES = {
   'alpharetta-library': 'Alpharetta Library',
   'wolf-creek-library': 'Wolf Creek Library',
   'milton-library': 'Milton Library',
@@ -31,6 +28,12 @@ export const BUILDING_DISPLAY_NAMES = {
   'new-beginnings-senior-center': 'New Beginnings Senior Center',
   'medical-examiner': 'Medical Examiner',
   'maxwell-rd-driver-services': 'Maxwell Rd (Driver Services)',
+  'auburn-ave-research-library': 'Auburn Ave Research Library',
+  'buckhead-library': 'Buckhead Library',
+  'hapeville-library': 'Hapeville Library',
+  'ne-spruill-oaks-library': 'NE Spruill Oaks Library',
+  'northside-library': 'Northside Library',
+  'ocee-library': 'Ocee Library',
   'dogwood-library': 'Dogwood Library',
   'cascade-sw-library': 'Cascade (SW) Library',
   'adamsville-ac-library': 'Adamsville (AC) Library',
@@ -50,6 +53,11 @@ export const BUILDING_DISPLAY_NAMES = {
   'south-fulton-service-center': 'South Fulton Service Center',
   'union-city-jail': 'Union City Jail',
   'palmetto-library': 'Palmetto Library',
+}
+
+/** UI-only name overrides. Buildings without an override display their canonical name. */
+export const BUILDING_DISPLAY_NAME_OVERRIDES = {
+  'union-city-jail': 'South Fulton Municipal Regional Jail',
 }
 
 /**
@@ -97,6 +105,13 @@ export const BUILDING_ALIASES = {
   'cleveland-avenue-branch': 'cleveland-ave-library',
   'southeast-neighborhood-senior-center': 'se-neighborhood-senior-center',
   'driver-services': 'maxwell-rd-driver-services',
+  'water-op-center-tax-commissioner': 'maxwell-rd-driver-services',
+  'auburn-avenue-research-branch': 'auburn-ave-research-library',
+  'buckhead-branch': 'buckhead-library',
+  'hapeville-branch': 'hapeville-library',
+  'northeast-spruill-oaks-branch': 'ne-spruill-oaks-library',
+  'northside-branch': 'northside-library',
+  'ocee-branch': 'ocee-library',
   'alpharetta-library': 'alpharetta-library',
   'wolf-creek-library': 'wolf-creek-library',
   'metropolitan-library': 'metropolitan-library',
@@ -121,9 +136,9 @@ export function resolveBuildingId(rawName) {
 }
 
 /** @param {string} id */
-export function getBuildingDisplayName(id) {
-  if (BUILDING_DISPLAY_NAMES[id]) {
-    return BUILDING_DISPLAY_NAMES[id]
+export function getBuildingName(id) {
+  if (BUILDING_NAMES[id]) {
+    return BUILDING_NAMES[id]
   }
 
   return id
@@ -132,16 +147,22 @@ export function getBuildingDisplayName(id) {
     .join(' ')
 }
 
+/** @param {string} id */
+export function getBuildingDisplayName(id) {
+  return BUILDING_DISPLAY_NAME_OVERRIDES[id] ?? getBuildingName(id)
+}
+
 /**
  * @param {string} rawName
- * @returns {{ id: string, name: string, rawName: string }}
+ * @returns {{ id: string, name: string, displayName: string, rawName: string }}
  */
 export function resolveBuildingRecord(rawName) {
   const cleaned = stripMeterLabel(rawName)
   const id = resolveBuildingId(cleaned)
   return {
     id,
-    name: getBuildingDisplayName(id),
+    name: getBuildingName(id),
+    displayName: getBuildingDisplayName(id),
     rawName: cleaned,
   }
 }

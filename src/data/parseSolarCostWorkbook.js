@@ -3,7 +3,6 @@ import { resolveBuildingRecord } from './buildingRegistry.js'
 const MONTH_NAMES = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 const BUILDING_HEADER_RE = /\s*-\s*SOL\d/i
 const YEAR_COL = 3
-const FIRST_MONTH_COL = 4
 
 function parseDollars(value) {
   if (value == null || value === '') return 0
@@ -111,7 +110,7 @@ export function parseSolarCostSheet(rows) {
 export function mapSolarSavingYear(dataset, year) {
   const buildings = (dataset.buildings ?? []).map((building) => ({
     id: building.id,
-    name: building.name,
+    name: building.displayName ?? building.name,
     annualSavings: 0,
     cumulativeSavings: 0,
     active: false,
@@ -129,7 +128,7 @@ export function mapSolarSavingYear(dataset, year) {
 
     if (entry.year === year) {
       record.annualSavings += entry.dollars
-      if (entry.dollars > 0) {
+      if (entry.dollars !== 0) {
         record.active = true
       }
     }

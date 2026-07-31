@@ -217,7 +217,9 @@ export function createCo2Scene(initialYear) {
 
   const initBuildings = async () => {
     try {
-      const { buildings, bounds } = await loadBuildingPositions()
+      const { buildings, bounds } = await loadBuildingPositions(
+        '/data/building-positions-main.json',
+      )
       state.mapBounds = bounds
 
       buildings.forEach((position) => {

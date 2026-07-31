@@ -7,7 +7,10 @@ import {
   readEmissionRateCell,
   summarizeCo2Totals,
 } from '../src/data/co2Emissions.js'
-import { getBuildingDisplayName } from '../src/data/buildingRegistry.js'
+import {
+  getBuildingDisplayName,
+  getBuildingName,
+} from '../src/data/buildingRegistry.js'
 import { parseSolarCostSheet } from '../src/data/parseSolarCostWorkbook.js'
 import { calcSolarSavingsTotals } from '../src/data/parseSolarSavingsWorkbook.js'
 import { parseSolarWorkbookSheets } from '../src/data/parseSolarWorkbook.js'
@@ -17,7 +20,9 @@ const root = join(__dirname, '..')
 const dataDir = join(root, 'public/data')
 const energyInputPath = join(dataDir, 'solar-data.xlsx')
 const costInputPath = join(dataDir, 'solar-cost.xlsx')
+const positionsPath = join(dataDir, 'building-positions.json')
 const outputPath = join(dataDir, 'solar-data.json')
+const SAVINGS_ENERGY_AUTHORITY_IDS = new Set(['maxwell-rd-driver-services'])
 
 function mergeBuildingCatalog(energyBuildings, costBuildings) {
   const buildingMap = new Map()
@@ -26,7 +31,8 @@ function mergeBuildingCatalog(energyBuildings, costBuildings) {
     if (!buildingMap.has(building.id)) {
       buildingMap.set(building.id, {
         id: building.id,
-        name: getBuildingDisplayName(building.id),
+        name: getBuildingName(building.id),
+        displayName: getBuildingDisplayName(building.id),
         rawName: building.rawName ?? building.name,
       })
       continue
@@ -39,6 +45,129 @@ function mergeBuildingCatalog(energyBuildings, costBuildings) {
   }
 
   return Array.from(buildingMap.values()).sort((a, b) => a.name.localeCompare(b.name))
+}
+
+function energyEntryKey(entry) {
+  return `${entry.buildingId}:${entry.year}:${entry.month}`
+}
+
+function complementEnergyMonthly(primaryRows, supplementalRows) {
+  const byKey = new Map()
+  let replacedPrimaryRows = 0
+
+  for (const entry of primaryRows) {
+    if (SAVINGS_ENERGY_AUTHORITY_IDS.has(entry.buildingId)) {
+      replacedPrimaryRows += 1
+      continue
+    }
+
+    const key = energyEntryKey(entry)
+    if (byKey.has(key)) {
+      throw new Error(`[import-data] Duplicate primary energy observation: ${key}`)
+    }
+    byKey.set(key, entry)
+  }
+
+  let complemented = 0
+  let authoritativeRows = 0
+  const conflicts = []
+
+  for (const entry of supplementalRows) {
+    if (!(entry.kWh > 0)) continue
+
+    const key = energyEntryKey(entry)
+    if (SAVINGS_ENERGY_AUTHORITY_IDS.has(entry.buildingId)) {
+      if (byKey.has(key)) {
+        throw new Error(`[import-data] Duplicate authoritative energy observation: ${key}`)
+      }
+      byKey.set(key, entry)
+      authoritativeRows += 1
+      continue
+    }
+
+    const existing = byKey.get(key)
+    if (!existing) {
+      byKey.set(key, entry)
+      complemented += 1
+      continue
+    }
+
+    const difference = Math.abs(existing.kWh - entry.kWh)
+    const relativeDifference = difference / Math.max(existing.kWh, entry.kWh)
+    if (difference > 1 && relativeDifference > 0.02) {
+      conflicts.push({
+        key,
+        primaryKwh: existing.kWh,
+        supplementalKwh: entry.kWh,
+      })
+    }
+  }
+
+  const monthly = [...byKey.values()].sort(
+    (a, b) =>
+      a.year - b.year ||
+      a.month - b.month ||
+      a.buildingId.localeCompare(b.buildingId),
+  )
+
+  return {
+    monthly,
+    complemented,
+    authoritativeRows,
+    replacedPrimaryRows,
+    conflicts,
+  }
+}
+
+function withEnergySummary(energyData, monthly) {
+  const kwhByYear = {}
+  for (const entry of monthly) {
+    kwhByYear[entry.year] = (kwhByYear[entry.year] ?? 0) + entry.kWh
+  }
+
+  return {
+    ...energyData,
+    years: [...new Set(monthly.map((entry) => entry.year))].sort((a, b) => a - b),
+    monthly,
+    totalKwhProduced: Math.round(
+      monthly.reduce((sum, entry) => sum + entry.kWh, 0),
+    ),
+    kwhByYear: Object.fromEntries(
+      Object.entries(kwhByYear)
+        .sort(([a], [b]) => Number(a) - Number(b))
+        .map(([year, value]) => [year, Math.round(value)]),
+    ),
+  }
+}
+
+function validateRenderableBuildings(dataset) {
+  const positionsPayload = JSON.parse(readFileSync(positionsPath, 'utf8'))
+  const positionedIds = new Set(
+    (positionsPayload.buildings ?? []).map((building) => building.id),
+  )
+  const catalogIds = new Set(dataset.buildings.map((building) => building.id))
+
+  const unpositionedIds = [...catalogIds].filter((id) => !positionedIds.has(id))
+  const unknownPositionIds = [...positionedIds].filter((id) => !catalogIds.has(id))
+  const unknownMetricIds = [...dataset.monthly, ...dataset.monthlyCost]
+    .map((entry) => entry.buildingId)
+    .filter((id) => !catalogIds.has(id))
+
+  if (unpositionedIds.length) {
+    throw new Error(
+      `[import-data] Buildings without render positions: ${unpositionedIds.join(', ')}`,
+    )
+  }
+  if (unknownPositionIds.length) {
+    throw new Error(
+      `[import-data] Render positions without catalog buildings: ${unknownPositionIds.join(', ')}`,
+    )
+  }
+  if (unknownMetricIds.length) {
+    throw new Error(
+      `[import-data] Metric rows with unknown buildings: ${[...new Set(unknownMetricIds)].join(', ')}`,
+    )
+  }
 }
 
 /** Parse trailing date from names like "Solar Monthly Savings 2026-7-24.xlsx". */
@@ -142,7 +271,7 @@ const energySheets = energyWorkbook.SheetNames.map((sheetName) => ({
   }),
 }))
 
-const energyData = parseSolarWorkbookSheets(energySheets)
+let energyData = parseSolarWorkbookSheets(energySheets)
 
 let costData = { buildings: [], monthlyCost: [], costYears: [] }
 try {
@@ -159,6 +288,11 @@ try {
 
 const savingsPack = loadSavingsWorkbook()
 const savingsTotals = computeSavingsTotals(savingsPack, energyData.monthly)
+const energyMerge = complementEnergyMonthly(
+  energyData.monthly,
+  savingsTotals.monthlyKwh ?? [],
+)
+energyData = withEnergySummary(energyData, energyMerge.monthly)
 const emissionRateLbPerMWh = findEmissionRateLbPerMWh(savingsPack?.workbook)
 const co2Totals = summarizeCo2Totals(energyData.kwhByYear, emissionRateLbPerMWh)
 
@@ -185,6 +319,15 @@ const dataset = {
   co2ByYear: co2Totals.co2ByYear,
   emissionRateLbPerMWh,
   emissionRateSource: 'Excel $AM$3 — eGRID SRSO CO₂ rate (lb/MWh)',
+  energyMerge: {
+    strategy:
+      'solar-data.xlsx values take precedence; missing months use savings workbook kWh; designated buildings use the savings workbook as authoritative',
+    authoritativeBuildingIds: [...SAVINGS_ENERGY_AUTHORITY_IDS],
+    authoritativeRows: energyMerge.authoritativeRows,
+    replacedPrimaryRows: energyMerge.replacedPrimaryRows,
+    complementedRows: energyMerge.complemented,
+    conflictingRows: energyMerge.conflicts.length,
+  },
   sourceFiles: {
     energy: 'solar-data.xlsx',
     cost: rateBasedSavings
@@ -197,11 +340,21 @@ const dataset = {
   sheetNames: energyWorkbook.SheetNames,
 }
 
+validateRenderableBuildings(dataset)
 writeFileSync(outputPath, `${JSON.stringify(dataset, null, 2)}\n`, 'utf8')
 
 console.log(`Imported ${dataset.monthly.length} energy rows across ${dataset.years.length} year(s): ${dataset.years.join(', ')}`)
 console.log(`Imported ${dataset.monthlyCost.length} cost rows across ${dataset.costYears.length} year(s): ${dataset.costYears.join(', ')}`)
 console.log(`Buildings: ${dataset.buildings.length}`)
+console.log(`Complemented energy rows: ${energyMerge.complemented}`)
+console.log(
+  `Authoritative savings-workbook energy rows: ${energyMerge.authoritativeRows} (replaced ${energyMerge.replacedPrimaryRows} primary rows)`,
+)
+if (energyMerge.conflicts.length) {
+  console.warn(
+    `[import-data] ${energyMerge.conflicts.length} overlapping energy rows differ by more than 2%; solar-data.xlsx values were kept.`,
+  )
+}
 console.log(`Total kWh produced: ${Math.round(dataset.totalKwhProduced).toLocaleString()}`)
 console.log(
   `kWh by year: ${Object.entries(dataset.kwhByYear)

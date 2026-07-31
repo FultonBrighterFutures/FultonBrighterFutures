@@ -1,5 +1,10 @@
 export { calcCo2SavedLbs, DEFAULT_EMISSION_RATE_LB_PER_MWH, summarizeCo2Totals } from './co2Emissions'
-export { resolveBuildingId, getBuildingDisplayName, resolveBuildingRecord } from './buildingRegistry'
+export {
+  resolveBuildingId,
+  getBuildingName,
+  getBuildingDisplayName,
+  resolveBuildingRecord,
+} from './buildingRegistry'
 export { parseCsv } from './parseCsv'
 export { parseDataTest, slugifyBuildingName } from './parseDataTest'
 export { mapDataTestCo2 } from './mapDataTestCo2'

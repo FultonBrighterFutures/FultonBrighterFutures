@@ -123,6 +123,7 @@ export function calcSolarSavingsTotals(
   }
 
   const savingsByYear = {}
+  const monthlyKwh = []
   const monthlyCost = []
   const coveredMonths = new Set()
 
@@ -146,6 +147,14 @@ export function calcSolarSavingsTotals(
         const kwh = toNumber(kWh[kWhRow][col])
         if (kwh == null || kwh <= 0) continue
 
+        const building = resolveBuildingRecord(String(kWh[1][col] ?? ''))
+        monthlyKwh.push({
+          buildingId: building.id,
+          year,
+          month,
+          kWh: kwh,
+        })
+
         const elec = elecRow != null ? toNumber(elecRates[elecRow][col]) : null
         const cs = csRow != null ? toNumber(csRates[csRow][col]) : null
         if (elec == null || cs == null) continue
@@ -153,7 +162,6 @@ export function calcSolarSavingsTotals(
         const dollars = kwh * (elec - cs)
         total += dollars
 
-        const building = resolveBuildingRecord(String(kWh[1][col] ?? ''))
         monthlyCost.push({
           buildingId: building.id,
           year,
@@ -217,6 +225,7 @@ export function calcSolarSavingsTotals(
     buildings: Array.from(buildingMap.values()).sort((a, b) =>
       a.name.localeCompare(b.name),
     ),
+    monthlyKwh,
     monthlyCost,
     costYears,
     savingsByYear: roundedByYear,
