@@ -34,6 +34,26 @@ const refs = {
       description:
         'Existing solar data visualization for the City of Atlanta. Referenced as a benchmark for regional scope and real-time data display conventions.',
     },
+    {
+      id: 'epa-ghg-equivalencies',
+      title: 'Greenhouse Gas Equivalencies Calculator',
+      publisher: 'U.S. Environmental Protection Agency',
+      year: '2024',
+      type: 'Federal tool',
+      url: 'https://www.epa.gov/energy/greenhouse-gas-equivalencies-calculator',
+      description:
+        'Converts energy and emissions totals into everyday comparisons. Used for the Energy Generated and CO₂ Emission Reduced equivalency subtitles on each timeline year.',
+    },
+    {
+      id: 'epa-ghg-calculations',
+      title: 'Greenhouse Gas Equivalencies Calculator — Calculations and References',
+      publisher: 'U.S. Environmental Protection Agency',
+      year: '2024',
+      type: 'Federal tool',
+      url: 'https://www.epa.gov/energy/greenhouse-gas-equivalencies-calculator-calculations-and-references',
+      description:
+        'Documents the conversion factors behind the calculator. Source for homes powered (12,194 kWh/home/year) and miles driven (3.93 × 10⁻⁴ metric tons CO₂e/mile) factors used in the triptych totals.',
+    },
   ],
   visualization: [
     {
