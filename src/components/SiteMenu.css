@@ -30,9 +30,9 @@
     color: #e4b85a;
   }
 
-  &:hover .site-logo-image {
-    filter: brightness(1.2) saturate(1.2);
-    transition: filter 0.2s ease;
+  &:hover .menu-hamburger-icon {
+    color: #fff08d;
+    transform: scale(1.06);
   }
 
   &:focus-visible {
@@ -42,18 +42,15 @@
   }
 }
 
-.site-logo-image {
+.menu-hamburger-icon {
   display: block;
-  height: 36px;
-  width: auto;
-  max-width: min(280px, 75vw);
+  width: 28px;
+  height: 28px;
   color: currentColor;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
   transition: color 0.2s ease, transform 0.2s ease;
-}
-
-.menu-toggle:hover .site-logo-image {
-  color: #fff08d;
-  transform: scale(1.02);
 }
 
 .menu-overlay {

@@ -331,9 +331,6 @@
   animation: app-chrome-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.48s both;
 }
 
-.app-shell--enter .ticks {
-  animation: app-chrome-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
-}
 
 @keyframes app-chrome-in {
   from {
@@ -388,8 +385,7 @@
   .app-shell--enter .triptych-panel--co2,
   .app-shell--enter .triptych-panel--saving,
   .app-shell--enter .chrome-carousel,
-  .app-shell--enter .site-footer,
-  .app-shell--enter .ticks {
+  .app-shell--enter .site-footer {
     animation: none !important;
   }
 }
@@ -926,33 +922,6 @@
   color: #4ade80;
   font-size: 0.8rem;
   letter-spacing: 0.03em;
-}
-
-.ticks {
-  position: absolute;
-  top: var(--site-header-height, 52px);
-  left: 0;
-  right: 0;
-  width: 100%;
-  z-index: 3;
-  pointer-events: none;
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
-
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
-  }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
-  }
 }
 
 .triptych-camera-hud {
@@ -1622,33 +1591,6 @@
   color: #4ade80;
   font-size: 0.8rem;
   letter-spacing: 0.03em;
-}
-
-.ticks {
-  position: absolute;
-  top: var(--site-header-height, 52px);
-  left: 0;
-  right: 0;
-  width: 100%;
-  z-index: 3;
-  pointer-events: none;
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
-
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
-  }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
-  }
 }
 
 .triptych-camera-hud {

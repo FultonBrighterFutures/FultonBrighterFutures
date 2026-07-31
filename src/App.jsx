@@ -306,8 +306,6 @@ function App() {
       >
         <div className={`view-carousel${contentActive ? ' view-carousel--content' : ''}`}>
           <div className="main-view-stage" aria-hidden={contentActive}>
-            {isMainView && !lookAheadActive && <div className="ticks"></div>}
-
             <div className={`scene-carousel${lookAheadActive ? ' scene-carousel--future' : ''}`}>
               <section id="main" className="triptych" aria-hidden={lookAheadActive}>
                 <div id="energy" className="triptych-panel triptych-panel--energy">
