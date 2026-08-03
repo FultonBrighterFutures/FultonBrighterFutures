@@ -63,11 +63,12 @@
 
 .selected-building-orb__sticker {
   position: absolute;
-  right: 18%;
-  bottom: 18%;
+  left: 50%;
+  top: 4%;
   z-index: 3;
   width: 22%;
   aspect-ratio: 1;
+  transform: translateX(-50%);
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.45));
 }
 

@@ -10,6 +10,7 @@ import {
   mapSavingYearData,
 } from '../data'
 import { getFutureSticker } from '../data/futureStickers.js'
+import { createBuildingTypeSprite } from './createBuildingTypeSprite.js'
 import { applyCo2Camera, subscribeTriptychCamera } from './co2Camera'
 import { getGlobalElapsedTime } from './sceneAnimation'
 import {
@@ -83,8 +84,12 @@ function createStickerSprite(stickerId) {
     depthWrite: false,
   })
   const sprite = new THREE.Sprite(material)
+  // Anchor bottom-center so the sticker sits on top of the sphere (r=0.5)
+  // and always faces the camera (Sprite billboards automatically).
+  sprite.center.set(0.5, 0)
   sprite.scale.setScalar(0.7)
-  sprite.position.set(0.55, 0.65, 0)
+  sprite.position.set(0, 0.55, 0)
+  sprite.renderOrder = 10
   sprite.userData.isStickerSprite = true
   return sprite
 }
@@ -252,13 +257,18 @@ export function createFutureScene() {
     }
   }
 
+  const disposeSprite = (entry, key) => {
+    const sprite = entry[key]
+    if (!sprite) return
+    entry.building.group.remove(sprite)
+    sprite.material.map = null
+    sprite.material.dispose()
+    entry[key] = null
+  }
+
   const disposeUserEntry = (entry) => {
-    if (entry.stickerSprite) {
-      entry.building.group.remove(entry.stickerSprite)
-      entry.stickerSprite.material.map = null
-      entry.stickerSprite.material.dispose()
-      entry.stickerSprite = null
-    }
+    disposeSprite(entry, 'typeIconSprite')
+    disposeSprite(entry, 'stickerSprite')
     entry.particles.dispose()
     mapGroup.remove(entry.building.group)
     const groupIndex = buildingObjects.indexOf(entry.building.group)
@@ -267,14 +277,17 @@ export function createFutureScene() {
     if (pickIndex >= 0) buildingObjects.splice(pickIndex, 1)
   }
 
-  const attachSticker = (entry, stickerId) => {
-    if (entry.stickerSprite) {
-      entry.building.group.remove(entry.stickerSprite)
-      entry.stickerSprite.material.map = null
-      entry.stickerSprite.material.dispose()
-      entry.stickerSprite = null
-    }
+  const attachTypeIcon = (entry, typeId) => {
+    disposeSprite(entry, 'typeIconSprite')
+    const sprite = createBuildingTypeSprite(typeId)
+    if (!sprite) return
+    entry.typeIconSprite = sprite
+    entry.typeId = typeId
+    entry.building.group.add(sprite)
+  }
 
+  const attachSticker = (entry, stickerId) => {
+    disposeSprite(entry, 'stickerSprite')
     const sprite = createStickerSprite(stickerId)
     if (!sprite) return
     entry.stickerSprite = sprite
@@ -326,10 +339,15 @@ export function createFutureScene() {
       velX: 0,
       velZ: 0,
       isUserBuilding: true,
+      typeId: building.type ?? null,
+      typeIconSprite: null,
       stickerId: building.stickerId ?? null,
       stickerSprite: null,
     }
 
+    if (building.type) {
+      attachTypeIcon(entry, building.type)
+    }
     if (building.stickerId) {
       attachSticker(entry, building.stickerId)
     }
@@ -381,6 +399,9 @@ export function createFutureScene() {
         annualSavings: building.annualSavings ?? 0,
       })
 
+      if (existing.typeId !== building.type) {
+        attachTypeIcon(existing, building.type)
+      }
       if (existing.stickerId !== building.stickerId) {
         attachSticker(existing, building.stickerId)
       }
@@ -832,6 +853,10 @@ export function createFutureScene() {
 
     buildingEntries.forEach((entry) => {
       entry.particles.dispose()
+      if (entry.typeIconSprite) {
+        entry.typeIconSprite.material.map = null
+        entry.typeIconSprite.material.dispose()
+      }
       if (entry.stickerSprite) {
         entry.stickerSprite.material.map = null
         entry.stickerSprite.material.dispose()

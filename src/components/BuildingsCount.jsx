@@ -3,7 +3,7 @@ import { loadSolarDataset, mapEnergyYearData } from '../data'
 import { StaticBuildingIcon } from './building'
 import './BuildingsCount.css'
 
-export default function BuildingsCount({ year, label = 'Buildings wth Solar Panels' }) {
+export default function BuildingsCount({ year, label = 'Buildings with Solar Panels' }) {
   const [count, setCount] = useState(0)
 
   useEffect(() => {
