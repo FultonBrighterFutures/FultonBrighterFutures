@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Excel lock / temp files
+~$*.xlsx
+**/~$*.xlsx

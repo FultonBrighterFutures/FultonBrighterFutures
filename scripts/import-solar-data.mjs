@@ -18,10 +18,12 @@ import { parseSolarWorkbookSheets } from '../src/data/parseSolarWorkbook.js'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const root = join(__dirname, '..')
 const dataDir = join(root, 'public/data')
-const energyInputPath = join(dataDir, 'solar-data.xlsx')
-const costInputPath = join(dataDir, 'solar-cost.xlsx')
-const positionsPath = join(dataDir, 'building-positions.json')
-const outputPath = join(dataDir, 'solar-data.json')
+const sourcesDir = join(dataDir, 'sources')
+const runtimeDir = join(dataDir, 'runtime')
+const energyInputPath = join(sourcesDir, 'solar-data.xlsx')
+const costInputPath = join(sourcesDir, 'solar-cost.xlsx')
+const positionsPath = join(runtimeDir, 'building-positions.json')
+const outputPath = join(runtimeDir, 'solar-data.json')
 const SAVINGS_ENERGY_AUTHORITY_IDS = new Set(['maxwell-rd-driver-services'])
 
 function mergeBuildingCatalog(energyBuildings, costBuildings) {
@@ -177,9 +179,9 @@ function parseSavingsFileDate(name) {
   return Date.UTC(Number(match[1]), Number(match[2]) - 1, Number(match[3]))
 }
 
-/** Prefer the newest dated Solar Monthly Savings workbook in public/data/. */
+/** Prefer the newest dated Solar Monthly Savings workbook in public/data/sources/. */
 function findSavingsWorkbookName() {
-  const matches = readdirSync(dataDir).filter(
+  const matches = readdirSync(sourcesDir).filter(
     (name) =>
       /^Solar Monthly Savings.*\.xlsx$/i.test(name) && !name.startsWith('~$'),
   )
@@ -199,7 +201,7 @@ function loadSavingsWorkbook() {
   const savingsWorkbookName = findSavingsWorkbookName()
   if (!savingsWorkbookName) return null
 
-  const workbook = XLSX.read(readFileSync(join(dataDir, savingsWorkbookName)), {
+  const workbook = XLSX.read(readFileSync(join(sourcesDir, savingsWorkbookName)), {
     type: 'buffer',
   })
   return { name: savingsWorkbookName, workbook }

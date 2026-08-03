@@ -1,7 +1,7 @@
 let solarDataCache = null
 
 /**
- * Loads normalized solar production data generated from public/data/solar-data.xlsx
+ * Loads normalized solar production data generated from public/data/sources/solar-data.xlsx
  * by `npm run import-data`.
  *
  * @returns {Promise<{
@@ -23,10 +23,10 @@ export async function loadSolarDataset() {
     return solarDataCache
   }
 
-  const response = await fetch('/data/solar-data.json')
+  const response = await fetch('/data/runtime/solar-data.json')
 
   if (!response.ok) {
-    console.warn('[data] Missing or unreadable JSON: /data/solar-data.json — run npm run import-data')
+    console.warn('[data] Missing or unreadable JSON: /data/runtime/solar-data.json — run npm run import-data')
     solarDataCache = { years: [], buildings: [], monthly: [] }
     return solarDataCache
   }

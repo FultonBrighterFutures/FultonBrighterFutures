@@ -276,7 +276,7 @@ function separateBuildingPositions(
  * @returns {Promise<{ bounds: object, aspect: number, buildings: Array }>}
  */
 export async function loadBuildingPositions(
-  positionsUrl = '/data/building-positions.json',
+  positionsUrl = '/data/runtime/building-positions.json',
 ) {
   const response = await fetch(positionsUrl)
   if (!response.ok) {

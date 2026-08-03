@@ -15,8 +15,8 @@ A React + Vite website with three side-by-side Three.js scenes (energy, CO2, and
 | Change Three.js scene visuals | **`src/scenes/{energy,co2,saving,future}Scene.js`** |
 | Adjust triptych or Look Ahead camera framing (dev tool) | **`?triptychCamera=1`** or **Shift+C** — see [Camera framing](#triptych-camera-framing-dev-tool) |
 | Adjust Fulton County backdrop (dev tool) | Open Look Ahead and press **Shift+M** — see [Fulton backdrop](#repositioning-the-fulton-county-backdrop) |
-| Replace / add CSV data per year | **`public/data/{energy,co2,saving}.csv`** |
-| Map CSV columns → scene values | **`src/data/mapYearData.js`** |
+| Replace / regenerate year metrics | **`public/data/sources/*.xlsx`** then `npm run import-data` → **`public/data/runtime/solar-data.json`** |
+| Map dataset fields → scene values | **`src/data/mapYearData.js`** |
 
 This guide assumes you are starting on a machine with **no development tools installed** yet.
 
@@ -322,7 +322,7 @@ solar-dinosaur/
 2. **`App.jsx`** holds **year**, **lookAheadActive**, **showFuture**, **menuOpen**, and **siteView** state. It lays out: header (**SiteMenu**) → main content (triptych/Future or **ContentPage**) → timeline chrome (timeline + Back button) → footer.
 3. Clicking **solar-dinosaur** in the header opens the **SiteMenu** overlay. **Main site** shows the triptych + timeline; other links show **ContentPage** placeholders.
 4. The **triptych** renders three **`ThreePanel`** components (`"energy"`, `"co2"`, `"saving"`), each receiving the current `year`.
-5. **`ThreePanel`** creates the scene, loads **`public/data/{variant}.csv`** for the selected year, maps it in **`mapYearData.js`**, and calls **`applyYear({ year, data, progress })`** in the matching scene file.
+5. **`ThreePanel`** creates the scene, loads **`public/data/runtime/solar-data.json`** for the selected year, maps it in **`mapYearData.js`**, and calls **`applyYear({ year, data, progress })`** in the matching scene file.
 6. **`Timeline`** displays years **2021–2026** plus a **Look Ahead** button. Clicking a year updates all three triptych scenes. Clicking **Look Ahead** triggers the carousel transition to the **Future** scene.
 7. **`App.css`** defines scene carousel animations (panels slide apart; Future slides in). **`Timeline.css`** handles the energy-themed timeline. Shared pill button styles live in **`index.css`** as **`.chrome-cta`** (used by Look Ahead and Back).
 
@@ -339,7 +339,7 @@ User clicks year on timeline
         ↓
 App.jsx updates `year` prop on each ThreePanel
         ↓
-ThreePanel fetches public/data/{variant}.csv
+ThreePanel fetches public/data/runtime/solar-data.json
         ↓
 mapSceneYearData() in src/data/mapYearData.js
         ↓
@@ -350,7 +350,7 @@ applyYear({ year, data, progress }) in src/scenes/{variant}Scene.js
 
 | Task | File | Look for |
 |------|------|----------|
-| **Replace dataset** | `public/data/energy.csv` (etc.) | `year` column + your columns |
+| **Replace dataset** | `public/data/sources/*.xlsx` + `npm run import-data` | Writes `public/data/runtime/solar-data.json` |
 | **Map CSV → scene values** | `src/data/mapYearData.js` | `PLEASE WORK HERE FOR … DATA MAPPING` |
 | **Build the 3D visualization** | `src/scenes/energyScene.js` (etc.) | `PLEASE WORK HERE FOR … — build your Three.js visualization` |
 | **Update scene from data** | same scene file | `PLEASE WORK HERE FOR … — apply CSV data` inside `applyYear()` |
@@ -358,7 +358,7 @@ applyYear({ year, data, progress }) in src/scenes/{variant}Scene.js
 
 ### CSV format
 
-One file per scene in **`public/data/`**, with a row per timeline year:
+Normalized metrics live in **`public/data/runtime/solar-data.json`** (generated from workbooks in **`public/data/sources/`**). See **`public/data/README.md`** for the folder layout. Legacy per-scene CSVs remain under **`public/data/archive/`** for reference only.
 
 ```csv
 year,generation_twh,capacity_gw
@@ -726,7 +726,7 @@ export const sceneFactories = {
 1. Start the dev server: `npm run dev`
 2. Open the scene file (e.g. **`src/scenes/energyScene.js`**)
 3. Work in the sections marked **`PLEASE WORK HERE FOR …`**
-4. Update **`public/data/{variant}.csv`** and **`src/data/mapYearData.js`** if your data columns change
+4. Update **`public/data/sources/`** (then `npm run import-data`) and **`src/data/mapYearData.js`** if your data columns change
 5. Save — Vite hot-reloads automatically
 
 Each triptych scene follows the same pattern:
@@ -755,7 +755,7 @@ export function createEnergyScene(initialYear) {
 Common edits:
 
 - **Colors / shapes / motion:** scene file (`*Scene.js`)
-- **Data per year:** `public/data/*.csv` + `mapYearData.js` + `applyYear()` in scene file
+- **Data per year:** `public/data/runtime/solar-data.json` + `mapYearData.js` + `applyYear()` in scene file
 - **Timeline range:** **`src/constants/timeline.js`**
 
 Any new mesh or group should be listed in the `objects` array so **`ThreePanel`** can dispose of it on unmount.
@@ -764,7 +764,7 @@ Any new mesh or group should be listed in the `objects` array so **`ThreePanel`*
 
 1. Copy **`src/scenes/energyScene.js`** → **`src/scenes/moonScene.js`** (or similar)
 2. Register it in **`src/scenes/index.js`** → `sceneFactories`
-3. Add **`public/data/moon.csv`** and a mapper in **`src/data/mapYearData.js`**
+3. Add source data under **`public/data/sources/`** (or archive CSV under **`public/data/archive/`**) and a mapper in **`src/data/mapYearData.js`**
 4. Add **`DATA_SCENES`** entry in **`src/data/loadYearData.js`** if it uses CSV
 5. In **`src/App.jsx`**, add `<ThreePanel variant="moon" label="Moon scene" year={year} />`
 6. Update styles in **`App.css`** if layout changes
@@ -773,7 +773,7 @@ For a scene without timeline/CSV, follow **`futureScene.js`** (no `year` argumen
 
 ### Triptych camera framing (dev tool)
 
-The three main triptych scenes share one camera pose from **`public/data/co2-camera.json`** (via **`src/scenes/co2Camera.js`**). The Look Ahead scene has a separate committed pose in **`src/scenes/futureScene.js`**. Collaborators can nudge either framing in the browser without editing camera coordinates by hand.
+The three main triptych scenes share one camera pose from **`public/data/runtime/co2-camera.json`** (via **`src/scenes/co2Camera.js`**). The Look Ahead scene has a separate committed pose in **`src/scenes/futureScene.js`**. Collaborators can nudge either framing in the browser without editing camera coordinates by hand.
 
 **Edit mode is off by default** so visitors don’t accidentally pan the map. Turn it on with either:
 
@@ -798,7 +798,7 @@ When edit mode is on, a small HUD appears on the **energy** (left) panel and the
 1. Enable edit mode and adjust until it looks right  
 2. Press **S**  
 3. Copy the JSON from the browser console  
-4. Paste it into **`public/data/co2-camera.json`** and commit  
+4. Paste it into **`public/data/runtime/co2-camera.json`** and commit  
 
 Until you update that file, a local **S** save still wins on refresh (so you can iterate). Clear site data for the app, or overwrite the JSON and remove the `solar-dinosaur.co2-camera` `localStorage` entry, if you need to fall back to the committed file only.
 
@@ -822,7 +822,7 @@ const LOOK_AHEAD_CAMERA = {
 }
 ```
 
-Do **not** paste a Look Ahead-only pose into **`public/data/co2-camera.json`**. That file controls the three main triptych scenes. Note that pressing **S** also saves the temporary editor pose to the shared `solar-dinosaur.co2-camera` local-storage entry; remove that entry after copying the values if you do not want it to override the triptych camera during local testing.
+Do **not** paste a Look Ahead-only pose into **`public/data/runtime/co2-camera.json`**. That file controls the three main triptych scenes. Note that pressing **S** also saves the temporary editor pose to the shared `solar-dinosaur.co2-camera` local-storage entry; remove that entry after copying the values if you do not want it to override the triptych camera during local testing.
 
 #### Repositioning the Fulton County backdrop
 

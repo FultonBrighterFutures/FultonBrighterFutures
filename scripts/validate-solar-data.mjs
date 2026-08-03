@@ -5,13 +5,13 @@ import { fileURLToPath } from 'node:url'
 import { loadPlacementMask, MIN_VISIBLE_SEPARATION } from './lib/placementMask.mjs'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
-const dataDir = join(root, 'public/data')
-const dataset = JSON.parse(readFileSync(join(dataDir, 'solar-data.json'), 'utf8'))
+const runtimeDir = join(root, 'public/data/runtime')
+const dataset = JSON.parse(readFileSync(join(runtimeDir, 'solar-data.json'), 'utf8'))
 const positions = JSON.parse(
-  readFileSync(join(dataDir, 'building-positions.json'), 'utf8'),
+  readFileSync(join(runtimeDir, 'building-positions.json'), 'utf8'),
 )
 const mainPositions = JSON.parse(
-  readFileSync(join(dataDir, 'building-positions-main.json'), 'utf8'),
+  readFileSync(join(runtimeDir, 'building-positions-main.json'), 'utf8'),
 )
 
 function assertUnique(values, label) {

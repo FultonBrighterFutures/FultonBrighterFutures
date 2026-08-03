@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 
 const CO2_CAMERA_STORAGE_KEY = 'solar-dinosaur.co2-camera'
-const CO2_CAMERA_URL = '/data/co2-camera.json'
+const CO2_CAMERA_URL = '/data/runtime/co2-camera.json'
 const EDIT_STORAGE_KEY = 'solar-dinosaur.triptych-camera-edit'
 const EDIT_QUERY_PARAM = 'triptychCamera'
 
@@ -92,7 +92,7 @@ export function saveCo2Camera(state) {
   const payload = JSON.stringify(state, null, 2)
   localStorage.setItem(CO2_CAMERA_STORAGE_KEY, payload)
   console.info(
-    '[triptych camera] Saved. Paste into public/data/co2-camera.json to persist in the repo:\n',
+    '[triptych camera] Saved. Paste into public/data/runtime/co2-camera.json to persist in the repo:\n',
     payload,
   )
   return payload
