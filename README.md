@@ -81,6 +81,16 @@ node --version
 npm --version
 ```
 
+**If `node` or `npm` is not recognized** in Cursor’s terminal (or another IDE terminal) after installing Node.js, fully quit and reopen the app so it picks up the updated PATH. A new external PowerShell window may already work before the IDE does.
+
+**If `node` works but `npm` fails** with an error like `npm.ps1 cannot be loaded because running scripts is disabled on this system`, PowerShell’s execution policy is blocking npm’s script. Fix it once in PowerShell:
+
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+```
+
+Open a new terminal, then run `npm --version` again. As a one-off workaround without changing policy, you can call `npm.cmd` instead of `npm` (for example `npm.cmd install`).
+
 ### macOS
 
 1. Download the **LTS** installer from [https://nodejs.org](https://nodejs.org), **or** install with Homebrew:
