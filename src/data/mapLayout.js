@@ -8,19 +8,19 @@ const WHITE_CHANNEL_MIN = 238
 /** Building footprint at max scale — sphere diameter + gap so small orbs stay clickable. */
 const BUILDING_SPHERE_RADIUS = 0.5
 const BUILDING_MAX_SCALE = 0.5
-const BUILDING_SEPARATION_PADDING = 0.22
+const BUILDING_SEPARATION_PADDING = 0.94
 const MIN_BUILDING_SEPARATION =
   BUILDING_SPHERE_RADIUS * BUILDING_MAX_SCALE * 2 + BUILDING_SEPARATION_PADDING
 
 /** How far a marker may drift from its mapped location while resolving overlap. */
-const MAX_DRIFT_X = 0.42
-const MAX_DRIFT_Z = 0.32
+const MAX_DRIFT_X = 0.84
+const MAX_DRIFT_Z = 0.64
 const SEPARATION_RADIUS_X = MIN_BUILDING_SEPARATION * 1.45
 const SEPARATION_RADIUS_Z = MIN_BUILDING_SEPARATION * 1.2
-const HORIZONTAL_PUSH_SCALE = 1.35
-const VERTICAL_PUSH_SCALE = 1.05
-const SEPARATION_STRENGTH = 0.62
-const SEPARATION_ITERATIONS = 56
+const HORIZONTAL_PUSH_SCALE = 1.4
+const VERTICAL_PUSH_SCALE = 1.15
+const SEPARATION_STRENGTH = 0.7
+const SEPARATION_ITERATIONS = 72
 
 let maskState = null
 

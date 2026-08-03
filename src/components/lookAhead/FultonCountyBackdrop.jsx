@@ -11,8 +11,8 @@ export const FULTON_COUNTY_OUTLINE_ENABLED = true
 
 const DEFAULT_BACKDROP = {
   x: -40,
-  y: -16,
-  scale: 1.5,
+  y: 8,
+  scale: 1.55,
   opacity: 0.2,
 }
 
