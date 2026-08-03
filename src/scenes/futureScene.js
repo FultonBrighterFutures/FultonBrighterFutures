@@ -43,10 +43,10 @@ import {
 const LOOK_AHEAD_YEAR = 2026
 const BUILDING_SCALE = 0.18
 const USER_BUILDING_SCALE = 0.28
-const MAP_BASE_ROTATION = (-3 * Math.PI) / 4
+const MAP_BASE_ROTATION = 0
 const LOOK_AHEAD_CAMERA = {
-  position: [-0.6, -7.633570423560478, 0.48],
-  target: [-0.6, 0, 0.48],
+  position: [-0.12, -7.633570423560478, 0.12],
+  target: [-0.12, 0, 0.12],
   up: [0, 0, -1],
 }
 
@@ -126,7 +126,6 @@ export function createFutureScene() {
   scene.add(rim)
 
   const mapGroup = new THREE.Group()
-  mapGroup.scale.x = -1
   mapGroup.visible = false
   scene.add(mapGroup)
 

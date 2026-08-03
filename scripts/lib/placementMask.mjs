@@ -86,8 +86,10 @@ export function loadPlacementMask(filePath) {
   }
 
   const pixelToScene = (px, py) => ({
-    x: sceneBounds.xMin + (px / contentWidth) * (sceneBounds.xMax - sceneBounds.xMin),
-    z: sceneBounds.zMax - (py / contentHeight) * (sceneBounds.zMax - sceneBounds.zMin),
+    // Mirror X so west (small px/u) is screen-left — matches mapLayout.js.
+    x: sceneBounds.xMax - (px / contentWidth) * (sceneBounds.xMax - sceneBounds.xMin),
+    // North (small py) → −Z — matches mapLayout.js / map-reference.png north-up.
+    z: sceneBounds.zMin + (py / contentHeight) * (sceneBounds.zMax - sceneBounds.zMin),
   })
 
   /**

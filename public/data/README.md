@@ -14,6 +14,11 @@ public/data/
 
 ```text
 sources/*.xlsx  →  npm run import-data  →  runtime/solar-data.json
+
+sources/solar-building-addresses.xlsx
+  → building-coordinates.json (geocoded)
+  → node scripts/project-building-positions.mjs
+  → runtime/building-positions.json (+ -main)
 ```
 
 `npm run build` runs `import-data` before Vite so the JSON stays in sync with the workbooks.
@@ -21,8 +26,8 @@ sources/*.xlsx  →  npm run import-data  →  runtime/solar-data.json
 | Folder | Purpose | Typical files |
 |--------|---------|----------------|
 | **runtime** | Display data the app fetches | `solar-data.json`, `building-positions.json`, `building-positions-main.json`, `co2-camera.json` |
-| **sources** | Extraction inputs | `solar-data.xlsx`, `solar-cost.xlsx`, `Solar Monthly Savings *.xlsx` |
+| **sources** | Extraction inputs | `solar-data.xlsx`, `solar-cost.xlsx`, `Solar Monthly Savings *.xlsx`, `solar-building-addresses.xlsx`, `building-coordinates.json` |
 | **review** | Name / alias confirmation with stakeholders | `building-names-supervisor-review.*` |
 | **archive** | Legacy CSV prototypes (not used by import or the app) | `energy.csv`, `co2.csv`, `saving.csv`, `DataTest.csv`, `solar-data.csv` |
 
-Browser URLs for runtime files are under `/data/runtime/…` (for example `/data/runtime/solar-data.json`).
+Building markers are projected from geocoded addresses onto the Fulton placement mask (`u`/`v`), laid out **north-up** to match [`public/assets/map-reference.png`](../assets/map-reference.png) (Palmetto southwest / bottom, Milton north / top). Overlaps are gently separated at load time in `mapLayout.js`.

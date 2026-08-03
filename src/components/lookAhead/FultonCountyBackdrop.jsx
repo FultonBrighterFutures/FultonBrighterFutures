@@ -7,12 +7,12 @@ const EDIT_STORAGE_KEY = 'solar-dinosaur.fulton-county-backdrop-edit'
 const EDIT_QUERY_PARAM = 'fultonBackdrop'
 
 // Set to true to show the Fulton County outline again.
-export const FULTON_COUNTY_OUTLINE_ENABLED = false
+export const FULTON_COUNTY_OUTLINE_ENABLED = true
 
 const DEFAULT_BACKDROP = {
-  x: -112,
-  y: -96,
-  scale: 1.15,
+  x: -40,
+  y: -16,
+  scale: 1.5,
   opacity: 0.2,
 }
 

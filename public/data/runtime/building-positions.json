@@ -1,45 +1,250 @@
 {
   "buildings": [
-    { "id": "alpharetta-library", "name": "Alpharetta Library", "u": 0.58, "v": 0.1 },
-    { "id": "maxwell-rd-driver-services", "name": "Maxwell Rd (Driver Services)", "u": 0.6449, "v": 0.0941 },
-    { "id": "wolf-creek-library", "name": "Wolf Creek Library", "u": 0.7, "v": 0.13 },
-    { "id": "ne-spruill-oaks-library", "name": "NE Spruill Oaks Library", "u": 0.7451, "v": 0.0866 },
-    { "id": "milton-library", "name": "Milton Library", "u": 0.602, "v": 0.158 },
-    { "id": "e-roswell-library", "name": "E Roswell Library", "u": 0.64, "v": 0.18 },
-    { "id": "north-fulton-service-center", "name": "North Fulton Service Center", "u": 0.52, "v": 0.15 },
-    { "id": "sandy-springs-library", "name": "Sandy Springs Library", "u": 0.54, "v": 0.22 },
-    { "id": "ocee-library", "name": "Ocee Library", "u": 0.6857, "v": 0.2235 },
-    { "id": "qls-senior-center", "name": "QLS Senior Center", "u": 0.6, "v": 0.28 },
-    { "id": "buckhead-library", "name": "Buckhead Library", "u": 0.6962, "v": 0.2834 },
-    { "id": "bowden-senior-center", "name": "Bowden Senior Center", "u": 0.546, "v": 0.432 },
-    { "id": "northside-library", "name": "Northside Library", "u": 0.6461, "v": 0.323 },
-    { "id": "benson-senior-center", "name": "Benson Senior Center", "u": 0.44, "v": 0.34 },
-    { "id": "metropolitan-library", "name": "Metropolitan Library", "u": 0.62, "v": 0.38 },
-    { "id": "northwest-library", "name": "Northwest Library", "u": 0.46, "v": 0.4 },
-    { "id": "board-of-health", "name": "Board of Health", "u": 0.58, "v": 0.42 },
-    { "id": "ponce-de-leon-jp-library", "name": "Ponce de Leon (JP) Library", "u": 0.66, "v": 0.4 },
-    { "id": "new-beginnings-senior-center", "name": "New Beginnings Senior Center", "u": 0.4, "v": 0.44 },
-    { "id": "medical-examiner", "name": "Medical Examiner", "u": 0.7, "v": 0.43 },
-    { "id": "auburn-ave-research-library", "name": "Auburn Ave Research Library", "u": 0.6414, "v": 0.4588 },
-    { "id": "dogwood-library", "name": "Dogwood Library", "u": 0.36, "v": 0.42 },
-    { "id": "cascade-sw-library", "name": "Cascade (SW) Library", "u": 0.34, "v": 0.48 },
-    { "id": "adamsville-ac-library", "name": "Adamsville (AC) Library", "u": 0.32, "v": 0.52 },
-    { "id": "southeast-atlanta-library", "name": "Southeast Atlanta Library", "u": 0.64, "v": 0.52 },
-    { "id": "se-neighborhood-senior-center", "name": "SE Neighborhood Senior Center", "u": 0.72, "v": 0.54 },
-    { "id": "neighborhood-union-health", "name": "Neighbor-hood Union Health", "u": 0.56, "v": 0.54 },
-    { "id": "dogwood-senior-center", "name": "Dogwood Senior Center", "u": 0.38, "v": 0.52 },
-    { "id": "gladys-dennard-library", "name": "Gladys Dennard Library", "u": 0.48, "v": 0.56 },
-    { "id": "mills-senior-center", "name": "Mills Senior Center", "u": 0.68, "v": 0.58 },
-    { "id": "adams-park-library", "name": "Adams Park Library", "u": 0.42, "v": 0.6 },
-    { "id": "cleveland-ave-library", "name": "Cleveland Ave Library", "u": 0.58, "v": 0.6 },
-    { "id": "hapeville-library", "name": "Hapeville Library", "u": 0.5995, "v": 0.6599 },
-    { "id": "college-park-regional-health", "name": "College Park Regional Health", "u": 0.36, "v": 0.68 },
-    { "id": "college-park-library", "name": "College Park Library", "u": 0.34, "v": 0.72 },
-    { "id": "aviation-cultural-center", "name": "Aviation Cultural Center", "u": 0.5, "v": 0.7 },
-    { "id": "animal-services", "name": "Animal Services", "u": 0.54, "v": 0.74 },
-    { "id": "juvenile-justice-center", "name": "Juvenile Justice Center", "u": 0.66, "v": 0.72 },
-    { "id": "south-fulton-service-center", "name": "South Fulton Service Center", "u": 0.44, "v": 0.78 },
-    { "id": "union-city-jail", "name": "Union City Jail", "u": 0.3, "v": 0.82 },
-    { "id": "palmetto-library", "name": "Palmetto Library", "u": 0.34, "v": 0.9 }
+    {
+      "id": "adams-park-library",
+      "name": "Adams Park Library",
+      "u": 0.4537,
+      "v": 0.6614
+    },
+    {
+      "id": "adamsville-ac-library",
+      "name": "Adamsville (AC) Library",
+      "u": 0.3797,
+      "v": 0.5836
+    },
+    {
+      "id": "alpharetta-library",
+      "name": "Alpharetta Library",
+      "u": 0.7755,
+      "v": 0.0942
+    },
+    {
+      "id": "animal-services",
+      "name": "Animal Services",
+      "u": 0.3769,
+      "v": 0.5344
+    },
+    {
+      "id": "auburn-ave-research-library",
+      "name": "Auburn Ave Research Library",
+      "u": 0.6014,
+      "v": 0.585
+    },
+    {
+      "id": "aviation-cultural-center",
+      "name": "Aviation Cultural Center",
+      "u": 0.3508,
+      "v": 0.5568
+    },
+    {
+      "id": "benson-senior-center",
+      "name": "Benson Senior Center",
+      "u": 0.6124,
+      "v": 0.316
+    },
+    {
+      "id": "board-of-health",
+      "name": "Board of Health",
+      "u": 0.5925,
+      "v": 0.5869
+    },
+    {
+      "id": "bowden-senior-center",
+      "name": "Bowden Senior Center",
+      "u": 0.4857,
+      "v": 0.707
+    },
+    {
+      "id": "buckhead-library",
+      "name": "Buckhead Library",
+      "u": 0.61,
+      "v": 0.4582
+    },
+    {
+      "id": "cascade-sw-library",
+      "name": "Cascade (SW) Library",
+      "u": 0.3683,
+      "v": 0.6323
+    },
+    {
+      "id": "cleveland-ave-library",
+      "name": "Cleveland Ave Library",
+      "u": 0.5888,
+      "v": 0.6986
+    },
+    {
+      "id": "college-park-library",
+      "name": "College Park Library",
+      "u": 0.4763,
+      "v": 0.7384
+    },
+    {
+      "id": "college-park-regional-health",
+      "name": "College Park Regional Health",
+      "u": 0.4727,
+      "v": 0.7457
+    },
+    {
+      "id": "dogwood-library",
+      "name": "Dogwood Library",
+      "u": 0.4815,
+      "v": 0.5561
+    },
+    {
+      "id": "dogwood-senior-center",
+      "name": "Dogwood Senior Center",
+      "u": 0.4793,
+      "v": 0.553
+    },
+    {
+      "id": "e-roswell-library",
+      "name": "E Roswell Library",
+      "u": 0.7712,
+      "v": 0.2035
+    },
+    {
+      "id": "gladys-dennard-library",
+      "name": "Gladys Dennard Library",
+      "u": 0.3439,
+      "v": 0.8429
+    },
+    {
+      "id": "hapeville-library",
+      "name": "Hapeville Library",
+      "u": 0.5615,
+      "v": 0.7343
+    },
+    {
+      "id": "juvenile-justice-center",
+      "name": "Juvenile Justice Center",
+      "u": 0.5811,
+      "v": 0.603
+    },
+    {
+      "id": "maxwell-rd-driver-services",
+      "name": "Maxwell Rd (Driver Services)",
+      "u": 0.7586,
+      "v": 0.1109
+    },
+    {
+      "id": "medical-examiner",
+      "name": "Medical Examiner",
+      "u": 0.5815,
+      "v": 0.6031
+    },
+    {
+      "id": "metropolitan-library",
+      "name": "Metropolitan Library",
+      "u": 0.5568,
+      "v": 0.6412
+    },
+    {
+      "id": "mills-senior-center",
+      "name": "Mills Senior Center",
+      "u": 0.6276,
+      "v": 0.5789
+    },
+    {
+      "id": "milton-library",
+      "name": "Milton Library",
+      "u": 0.6911,
+      "v": 0.069
+    },
+    {
+      "id": "ne-spruill-oaks-library",
+      "name": "NE Spruill Oaks Library",
+      "u": 0.9046,
+      "v": 0.1862
+    },
+    {
+      "id": "neighborhood-union-health",
+      "name": "Neighbor-hood Union Health",
+      "u": 0.5511,
+      "v": 0.5783
+    },
+    {
+      "id": "new-beginnings-senior-center",
+      "name": "New Beginnings Senior Center",
+      "u": 0.2154,
+      "v": 0.8843
+    },
+    {
+      "id": "north-fulton-service-center",
+      "name": "North Fulton Service Center",
+      "u": 0.6091,
+      "v": 0.3973
+    },
+    {
+      "id": "northside-library",
+      "name": "Northside Library",
+      "u": 0.5225,
+      "v": 0.4466
+    },
+    {
+      "id": "northwest-library",
+      "name": "Northwest Library",
+      "u": 0.4376,
+      "v": 0.508
+    },
+    {
+      "id": "ocee-library",
+      "name": "Ocee Library",
+      "u": 0.931,
+      "v": 0.1118
+    },
+    {
+      "id": "palmetto-library",
+      "name": "Palmetto Library",
+      "u": 0.069,
+      "v": 0.931
+    },
+    {
+      "id": "ponce-de-leon-jp-library",
+      "name": "Ponce de Leon (JP) Library",
+      "u": 0.6561,
+      "v": 0.5559
+    },
+    {
+      "id": "qls-senior-center",
+      "name": "QLS Senior Center",
+      "u": 0.3438,
+      "v": 0.629
+    },
+    {
+      "id": "sandy-springs-library",
+      "name": "Sandy Springs Library",
+      "u": 0.62,
+      "v": 0.3251
+    },
+    {
+      "id": "se-neighborhood-senior-center",
+      "name": "SE Neighborhood Senior Center",
+      "u": 0.6411,
+      "v": 0.6601
+    },
+    {
+      "id": "south-fulton-service-center",
+      "name": "South Fulton Service Center",
+      "u": 0.2849,
+      "v": 0.8211
+    },
+    {
+      "id": "southeast-atlanta-library",
+      "name": "Southeast Atlanta Library",
+      "u": 0.5724,
+      "v": 0.6812
+    },
+    {
+      "id": "union-city-jail",
+      "name": "Union City Jail",
+      "u": 0.2835,
+      "v": 0.8571
+    },
+    {
+      "id": "wolf-creek-library",
+      "name": "Wolf Creek Library",
+      "u": 0.2405,
+      "v": 0.7124
+    }
   ]
 }

@@ -26,13 +26,13 @@ const refs = {
     },
     {
       id: 'atlanta-solar',
-      title: 'Solar Atlanta — Live Generation Map',
+      title: 'Fulton County Solar Program — Live Generation Map',
       publisher: 'Cherry Street Energy',
       year: '2024',
       type: 'Interactive reference',
-      url: 'https://cherrystreet.live/solar-atlanta/',
+      url: 'https://cherrystreet.live/fulton-county-solar/',
       description:
-        'Existing solar data visualization for the City of Atlanta. Referenced as a benchmark for regional scope and real-time data display conventions.',
+        'Existing solar data visualization for Fulton County, created by Cherry Street Energy. Referenced as a benchmark for regional scope and real-time data display conventions.',
     },
     {
       id: 'epa-ghg-equivalencies',

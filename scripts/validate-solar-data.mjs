@@ -37,19 +37,16 @@ assert.deepEqual(
   'Every canonical building must have exactly one main-page render position',
 )
 
-const mainPositionById = new Map(
-  mainPositions.buildings.map((building) => [building.id, building]),
+const lookAheadById = new Map(
+  positions.buildings.map((building) => [building.id, building]),
 )
-for (const [id, expected] of Object.entries({
-  'maxwell-rd-driver-services': { u: 0.74, v: 0.45 },
-  'milton-library': { u: 0.42, v: 0.09 },
-  'bowden-senior-center': { u: 0.38, v: 0.3 },
-})) {
-  const { u, v } = mainPositionById.get(id) ?? {}
+for (const building of mainPositions.buildings) {
+  const lookAhead = lookAheadById.get(building.id)
+  assert.ok(lookAhead, `Look Ahead position missing for ${building.id}`)
   assert.deepEqual(
-    { u, v },
-    expected,
-    `Main-page position changed for ${id}`,
+    { u: building.u, v: building.v },
+    { u: lookAhead.u, v: lookAhead.v },
+    `Main and Look Ahead positions must match for ${building.id}`,
   )
 }
 

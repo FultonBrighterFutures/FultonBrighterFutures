@@ -5,22 +5,22 @@ const WORLD_WIDTH = 5.5
 const MIN_ALPHA = 24
 const WHITE_CHANNEL_MIN = 238
 
-/** Building footprint at max scale — sphere diameter + small gap (rings may barely touch). */
+/** Building footprint at max scale — sphere diameter + gap so small orbs stay clickable. */
 const BUILDING_SPHERE_RADIUS = 0.5
 const BUILDING_MAX_SCALE = 0.5
-const BUILDING_SEPARATION_PADDING = 0.048
+const BUILDING_SEPARATION_PADDING = 0.22
 const MIN_BUILDING_SEPARATION =
   BUILDING_SPHERE_RADIUS * BUILDING_MAX_SCALE * 2 + BUILDING_SEPARATION_PADDING
 
 /** How far a marker may drift from its mapped location while resolving overlap. */
-const MAX_DRIFT_X = 0.14
-const MAX_DRIFT_Z = 0.09
-const SEPARATION_RADIUS_X = MIN_BUILDING_SEPARATION * 1.15
-const SEPARATION_RADIUS_Z = MIN_BUILDING_SEPARATION * 0.82
-const HORIZONTAL_PUSH_SCALE = 1.2
-const VERTICAL_PUSH_SCALE = 0.75
-const SEPARATION_STRENGTH = 0.36
-const SEPARATION_ITERATIONS = 28
+const MAX_DRIFT_X = 0.42
+const MAX_DRIFT_Z = 0.32
+const SEPARATION_RADIUS_X = MIN_BUILDING_SEPARATION * 1.45
+const SEPARATION_RADIUS_Z = MIN_BUILDING_SEPARATION * 1.2
+const HORIZONTAL_PUSH_SCALE = 1.35
+const VERTICAL_PUSH_SCALE = 1.05
+const SEPARATION_STRENGTH = 0.62
+const SEPARATION_ITERATIONS = 56
 
 let maskState = null
 
@@ -82,16 +82,19 @@ function pixelToScene(px, py, mask) {
   const v = (py - pyMin) / Math.max(1, pyMax - pyMin)
   const { xMin, xMax, zMin, zMax } = mask.sceneBounds
 
+  // North (small v / top of mask) → −Z so it sits at the top of the screen
+  // with the top-down camera (up = −Z), matching map-reference.png.
+  // Mirror X so west (small u) is on the left of the screen.
   return {
-    x: xMin + u * (xMax - xMin),
-    z: zMax - v * (zMax - zMin),
+    x: xMax - u * (xMax - xMin),
+    z: zMin + v * (zMax - zMin),
   }
 }
 
 function sceneToPixel(x, z, mask) {
   const { xMin, xMax, zMin, zMax } = mask.sceneBounds
-  const u = (x - xMin) / (xMax - xMin)
-  const v = 1 - (z - zMin) / (zMax - zMin)
+  const u = (xMax - x) / (xMax - xMin)
+  const v = (z - zMin) / (zMax - zMin)
   const { pxMin, pxMax, pyMin, pyMax } = mask.contentBounds
 
   return {

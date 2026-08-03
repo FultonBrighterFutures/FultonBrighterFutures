@@ -29,7 +29,7 @@ import {
 } from './pointerInteraction.js'
 
 const BUILDING_SCALE = 0.18
-const MAP_BASE_ROTATION = (-3 * Math.PI) / 4
+const MAP_BASE_ROTATION = 0
 
 /**
  * Saving scene — right triptych panel.
@@ -52,7 +52,6 @@ export function createSavingScene(initialYear) {
   scene.add(rim)
 
   const mapGroup = new THREE.Group()
-  mapGroup.scale.x = -1
   mapGroup.visible = false
   scene.add(mapGroup)
 
@@ -288,8 +287,7 @@ export function createSavingScene(initialYear) {
   // Ground plane (y = 0, matching building position.y = 0) used to translate
   // screen-space pointer movement into world-space movement regardless of
   // camera framing. This is then converted into mapGroup's local space so
-  // dragging is correct even though mapGroup is rotated ~-135° and mirrored
-  // on X (scale.x = -1).
+  // dragging stays correct with the north-up map layout.
   const dragPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0)
   const dragPlaneHit = new THREE.Vector3()
 
@@ -325,7 +323,7 @@ export function createSavingScene(initialYear) {
    * Casts the current pointer position onto the y=0 ground plane and returns
    * the hit point converted into mapGroup's local space. Using local space
    * (rather than raw screen deltas) keeps dragging aligned with the cursor
-   * regardless of mapGroup's rotation/mirroring.
+   * regardless of mapGroup's rotation.
    */
   const getLocalPointOnGround = (event) => {
     if (!setPointerFromEvent(event)) return null
