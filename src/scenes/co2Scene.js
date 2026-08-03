@@ -2,6 +2,7 @@ import * as THREE from 'three'
 import { yearProgress } from '../constants/timeline'
 import { loadBuildingPositions } from '../data/mapLayout'
 import { formatCo2Lbs } from '../utils/formatMetrics'
+import { publicUrl } from '../utils/publicUrl'
 import {
   applyCo2Camera,
   getLiveTriptychCamera,
@@ -217,7 +218,7 @@ export function createCo2Scene(initialYear) {
   const initBuildings = async () => {
     try {
       const { buildings, bounds } = await loadBuildingPositions(
-        '/data/runtime/building-positions-main.json',
+        publicUrl('/data/runtime/building-positions-main.json'),
       )
       state.mapBounds = bounds
 

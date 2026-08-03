@@ -1,6 +1,7 @@
 import { getBuildingDisplayName } from './buildingRegistry'
+import { publicUrl } from '../utils/publicUrl'
 
-const MASK_URL = '/assets/map-placement-mask.png'
+const MASK_URL = publicUrl('/assets/map-placement-mask.png')
 const WORLD_WIDTH = 5.5
 const MIN_ALPHA = 24
 const WHITE_CHANNEL_MIN = 238
@@ -279,7 +280,7 @@ function separateBuildingPositions(
  * @returns {Promise<{ bounds: object, aspect: number, buildings: Array }>}
  */
 export async function loadBuildingPositions(
-  positionsUrl = '/data/runtime/building-positions.json',
+  positionsUrl = publicUrl('/data/runtime/building-positions.json'),
 ) {
   const response = await fetch(positionsUrl)
   if (!response.ok) {

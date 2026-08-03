@@ -1,3 +1,5 @@
+import { publicUrl } from '../utils/publicUrl'
+
 let solarDataCache = null
 
 /**
@@ -23,10 +25,11 @@ export async function loadSolarDataset() {
     return solarDataCache
   }
 
-  const response = await fetch('/data/runtime/solar-data.json')
+  const solarDataUrl = publicUrl('/data/runtime/solar-data.json')
+  const response = await fetch(solarDataUrl)
 
   if (!response.ok) {
-    console.warn('[data] Missing or unreadable JSON: /data/runtime/solar-data.json — run npm run import-data')
+    console.warn(`[data] Missing or unreadable JSON: ${solarDataUrl} — run npm run import-data`)
     solarDataCache = { years: [], buildings: [], monthly: [] }
     return solarDataCache
   }

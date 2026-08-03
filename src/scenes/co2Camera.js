@@ -1,7 +1,8 @@
 import * as THREE from 'three'
+import { publicUrl } from '../utils/publicUrl'
 
 const CO2_CAMERA_STORAGE_KEY = 'solar-dinosaur.co2-camera'
-const CO2_CAMERA_URL = '/data/runtime/co2-camera.json'
+const CO2_CAMERA_URL = publicUrl('/data/runtime/co2-camera.json')
 const EDIT_STORAGE_KEY = 'solar-dinosaur.triptych-camera-edit'
 const EDIT_QUERY_PARAM = 'triptychCamera'
 

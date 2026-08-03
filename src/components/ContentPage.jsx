@@ -3,6 +3,12 @@ import BackButton from './BackButton'
 import ReferencePage from './ReferencePage'
 import BuildingCollage from '../../DesignAssets/BuildingCollage.png'
 import StaticBuildingIcon from './building/StaticBuildingIcon'
+import thaisHeadshot from '../../DesignAssets/TeamHeadshots/Thais.png'
+import dkHeadshot from '../../DesignAssets/TeamHeadshots/DK.png'
+import kathleenHeadshot from '../../DesignAssets/TeamHeadshots/Kathleen.png'
+import teamImage1 from '../../DesignAssets/TeamImages/DKT1.jpg'
+import teamImage2 from '../../DesignAssets/TeamImages/DKT2.jpg'
+import teamImage3 from '../../DesignAssets/TeamImages/DKT3.jpg'
 
 const CONTENT = {
   'artist-statement': {
@@ -22,7 +28,7 @@ const CONTENT = {
         name: 'Thaís Alvarenga',
         title: 'Design Engineer',
         description: 'Led the technical build of the interactive visualization, architecting the site in Three.js, React, and Vite. Responsible for turning raw County datasets into a functioning, real-time visual system — from data processing to the 3D rendering of each building\'s orb.',
-        image: '/DesignAssets/TeamHeadshots/Thais.png',
+        image: thaisHeadshot,
         linkedin: 'https://www.linkedin.com/in/thais-alvarenga-medina/',
         email: 'thais@gatech.edu',
         instagram: 'https://www.instagram.com/latinxr.hn/',
@@ -31,7 +37,7 @@ const CONTENT = {
         name: 'Daksh Kapoor (DK)',
         title: 'Design Engineer',
         description: 'Directed the visual language and user experience of the project, from the color system and orb-based data encoding to the building design. Shaped how energy, emissions, and savings data translated into an intuitive, emotionally resonant visual story.',
-        image: '/DesignAssets/TeamHeadshots/DK.png',
+        image: dkHeadshot,
         linkedin: 'https://www.linkedin.com/in/daksh-kapoor30/',
         email: 'dkreates.design@gmail.com',
         instagram: 'https://www.instagram.com/dkreates_/',
@@ -40,7 +46,7 @@ const CONTENT = {
         name: 'Kathleen Brown',
         title: 'Project Manager',
         description: 'Oversaw the project from concept to delivery, coordinating between the design and development teams, Fulton County\'s DREAM Sustainability Division, and the Public Art Futures Lab.',
-        image: '/DesignAssets/TeamHeadshots/Kathleen.png',
+        image: kathleenHeadshot,
         linkedin: 'https://www.linkedin.com/in/kathleenbloom11/',
         email: 'Kathleen.Brown@fultoncountyga.gov',
         instagram: 'https://www.instagram.com/fultonpublicart/',
@@ -172,9 +178,9 @@ export default function ContentPage({ view, onBack }) {
                 efforts from it.
               </p>
               <div className="content-page-image-row">
-                <img src="/DesignAssets/TeamImages/DKT1.jpg" alt="Thais and DK in the field" className="content-page-inline-image" />
-                <img src="/DesignAssets/TeamImages/DKT2.jpg" alt="Thais and DK in the field" className="content-page-inline-image" />
-                <img src="/DesignAssets/TeamImages/DKT3.jpg" alt="Thais and DK in the field" className="content-page-inline-image" />
+                <img src={teamImage1} alt="Thais and DK in the field" className="content-page-inline-image" />
+                <img src={teamImage2} alt="Thais and DK in the field" className="content-page-inline-image" />
+                <img src={teamImage3} alt="Thais and DK in the field" className="content-page-inline-image" />
               </div>
               <p className="content-page-caption">
                 {/* Thais &amp; DK in the field. */}

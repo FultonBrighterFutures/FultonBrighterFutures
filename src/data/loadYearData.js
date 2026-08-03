@@ -1,6 +1,7 @@
 import { parseCsv } from './parseCsv'
 import { parseDataTest } from './parseDataTest'
 import { loadSolarDataset } from './loadSolarData'
+import { publicUrl } from '../utils/publicUrl'
 
 /** Scene keys that load data from public/data/ */
 export const DATA_SCENES = ['energy', 'co2', 'saving']
@@ -17,10 +18,11 @@ export async function loadDataTestDataset() {
     return dataTestCache
   }
 
-  const response = await fetch('/data/DataTest.csv')
+  const dataTestUrl = publicUrl('/data/DataTest.csv')
+  const response = await fetch(dataTestUrl)
 
   if (!response.ok) {
-    console.warn('[data] Missing or unreadable CSV: /data/DataTest.csv')
+    console.warn(`[data] Missing or unreadable CSV: ${dataTestUrl}`)
     dataTestCache = parseDataTest('')
     return dataTestCache
   }
@@ -52,10 +54,11 @@ export async function loadSceneCsv(variant) {
     return csvCache.get(variant)
   }
 
-  const response = await fetch(`/data/${variant}.csv`)
+  const csvUrl = publicUrl(`/data/${variant}.csv`)
+  const response = await fetch(csvUrl)
 
   if (!response.ok) {
-    console.warn(`[data] Missing or unreadable CSV: /data/${variant}.csv`)
+    console.warn(`[data] Missing or unreadable CSV: ${csvUrl}`)
     csvCache.set(variant, [])
     return []
   }
