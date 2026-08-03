@@ -1,0 +1,376 @@
+{
+  "sourceFile": "solar-building-addresses.xlsx",
+  "geocoder": "nominatim.openstreetmap.org",
+  "geocodedAt": "2026-08-03T20:51:09.098Z",
+  "buildings": [
+    {
+      "id": "adams-park-library",
+      "name": "Adams Park Library",
+      "systemName": "527-FUL Adams Library",
+      "address": "2231 Campbellton Rd SW, Atlanta, GA 30311",
+      "lat": 33.7056933,
+      "lng": -84.4616783,
+      "geocodeLabel": "Adams Park Branch Atlanta-Fulton Public Library, 2231, Campbellton Road Southwest, Atlanta, Fulton County, Georgia, 30311, United States"
+    },
+    {
+      "id": "adamsville-ac-library",
+      "name": "Adamsville (AC) Library",
+      "systemName": "514-FUL AC Heights Library",
+      "address": "3424 M.L.K. Jr Dr SW, Atlanta, GA 30331",
+      "lat": 33.7562163,
+      "lng": -84.5006751,
+      "geocodeLabel": "3424, Martin Luther King Junior Drive Southwest, Adamsville, Atlanta, Fulton County, Georgia, 30331, United States"
+    },
+    {
+      "id": "alpharetta-library",
+      "name": "Alpharetta Library",
+      "systemName": "052-FUL Alpharetta Branch Library",
+      "address": "10 Park Plaza, Alpharetta, GA 30009",
+      "lat": 34.0738809,
+      "lng": -84.2922286,
+      "geocodeLabel": "Alpharetta Library, 10, Park Plaza, Alpharetta, Fulton County, Georgia, 30009, United States"
+    },
+    {
+      "id": "animal-services",
+      "name": "Animal Services",
+      "systemName": "478-FUL Animal Services",
+      "address": "1251 Fulton Industrial Blvd NW, Atlanta, GA 30336",
+      "lat": 33.7881151,
+      "lng": -84.5021382,
+      "geocodeLabel": "1251, Fulton Industrial Boulevard Northwest, Atlanta, Fulton County, Georgia, 30336, United States"
+    },
+    {
+      "id": "auburn-ave-research-library",
+      "name": "Auburn Ave Research Library",
+      "systemName": "528-FUL Auburn Ave Library",
+      "address": "101 Auburn Ave NE, Atlanta, GA 30303",
+      "lat": 33.7553049,
+      "lng": -84.3839114,
+      "geocodeLabel": "Auburn Avenue Research Library, 101, Auburn Avenue Northeast, Sweet Auburn, Old Fourth Ward, Atlanta, Fulton County, Georgia, 30303, United States"
+    },
+    {
+      "id": "aviation-cultural-center",
+      "name": "Aviation Cultural Center",
+      "systemName": "513-FUL Aviation Center",
+      "address": "3900 Aviation Cir NW, Atlanta, GA 30336",
+      "lat": 33.773588,
+      "lng": -84.515873,
+      "geocodeLabel": "3900, Aviation Circle Northwest, Carroll Heights, Atlanta, Fulton County, Georgia, 30336, United States"
+    },
+    {
+      "id": "benson-senior-center",
+      "name": "Benson Senior Center",
+      "systemName": "051-FUL Benson Senior Center",
+      "address": "6500 Vernon Woods Dr NE, Sandy Springs, GA 30328",
+      "lat": 33.9298945,
+      "lng": -84.3780906,
+      "geocodeLabel": "6500, Vernon Woods Drive Northeast, Atlanta, Fulton County, Georgia, 30328, United States"
+    },
+    {
+      "id": "board-of-health",
+      "name": "Board of Health",
+      "systemName": "511-FUL Board of Health",
+      "address": "10 Park Place South SE, Atlanta, GA 30303",
+      "lat": 33.7540614,
+      "lng": -84.3885946,
+      "geocodeLabel": "Ten Park Place, 10, Park Place Southeast, Five Points, Old Fourth Ward, Atlanta, Fulton County, Georgia, 30303, United States"
+    },
+    {
+      "id": "bowden-senior-center",
+      "name": "Bowden Senior Center",
+      "systemName": "534-FUL Bowden Senior",
+      "address": "2885 Church St, East Point, GA 30344",
+      "lat": 33.6761123,
+      "lng": -84.4448251,
+      "geocodeLabel": "2885, Church Street, East Point, Fulton County, Georgia, 30344, United States"
+    },
+    {
+      "id": "buckhead-library",
+      "name": "Buckhead Library",
+      "systemName": "529-FUL Buckhead Library",
+      "address": "269 Buckhead Ave NE, Atlanta, GA 30305",
+      "lat": 33.8375972,
+      "lng": -84.3793866,
+      "geocodeLabel": "Buckhead Library, 259;269, Buckhead Avenue Northeast, Buckhead, Atlanta, Fulton County, Georgia, 30305, United States"
+    },
+    {
+      "id": "cascade-sw-library",
+      "name": "Cascade (SW) Library",
+      "systemName": "523-FUL Cascade Library",
+      "address": "3665 Cascade Rd, Atlanta, GA 30331",
+      "lat": 33.7245911,
+      "lng": -84.5066923,
+      "geocodeLabel": "Evelyn G. Lowery Library At Cascade, 3665, Cascade Road, Atlanta, Fulton County, Georgia, 30331, United States"
+    },
+    {
+      "id": "cleveland-ave-library",
+      "name": "Cleveland Ave Library",
+      "systemName": "530-FUL Cleveland Library",
+      "address": "47 Cleveland Ave SW, Atlanta, GA 30315",
+      "lat": 33.6815245,
+      "lng": -84.3905517,
+      "geocodeLabel": "Cleveland Avenue Library, 47, Cleveland Avenue Southwest, Atlanta, Fulton County, Georgia, 30315, United States"
+    },
+    {
+      "id": "college-park-library",
+      "name": "College Park Library",
+      "systemName": "531-FUL College Park Library",
+      "address": "3647 Main St, College Park, GA 30337",
+      "lat": 33.6556893,
+      "lng": -84.4497705,
+      "geocodeLabel": "College Park Branch Atlanta-Fulton Library, 3647, Main Street, College Park, Fulton County, Georgia, 30337, United States"
+    },
+    {
+      "id": "college-park-regional-health",
+      "name": "College Park Regional Health",
+      "systemName": "122-FUL College Park Regional Health Center",
+      "address": "1920 John Wesley Ave, College Park, GA 30337",
+      "lat": 33.6509834,
+      "lng": -84.4516939,
+      "geocodeLabel": "1920, John Wesley Avenue, College Park, Fulton County, Georgia, 30337, United States"
+    },
+    {
+      "id": "dogwood-library",
+      "name": "Dogwood Library",
+      "systemName": "517-FUL Dogwood Library",
+      "address": "1838 Donald Lee Hollowell Pkwy NW, Atlanta, GA 30318",
+      "lat": 33.7740462,
+      "lng": -84.4470609,
+      "geocodeLabel": "Dogwood Branch Atlanta-Fulton Public Library, 1838, Donald Lee Hollowell Parkway Northwest, Grove Park, Simsville, Atlanta, Fulton County, Georgia, 30318, United States"
+    },
+    {
+      "id": "dogwood-senior-center",
+      "name": "Dogwood Senior Center",
+      "systemName": "516-FUL Dogwood Senior",
+      "address": "1953 Donald Lee Hollowell Pkwy NW, Atlanta, GA 30318",
+      "lat": 33.7760843,
+      "lng": -84.4481983,
+      "geocodeLabel": "Dogwood Neighborhood Senior Center, 1953, Donald Lee Hollowell Parkway Northwest, Grove Park, Simsville, Atlanta, Fulton County, Georgia, 30318, United States"
+    },
+    {
+      "id": "e-roswell-library",
+      "name": "E Roswell Library",
+      "systemName": "512-FUL E Roswell Library",
+      "address": "2301 Holcomb Bridge Rd, Roswell, GA 30076",
+      "lat": 34.0029445,
+      "lng": -84.2944605,
+      "geocodeLabel": "East Roswell Branch Library, 2301, Holcomb Bridge Road, Alstead, Roswell, Fulton County, Georgia, 30076, United States"
+    },
+    {
+      "id": "gladys-dennard-library",
+      "name": "Gladys Dennard Library",
+      "systemName": "533-FUL Dennard Library",
+      "address": "4055 Flat Shoals Rd, Union City, GA 30291",
+      "lat": 33.5878769,
+      "lng": -84.5195038,
+      "geocodeLabel": "Gladys S. Dennard Library at South Fulton, 4055, Flat Shoals Road, Shandra Estates, Union City, Fulton County, Georgia, 30291, United States"
+    },
+    {
+      "id": "hapeville-library",
+      "name": "Hapeville Library",
+      "systemName": "535-FUL Hapeville Library",
+      "address": "525 King Arnold St, Hapeville, GA 30354",
+      "lat": 33.6583805,
+      "lng": -84.4049173,
+      "geocodeLabel": "Hapeville Library, 525, King Arnold Street, Hapeville, Fulton County, Georgia, 30354, United States"
+    },
+    {
+      "id": "juvenile-justice-center",
+      "name": "Juvenile Justice Center",
+      "systemName": "544-FUL Powell Juvenile",
+      "address": "395 Pryor St SW #4116, Atlanta, GA 30312",
+      "lat": 33.7436124,
+      "lng": -84.3945881,
+      "geocodeLabel": "395, Pryor Street Southwest, Mechanicsville, Atlanta, Fulton County, Georgia, 30312, United States"
+    },
+    {
+      "id": "maxwell-rd-driver-services",
+      "name": "Maxwell Rd (Driver Services)",
+      "systemName": "479-FUL Driver Services",
+      "address": "11575 Maxwell Rd, Alpharetta, GA 30009",
+      "lat": 34.0630539,
+      "lng": -84.3011085,
+      "geocodeLabel": "Georgia Department of Driver Services, 11575, Maxwell Road, Alpharetta, Fulton County, Georgia, 30009, United States"
+    },
+    {
+      "id": "medical-examiner",
+      "name": "Medical Examiner",
+      "systemName": "538-FUL Medical Examiner",
+      "address": "430 Pryor St SW, Atlanta, GA 30312",
+      "lat": 33.7435088,
+      "lng": -84.3943919,
+      "geocodeLabel": "430, Pryor Street Southwest, Mechanicsville, Atlanta, Fulton County, Georgia, 30312, United States"
+    },
+    {
+      "id": "metropolitan-library",
+      "name": "Metropolitan Library",
+      "systemName": "056-FUL Metropolitan Library",
+      "address": "1332 Metropolitan Pkwy SW, Atlanta, GA 30310",
+      "lat": 33.7187849,
+      "lng": -84.4073772,
+      "geocodeLabel": "Metropolitan Library, 1332, Metropolitan Parkway Southwest, Atlanta, Fulton County, Georgia, 30310, United States"
+    },
+    {
+      "id": "mills-senior-center",
+      "name": "Mills Senior Center",
+      "systemName": "473-FUL Mills Senior",
+      "address": "515 John Wesley Dobbs Ave NE, Atlanta, GA 30312",
+      "lat": 33.759229,
+      "lng": -84.37011,
+      "geocodeLabel": "515, John Wesley Dobbs Avenue Northeast, Old Fourth Ward, Atlanta, Fulton County, Georgia, 30312, United States"
+    },
+    {
+      "id": "milton-library",
+      "name": "Milton Library",
+      "systemName": "476-FUL Milton Library",
+      "address": "855 Mayfield Rd, Milton, GA 30009",
+      "lat": 34.0902858,
+      "lng": -84.3366535,
+      "geocodeLabel": "Milton Library Branch, 855, Mayfield Road, Crabapple, Milton, Fulton County, Georgia, 30004, United States"
+    },
+    {
+      "id": "ne-spruill-oaks-library",
+      "name": "NE Spruill Oaks Library",
+      "systemName": "519-FUL NE Spruill Library",
+      "address": "9560 Spruill Rd, Johns Creek, GA 30022",
+      "lat": 34.0141593,
+      "lng": -84.2242523,
+      "geocodeLabel": "Northeast-Spruill Oak Regional Library, 9560, Spruill Road, Alpharetta, Fulton County, Georgia, 30022, United States"
+    },
+    {
+      "id": "neighborhood-union-health",
+      "name": "Neighbor-hood Union Health",
+      "systemName": "054-FUL Neighborhood Union Health Center",
+      "address": "186 Sunset Ave NW #186, Atlanta, GA 30314",
+      "lat": 33.7596461,
+      "lng": -84.4103844,
+      "geocodeLabel": "186, Sunset Avenue Northwest, Vine City, Bankhead, Atlanta, Fulton County, Georgia, 30314, United States"
+    },
+    {
+      "id": "new-beginnings-senior-center",
+      "name": "New Beginnings Senior Center",
+      "systemName": "539-FUL New Beginnings",
+      "address": "66 Brooks Dr, Fairburn, GA 30213",
+      "lat": 33.5609527,
+      "lng": -84.5872023,
+      "geocodeLabel": "66, Brooks Drive, Fairburn, Fulton County, Georgia, 30213, United States"
+    },
+    {
+      "id": "north-fulton-service-center",
+      "name": "North Fulton Service Center",
+      "systemName": "541-FUL N. Fulton Service",
+      "address": "7741 Roswell Rd NE, Atlanta, GA 30350",
+      "lat": 33.877112,
+      "lng": -84.3798421,
+      "geocodeLabel": "Roswell Road Northeast, Atlanta, Fulton County, Georgia, 30342, United States"
+    },
+    {
+      "id": "northside-library",
+      "name": "Northside Library",
+      "systemName": "542-FUL Northside Library",
+      "address": "3295 Northside Pkwy NW, Atlanta, GA 30327",
+      "lat": 33.8451477,
+      "lng": -84.4254532,
+      "geocodeLabel": "Northside Branch Library, 3295, Northside Parkway Northwest, Atlanta, Fulton County, Georgia, 30327, United States"
+    },
+    {
+      "id": "northwest-library",
+      "name": "Northwest Library",
+      "systemName": "050-FUL Northwest Branch Library",
+      "address": "2489 Perry Blvd NW, Atlanta, GA 30318",
+      "lat": 33.805302,
+      "lng": -84.4701759,
+      "geocodeLabel": "Northwest Library at Scotts Crossing, 2489, Perry Boulevard Northwest, West Highland, Bolton, Atlanta, Fulton County, Georgia, 30318, United States"
+    },
+    {
+      "id": "ocee-library",
+      "name": "Ocee Library",
+      "systemName": "524-FUL Ocee Library",
+      "address": "5090 Abbotts Bridge Rd, Johns Creek, GA 30005",
+      "lat": 34.0624865,
+      "lng": -84.2103093,
+      "geocodeLabel": "5090, Abbotts Bridge Road, Ocee, Johns Creek, Fulton County, Georgia, 30005, United States"
+    },
+    {
+      "id": "palmetto-library",
+      "name": "Palmetto Library",
+      "systemName": "520-FUL Palmetto Library",
+      "address": "9111 Cascade Palmetto Hwy, Palmetto, GA 30268",
+      "lat": 33.5306456,
+      "lng": -84.6643119,
+      "geocodeLabel": "Palmetto Branch Library, 9111, Palmetto Cascade Highway, Palmetto, Fulton County, Georgia, 30268, United States"
+    },
+    {
+      "id": "ponce-de-leon-jp-library",
+      "name": "Ponce de Leon (JP) Library",
+      "systemName": "515-FUL JP Garner Library",
+      "address": "980 Ponce De Leon Ave NE, Atlanta, GA 30306",
+      "lat": 33.774179,
+      "lng": -84.3550917,
+      "geocodeLabel": "Ponce De Leon Branch Library, 980, Ponce de Leon Avenue Northeast, Linwood, Old Fourth Ward, Atlanta, Fulton County, Georgia, 30306, United States"
+    },
+    {
+      "id": "qls-senior-center",
+      "name": "QLS Senior Center",
+      "systemName": "525-FUL Quality Senior",
+      "address": "4001 Danforth Rd SW, Atlanta, GA 30331",
+      "lat": 33.7267205,
+      "lng": -84.5195836,
+      "geocodeLabel": "4001, Danforth Road Southwest, Atlanta, Fulton County, Georgia, 30331, United States"
+    },
+    {
+      "id": "sandy-springs-library",
+      "name": "Sandy Springs Library",
+      "systemName": "545-FUL Sandy Springs Library",
+      "address": "395 Mount Vernon Hwy NE, Atlanta, GA 30328",
+      "lat": 33.9240177,
+      "lng": -84.3741314,
+      "geocodeLabel": "Sandy Springs Regional Library, 395, Mount Vernon Highway, Hammond, Sandy Springs, Fulton County, Georgia, 30328, United States"
+    },
+    {
+      "id": "se-neighborhood-senior-center",
+      "name": "SE Neighborhood Senior Center",
+      "systemName": "547-FUL SE Neighborhood",
+      "address": "1650 New Town Cir SE, Atlanta, GA 30315",
+      "lat": 33.7065297,
+      "lng": -84.3629818,
+      "geocodeLabel": "New Town Circle Southeast, Thomasville, Atlanta, Fulton County, Georgia, 30315, United States"
+    },
+    {
+      "id": "south-fulton-service-center",
+      "name": "South Fulton Service Center",
+      "systemName": "546-FUL S. Fulton Service",
+      "address": "5710 Stonewall Tell Rd #160, College Park, GA 30349",
+      "lat": 33.6019897,
+      "lng": -84.5505942,
+      "geocodeLabel": "5710, Stonewall Tell Road, Stonewall, South Fulton, Fulton County, Georgia, 30349, United States"
+    },
+    {
+      "id": "southeast-atlanta-library",
+      "name": "Southeast Atlanta Library",
+      "systemName": "053-FUL Southeast Branch Library",
+      "address": "1463 Pryor Rd SW, Atlanta, GA 30315",
+      "lat": 33.6928571,
+      "lng": -84.3991637,
+      "geocodeLabel": "Pryor Road Southwest, Atlanta, Fulton County, Georgia, 30315, United States"
+    },
+    {
+      "id": "union-city-jail",
+      "name": "Union City Jail",
+      "systemName": "474-FUL Union City Jail",
+      "address": "6500 Watson St, Union City, GA 30291",
+      "lat": 33.578616,
+      "lng": -84.551339,
+      "geocodeLabel": "6500, Watson Street, UFP Construction Materials, Shannon Villas, Union City, Fulton County, Georgia, 30291, United States"
+    },
+    {
+      "id": "wolf-creek-library",
+      "name": "Wolf Creek Library",
+      "systemName": "055-FUL Wolf Creek Library",
+      "address": "3100 Enon Rd, Atlanta, GA 30331",
+      "lat": 33.6725487,
+      "lng": -84.5739722,
+      "geocodeLabel": "Wolf Creek Branch Library, 3100, Enon Road, Atlanta, Fulton County, Georgia, 30331, United States"
+    }
+  ]
+}
