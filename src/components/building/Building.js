@@ -209,11 +209,11 @@ export class Building
 
         this.group = new THREE.Group()
         this.group.position.set(position.x, position.y, position.z)
-        this.group.scale.setScalar(scale)
 
         const themeMatcap = ensureThemeMatcap(theme)
         this._createMeshes(themeMatcap.texture)
         this._applyThemeTextures()
+        this.setScale(scale)
         this.update(0)
     }
 
@@ -223,6 +223,8 @@ export class Building
             matcap: sphereMatcapTexture,
             transparent: true,
             opacity: 0,
+            // Let renderOrder stack small orbs above large ones when footprints overlap.
+            depthWrite: false,
         })
 
         this.ring1Material = new THREE.MeshMatcapMaterial()
@@ -290,6 +292,12 @@ export class Building
     setScale(scale)
     {
         this.group.scale.setScalar(scale)
+        // Smaller buildings draw above larger ones when footprints overlap.
+        const order = Math.round(1000 / Math.max(Math.abs(scale), 0.001))
+        this.group.renderOrder = order
+        this.sphere.renderOrder = order
+        this.ring1.renderOrder = order
+        this.ring2.renderOrder = order
     }
 
     setDisplayOpacity(opacity)

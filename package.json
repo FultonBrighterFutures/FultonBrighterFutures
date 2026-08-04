@@ -9,7 +9,7 @@
     "import-data": "node scripts/import-solar-data.mjs",
     "validate-data": "node scripts/validate-solar-data.mjs",
     "project-positions": "node scripts/project-building-positions.mjs",
-    "deploy": "gh-pages -d dist",
+    "deploy": "node scripts/deploy-gh-pages.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },

@@ -89,6 +89,34 @@ export function scaleBuildingByMetric(value, minValue, maxValue, baseScale, maxS
 }
 
 /**
+ * Among overlapping pick-sphere hits, prefer the smallest building.
+ * Large orbs extend closer to a top-down camera, so distance-first raycasts
+ * otherwise always win for the bigger building.
+ * @param {Array<{ object: { userData: Record<string, unknown>, parent?: { scale: { x: number } } } }>} hits
+ * @param {string} idKey userData key (e.g. 'energyBuildingId')
+ * @returns {string | null}
+ */
+export function resolveBuildingPick(hits, idKey) {
+  if (!hits?.length) return null
+
+  let bestId = null
+  let bestScale = Infinity
+
+  for (const hit of hits) {
+    const id = hit.object?.userData?.[idKey]
+    if (id == null) continue
+
+    const scale = Math.abs(hit.object.parent?.scale?.x ?? 1)
+    if (scale < bestScale) {
+      bestScale = scale
+      bestId = id
+    }
+  }
+
+  return bestId
+}
+
+/**
  * Update building visibility/scale for a timeline year.
  * Enter/exit timing is shared across scene panels via sceneAnimation.js.
  */

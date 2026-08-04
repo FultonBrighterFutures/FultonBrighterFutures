@@ -12,7 +12,7 @@ import {
   subscribeTriptychCamera,
 } from './co2Camera'
 import { getGlobalElapsedTime } from './sceneAnimation'
-import { addLights, createCamera, createRenderer, fitTopDownCamera, isBuildingActive, scaleBuildingByMetric, commitSceneBuildings } from './shared'
+import { addLights, createCamera, createRenderer, fitTopDownCamera, isBuildingActive, scaleBuildingByMetric, commitSceneBuildings, resolveBuildingPick } from './shared'
 import { Building, updateBuildingThemeMatcap } from '../components/building/index.js'
 import { createBuildingParticles, PARTICLE_METRIC } from './createBuildingParticles.js'
 import {
@@ -320,7 +320,7 @@ export function createCo2Scene(initialYear) {
 
     raycaster.setFromCamera(pointer, camera)
     const hits = raycaster.intersectObjects(getPickables(), false)
-    return hits[0]?.object?.userData?.co2BuildingId ?? null
+    return resolveBuildingPick(hits, 'co2BuildingId')
   }
 
   /**

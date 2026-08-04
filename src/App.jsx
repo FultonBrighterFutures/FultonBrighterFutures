@@ -24,7 +24,7 @@ import FultonCountyBackdrop from './components/lookAhead/FultonCountyBackdrop'
 // change to make carousel timeline go faster or slower
 const AUTO_ADVANCE_DELAY_MS = 30_000
 // Keep wheel/swipe timeline navigation available, but disabled for now.
-const TIMELINE_SCROLL_ENABLED = true
+const TIMELINE_SCROLL_ENABLED = false
 
 function App() {
   const [year, setYear] = useState(DEFAULT_YEAR)

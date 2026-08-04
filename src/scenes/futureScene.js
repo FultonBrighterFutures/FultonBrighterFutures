@@ -21,6 +21,7 @@ import {
   scaleBuildingByMetric,
   activeMetricRange,
   commitSceneBuildings,
+  resolveBuildingPick,
 } from './shared'
 import { Building, updateBuildingThemeMatcap } from '../components/building/index.js'
 import { createBuildingParticles, PARTICLE_METRIC } from './createBuildingParticles.js'
@@ -689,7 +690,7 @@ export function createFutureScene() {
     if (!setPointerFromEvent(event)) return null
     raycaster.setFromCamera(pointer, camera)
     const hits = raycaster.intersectObjects(getPickables(), false)
-    return hits[0]?.object?.userData?.futureBuildingId ?? null
+    return resolveBuildingPick(hits, 'futureBuildingId')
   }
 
   const getLocalPointOnGround = (event) => {
