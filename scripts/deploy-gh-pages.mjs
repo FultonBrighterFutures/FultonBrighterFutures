@@ -8,16 +8,18 @@ import { fileURLToPath } from 'node:url'
  *
  * Same as the previous `gh-pages -d dist` npm script, with one addition:
  * enable core.longpaths for this process only. That fixes Windows
- * "Filename too long" errors on deep OneDrive paths, and is a no-op
- * harmlessly ignored elsewhere (macOS/Linux, or Windows with short paths).
+ * "Filename too long" errors on deep OneDrive paths, and is harmless
+ * elsewhere (macOS/Linux, or Windows with short paths).
+ *
+ * Invokes the gh-pages JS entry via node (no shell) so paths with spaces
+ * — e.g. OneDrive folder names — do not break on Windows.
  */
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const dist = path.join(root, 'dist')
-const binName = process.platform === 'win32' ? 'gh-pages.cmd' : 'gh-pages'
-const bin = path.join(root, 'node_modules', '.bin', binName)
+const ghPagesJs = path.join(root, 'node_modules', 'gh-pages', 'bin', 'gh-pages.js')
 
-if (!fs.existsSync(bin)) {
-  console.error(`Could not find ${bin}. Run npm install first.`)
+if (!fs.existsSync(ghPagesJs)) {
+  console.error(`Could not find ${ghPagesJs}. Run npm install first.`)
   process.exit(1)
 }
 
@@ -28,11 +30,10 @@ const env = {
   GIT_CONFIG_VALUE_0: 'true',
 }
 
-const result = spawnSync(bin, ['-d', dist], {
+const result = spawnSync(process.execPath, [ghPagesJs, '-d', dist], {
   cwd: root,
   env,
   stdio: 'inherit',
-  shell: process.platform === 'win32',
 })
 
 if (result.error) {
