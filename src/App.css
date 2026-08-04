@@ -1,8 +1,8 @@
 .intro-screen {
   --intro-stack-gap: 40px;
   --intro-content-offset: 88px;
-  /* Keep intro typography at its original scale. */
-  font-size: 18px;
+  /* Intro typography scaled +40% from the original fixed size. */
+  font-size: 25.2px;
   position: fixed;
   inset: 0;
   z-index: 100;
@@ -67,7 +67,7 @@
 .intro-screen__copy {
   margin: 0;
   max-width: 900px;
-  font-size: 18px;
+  font-size: 22.5px;
   line-height: 1.25;
   opacity: 1;
 }
@@ -77,7 +77,7 @@
   z-index: 21;
   margin: 0;
   padding: 14px 24px;
-  font-size: 12px;
+  font-size: 16.8px;
   width: 100%;
   max-width: 180px;
   justify-content: center;
