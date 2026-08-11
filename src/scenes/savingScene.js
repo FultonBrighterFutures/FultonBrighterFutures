@@ -1,7 +1,11 @@
 import * as THREE from 'three'
 import { yearProgress } from '../constants/timeline'
 import { loadBuildingPositions } from '../data/mapLayout'
-import { formatDollars } from '../utils/formatMetrics'
+import {
+  DEFERRED_SAVINGS_NOTE,
+  formatDollars,
+  hasNoCurrentSavings,
+} from '../utils/formatMetrics'
 import { publicUrl } from '../utils/publicUrl'
 import {
   applyCo2Camera,
@@ -106,10 +110,18 @@ export function createSavingScene(initialYear) {
     // yearEl.textContent = String(state.year)
     // labelEl.append(yearEl)
 
+    const annualSavings = stats?.annualSavings ?? 0
     const statEl = document.createElement('span')
     statEl.className = 'saving-building-label__stat'
-    statEl.textContent = formatDollars(stats?.annualSavings ?? 0)
+    statEl.textContent = formatDollars(annualSavings)
     labelEl.append(statEl)
+
+    if (hasNoCurrentSavings(annualSavings)) {
+      const noteEl = document.createElement('span')
+      noteEl.className = 'saving-building-label__note'
+      noteEl.textContent = DEFERRED_SAVINGS_NOTE
+      labelEl.append(noteEl)
+    }
 
     labelEl.hidden = false
   }

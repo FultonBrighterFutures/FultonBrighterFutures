@@ -3,6 +3,15 @@
  * Energy: kWh | CO₂: lbs | Money: full dollars (no K/M abbreviations)
  */
 
+/** When solar is active but calculated savings are $0 or negative (e.g. already-low local rates). */
+export const DEFERRED_SAVINGS_NOTE =
+  'This building already has a low electricity rate, so dollar savings are expected to grow over time.'
+
+export function hasNoCurrentSavings(dollars) {
+  const value = Number(dollars)
+  return !Number.isFinite(value) || value <= 0
+}
+
 export function formatEnergyKwh(kwh) {
   const value = Number(kwh)
   if (!Number.isFinite(value) || value <= 0) return '0 kWh'

@@ -1,4 +1,10 @@
-import { formatCo2Lbs, formatDollars, formatEnergyKwh } from '../../utils/formatMetrics'
+import {
+  DEFERRED_SAVINGS_NOTE,
+  formatCo2Lbs,
+  formatDollars,
+  formatEnergyKwh,
+  hasNoCurrentSavings,
+} from '../../utils/formatMetrics'
 
 function AddPlusIcon() {
   return (
@@ -80,6 +86,11 @@ export default function FutureStats({
         ? 'saving-building-label'
         : 'energy-building-label'
 
+  const showDeferredSavingsNote =
+    activeMetric === 'money' &&
+    selectedBuilding &&
+    hasNoCurrentSavings(selectedBuilding.annualSavings)
+
   return (
     <aside className="future-stats">
       <div className="future-metric">
@@ -101,6 +112,9 @@ export default function FutureStats({
         <div className={`future-building-info ${buildingLabelClass}`} aria-live="polite">
           <span className={`${buildingLabelClass}__name`}>{selectedBuilding.name}</span>
           <span className={`${buildingLabelClass}__stat`}>{selectedStat}</span>
+          {showDeferredSavingsNote ? (
+            <span className={`${buildingLabelClass}__note`}>{DEFERRED_SAVINGS_NOTE}</span>
+          ) : null}
         </div>
       )}
     </aside>
