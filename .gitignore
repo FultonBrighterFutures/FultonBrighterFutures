@@ -26,3 +26,7 @@ dist-ssr
 # Excel lock / temp files
 ~$*.xlsx
 **/~$*.xlsx
+
+# Local Update Desk
+.env.update-desk
+public/data/.update-desk-staging/

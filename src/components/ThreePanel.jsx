@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { yearProgress } from '../constants/timeline'
-import { loadSceneCsv, mapSceneYearData } from '../data'
+import { formatPartialYearSubtitle, loadSceneCsv, loadSolarDataset, mapSceneYearData } from '../data'
 import { sceneFactories } from '../scenes'
 import { formatCo2Equivalency, formatEnergyEquivalency } from '../utils/epaEquivalencies'
 import { formatCo2Lbs, formatDollars, formatEnergyKwh } from '../utils/formatMetrics'
@@ -148,6 +148,7 @@ export default function ThreePanel({
   onFutureApiRef.current = onFutureApi
   const [yearTotalLabel, setYearTotalLabel] = useState(null)
   const [yearEquivalency, setYearEquivalency] = useState(null)
+  const [yearSpanLabel, setYearSpanLabel] = useState(null)
 
   useEffect(() => {
     const container = containerRef.current
@@ -259,14 +260,17 @@ export default function ThreePanel({
     let cancelled = false
 
     const updateFromYear = async () => {
-      const progress = yearProgress(year)
       let data = { year }
+      let spanLabel = null
+      let progress = yearProgress(year)
 
       if (variant !== 'future') {
         try {
-          const rows = await loadSceneCsv(variant)
+          const [rows, dataset] = await Promise.all([loadSceneCsv(variant), loadSolarDataset()])
           if (cancelled) return
           data = mapSceneYearData(variant, rows, year)
+          spanLabel = formatPartialYearSubtitle(dataset, year)
+          progress = yearProgress(year, dataset.years)
         } catch (error) {
           console.warn(`[data] Failed to load CSV for "${variant}" year ${year}`, error)
         }
@@ -276,6 +280,7 @@ export default function ThreePanel({
       applyYearRef.current?.({ year, data, progress })
       setYearTotalLabel(formatYearTotal(variant, data))
       setYearEquivalency(getYearEquivalency(variant, data))
+      setYearSpanLabel(spanLabel)
     }
 
     updateFromYear()
@@ -325,8 +330,8 @@ export default function ThreePanel({
                 : 'TAX PAYER MONEY SAVED'}
           </span>
           <span className="scene-year-total__value">{yearTotalLabel}</span>
-          {year === 2026 && (
-            <span className="scene-year-total__subtitle">(Jan–Jun 2026)</span>
+          {yearSpanLabel && (
+            <span className="scene-year-total__subtitle">{yearSpanLabel}</span>
           )}
           {yearEquivalency && (
             <div className="scene-year-total__equiv">

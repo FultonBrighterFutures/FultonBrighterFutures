@@ -8,6 +8,7 @@ import {
   mapCo2YearData,
   mapEnergyYearData,
   mapSavingYearData,
+  latestDataYear,
 } from '../data'
 import { getFutureSticker } from '../data/futureStickers.js'
 import { createBuildingTypeSprite } from './createBuildingTypeSprite.js'
@@ -41,7 +42,6 @@ import {
   removeScenePointerListeners,
 } from './pointerInteraction.js'
 
-const LOOK_AHEAD_YEAR = 2026
 const BUILDING_SCALE = 0.18
 const USER_BUILDING_SCALE = 0.28
 const MAP_BASE_ROTATION = 0
@@ -96,7 +96,7 @@ function createStickerSprite(stickerId) {
 }
 
 /**
- * Future / Look Ahead scene — same building map as the main 2026 view,
+ * Future / Look Ahead scene — same building map as the latest data year,
  * with grey (neutral) buildings, tab-colored particle clouds, and user adds.
  */
 export function createFutureScene() {
@@ -104,7 +104,8 @@ export function createFutureScene() {
   const camera = createCamera()
   const renderer = createRenderer()
   const state = {
-    year: LOOK_AHEAD_YEAR,
+    year: null,
+    dataYears: [],
     data: { buildings: [] },
     baselineBuildings: [],
     metricsById: new Map(),
@@ -120,6 +121,9 @@ export function createFutureScene() {
     userBuildings: [],
     placementMode: false,
   }
+
+  const resolveLookAheadYear = () => state.year ?? latestDataYear(state.dataYears)
+  const lookAheadProgress = () => yearProgress(resolveLookAheadYear(), state.dataYears)
 
   addLights(scene, 0xfff4e0)
   const rim = new THREE.DirectionalLight(0xb0b0b0, 0.35)
@@ -457,10 +461,11 @@ export function createFutureScene() {
 
   const applyYear = () => {
     if (!state.ready) return
+    const year = resolveLookAheadYear()
     commitYear({
-      year: LOOK_AHEAD_YEAR,
+      year,
       data: state.data,
-      progress: yearProgress(LOOK_AHEAD_YEAR),
+      progress: lookAheadProgress(),
     })
   }
 
@@ -570,9 +575,13 @@ export function createFutureScene() {
       state.mapBounds = bounds
       state.mapMask = mask
 
-      const energyData = mapEnergyYearData(dataset, LOOK_AHEAD_YEAR)
-      const co2Data = mapCo2YearData(dataset, LOOK_AHEAD_YEAR)
-      const savingData = mapSavingYearData(dataset, LOOK_AHEAD_YEAR)
+      state.dataYears = [...(dataset.years ?? [])]
+      const lookAheadYear = latestDataYear(dataset)
+      state.year = lookAheadYear
+
+      const energyData = mapEnergyYearData(dataset, lookAheadYear)
+      const co2Data = mapCo2YearData(dataset, lookAheadYear)
+      const savingData = mapSavingYearData(dataset, lookAheadYear)
 
       const co2ById = new Map((co2Data.buildings ?? []).map((b) => [b.id, b]))
       const savingById = new Map((savingData.buildings ?? []).map((b) => [b.id, b]))
@@ -650,9 +659,9 @@ export function createFutureScene() {
 
       state.ready = true
       commitYear({
-        year: LOOK_AHEAD_YEAR,
+        year: lookAheadYear,
         data: state.data,
-        progress: yearProgress(LOOK_AHEAD_YEAR),
+        progress: lookAheadProgress(),
       })
       mapGroup.visible = true
       notifyBaselineTotals()
@@ -865,7 +874,7 @@ export function createFutureScene() {
   }
 
   const animate = () => {
-    const speed = 1 + yearProgress(LOOK_AHEAD_YEAR) * 0.5
+    const speed = 1 + lookAheadProgress() * 0.5
     const animationTime = getGlobalElapsedTime() * speed
     const transitionTime = getGlobalElapsedTime()
 

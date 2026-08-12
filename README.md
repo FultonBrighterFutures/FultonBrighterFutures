@@ -15,7 +15,8 @@ A React + Vite website with three side-by-side Three.js scenes (energy, CO2, and
 | Change Three.js scene visuals | **`src/scenes/{energy,co2,saving,future}Scene.js`** |
 | Adjust triptych or Look Ahead camera framing (dev tool) | **`?triptychCamera=1`** or **Shift+C** — see [Camera framing](#triptych-camera-framing-dev-tool) |
 | Adjust Fulton County backdrop (dev tool) | Open Look Ahead and press **Shift+M** — see [Fulton backdrop](#repositioning-the-fulton-county-backdrop) |
-| Replace / regenerate year metrics | **`public/data/sources/*.xlsx`** then `npm run import-data` → **`public/data/runtime/solar-data.json`** |
+| Replace / regenerate year metrics | **Update Desk** (below) or drop Excel under **`public/data/sources/`** then `npm run import-data` |
+| Change building display names / key rates | **Update Desk** review step, or edit **`public/data/sources/building-display-names.json`** / **`savings-rate-overrides.json`** then `npm run import-data` |
 | Map dataset fields → scene values | **`src/data/mapYearData.js`** |
 
 This guide assumes you are starting on a machine with **no development tools installed** yet.
@@ -177,6 +178,55 @@ To stop the server, press `Ctrl+C` in the terminal.
 | `npm run build` | Create an optimized production build in `dist/` |
 | `npm run preview` | Serve the production build locally (run `build` first) |
 | `npm run lint` | Check the code with ESLint |
+| `npm run import-data` | Rebuild `public/data/runtime/solar-data.json` from Excel sources |
+| `npm run validate-data` | Check catalog / positions / metrics consistency |
+| `npm run update-desk` | Open the local Update Desk (upload Excel → review → publish) |
+| `npm run deploy` | Publish `dist/` to GitHub Pages |
+
+---
+
+## Update building data (Update Desk)
+
+Use this when someone on the team needs to refresh energy / savings / address Excel files **without editing code**. Everything stays on this computer + GitHub (no outside hosting).
+
+### First-time setup (once per computer)
+
+1. Install **Git** and **Node.js LTS** (sections above).
+2. Clone the repo and run `npm install`.
+3. Make sure you can push to GitHub (GitHub Desktop or Git Credential Manager sign-in).
+4. Create or edit `.env.update-desk` in the project root:
+
+```text
+UPDATE_DESK_PASSWORD=futures-lab-2026
+```
+
+Do **not** commit `.env.update-desk`.
+
+### Day-to-day update
+
+1. Double-click **`Start-Update-Desk.bat`** (Windows), or run `npm run update-desk`.
+2. Browser opens to `http://127.0.0.1:4178/` — unlock with the shared password.
+3. **Upload** one or more `.xlsx` files (filenames do not matter). The desk detects contents:
+   - year sheets → building kWh energy data
+   - `Elec Rates` / `CS Rates` sheets → rates & savings
+   - address + building name columns → addresses
+4. Click **Process uploads**. Review contribution cards, **key Elec/CS rates**, and **display names**.
+5. Click **Apply** — previous sources are archived under `public/data/archive/sources/<timestamp>/`, and runtime JSON is rebuilt.
+6. Click **Publish** — commits data changes, pushes to GitHub, builds, and deploys GitHub Pages.
+
+If Process shows **Unknown** buildings or **No map position**, stop and ask a developer before publishing.
+
+### Troubleshooting (Update Desk)
+
+| Symptom | What to try |
+|---------|-------------|
+| Incorrect password | Open `.env.update-desk` and use the value after `UPDATE_DESK_PASSWORD=` |
+| Unrecognized file | Energy needs year sheets; rates need Elec Rates + CS Rates; addresses need address + name columns |
+| Unknown building | Developer adds an alias in `src/data/buildingRegistry.js` |
+| No map position | In Review, enter the building address and click **Place on map** |
+| Publish / push fails | Sign in to GitHub, then click Publish again |
+| `node` / `npm` not found | Install Node.js LTS, reopen the terminal, run `npm install` |
+| Restart without the old terminal | Stop whatever is on port 4178, then run `Start-Update-Desk.bat` again |
 
 ---
 

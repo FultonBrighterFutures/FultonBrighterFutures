@@ -8,12 +8,13 @@
  * Usage: node scripts/project-building-positions.mjs
  */
 import { readFileSync, writeFileSync } from 'node:fs'
-import { dirname, join } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { dirname, join, resolve } from 'node:path'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 
-const root = join(dirname(fileURLToPath(import.meta.url)), '..')
-const coordsPath = join(root, 'public/data/sources/building-coordinates.json')
-const runtimeDir = join(root, 'public/data/runtime')
+const __dirname = dirname(fileURLToPath(import.meta.url))
+const root = join(__dirname, '..')
+const defaultCoordsPath = join(root, 'public/data/sources/building-coordinates.json')
+const defaultRuntimeDir = join(root, 'public/data/runtime')
 
 /** Padding around the building footprint so markers fill the map like map-reference.png. */
 const BOUNDS_PADDING = 0.08
@@ -51,63 +52,89 @@ function lngLatToUv(lng, lat, bounds) {
   }
 }
 
-const coords = JSON.parse(readFileSync(coordsPath, 'utf8'))
-const bounds = computeBounds(coords.buildings)
+/**
+ * @param {{
+ *   coordsPath?: string,
+ *   runtimeDir?: string,
+ *   rootDir?: string,
+ *   log?: (...args: unknown[]) => void,
+ * }} [options]
+ */
+export function runProjectPositions(options = {}) {
+  const rootDir = options.rootDir ?? root
+  const coordsPath = options.coordsPath ?? defaultCoordsPath
+  const runtimeDir = options.runtimeDir ?? defaultRuntimeDir
+  const log = options.log ?? console.log
 
-const buildings = coords.buildings
-  .map((building) => {
-    const { u, v } = lngLatToUv(building.lng, building.lat, bounds)
-    return { id: building.id, name: building.name, u, v }
-  })
-  .sort((a, b) => a.name.localeCompare(b.name))
+  const coords = JSON.parse(readFileSync(coordsPath, 'utf8'))
+  if (!coords.buildings?.length) {
+    throw new Error(`[project-positions] No buildings in ${coordsPath}`)
+  }
 
-const payload = { buildings }
-const json = `${JSON.stringify(payload, null, 2)}\n`
+  const bounds = computeBounds(coords.buildings)
+  const buildings = coords.buildings
+    .map((building) => {
+      const { u, v } = lngLatToUv(building.lng, building.lat, bounds)
+      return { id: building.id, name: building.name, u, v }
+    })
+    .sort((a, b) => a.name.localeCompare(b.name))
 
-writeFileSync(join(runtimeDir, 'building-positions.json'), json)
-writeFileSync(join(runtimeDir, 'building-positions-main.json'), json)
-writeFileSync(
-  join(root, 'public/data/sources/building-position-projection.json'),
-  `${JSON.stringify(
-    {
-      source: 'building-coordinates.json',
-      reference: 'public/assets/map-reference.png',
-      projection: {
-        type: 'equirectangular',
-        orientation: 'north-up',
-        bounds,
-        padding: BOUNDS_PADDING,
+  const payload = { buildings }
+  const json = `${JSON.stringify(payload, null, 2)}\n`
+
+  writeFileSync(join(runtimeDir, 'building-positions.json'), json)
+  writeFileSync(join(runtimeDir, 'building-positions-main.json'), json)
+  writeFileSync(
+    join(rootDir, 'public/data/sources/building-position-projection.json'),
+    `${JSON.stringify(
+      {
+        source: 'building-coordinates.json',
+        reference: 'public/assets/map-reference.png',
+        projection: {
+          type: 'equirectangular',
+          orientation: 'north-up',
+          bounds,
+          padding: BOUNDS_PADDING,
+        },
+        buildings: coords.buildings.map((building) => {
+          const { u, v } = lngLatToUv(building.lng, building.lat, bounds)
+          return {
+            id: building.id,
+            name: building.name,
+            lat: building.lat,
+            lng: building.lng,
+            u,
+            v,
+          }
+        }),
       },
-      buildings: coords.buildings.map((building) => {
-        const { u, v } = lngLatToUv(building.lng, building.lat, bounds)
-        return {
-          id: building.id,
-          name: building.name,
-          lat: building.lat,
-          lng: building.lng,
-          u,
-          v,
-        }
-      }),
-    },
-    null,
-    2,
-  )}\n`,
-)
+      null,
+      2,
+    )}\n`,
+  )
 
-const byV = [...buildings].sort((a, b) => a.v - b.v)
-console.log(
-  `Projected ${buildings.length} buildings (north-up, map-reference style)`,
-)
-console.log(
-  `  Top (north): ${byV
-    .slice(0, 3)
-    .map((b) => b.id)
-    .join(', ')}`,
-)
-console.log(
-  `  Bottom (south): ${byV
-    .slice(-3)
-    .map((b) => b.id)
-    .join(', ')}`,
-)
+  const byV = [...buildings].sort((a, b) => a.v - b.v)
+  log(`Projected ${buildings.length} buildings (north-up, map-reference style)`)
+  log(
+    `  Top (north): ${byV
+      .slice(0, 3)
+      .map((b) => b.id)
+      .join(', ')}`,
+  )
+  log(
+    `  Bottom (south): ${byV
+      .slice(-3)
+      .map((b) => b.id)
+      .join(', ')}`,
+  )
+
+  return { buildings, bounds, count: buildings.length }
+}
+
+const isCli =
+  Boolean(process.argv[1]) &&
+  import.meta.url === pathToFileURL(resolve(process.argv[1])).href
+
+if (isCli) {
+  runProjectPositions()
+}

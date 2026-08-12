@@ -16,7 +16,7 @@ const CONTENT = {
     body: [
       'Fulton Brighter Futures is an interactive data visualization representing solar panel adoption across Fulton County Government buildings since 2021. Each solar-equipped building appears as a glowing orb relative to its size; together the orbs cluster into the county\'s shape. A timeline lets viewers watch adoption grow year by year, alongside energy generated, CO2 reduced, and money saved.', 
       'The project exists online and as a temporary, interactive, digital installation at the Fulton County Government Center. This project explores the relationship between energy, carbon, and conservation through an interactive visual timeline.',
-      'Use the main site to move through years 2021–2026, then look ahead to imagine what comes next.',
+      'Use the main site to move through each year of available solar data, then look ahead to imagine what comes next.',
     ],
   },
   team: {

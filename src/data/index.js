@@ -3,6 +3,9 @@ export {
   resolveBuildingId,
   getBuildingName,
   getBuildingDisplayName,
+  getBuildingDisplayNameOverrides,
+  setBuildingDisplayNameOverrides,
+  isKnownBuildingId,
   resolveBuildingRecord,
 } from './buildingRegistry'
 export { parseCsv } from './parseCsv'
@@ -11,6 +14,11 @@ export { mapDataTestCo2 } from './mapDataTestCo2'
 export { loadBuildingPositions, loadMapMask, clampToMask } from './mapLayout'
 export { DATA_SCENES, loadSceneCsv, loadSceneYearRows, loadDataTestDataset } from './loadYearData'
 export { loadSolarDataset, clearSolarDataCache } from './loadSolarData'
+export {
+  latestDataYear,
+  getEnergyMonthSpan,
+  formatPartialYearSubtitle,
+} from './yearCoverage'
 export { calcSolarSavingsTotals, extractLatestSavingsRates } from './parseSolarSavingsWorkbook'
 export {
   mapCo2YearData,

@@ -1,3 +1,5 @@
+import displayNameOverridesSeed from './building-display-names.json' with { type: 'json' }
+
 /**
  * Normalize a building name to a stable slug id.
  * @param {string} name
@@ -53,13 +55,15 @@ export const BUILDING_NAMES = {
   'south-fulton-service-center': 'South Fulton Service Center',
   'union-city-jail': 'Union City Jail',
   'palmetto-library': 'Palmetto Library',
+  /** Fake site for Update Desk new-building test pack (test-uploads/new-building). */
+  'test-lab-annex': 'Test Lab Annex',
 }
 
-/** UI-only name overrides. Buildings without an override display their canonical name. */
-export const BUILDING_DISPLAY_NAME_OVERRIDES = {
-  'union-city-jail': 'South Fulton Municipal Regional Jail',
-}
-
+/**
+ * UI-only name overrides. Seeded from building-display-names.json.
+ * Mutated in place so the Update Desk / import can refresh after editing sources.
+ */
+export const BUILDING_DISPLAY_NAME_OVERRIDES = { ...displayNameOverridesSeed }
 /**
  * Maps spreadsheet labels (any export format) → stable building ids.
  */
@@ -112,6 +116,7 @@ export const BUILDING_ALIASES = {
   'northeast-spruill-oaks-branch': 'ne-spruill-oaks-library',
   'northside-branch': 'northside-library',
   'ocee-branch': 'ocee-library',
+  'test-lab-annex': 'test-lab-annex',
   'alpharetta-library': 'alpharetta-library',
   'wolf-creek-library': 'wolf-creek-library',
   'metropolitan-library': 'metropolitan-library',
@@ -133,6 +138,27 @@ export function resolveBuildingId(rawName) {
   const cleaned = stripMeterLabel(rawName)
   const slug = slugifyBuildingName(cleaned)
   return BUILDING_ALIASES[slug] ?? slug
+}
+
+/** @param {string} id */
+export function isKnownBuildingId(id) {
+  return Object.prototype.hasOwnProperty.call(BUILDING_NAMES, id)
+}
+
+/** @returns {Record<string, string>} */
+export function getBuildingDisplayNameOverrides() {
+  return { ...BUILDING_DISPLAY_NAME_OVERRIDES }
+}
+
+/**
+ * Replace the in-memory display-name override map (e.g. after reading JSON from disk).
+ * @param {Record<string, string> | null | undefined} map
+ */
+export function setBuildingDisplayNameOverrides(map) {
+  for (const key of Object.keys(BUILDING_DISPLAY_NAME_OVERRIDES)) {
+    delete BUILDING_DISPLAY_NAME_OVERRIDES[key]
+  }
+  Object.assign(BUILDING_DISPLAY_NAME_OVERRIDES, map ?? {})
 }
 
 /** @param {string} id */

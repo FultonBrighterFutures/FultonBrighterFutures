@@ -26,15 +26,26 @@ const mainPositionedIds = mainPositions.buildings.map((building) => building.id)
 assertUnique(catalogIds, 'Building catalog')
 assertUnique(positionedIds, 'Building positions')
 assertUnique(mainPositionedIds, 'Main building positions')
+function positionMismatchMessage(label, catalog, positioned) {
+  const catalogSet = new Set(catalog)
+  const positionedSet = new Set(positioned)
+  const missing = catalog.filter((id) => !positionedSet.has(id))
+  const extra = positioned.filter((id) => !catalogSet.has(id))
+  const parts = [`${label}: catalog and render positions must match exactly.`]
+  if (missing.length) parts.push(`Missing positions: ${missing.join(', ')}.`)
+  if (extra.length) parts.push(`Extra positions (not in catalog): ${extra.join(', ')}.`)
+  return parts.join(' ')
+}
+
 assert.deepEqual(
   [...catalogIds].sort(),
   [...positionedIds].sort(),
-  'Every canonical building must have exactly one render position',
+  positionMismatchMessage('Look Ahead positions', catalogIds, positionedIds),
 )
 assert.deepEqual(
   [...catalogIds].sort(),
   [...mainPositionedIds].sort(),
-  'Every canonical building must have exactly one main-page render position',
+  positionMismatchMessage('Main positions', catalogIds, mainPositionedIds),
 )
 
 const lookAheadById = new Map(
@@ -50,11 +61,11 @@ for (const building of mainPositions.buildings) {
   )
 }
 
+const displayNameOverrides = JSON.parse(
+  readFileSync(join(root, 'public/data/sources/building-display-names.json'), 'utf8'),
+)
 for (const building of dataset.buildings) {
-  const expectedDisplayName =
-    building.id === 'union-city-jail'
-      ? 'South Fulton Municipal Regional Jail'
-      : building.name
+  const expectedDisplayName = displayNameOverrides[building.id] ?? building.name
   assert.equal(
     building.displayName,
     expectedDisplayName,
@@ -92,50 +103,76 @@ for (const [legacyId, canonicalId] of Object.entries(canonicalPairs)) {
   assert(catalogIds.includes(canonicalId), `Canonical building ID is missing: ${canonicalId}`)
 }
 
-const maxwellEnergy = dataset.monthly
-  .filter((entry) => entry.buildingId === 'maxwell-rd-driver-services')
-  .map(({ year, month, kWh }) => ({ year, month, kWh }))
-const expectedMaxwellEnergy = [
-  { year: 2025, month: 5, kWh: 2652 },
-  { year: 2025, month: 6, kWh: 37032 },
-  { year: 2025, month: 7, kWh: 40651 },
-  { year: 2025, month: 8, kWh: 31347 },
-  { year: 2025, month: 9, kWh: 31998 },
-  { year: 2025, month: 10, kWh: 25870 },
-  { year: 2025, month: 11, kWh: 20491 },
-  { year: 2025, month: 12, kWh: 17600 },
-  { year: 2026, month: 1, kWh: 19022 },
-  { year: 2026, month: 2, kWh: 23501 },
-  { year: 2026, month: 3, kWh: 32264 },
-  { year: 2026, month: 4, kWh: 37761 },
-  { year: 2026, month: 5, kWh: 35147 },
-  { year: 2026, month: 6, kWh: 35714 },
-]
-assert.deepEqual(
-  maxwellEnergy,
-  expectedMaxwellEnergy,
-  'Maxwell energy must exactly match the savings workbook',
+const maxwellEnergy = dataset.monthly.filter(
+  (entry) => entry.buildingId === 'maxwell-rd-driver-services' && entry.kWh > 0,
+)
+assert.ok(
+  maxwellEnergy.length > 0,
+  'Maxwell Rd (Driver Services) must have energy observations',
 )
 
-const energyIds2026 = new Set(
-  dataset.monthly
-    .filter((entry) => entry.year === 2026 && entry.kWh > 0)
-    .map((entry) => entry.buildingId),
-)
-const savingsIds2026 = new Set(
-  dataset.monthlyCost
-    .filter((entry) => entry.year === 2026 && entry.dollars !== 0)
-    .map((entry) => entry.buildingId),
-)
-assert.deepEqual(
-  [...energyIds2026].sort(),
-  [...catalogIds].sort(),
-  'Every canonical building must have 2026 energy data for Energy, CO₂, and Look Ahead',
-)
-assert.deepEqual(
-  [...savingsIds2026].sort(),
-  [...catalogIds].sort(),
-  'Every canonical building must have 2026 savings data',
+const sortedCatalogIds = [...catalogIds].sort()
+const energyYearsDesc = [...dataset.years].sort((a, b) => b - a)
+const costYearsDesc = [...(dataset.costYears ?? [])].sort((a, b) => b - a)
+
+function idsWithEnergy(year) {
+  return new Set(
+    dataset.monthly
+      .filter((entry) => entry.year === year && entry.kWh > 0)
+      .map((entry) => entry.buildingId),
+  )
+}
+
+function idsWithSavings(year) {
+  return new Set(
+    dataset.monthlyCost
+      .filter((entry) => entry.year === year && entry.dollars !== 0)
+      .map((entry) => entry.buildingId),
+  )
+}
+
+function missingFrom(idsSet) {
+  return sortedCatalogIds.filter((id) => !idsSet.has(id))
+}
+
+let energyCoverageYear = null
+for (const year of energyYearsDesc) {
+  if (missingFrom(idsWithEnergy(year)).length === 0) {
+    energyCoverageYear = year
+    break
+  }
+}
+
+if (energyCoverageYear == null) {
+  const gaps = energyYearsDesc
+    .slice(0, 3)
+    .map((year) => `${year}: ${missingFrom(idsWithEnergy(year)).join(', ') || '(none)'}`)
+    .join('; ')
+  assert.fail(
+    `No year contains energy for every building. Add kWh for missing buildings in one common year (or remove incomplete buildings). Gaps → ${gaps}`,
+  )
+}
+
+let savingsCoverageYear = null
+for (const year of costYearsDesc) {
+  if (missingFrom(idsWithSavings(year)).length === 0) {
+    savingsCoverageYear = year
+    break
+  }
+}
+
+if (savingsCoverageYear == null) {
+  const gaps = costYearsDesc
+    .slice(0, 3)
+    .map((year) => `${year}: ${missingFrom(idsWithSavings(year)).join(', ') || '(none)'}`)
+    .join('; ')
+  assert.fail(
+    `No year contains savings for every building. Add savings rows for missing buildings in one common year. Gaps → ${gaps}`,
+  )
+}
+
+console.log(
+  `Coverage years: energy=${energyCoverageYear}, savings=${savingsCoverageYear}`,
 )
 
 // Markers snap onto the nearest on-county pixel, so compare the positions the

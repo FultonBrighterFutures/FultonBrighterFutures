@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import ThreePanel from './components/ThreePanel'
 import Timeline from './components/Timeline'
 import SiteMenu from './components/SiteMenu'
@@ -10,9 +10,11 @@ import {
   DEFAULT_YEAR,
   DATA_START_YEAR,
   TIMELINE_EVENTS_BY_YEAR,
-  TIMELINE_ITEMS,
   TIMELINE_YEARS,
+  buildTimelineItems,
+  buildTimelineYears,
 } from './constants/timeline'
+import { loadSolarDataset } from './data/loadSolarData'
 import './App.css'
 import fultonCountyLogo from '../DesignAssets/Logos/FultonCountyLogo.png'
 import paflLogo from '../DesignAssets/Logos/PAFLLogo.png'
@@ -29,6 +31,8 @@ const TIMELINE_SCROLL_ENABLED = false
 function App() {
   const [year, setYear] = useState(DEFAULT_YEAR)
   const [activeTimelineItemId, setActiveTimelineItemId] = useState(DEFAULT_TIMELINE_ITEM_ID)
+  const [timelineYears, setTimelineYears] = useState(TIMELINE_YEARS)
+  const timelineItems = useMemo(() => buildTimelineItems(timelineYears), [timelineYears])
   const [lookAheadActive, setLookAheadActive] = useState(false)
   const [showFuture, setShowFuture] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -71,6 +75,21 @@ function App() {
 
   const isMainView = !contentActive
 
+  useEffect(() => {
+    let cancelled = false
+    loadSolarDataset()
+      .then((dataset) => {
+        if (cancelled) return
+        setTimelineYears(buildTimelineYears(dataset.years))
+      })
+      .catch(() => {
+        // Keep fallback timeline years if runtime JSON is unavailable.
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
   const handleEnter = () => {
     if (introExiting) return
     setIntroExiting(true)
@@ -111,7 +130,7 @@ function App() {
   }
 
   const handleTimelineItemChange = (itemId) => {
-    const nextItem = TIMELINE_ITEMS.find((item) => item.id === itemId)
+    const nextItem = timelineItems.find((item) => item.id === itemId)
     if (!nextItem) return
 
     const shouldAnimateFrom2020 = year === 2020 && nextItem.visualizationYear === 2021
@@ -140,8 +159,8 @@ function App() {
     setShowFuture(true)
     setFutureMetric('energy')
     setSelectedFutureBuilding(null)
-    setYear(TIMELINE_YEARS[TIMELINE_YEARS.length - 1])
-    setActiveTimelineItemId(`year-${TIMELINE_YEARS[TIMELINE_YEARS.length - 1]}`)
+    setYear(timelineYears[timelineYears.length - 1])
+    setActiveTimelineItemId(`year-${timelineYears[timelineYears.length - 1]}`)
   }
 
   const handleNavigate = (viewId) => {
@@ -225,9 +244,9 @@ function App() {
     if (!isMainView || lookAheadActive || menuOpen) return
 
     const timeoutId = window.setTimeout(() => {
-      const currentIndex = TIMELINE_ITEMS.findIndex((item) => item.id === activeTimelineItemId)
-      const nextIndex = currentIndex < 0 ? 0 : (currentIndex + 1) % TIMELINE_ITEMS.length
-      const nextItem = TIMELINE_ITEMS[nextIndex]
+      const currentIndex = timelineItems.findIndex((item) => item.id === activeTimelineItemId)
+      const nextIndex = currentIndex < 0 ? 0 : (currentIndex + 1) % timelineItems.length
+      const nextItem = timelineItems[nextIndex]
       const shouldAnimateFrom2020 = year === 2020 && nextItem.visualizationYear === 2021
       setIsLeaving2020(shouldAnimateFrom2020)
       setActiveTimelineItemId(nextItem.id)
@@ -235,7 +254,7 @@ function App() {
     }, AUTO_ADVANCE_DELAY_MS)
 
     return () => window.clearTimeout(timeoutId)
-  }, [activeTimelineItemId, inactivityResetKey, isMainView, lookAheadActive, menuOpen, year])
+  }, [activeTimelineItemId, inactivityResetKey, isMainView, lookAheadActive, menuOpen, timelineItems, year])
 
   return (
     <>
@@ -444,6 +463,7 @@ function App() {
               }
               onActivity={handleVisualizationActivity}
               suppressEventText={isLeaving2020}
+              items={timelineItems}
             />
           </div>
         </div>

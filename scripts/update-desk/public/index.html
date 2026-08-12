@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Solar Dinosaur — Update Desk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <p class="eyebrow">Local Update Desk</p>
+        <h1>Solar Dinosaur</h1>
+        <p class="lede">
+          Upload Excel workbooks with new building data. The desk detects what each file
+          contributes (kWh, rates, or addresses), lets you review summaries and key edits,
+          then updates the repo and live site.
+        </p>
+        <ol class="steps" id="step-indicator" aria-label="Progress">
+          <li data-step="unlock">Unlock</li>
+          <li data-step="upload">Upload</li>
+          <li data-step="review">Review</li>
+          <li data-step="apply">Apply</li>
+          <li data-step="publish">Publish</li>
+        </ol>
+      </header>
+
+      <section class="panel" id="panel-unlock">
+        <h2>1. Unlock</h2>
+        <p>Enter the shared password from <code>.env.update-desk</code>.</p>
+        <form id="unlock-form" class="row">
+          <label>
+            Password
+            <input type="password" id="password" autocomplete="current-password" required />
+          </label>
+          <button type="submit">Unlock</button>
+        </form>
+      </section>
+
+      <section class="panel hidden" id="panel-upload">
+        <h2>2. Upload &amp; process</h2>
+        <p>
+          Drop any-named <code>.xlsx</code> files. Contents decide the type:
+          year-sheet energy data, Elec/CS rates savings workbook, or building addresses.
+        </p>
+        <div id="live-files"></div>
+        <label class="dropzone" id="dropzone">
+          <input type="file" id="file-input" accept=".xlsx" multiple />
+          <span>Drag Excel files here, or click to choose</span>
+        </label>
+        <div id="pending-files"></div>
+        <div class="row">
+          <button type="button" id="process-btn" disabled>Process uploads</button>
+        </div>
+      </section>
+
+      <section class="panel hidden" id="panel-review">
+        <h2>3. Review</h2>
+        <p>
+          Check what each file contributes. Edit display names and key Elec / CS rates if needed.
+          Fix kWh or addresses in Excel and re-process if those look wrong.
+        </p>
+        <div id="flags" class="flags"></div>
+        <div id="contributions" class="contributions"></div>
+
+        <div class="subpanel" id="positions-panel" hidden>
+          <h3>Place buildings on the map</h3>
+          <p class="muted">
+            These buildings are in the Excel data but have no map position yet. Enter a street
+            address for each, then click <strong>Place on map</strong> (geocodes and projects
+            markers).
+          </p>
+          <div id="position-forms"></div>
+          <div class="row" style="margin-top: 0.75rem">
+            <button type="button" id="map-buildings-btn">Place on map</button>
+          </div>
+        </div>
+
+        <div class="subpanel" id="rates-panel" hidden>
+          <h3>Key rates</h3>
+          <p class="muted">Latest average rates used for summaries / Look Ahead.</p>
+          <div class="row rates-row">
+            <label>
+              Elec rate ($/kWh)
+              <input type="number" id="elec-rate" step="0.0001" min="0" />
+            </label>
+            <label>
+              CS rate ($/kWh)
+              <input type="number" id="cs-rate" step="0.0001" min="0" />
+            </label>
+            <div class="derived">
+              <span>Savings / kWh</span>
+              <strong id="savings-per-kwh">—</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="subpanel">
+          <h3>Display names</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Stable ID</th>
+                  <th>Excel name</th>
+                  <th>Display name</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="review-rows"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel hidden" id="panel-apply">
+        <h2>4. Apply</h2>
+        <p>
+          Archives previous source files, saves your name/rate edits, and rebuilds the runtime
+          data the website uses.
+        </p>
+        <button type="button" id="apply-btn" disabled>Apply update &amp; archive</button>
+      </section>
+
+      <section class="panel hidden" id="panel-publish">
+        <h2>5. Publish</h2>
+        <p>Commit, push to GitHub, build, and deploy GitHub Pages.</p>
+        <button type="button" id="publish-btn" disabled>Publish to website</button>
+      </section>
+
+      <section class="panel status-panel">
+        <h2>Status</h2>
+        <p id="status-message" class="status-ok">Waiting to unlock…</p>
+        <details>
+          <summary>Technical log</summary>
+          <pre id="status-log"></pre>
+        </details>
+      </section>
+
+      <footer class="help">
+        <h2>If something goes wrong</h2>
+        <ul>
+          <li><strong>Unlock</strong> — use <code>UPDATE_DESK_PASSWORD</code> in <code>.env.update-desk</code>.</li>
+          <li><strong>Unrecognized file</strong> — energy needs year sheets; rates need Elec Rates + CS Rates; addresses need address + name columns.</li>
+          <li><strong>Unknown building</strong> — ask a developer to add an alias in <code>buildingRegistry.js</code>.</li>
+          <li><strong>No map position</strong> — enter the street address in Review and click Place on map.</li>
+          <li><strong>Publish fails</strong> — sign in to GitHub, then try again.</li>
+        </ul>
+      </footer>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>

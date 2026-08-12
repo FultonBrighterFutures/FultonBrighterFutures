@@ -1,4 +1,4 @@
-import { TIMELINE_EVENTS_BY_YEAR, TIMELINE_ITEMS } from '../constants/timeline'
+import { ORIGIN_YEAR, TIMELINE_EVENTS_BY_YEAR, TIMELINE_ITEMS } from '../constants/timeline'
 
 const DOTS_BETWEEN_YEARS = 3
 
@@ -28,16 +28,17 @@ export default function TimelineYearStrip({
   cometTrail = null,
   onItemChange,
   suppressEventText = false,
+  items = TIMELINE_ITEMS,
 }) {
   const trail = lookAheadActive ? null : cometTrail
-  const activeItem = TIMELINE_ITEMS.find((item) => item.id === activeItemId)
+  const activeItem = items.find((item) => item.id === activeItemId)
   const activeEvent = TIMELINE_EVENTS_BY_YEAR[activeItem?.year]
   const trailForward = trail ? trail.toIndex > trail.fromIndex : true
 
   return (
     <div className="timeline-years-group">
       <ul className="timeline-years">
-        {TIMELINE_ITEMS.map((item, index) => {
+        {items.map((item, index) => {
           const isActive = item.id === activeItemId && !lookAheadActive
           const trailStrengthSample = getTrailDotStrength(index, 1, trail)
           const isTrailingGap = trailStrengthSample > 0
@@ -46,7 +47,7 @@ export default function TimelineYearStrip({
             <li key={item.id} className="timeline-segment">
               <button
                 type="button"
-                className={`timeline-year${item.year === 2020 ? ' timeline-year--origin' : ''}${
+                className={`timeline-year${item.year === ORIGIN_YEAR ? ' timeline-year--origin' : ''}${
                   isActive ? ' is-active' : ''
                 }`}
                 onClick={() => onItemChange(item.id)}
@@ -56,7 +57,7 @@ export default function TimelineYearStrip({
                 <span className="timeline-marker" aria-hidden="true" />
               </button>
 
-              {index < TIMELINE_ITEMS.length - 1 && (
+              {index < items.length - 1 && (
                 <div
                   className={`timeline-gap-dots${isTrailingGap ? ' is-trailing' : ''}${
                     isTrailingGap ? (trailForward ? ' is-trailing-forward' : ' is-trailing-backward') : ''
@@ -81,7 +82,7 @@ export default function TimelineYearStrip({
       </ul>
 
       <div className="timeline-story" aria-live="polite">
-        {activeEvent && activeItem?.year !== 2020 && !suppressEventText && (
+        {activeEvent && activeItem?.year !== ORIGIN_YEAR && !suppressEventText && (
           <>
             <span className="timeline-story__date">{activeEvent.dateLabel}</span>
             <span className="timeline-story__copy">{activeEvent.copy}</span>

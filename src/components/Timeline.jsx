@@ -10,12 +10,14 @@ const WHEEL_COOLDOWN_MS = 420
 const SWIPE_THRESHOLD = 48
 const COMET_TRAIL_MS = 275
 
-function useTimelineScrollCarousel({ activeItemId, onItemChange, onActivity, enabled }) {
+function useTimelineScrollCarousel({ activeItemId, onItemChange, onActivity, enabled, items }) {
   const activeItemIdRef = useRef(activeItemId)
   const onItemChangeRef = useRef(onItemChange)
+  const itemsRef = useRef(items)
 
   activeItemIdRef.current = activeItemId
   onItemChangeRef.current = onItemChange
+  itemsRef.current = items
 
   useEffect(() => {
     if (!enabled) return
@@ -26,13 +28,14 @@ function useTimelineScrollCarousel({ activeItemId, onItemChange, onActivity, ena
     let touchStartY = 0
 
     const stepTimeline = (direction) => {
-      const currentIndex = TIMELINE_ITEMS.findIndex(
+      const timelineItems = itemsRef.current
+      const currentIndex = timelineItems.findIndex(
         (item) => item.id === activeItemIdRef.current,
       )
       const nextIndex = currentIndex + direction
-      if (nextIndex < 0 || nextIndex >= TIMELINE_ITEMS.length) return false
+      if (nextIndex < 0 || nextIndex >= timelineItems.length) return false
 
-      onItemChangeRef.current(TIMELINE_ITEMS[nextIndex].id)
+      onItemChangeRef.current(timelineItems[nextIndex].id)
       accumulated = 0
       cooldown = true
       cooldownId = window.setTimeout(() => {
@@ -101,6 +104,7 @@ export default function Timeline({
   scrollEnabled = false,
   onActivity,
   suppressEventText = false,
+  items = TIMELINE_ITEMS,
 }) {
   const previousItemRef = useRef(activeItemId)
   const [cometTrail, setCometTrail] = useState(null)
@@ -110,6 +114,7 @@ export default function Timeline({
     onItemChange,
     onActivity,
     enabled: scrollEnabled && !lookAheadActive,
+    items,
   })
 
   useEffect(() => {
@@ -120,8 +125,8 @@ export default function Timeline({
     }
 
     const fromItemId = previousItemRef.current
-    const fromIndex = TIMELINE_ITEMS.findIndex((item) => item.id === fromItemId)
-    const toIndex = TIMELINE_ITEMS.findIndex((item) => item.id === activeItemId)
+    const fromIndex = items.findIndex((item) => item.id === fromItemId)
+    const toIndex = items.findIndex((item) => item.id === activeItemId)
     previousItemRef.current = activeItemId
 
     if (fromIndex < 0 || toIndex < 0 || fromIndex === toIndex) return
@@ -134,7 +139,7 @@ export default function Timeline({
     }, COMET_TRAIL_MS)
 
     return () => window.clearTimeout(timeoutId)
-  }, [activeItemId, lookAheadActive])
+  }, [activeItemId, lookAheadActive, items])
 
   return (
     <section
@@ -151,6 +156,7 @@ export default function Timeline({
           cometTrail={cometTrail}
           onItemChange={onItemChange}
           suppressEventText={suppressEventText}
+          items={items}
         />
 
         <div className="timeline-look-ahead">
