@@ -1,34 +1,68 @@
 # solar-dinosaur
 
-A React + Vite website with three side-by-side Three.js scenes (energy, CO2, and saving) in a triptych layout, an interactive **2021–2026 timeline** with an energy-spark design, a **Look Ahead** mode that transitions to a full-width **Future** scene, and a **menu overlay** for additional content pages.
+**Fulton Brighter Futures** is an interactive website that visualizes solar panel adoption across Fulton County government buildings. Visitors move through a **2021–2026** timeline to see energy generated, CO₂ reduced, and money saved. Then they can open **Look Ahead** to imagine how incorporating more buildings in the area can contribute to Fulton's Solar Program. The experience includes three side-by-side Three.js scenes (energy, CO₂, and saving), a menu of content pages (overview, references, team, and more), and a local **Update Desk** for refreshing building data from Excel without writing code.
 
-**Quick links for editors:**
+This README is a full setup and editing guide. It assumes you may be starting on a machine with **no development tools installed yet**. You do not need to be a programmer to follow most of these steps—especially Update Desk and basic content edits. When something feels unclear, the [Get help with Cursor or Claude](#get-help-with-cursor-or-claude) section points you to friendly AI assistants that can walk you through problems in plain language.
 
-| I want to… | Edit this file |
-|------------|----------------|
-| Change menu page text | **`src/components/ContentPage.jsx`** |
-| Change menu link labels | **`src/components/SiteMenu.jsx`** |
-| Change timeline years or default year | **`src/constants/timeline.js`** |
-| Change timeline look (spark, tail, track) | **`src/components/Timeline.css`** |
-| Change Look Ahead / Back / menu button style | **`src/index.css`** (`.chrome-cta`) |
-| Change page background or global colors | **`src/index.css`** |
-| Change Three.js scene visuals | **`src/scenes/{energy,co2,saving,future}Scene.js`** |
-| Adjust triptych or Look Ahead camera framing (dev tool) | **`?triptychCamera=1`** or **Shift+C** — see [Camera framing](#triptych-camera-framing-dev-tool) |
-| Adjust Fulton County backdrop (dev tool) | Open Look Ahead and press **Shift+M** — see [Fulton backdrop](#repositioning-the-fulton-county-backdrop) |
-| Replace / regenerate year metrics | **Update Desk** (below) or drop Excel under **`public/data/sources/`** then `npm run import-data` |
-| Change building display names / key rates | **Update Desk** review step, or edit **`public/data/sources/building-display-names.json`** / **`savings-rate-overrides.json`** then `npm run import-data` |
-| Map dataset fields → scene values | **`src/data/mapYearData.js`** |
+### Where to start
 
-This guide assumes you are starting on a machine with **no development tools installed** yet.
+| If you want to… | Jump to |
+|-----------------|---------|
+| See how the project folders are organized | [File organization](#file-organization) |
+| Install tools and open the site for the first time | [What you need](#what-you-need) through [Run the development server](#5-run-the-development-server) |
+| Upload new Excel building data | [Update Desk](#update-building-data-update-desk) |
+| Change page text, menu labels, or colors | [Editing content and appearance](#editing-content-and-appearance) |
+| Fix a common error | [Troubleshooting](#troubleshooting) |
+| Ask an AI assistant for help | [Get help with Cursor or Claude](#get-help-with-cursor-or-claude) |
+
+---
+
+## File organization
+
+The project is a standard Vite + React app. Here is a simplified map of the folders you are most likely to touch:
+
+```text
+solar-dinosaur/
+├── Start-Update-Desk.bat   # Windows shortcut to open Update Desk
+├── index.html              # HTML entry; loads fonts and the React app
+├── package.json            # Project name, dependencies, and npm scripts
+├── DesignAssets/           # Logos, headshots, and design art
+├── public/
+│   └── data/
+│       ├── runtime/        # JSON files the live site loads in the browser
+│       ├── sources/        # Excel inputs for imports / Update Desk
+│       ├── review/         # Supervisor confirmation files (not loaded by the app)
+│       └── archive/        # Older sources and snapshots (keep these)
+├── scripts/
+│   └── update-desk/        # Local Update Desk app
+└── src/
+    ├── App.jsx             # Main layout, intro screen, and navigation
+    ├── App.css             # Intro screen, carousel, and Back button layout
+    ├── index.css           # Global colors and shared styles (including .chrome-cta)
+    ├── components/         # Timeline, menu, content pages, Look Ahead UI
+    ├── constants/          # Timeline years and story moments
+    ├── data/               # Loading and mapping solar data for each year
+    ├── scenes/             # Three.js visualizations
+    └── assets/             # Favicon, icons, and related images
+```
+
+### How the pieces connect (short version)
+
+1. **`index.html`** loads the font and **`src/main.jsx`**, which renders **`App.jsx`**.
+2. **`App.jsx`** manages the intro screen, timeline year, Look Ahead mode, and the site menu. The main view shows three **`ThreePanel`** scenes; menu links open content pages. The timeline strip also holds the **Back** button when Look Ahead is open.
+3. When the timeline year changes, each panel loads **`public/data/runtime/solar-data.json`**, maps that year in **`src/data/mapYearData.js`**, and updates the matching scene under **`src/scenes/`**.
+4. Clicking **Look Ahead** on the timeline swaps the triptych for the full-width Future scene (carousel animation in **`App.css`**). **Update Desk** writes into `public/data/sources/` and rebuilds the runtime JSON so the site can show new Excel data without hand-editing those JSON files.
+
+---
 
 ## What you need
 
-| Tool | Why |
-|------|-----|
+| Tool | Why you need it |
+|------|-----------------|
 | **Git** | To download the project from the repository |
-| **Node.js** (includes **npm**) | To install packages and run the dev server |
+| **Node.js** (includes **npm**) | To install packages and run the website and Update Desk |
 
-You do **not** need to install React, Vite, or Three.js yourself. They are installed automatically when you run `npm install`.
+You do **not** need to install React, Vite, or Three.js yourself. Those are downloaded automatically when you run `npm install`.
 
 **Recommended Node.js version:** 20 LTS or newer.
 
@@ -36,13 +70,13 @@ You do **not** need to install React, Vite, or Three.js yourself. They are insta
 
 ## 1. Install Git
 
-Git lets you clone (download) the repository.
+Git lets you clone (download) the repository onto your computer.
 
 ### Windows
 
-1. Download the installer from [https://git-scm.com/download/win](https://git-scm.com/download/win)
-2. Run the installer and accept the default options
-3. Open **PowerShell** or **Command Prompt** and verify:
+1. Download the installer from [https://git-scm.com/download/win](https://git-scm.com/download/win).
+2. Run the installer and accept the default options.
+3. Open **PowerShell** or **Command Prompt** and verify that Git is available:
 
 ```bash
 git --version
@@ -50,7 +84,7 @@ git --version
 
 ### macOS
 
-1. Install Xcode Command Line Tools (if prompted when running `git` for the first time), **or** install Git from [https://git-scm.com/download/mac](https://git-scm.com/download/mac)
+1. Install Xcode Command Line Tools if macOS prompts you the first time you run `git`, **or** install Git from [https://git-scm.com/download/mac](https://git-scm.com/download/mac).
 2. Open **Terminal** and verify:
 
 ```bash
@@ -73,8 +107,8 @@ Node.js includes **npm** (Node Package Manager), which this project uses to inst
 
 ### Windows
 
-1. Download the **LTS** installer from [https://nodejs.org](https://nodejs.org)
-2. Run the installer (keep **“Add to PATH”** enabled)
+1. Download the **LTS** installer from [https://nodejs.org](https://nodejs.org).
+2. Run the installer and keep **“Add to PATH”** enabled.
 3. Close and reopen PowerShell, then verify:
 
 ```bash
@@ -82,9 +116,9 @@ node --version
 npm --version
 ```
 
-**If `node` or `npm` is not recognized** in Cursor’s terminal (or another IDE terminal) after installing Node.js, fully quit and reopen the app so it picks up the updated PATH. A new external PowerShell window may already work before the IDE does.
+**If `node` or `npm` is not recognized** in Cursor’s terminal (or another editor terminal) after installing Node.js, fully quit and reopen the app so it picks up the updated PATH. A new external PowerShell window may already work before the editor does.
 
-**If `node` works but `npm` fails** with an error like `npm.ps1 cannot be loaded because running scripts is disabled on this system`, PowerShell’s execution policy is blocking npm’s script. Fix it once in PowerShell:
+**If `node` works but `npm` fails** with an error like `npm.ps1 cannot be loaded because running scripts is disabled on this system`, PowerShell’s execution policy is blocking npm’s script. Fix it by typing the following in PowerShell:
 
 ```powershell
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
@@ -125,33 +159,37 @@ npm --version
 ### Option A: Clone with Git (recommended)
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/ThaisAlvarenga/solar-dinosaur.git
 cd solar-dinosaur
 ```
 
-Replace `<repository-url>` with the actual URL of this repo (for example, a GitHub `https://` or `git@` URL).
+If you are using a fork or a different remote, replace the URL with that repository’s `https://` or `git@` clone link.
 
 ### Option B: Download a ZIP
 
-1. Download the repository as a ZIP from your Git host (e.g. GitHub **Code → Download ZIP**)
-2. Extract the ZIP
-3. Open a terminal in the extracted `solar-dinosaur` folder
+1. Download the repository as a ZIP from your Git host (for example, GitHub **Code → Download ZIP**).
+2. Extract the ZIP.
+3. Open a terminal in the extracted `solar-dinosaur` folder.
+
+I recommend you then open the project in VS Code, Cursor, or another text editor. Open the terminal from there (usually with **Ctrl+`** on Windows/Linux or **Cmd+J** / **Ctrl+J** depending on your setup) so commands run in the correct project folder.
 
 ---
 
 ## 4. Install project dependencies
 
-From the project root (the folder that contains `package.json`):
+In your terminal, make sure that you are in the project root (the folder that contains `package.json`). Then type:
 
 ```bash
 npm install
 ```
 
-This reads `package.json` and downloads everything the app needs (React, Vite, Three.js, etc.) into a local `node_modules` folder. You only need to run this once, or again after dependencies change.
+This reads `package.json` and downloads everything the app needs (React, Vite, Three.js, and related tools) into a local `node_modules` folder. You only need to run this once on a machine, or again after dependencies change.
 
 ---
 
 ## 5. Run the development server
+
+On your terminal, type:
 
 ```bash
 npm run dev
@@ -175,7 +213,7 @@ To stop the server, press `Ctrl+C` in the terminal.
 
 | Command | Purpose |
 |---------|---------|
-| `npm run build` | Create an optimized production build in `dist/` |
+| `npm run build` | Create an optimized production build in `dist/` (also refreshes data from Excel first) |
 | `npm run preview` | Serve the production build locally (run `build` first) |
 | `npm run lint` | Check the code with ESLint |
 | `npm run import-data` | Rebuild `public/data/runtime/solar-data.json` from Excel sources |
@@ -183,83 +221,196 @@ To stop the server, press `Ctrl+C` in the terminal.
 | `npm run update-desk` | Open the local Update Desk (upload Excel → review → publish) |
 | `npm run deploy` | Publish `dist/` to GitHub Pages |
 
+The main commands you will need for making the website live are `npm run build` and `npm run deploy`. **Publish** here means building the site and putting it on GitHub Pages so others can visit it.
+
+The other command you will use often is `npm run update-desk`. This opens a local website that provides a code-less, hopefully friendly way to update the project’s Excel-driven data.
+
+On Windows, you can also start Update Desk by double-clicking **`Start-Update-Desk.bat`** in the project root. The first run will install dependencies for you if needed.
+
 ---
 
 ## Update building data (Update Desk)
 
-Use this when someone on the team needs to refresh energy / savings / address Excel files **without editing code**. Everything stays on this computer + GitHub (no outside hosting).
+Use Update Desk when someone on the team needs to refresh energy, savings, or address Excel files **without editing code**. Everything stays on this computer until you choose to publish to GitHub. There is no outside hosting involved beyond your normal GitHub workflow.
 
 ### First-time setup (once per computer)
 
-1. Install **Git** and **Node.js LTS** (sections above).
-2. Clone the repo and run `npm install`.
-3. Make sure you can push to GitHub (GitHub Desktop or Git Credential Manager sign-in).
-4. Create or edit `.env.update-desk` in the project root:
+1. Install **Git** and **Node.js LTS**, then clone the repo and run `npm install` (sections above).
+2. Make sure you can sign in to GitHub (GitHub Desktop or Git Credential Manager is fine).
+3. Create or edit a file named **`.env.update-desk`** in the project root (the same folder as `package.json`):
 
 ```text
-UPDATE_DESK_PASSWORD=futures-lab-2026
+UPDATE_DESK_PASSWORD=your-shared-password
 ```
 
-Do **not** commit `.env.update-desk`.
+Ask a teammate for the shared password if you do not already have it. Do **not** commit `.env.update-desk`—Git is already set up to ignore it.
+
+If you start Update Desk before creating the file, it can generate one for you and print a password in the terminal. Save that password somewhere safe for the team.
 
 ### Day-to-day update
 
-1. Double-click **`Start-Update-Desk.bat`** (Windows), or run `npm run update-desk`.
-2. Browser opens to `http://127.0.0.1:4178/` — unlock with the shared password.
-3. **Upload** one or more `.xlsx` files (filenames do not matter). The desk detects contents:
-   - year sheets → building kWh energy data
-   - `Elec Rates` / `CS Rates` sheets → rates & savings
-   - address + building name columns → addresses
-4. Click **Process uploads**. Review contribution cards, **key Elec/CS rates**, and **display names**.
-5. Click **Apply** — previous sources are archived under `public/data/archive/sources/<timestamp>/`, and runtime JSON is rebuilt.
-6. Click **Publish** — commits data changes, pushes to GitHub, builds, and deploys GitHub Pages.
+1. Double-click **`Start-Update-Desk.bat`** (Windows), or run `npm run update-desk` from the project folder.
+2. Your browser should open to `http://127.0.0.1:4178/`. Unlock with the shared password.
+3. **Upload** one or more `.xlsx` files. Filenames do not matter—the desk looks inside each workbook and detects what it contributes:
+   - Sheets named by year → building kWh (energy) data
+   - `Elec Rates` / `CS Rates` sheets → rates and savings
+   - Address + building name columns → addresses used for map placement
+4. Click **Process uploads**. Review the contribution cards, key **Elec / CS rates**, and **display names**. Edit names or rates in the Review step if something should read differently on the site.
+5. If a building has **no map position**, enter its street address in Review and click **Place on map**.
+6. Click **Apply**. Previous source files are archived under `public/data/archive/sources/<timestamp>/`, and the runtime JSON the website reads is rebuilt.
+7. Click **Publish** when you are ready. That step commits the data changes, pushes to GitHub, builds the site, and deploys GitHub Pages.
 
-If Process shows **Unknown** buildings or **No map position**, stop and ask a developer before publishing.
+If Process shows **Unknown** buildings or unresolved **No map position** warnings, stop and ask a developer before publishing. You can also try to resolve this using an AI agent.
+
+Optional practice files live in the **`test-uploads/`** folder.
 
 ### Troubleshooting (Update Desk)
 
 | Symptom | What to try |
 |---------|-------------|
 | Incorrect password | Open `.env.update-desk` and use the value after `UPDATE_DESK_PASSWORD=` |
-| Unrecognized file | Energy needs year sheets; rates need Elec Rates + CS Rates; addresses need address + name columns |
-| Unknown building | Developer adds an alias in `src/data/buildingRegistry.js` |
+| Unrecognized file | Energy workbooks need year sheets; rates need Elec Rates + CS Rates; addresses need address + name columns |
+| Unknown building | You may need to add an alias in `src/data/buildingRegistry.js`. An alias is simply another name the code recognizes for the same building. |
 | No map position | In Review, enter the building address and click **Place on map** |
 | Publish / push fails | Sign in to GitHub, then click Publish again |
-| `node` / `npm` not found | Install Node.js LTS, reopen the terminal, run `npm install` |
-| Restart without the old terminal | Stop whatever is on port 4178, then run `Start-Update-Desk.bat` again |
+| `node` / `npm` not found | Install Node.js LTS, reopen the terminal, and run `npm install` |
+| Desk will not start / port busy | Close whatever else is using port **4178**, then run `Start-Update-Desk.bat` again |
 
 ---
 
-## Appearance and theme
+## Editing content and appearance
 
-The site uses a **black background** (`#000`) with light text. This is set in **`src/index.css`** via `--bg: #000` and `background: #000` on `html` and `body`.
+When you edit text in code files, keep the surrounding quotes, commas, and brackets intact so the file stays valid. Keep `npm run dev` running and refresh the browser to see your changes.
 
-| Token | Purpose | Where to edit |
-|-------|---------|---------------|
-| `--bg` | Page background | **`src/index.css`** |
-| `--text` / `--text-h` | Body and heading text | **`src/index.css`** |
-| `--border` | Dividers (header, footer, timeline top border) | **`src/index.css`** |
-| `--accent` | Purple accent (menu focus, etc.) | **`src/index.css`** |
+### Intro overlay
 
-Timeline colors (white track, yellow spark dot, energy tail) are scoped separately in **`src/components/Timeline.css`** — see [Timeline](#timeline).
+The first screen visitors see (logos, welcome copy, and the **Enter** button) lives in **`src/App.jsx`** inside the `intro-screen` block. Update the paragraph under `intro-screen__copy`, the Enter button label, or swap the logos and collage images imported at the top of that file (they come from **`DesignAssets/`**). Intro layout and animation styles are in **`src/App.css`** (search for `intro-screen`).
 
-The Three.js scenes use transparent canvases, so they sit on top of the black page background.
+### Menu pages (Overview, References, Team, and similar)
 
----
+Most visitor-facing page copy lives in **`src/components/ContentPage.jsx`**. Open that file, find the section you want to change (for example the overview paragraphs or a team member bio), and edit the text carefully.
 
-## Typography
+Menu button labels (what people see when they open the site menu) live in **`src/components/SiteMenu.jsx`**. Page and menu styling are in **`src/components/ContentPage.css`** and **`src/components/SiteMenu.css`**. Reference-list content may also touch **`src/components/ReferencePage.jsx`**.
 
-The site uses **[Anybody](https://fonts.google.com/specimen/Anybody)** for all text (navigation, timeline, footer, and UI).
+To **add a new menu page**:
 
-The font is loaded from Google Fonts in **`index.html`** and applied globally via CSS variables in **`src/index.css`**:
+1. Add a link to **`MENU_LINKS`** in **`src/components/SiteMenu.jsx`** with a unique `id` and `label`.
+2. Add a matching entry to the content object in **`src/components/ContentPage.jsx`** (same `id`).
+3. Optionally style the page in **`src/components/ContentPage.css`**.
 
-```css
---sans: 'Anybody', system-ui, sans-serif;
---heading: 'Anybody', system-ui, sans-serif;
---mono: 'Anybody', system-ui, sans-serif;
+Choosing **Main site** in the menu returns to the triptych and timeline (and exits Look Ahead if it was open).
+
+### Timeline story moments
+
+Year callouts along the timeline (the short dated stories for 2020, 2021, and so on) live in **`src/constants/timeline.js`** inside `TIMELINE_EVENTS_BY_YEAR`. Edit `dateLabel` and `copy` for each year you want to change.
+
+The timeline UI itself is **`src/components/Timeline.jsx`**, with look and feel in **`src/components/Timeline.css`**. The list of years and the default starting year also live in **`timeline.js`**. Clicking a year updates all three triptych scenes together.
+
+### Look Ahead page
+
+Look Ahead is the full-width future view. Clicking **Look Ahead** on the timeline replaces the three-panel triptych with a single Future scene, using a carousel-style transition defined in **`App.css`**. Use **Back** (in the timeline strip) to return to the main triptych.
+
+The main Look Ahead UI chrome (metric tabs such as Energy / CO₂ / Money, building composer, stats, and building list) lives under **`src/components/lookAhead/`**, especially **`FutureOverlay.jsx`**, **`FutureStats.jsx`**, **`BuildingComposer.jsx`**, and **`FutureBuildingLog.jsx`**.
+
+Placeable building types (Office, Home, School, Shop) and their assumed system sizes are defined in **`src/data/futureBuildingTypes.js`**. Stickers for custom buildings are listed in **`src/data/futureStickers.js`**, with images under **`src/assets/sticker-icons/`**.
+
+Building display names that appear on the map and in lists can also be adjusted in **`public/data/sources/building-display-names.json`** (Update Desk Review can edit these too). After changing that JSON by hand, run `npm run import-data` so the runtime data picks up the names.
+
+### Shared buttons (Look Ahead, Back, menu)
+
+**Look Ahead**, **Back**, and the menu overlay links share a pill button style defined as **`.chrome-cta`** in **`src/index.css`**. To change that shared look, edit `.chrome-cta` there.
+
+- Look Ahead’s placement on the timeline line uses **`.timeline-cta`** in **`Timeline.css`**.
+- Back button placement when Look Ahead is open uses **`.back-stage`** in **`App.css`**.
+
+### Colors, fonts, and design assets
+
+The site uses a black background with light text. Global colors and shared button styles are set in **`src/index.css`** (for example `--bg`, `--text`, and `--accent`). The Three.js canvases are transparent, so they sit on top of that page background.
+
+The site uses the **[Anybody](https://fonts.google.com/specimen/Anybody)** font, loaded from Google Fonts in **`index.html`** and applied in **`src/index.css`**. To change the font, update the Google Fonts link in `index.html` and the related CSS variables. Logos, headshots, and other design art live under **`DesignAssets/`**.
+
+| Goal | Where to look |
+|------|----------------|
+| Change intro welcome copy or Enter button | **`src/App.jsx`** (intro screen) |
+| Change Overview / Team / References copy | **`src/components/ContentPage.jsx`** |
+| Change menu link labels | **`src/components/SiteMenu.jsx`** |
+| Add a new menu page | **`SiteMenu.jsx`** + **`ContentPage.jsx`** |
+| Change timeline year stories or default year | **`src/constants/timeline.js`** |
+| Change Look Ahead labels / metrics UI | **`src/components/lookAhead/`** |
+| Change Look Ahead building types or sizes | **`src/data/futureBuildingTypes.js`** |
+| Change building display names | **`public/data/sources/building-display-names.json`** (then import) |
+| Change shared Look Ahead / Back / menu button style | **`src/index.css`** (`.chrome-cta`) |
+| Change page background or global colors | **`src/index.css`** |
+| Change timeline look | **`src/components/Timeline.css`** |
+| Map Excel fields → scene values | **`src/data/mapYearData.js`** |
+| Replace logos, headshots, or collage art | **`DesignAssets/`** |
+
+### Building data without Update Desk (advanced)
+
+If you prefer not to use Update Desk, place Excel (and related) files in **`public/data/sources/`** and run:
+
+```bash
+npm run import-data
 ```
 
-To change the font, update the Google Fonts `<link>` in **`index.html`** and the `--sans`, `--heading`, and `--mono` variables in **`src/index.css`**.
+That rebuilds **`public/data/runtime/solar-data.json`**. For most people, Update Desk is safer because it archives previous sources and can publish for you. Folder roles are described in more detail in **`public/data/README.md`**.
+
+**Naming matters** when you drop files in by hand (Update Desk is more flexible about upload names, but the import script looks for specific live filenames):
+
+| Role | Expected name in `public/data/sources/` | Notes |
+|------|-----------------------------------------|--------|
+| Building energy (kWh) | **`solar-data.xlsx`** | Required. Workbook should include year sheets (for example `2021`, `2022`) or monthly energy headers. |
+| Rates & savings | **`Solar Monthly Savings ….xlsx`** | Prefer names like `Solar Monthly Savings 2026-7-24.xlsx`. The importer picks the newest dated match. Sheets should include **Elec Rates** and **CS Rates** (and usually **kWh**). |
+| Legacy cost fallback | **`solar-cost.xlsx`** | Optional backup if a Savings workbook is missing. |
+| Addresses | **`solar-building-addresses.xlsx`** | Needs building/name and address columns. Used to geocode and place markers on the map. |
+| Display names | **`building-display-names.json`** | Maps stable building IDs to the names shown on the site. |
+| Rate overrides | **`savings-rate-overrides.json`** | Optional; locks key Elec / CS rates used in summaries. |
+
+After changing addresses, you may also need `npm run project-positions` (or use Update Desk **Place on map**) so **`runtime/building-positions.json`** stays in sync. Avoid leaving Excel lock files (`~$…xlsx`) in the folder.
+
+### Three.js scenes
+
+The glowing building maps are WebGL scenes built with Three.js. Each panel is a separate file under **`src/scenes/`**, registered in **`src/scenes/index.js`** and mounted by **`src/components/ThreePanel.jsx`**.
+
+| Scene | File | What it shows |
+|-------|------|----------------|
+| Energy | **`energyScene.js`** | Left triptych panel — buildings sized / themed by energy produced |
+| CO₂ | **`co2Scene.js`** | Center panel — same map driven by CO₂ saved |
+| Saving | **`savingScene.js`** | Right panel — map driven by money saved |
+| Look Ahead / Future | **`futureScene.js`** | Full-width map for placing imagined buildings |
+
+When the timeline year changes, `ThreePanel` loads **`public/data/runtime/solar-data.json`**, maps that year in **`src/data/mapYearData.js`**, and calls `applyYear({ year, data, progress })` on the active scene. Shared helpers (renderer, lights, camera fit, picking) live in **`shared.js`**. Building orb visuals live in **`src/components/building/`**.
+
+The three triptych scenes share one camera pose from **`public/data/runtime/co2-camera.json`** (via **`co2Camera.js`**). The Look Ahead scene keeps its own committed pose inside **`futureScene.js`**.
+
+To change how a scene reacts to a year, edit `applyYear()` in that scene file and, if the data shape changed, **`mapYearData.js`**. Changing scene files usually means working with Three.js, so it is best handled by a developer or with careful AI assistance.
+
+Useful Three.js docs: [Geometries](https://threejs.org/docs/#api/en/geometries/BoxGeometry), [Materials](https://threejs.org/docs/#api/en/materials/MeshStandardMaterial), [Lights](https://threejs.org/docs/#api/en/lights/DirectionalLight).
+
+#### Developer positioning tools
+
+These tools help position the 3D camera and the Fulton County outline during design work. They are **turned off by default** so visitors (and kiosk demos) cannot accidentally enter edit mode. The code stays in the project. To turn a tool on or off, open the file listed below and change its switch from `false` to `true` (or back to `false`), then reload the site. Those switches are plain `true`/`false` values near the top of each file—for example `TRIPTYCH_CAMERA_EDIT_AVAILABLE = false`.
+
+**1. Triptych / Look Ahead camera** (`src/scenes/co2Camera.js`)
+
+- **Purpose:** Pan, raise/lower, and zoom the shared camera that frames the building maps; save a pose into local storage (and optionally into `public/data/runtime/co2-camera.json`).
+- **Enable:** Set `TRIPTYCH_CAMERA_EDIT_AVAILABLE = true` near the top of `co2Camera.js`, then reload the site.
+- **Use:** Press **Shift+C** to toggle edit mode (or open with `?triptychCamera=1`). While on: arrow keys pan, **Q/E** move up/down, **+/-** zoom, **S** save, **R** reset.
+- **Disable:** Set `TRIPTYCH_CAMERA_EDIT_AVAILABLE = false` again (recommended for normal use).
+- **Important:** Do **not** paste a Look Ahead-only pose into **`public/data/runtime/co2-camera.json`**. That file controls the three main triptych scenes. Look Ahead framing is edited while the Future view is open, then copied into **`futureScene.js`** instead.
+
+**2. Fulton County backdrop** (`src/components/lookAhead/FultonCountyBackdrop.jsx`)
+
+- **Purpose:** Nudge the county outline image behind Look Ahead (position, scale, opacity) and save those values.
+- **Show / hide the outline itself:** `FULTON_COUNTY_OUTLINE_ENABLED` (currently `true`).
+- **Enable editing:** Set `FULTON_BACKDROP_EDIT_AVAILABLE = true`, then reload and open Look Ahead.
+- **Use:** Press **Shift+M** to toggle edit mode (or `?fultonBackdrop=1`). While on: **I/J/K/L** move, **U/O** resize, **[/]** opacity, **P** save, **0** reset.
+- **Disable editing:** Set `FULTON_BACKDROP_EDIT_AVAILABLE = false` again.
+
+**3. Clear Look Ahead buildings** (`src/App.jsx`)
+
+- **Purpose:** Press **C** to wipe persisted user-placed Look Ahead buildings (useful while testing).
+- **Enable / disable:** `LOOK_AHEAD_CLEAR_KEY_ENABLED` (currently `false`).
 
 ---
 
@@ -267,19 +418,15 @@ To change the font, update the Google Fonts `<link>` in **`index.html`** and the
 
 ### `node` or `npm` is not recognized
 
-- Node.js is not installed, or the terminal was opened **before** installation finished
-- Close all terminal windows, open a new one, and run `node --version` again
-- On Windows, confirm Node.js was added to PATH during install
+Node.js may not be installed, or the terminal was opened **before** installation finished. Close all terminal windows, open a new one, and run `node --version` again. On Windows, confirm Node.js was added to PATH during install. If you are inside Cursor or VS Code, fully quit and reopen the app after installing Node.
 
 ### `npm install` fails with permission errors
 
-- Avoid using `sudo npm install` on macOS/Linux inside the project folder
-- If needed, fix npm’s default directory: [https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally)
+Avoid using `sudo npm install` on macOS/Linux inside the project folder. If you need to fix npm’s default directory, see [npm’s guide to EACCES permissions errors](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally).
 
 ### Port 5173 is already in use
 
-- Another app (or another Vite dev server) is using that port
-- Stop the other process, or run with a different port:
+Another app (or another Vite dev server) is using that port. Stop the other process, or run with a different port:
 
 ```bash
 npm run dev -- --port 5174
@@ -287,8 +434,10 @@ npm run dev -- --port 5174
 
 ### Blank page or errors after cloning
 
-1. Make sure you are in the project root (where `package.json` lives)
-2. Delete `node_modules` and reinstall:
+1. Make sure you are in the project root (where `package.json` lives).
+2. Delete `node_modules` and reinstall.
+
+On macOS / Linux:
 
 ```bash
 rm -rf node_modules
@@ -304,598 +453,57 @@ npm install
 
 ### The page scrolls oddly or scenes look wrong
 
-- Use a modern browser with WebGL support
-- Try a hard refresh: `Ctrl+Shift+R` (Windows/Linux) or `Cmd+Shift+R` (macOS)
+Use a modern browser with WebGL support. Try a hard refresh: `Ctrl+Shift+R` (Windows/Linux) or `Cmd+Shift+R` (macOS).
+
+### Something broke and you are not sure why
+
+Write down what you clicked, what you expected to happen, and what happened instead. A screenshot and any red error text from the browser or terminal are especially helpful. Then use Cursor **Debug** mode or Claude in VS Code (next section) and paste that information into the chat.
 
 ---
 
-## File organization
+## Get help with Cursor or Claude
 
-The project is a standard Vite + React app. Here is what each important file and folder does:
+You do not need to be a programmer to ask for help. Write in complete, everyday sentences—for example, “The Update Desk password works, but Publish fails when I click the button,” or “Please change the Overview paragraph to say the following…”
 
-```text
-solar-dinosaur/
-├── index.html              # HTML entry; loads Anybody from Google Fonts and src/main.jsx
-├── package.json            # Project name, dependencies, and npm scripts
-├── package-lock.json       # Locked dependency versions (created by npm install)
-├── vite.config.js          # Vite build/dev server configuration
-├── eslint.config.js        # Linting rules
-│
-├── public/                 # Static files served as-is (not processed by React)
-│   ├── data/               # CSV files loaded when the timeline year changes
-│   │   ├── energy.csv
-│   │   ├── co2.csv
-│   │   └── saving.csv
-│   └── icons.svg
-│
-└── src/
-    ├── main.jsx
-    ├── index.css
-    ├── App.jsx
-    ├── App.css
-    │
-    ├── constants/
-    │   └── timeline.js     # Year range, default year, yearProgress()
-    │
-    ├── data/               # CSV loading and mapping (timeline → scenes)
-    │   ├── parseCsv.js     # CSV parser
-    │   ├── loadYearData.js # fetch /data/{scene}.csv
-    │   ├── mapYearData.js  # PLEASE WORK HERE — map CSV columns per scene
-    │   └── index.js
-    │
-    ├── components/
-    │   ├── ThreePanel.jsx  # Mounts scenes; loads CSV; calls applyYear({ year, data })
-    │   ├── Timeline.jsx
-    │   ├── Timeline.css
-    │   ├── SiteMenu.jsx
-    │   ├── SiteMenu.css
-    │   ├── ContentPage.jsx
-    │   └── ContentPage.css
-    │
-    ├── scenes/             # One file per Three.js scene
-    │   ├── shared.js       # Renderer, camera, lights helpers
-    │   ├── energyScene.js  # PLEASE WORK HERE — energy visualization + applyYear
-    │   ├── co2Scene.js
-    │   ├── savingScene.js
-    │   ├── futureScene.js
-    │   └── index.js        # sceneFactories registry
-    │
-    └── assets/
-        ├── hero.png
-        ├── react.svg
-        └── vite.svg
-```
+### Using Cursor (recommended for this project)
 
-### How the pieces connect
+1. Open the **solar-dinosaur** folder in [Cursor](https://cursor.com).
+2. Open the Agent panel with **Ctrl+I** (Windows/Linux) or **Cmd+I** (Mac).
+3. Choose a mode that matches what you need:
+   - **Agent** when you want the assistant to make changes for you
+   - **Ask** when you only want an explanation
+   - **Debug** when something is broken and you need help finding why
 
-1. **`index.html`** loads the **Anybody** font and **`src/main.jsx`**, which renders **`App.jsx`**.
-2. **`App.jsx`** holds **year**, **lookAheadActive**, **showFuture**, **menuOpen**, and **siteView** state. It lays out: header (**SiteMenu**) → main content (triptych/Future or **ContentPage**) → timeline chrome (timeline + Back button) → footer.
-3. Clicking **solar-dinosaur** in the header opens the **SiteMenu** overlay. **Main site** shows the triptych + timeline; other links show **ContentPage** placeholders.
-4. The **triptych** renders three **`ThreePanel`** components (`"energy"`, `"co2"`, `"saving"`), each receiving the current `year`.
-5. **`ThreePanel`** creates the scene, loads **`public/data/runtime/solar-data.json`** for the selected year, maps it in **`mapYearData.js`**, and calls **`applyYear({ year, data, progress })`** in the matching scene file.
-6. **`Timeline`** displays years **2021–2026** plus a **Look Ahead** button. Clicking a year updates all three triptych scenes. Clicking **Look Ahead** triggers the carousel transition to the **Future** scene.
-7. **`App.css`** defines scene carousel animations (panels slide apart; Future slides in). **`Timeline.css`** handles the energy-themed timeline. Shared pill button styles live in **`index.css`** as **`.chrome-cta`** (used by Look Ahead and Back).
+These official Cursor pages are written for people learning as they go:
+
+- [Using Agent](https://cursor.com/help/ai-features/agent) — how to start a chat and switch modes
+- [Debug mode](https://cursor.com/docs/agent/debug-mode) — a step-by-step way to troubleshoot with runtime clues
+- [Debug mode overview](https://cursor.com/help/ai-features/debug-mode) — a shorter summary of the same idea
+
+When you ask for help, paste the error message and say what you were doing when it appeared. The more specific you are, the better the answer will be.
+
+### Using Claude in VS Code
+
+If you prefer [Visual Studio Code](https://code.visualstudio.com/) (or use it alongside Cursor):
+
+1. Install the official **Claude Code** extension published by Anthropic.
+2. Sign in with your Claude account when prompted.
+3. Open this project folder, then ask Claude to explain a file, suggest an edit, or help fix an error.
+
+Anthropic’s guide walks through install and first use: [Use Claude Code in VS Code](https://code.claude.com/docs/en/vscode).
 
 ---
 
-## Data visualization template (CSV + timeline)
+## Working together on GitHub
 
-This repo is structured as a **template for year-driven data visualization**. Each triptych panel has its own scene file and its own CSV.
+We collaborate through GitHub. Whenever you plan to commit and push changes to the repository, please:
 
-### Data flow
+1. **Fetch / pull** the latest changes from the origin of the repo so you are not working on an outdated copy.
+2. Compare differences and resolve any merges if Git asks you to. You can use AI assistance.
+3. Make your commit and write a short message that documents **why** you made the change.
+4. **Push** to the origin.
 
-```text
-User clicks year on timeline
-        ↓
-App.jsx updates `year` prop on each ThreePanel
-        ↓
-ThreePanel fetches public/data/runtime/solar-data.json
-        ↓
-mapSceneYearData() in src/data/mapYearData.js
-        ↓
-applyYear({ year, data, progress }) in src/scenes/{variant}Scene.js
-```
-
-### Where to work (by role)
-
-| Task | File | Look for |
-|------|------|----------|
-| **Replace dataset** | `public/data/sources/*.xlsx` + `npm run import-data` | Writes `public/data/runtime/solar-data.json` |
-| **Map CSV → scene values** | `src/data/mapYearData.js` | `PLEASE WORK HERE FOR … DATA MAPPING` |
-| **Build the 3D visualization** | `src/scenes/energyScene.js` (etc.) | `PLEASE WORK HERE FOR … — build your Three.js visualization` |
-| **Update scene from data** | same scene file | `PLEASE WORK HERE FOR … — apply CSV data` inside `applyYear()` |
-| **Animation** | same scene file | `PLEASE WORK HERE FOR … — per-frame animation` |
-
-### CSV format
-
-Normalized metrics live in **`public/data/runtime/solar-data.json`** (generated from workbooks in **`public/data/sources/`**). See **`public/data/README.md`** for the folder layout. Legacy per-scene CSVs remain under **`public/data/archive/`** for reference only.
-
-```csv
-year,generation_twh,capacity_gw
-2021,32.1,12.4
-2022,38.6,15.2
-```
-
-Column names can use `snake_case` or `camelCase`. Map them in **`mapYearData.js`** so each scene receives a clean `data` object.
-
-### applyYear API
-
-Every triptych scene receives the same shape when the year changes:
-
-```js
-applyYear({ year, data, progress })
-```
-
-| Field | Type | Description |
-|-------|------|-------------|
-| `year` | `number` | Selected timeline year (e.g. 2024) |
-| `data` | `object` | Output of `mapSceneYearData()` for this scene |
-| `progress` | `number` | `0` at first year → `1` at last year (`yearProgress()`) |
-
-The Future scene does not load CSV data by default.
-
----
-
-## Site navigation and content pages
-
-Click **solar-dinosaur** in the header to open a full-screen menu overlay. The menu links are defined in **`src/components/SiteMenu.jsx`**:
-
-```js
-const MENU_LINKS = [
-  { id: 'main', label: 'Main site' },
-  { id: 'artist-statement', label: 'Artist statement / Context of the project / Overview' },
-  { id: 'research', label: 'Research Links / Data points / References' },
-  { id: 'team', label: 'Team section' },
-]
-```
-
-| Link | What it shows |
-|------|----------------|
-| **Main site** | Triptych scenes + timeline (resets year to 2021) |
-| **Artist statement…** | Content page placeholder |
-| **Research Links…** | Content page placeholder |
-| **Team section** | Content page placeholder |
-
-### Where to edit page content
-
-All non-main page copy lives in **`src/components/ContentPage.jsx`** in the `CONTENT` object at the top of the file:
-
-```js
-const CONTENT = {
-  'artist-statement': {
-    title: 'Artist statement / Context of the project / Overview',
-    body: [
-      'First paragraph…',
-      'Second paragraph…',
-    ],
-  },
-  research: {
-    title: 'Research Links / Data points / References',
-    body: [
-      'Add research links, datasets, and references for the project here.',
-    ],
-  },
-  team: {
-    title: 'Team section',
-    body: [
-      'Add team member names, roles, and bios here.',
-    ],
-  },
-}
-```
-
-Each entry has:
-
-- **`title`** — shown as the page heading (`<h1>`)
-- **`body`** — array of strings; each string becomes one `<p>` paragraph
-
-To edit a page, change the `title` and/or add, remove, or rewrite strings in `body`. The `id` keys (`artist-statement`, `research`, `team`) must match the `id` values in **`SiteMenu.jsx`** `MENU_LINKS`.
-
-### Adding a new menu page
-
-1. Add a link to **`MENU_LINKS`** in **`src/components/SiteMenu.jsx`** with a unique `id` and `label`
-2. Add a matching entry to the `CONTENT` object in **`src/components/ContentPage.jsx`**
-3. Optionally style the page in **`src/components/ContentPage.css`**
-
-Menu overlay styling (large buttons, backdrop) is in **`src/components/SiteMenu.css`**. Menu buttons reuse the same pill style as Look Ahead via **`.chrome-cta`**.
-
-### Navigation state
-
-**`src/App.jsx`** tracks which view is active with `siteView` (`'main'`, `'artist-statement'`, `'research'`, or `'team'`). `handleNavigate()` switches views; choosing **Main site** also resets the timeline to **2021** and exits Look Ahead mode.
-
----
-
-## Shared button style (Look Ahead, Back, menu)
-
-**Look Ahead**, **Back**, and the menu overlay links share a pill button style defined as **`.chrome-cta`** in **`src/index.css`**:
-
-- Squared corners (`border-radius: 10px`)
-- `3.5px` border with a light gradient fill
-- Hover brightening
-
-**Look Ahead** adds **`timeline-cta`** in **`Timeline.css`** for absolute positioning on the timeline line.
-
-**Back** appears in the timeline strip when the Future scene is open (left-aligned in **`.back-stage`** in **`App.css`**). It uses **`chrome-cta`** only — no `is-active` class, so it does not show the purple accent ring.
-
-To change the shared button appearance, edit **`.chrome-cta`** in **`src/index.css`**. To change Look Ahead placement on the timeline, edit **`.timeline-cta`** in **`Timeline.css`**.
-
----
-
-## Timeline
-
-The site includes a full-width timeline between the main content and the footer.
-
-- Clicking a **year** updates all **three triptych** Three.js scenes at once.
-- Clicking **Look Ahead** transitions to the **Future** scene (see [Look Ahead and the Future scene](#look-ahead-and-the-future-scene) below).
-
-### Default year
-
-The site starts on **2021**. The default is set in **`src/constants/timeline.js`**:
-
-```js
-export const DEFAULT_YEAR = 2021
-```
-
-### Timeline layout and styling
-
-The timeline spans the full page width and uses an **energy spark** visual theme on a black background:
-
-| Element | Description |
-|---------|-------------|
-| **Track line** | Low-opacity white placeholder (`--timeline-track`, ~22% opacity) running from the center of **2021** to the center of **2026** |
-| **Progress tail** | White-to-yellow gradient that fades in from transparent on the left and brightens toward the active year — reads as the energy trail behind the spark |
-| **Year markers** | Hollow circles on the track; inactive markers use the same low-opacity white as the track |
-| **Active year dot** | Yellow radial gradient with a multi-layer glow (energy spark effect) |
-| **Look Ahead button** | Pill CTA after **2026**, centered on the timeline line via **`.timeline-cta`** |
-
-The track line is positioned with CSS so it aligns exactly with the year dot centers (not the full width including the Look Ahead column). See **`--timeline-year-columns`** and **`--timeline-total-columns`** in **`Timeline.css`**.
-
-### Timeline color variables
-
-Edit these in **`.timeline-track`** inside **`src/components/Timeline.css`**:
-
-| Variable | Purpose | Default |
-|----------|---------|---------|
-| `--timeline-track` | Inactive line and marker rings | `rgba(255, 255, 255, 0.22)` |
-| `--timeline-spark` | Active dot base yellow | `#ffd54a` |
-| `--timeline-spark-hot` | Active dot bright core | `#fff59d` |
-| `--timeline-spark-glow` | Active dot outer glow | `rgba(255, 213, 74, 0.55)` |
-
-The progress tail gradient and spark `box-shadow` are in **`.timeline-progress`** and **`.timeline-year.is-active .timeline-marker`** in the same file.
-
-### Where the timeline code lives
-
-| File | Purpose |
-|------|---------|
-| **`src/components/Timeline.jsx`** | Renders the timeline UI, year clicks, and Look Ahead button |
-| **`src/components/Timeline.css`** | Track alignment, spark dot, progress tail, CTA positioning |
-| **`src/constants/timeline.js`** | Year list (`2021`–`2026`), default year, and `yearProgress()` helper |
-
-**`src/App.jsx`** owns timeline state and connects it to the scenes:
-
-```jsx
-const [year, setYear] = useState(DEFAULT_YEAR)
-const [lookAheadActive, setLookAheadActive] = useState(false)
-const [showFuture, setShowFuture] = useState(false)
-
-const handleYearChange = (nextYear) => {
-  setLookAheadActive(false)
-  setYear(nextYear)
-}
-
-const handleLookAhead = () => {
-  setLookAheadActive(true)
-  setShowFuture(true)
-  setYear(TIMELINE_YEARS[TIMELINE_YEARS.length - 1])
-}
-
-<Timeline
-  year={year}
-  onYearChange={handleYearChange}
-  lookAheadActive={lookAheadActive}
-  onLookAhead={handleLookAhead}
-/>
-```
-
-### How the timeline affects the triptych scenes
-
-Each triptych scene factory in **`src/scenes/index.js`** returns an `applyYear(year)` function. When you click a year:
-
-1. **`Timeline`** calls `onYearChange(year)`
-2. **`App.jsx`** sets `lookAheadActive` to `false` and updates `year`
-3. Each triptych **`ThreePanel`** calls `applyYear(year)` on its scene (without remounting the canvas)
-
-`yearProgress(year)` maps the selected year to a value from `0` (2021) to `1` (2026). Scenes use that value to interpolate sizes, colors, and animation speed.
-
-| Scene | What changes from 2021 → 2026 |
-|-------|-------------------------------|
-| **Energy** | Core grows brighter and larger; corona and orbit expand; rotation speeds up |
-| **CO2** | Knot grows and shifts from purple to red; ring expands; rotation speeds up |
-| **Saving** | Figure grows and becomes greener; ground lightens; bobbing increases slightly |
-
-### How to edit the timeline
-
-**Change the year range** — edit `TIMELINE_YEARS` in **`src/constants/timeline.js`**:
-
-```js
-export const TIMELINE_YEARS = [2021, 2022, 2023, 2024, 2025, 2026]
-```
-
-If you change the range, update each triptych scene’s `applyYear()` in **`src/scenes/{energy,co2,saving}Scene.js`** and add matching rows to the CSV files. You may also need to adjust the track line width in **`Timeline.css`** (`--timeline-year-columns` / `--timeline-total-columns`).
-
-**Change the default starting year** — edit `DEFAULT_YEAR` in the same constants file.
-
-**Change timeline appearance** — edit **`src/components/Timeline.css`**:
-
-- **Track / inactive markers:** `--timeline-track`
-- **Spark dot colors and glow:** `--timeline-spark`, `--timeline-spark-hot`, `--timeline-spark-glow`, and `.timeline-year.is-active .timeline-marker`
-- **Progress tail gradient:** `.timeline-progress`
-- **Look Ahead position:** `.timeline-cta`
-
-**Change shared button style (Look Ahead + Back + menu):** edit **`.chrome-cta`** in **`src/index.css`**.
-
-**Change what happens when a year is selected** — edit `applyYear()` in **`src/scenes/{energy,co2,saving}Scene.js`** and column mapping in **`src/data/mapYearData.js`**.
-
----
-
-## Look Ahead and the Future scene
-
-Clicking the **Look Ahead -->** button on the timeline replaces the triptych with a single full-width **Future** Three.js scene, using a horizontal carousel-style transition.
-
-### What happens when you click Look Ahead
-
-1. **`lookAheadActive`** becomes `true` and **`showFuture`** becomes `true` in **`App.jsx`**
-2. The year is set to **2026** (the last timeline year)
-3. CSS class **`scene-carousel--future`** is applied to the carousel container
-4. The three triptych panels animate apart:
-   - **Energy** slides left off screen
-   - **CO2** fades and scales down in the center
-   - **Saving** slides right off screen
-5. The **Future** scene slides in from the right and fills the main area
-
-### Returning to the triptych
-
-Click the **<-- Back** button in the timeline strip (left-aligned). That calls `handleGoBack()` in **`App.jsx`**, which:
-
-1. Sets `lookAheadActive` to `false`
-2. Resets the year to **2021**
-3. Reverses the carousel animation back to the three-panel view
-
-The Future scene stays mounted (hidden) so the reverse transition stays smooth.
-
-You can also return via the menu: **Main site** runs the same reset logic.
-
-Selecting a year on the timeline while still on the triptych updates scenes without entering Future mode. If you were in Future mode, use **Back** or **Main site** first.
-
-### Where the carousel code lives
-
-| File | Purpose |
-|------|---------|
-| **`src/App.jsx`** | `lookAheadActive`, `showFuture` state; carousel markup; **Back** button |
-| **`src/App.css`** | `.scene-carousel`, `.scene-carousel--future`, panel slide transforms, `.future-stage`, `.chrome-carousel`, `.back-stage` |
-| **`src/scenes/futureScene.js`** | `createFutureScene()` factory |
-| **`src/components/ThreePanel.jsx`** | Mounts the `future` variant (no `year` prop required) |
-| **`src/index.css`** | **`.chrome-cta`** shared button style for Look Ahead and Back |
-
-Carousel markup in **`App.jsx`**:
-
-```jsx
-<div className={`scene-carousel${lookAheadActive ? ' scene-carousel--future' : ''}`}>
-  <section className="triptych" aria-hidden={lookAheadActive}>
-    {/* energy, co2, saving panels */}
-  </section>
-
-  {showFuture && (
-    <section className="future-stage" aria-label="Future scene">
-      <ThreePanel variant="future" label="Future scene" />
-    </section>
-  )}
-</div>
-
-<div className={`chrome-carousel${lookAheadActive ? ' chrome-carousel--future' : ''}`}>
-  <div className="timeline-stage">
-    <Timeline ... />
-  </div>
-
-  {showFuture && (
-    <div className="back-stage">
-      <button type="button" className="chrome-cta" onClick={handleGoBack}>
-        <span className="chrome-cta-arrow">&lt;--</span>
-        <span className="chrome-cta-label">Back</span>
-      </button>
-    </div>
-  )}
-</div>
-```
-
-### The Future scene
-
-`createFutureScene()` in **`src/scenes/futureScene.js`** renders a distinct futuristic visualization:
-
-- Cyan glowing icosahedron core
-- Purple wireframe outer shell
-- Orbiting light nodes
-- Rotating accent ring
-
-Unlike the triptych scenes, the Future scene does **not** respond to timeline years. It exposes a no-op `applyYear()` and is mounted without a `year` prop.
-
-### How to edit Look Ahead behavior
-
-| Goal | Where to edit |
-|------|----------------|
-| Change slide animation speed or direction | **`src/App.css`** — `.triptych-panel` transitions and `.scene-carousel--future` transforms |
-| Change what the Future scene looks like | **`src/scenes/futureScene.js`** — `createFutureScene()` |
-| Change when Future mounts or unmounts | **`src/App.jsx`** — `showFuture` / `lookAheadActive` logic |
-| Change Look Ahead or Back button label or style | **`Timeline.jsx`** / **`App.jsx`** for labels; **`.chrome-cta`** in **`index.css`** for shared style; **`.timeline-cta`** in **`Timeline.css`** for Look Ahead position |
-| Change Back button placement | **`App.css`** — `.back-stage` |
-
-On viewports **1024px and below**, the carousel uses vertical slides (panels move up/down) instead of horizontal.
-
----
-
-## Three.js scenes: where they live and how to edit them
-
-### Where the scene code is
-
-Each scene has its own file under **`src/scenes/`**:
-
-| File | `variant` | View |
-|------|-----------|------|
-| **`energyScene.js`** | `"energy"` | Triptych (left) |
-| **`co2Scene.js`** | `"co2"` | Triptych (center) |
-| **`savingScene.js`** | `"saving"` | Triptych (right) |
-| **`futureScene.js`** | `"future"` | Full-width (Look Ahead) |
-| **`shared.js`** | — | Shared renderer, camera, lights |
-| **`co2Camera.js`** | — | Shared triptych camera load/save + framing edit tool |
-| **`index.js`** | — | `sceneFactories` registry |
-
-They are registered in **`src/scenes/index.js`**:
-
-```js
-export const sceneFactories = {
-  energy: createEnergyScene,
-  co2: createCo2Scene,
-  saving: createSavingScene,
-  future: createFutureScene,
-}
-```
-
-**`src/components/ThreePanel.jsx`** handles the canvas, CSV loading, resizing, render loop, cleanup, and calling `applyYear({ year, data, progress })` when the year changes.
-
-**`src/App.jsx`** wires triptych panels via `variant` and `year`; the Future panel uses only `variant="future"`:
-
-```jsx
-<ThreePanel variant="energy" label="Energy scene" year={year} />
-<ThreePanel variant="co2" label="CO2 scene" year={year} />
-<ThreePanel variant="saving" label="Saving scene" year={year} />
-<ThreePanel variant="future" label="Future scene" />
-```
-
-### How to edit an existing scene
-
-1. Start the dev server: `npm run dev`
-2. Open the scene file (e.g. **`src/scenes/energyScene.js`**)
-3. Work in the sections marked **`PLEASE WORK HERE FOR …`**
-4. Update **`public/data/sources/`** (then `npm run import-data`) and **`src/data/mapYearData.js`** if your data columns change
-5. Save — Vite hot-reloads automatically
-
-Each triptych scene follows the same pattern:
-
-```js
-export function createEnergyScene(initialYear) {
-  const scene = new THREE.Scene()
-  // ...
-
-  // PLEASE WORK HERE — build visualization
-  const mesh = new THREE.Mesh(...)
-  scene.add(mesh)
-
-  // PLEASE WORK HERE — apply CSV data on year change
-  const applyYear = ({ year, data = {}, progress }) => {
-    // use data.generationTwh, etc.
-  }
-
-  // PLEASE WORK HERE — per-frame animation
-  const animate = () => { /* ... */ }
-
-  return { scene, camera, renderer, animate, applyYear, objects: [mesh] }
-}
-```
-
-Common edits:
-
-- **Colors / shapes / motion:** scene file (`*Scene.js`)
-- **Data per year:** `public/data/runtime/solar-data.json` + `mapYearData.js` + `applyYear()` in scene file
-- **Timeline range:** **`src/constants/timeline.js`**
-
-Any new mesh or group should be listed in the `objects` array so **`ThreePanel`** can dispose of it on unmount.
-
-### How to add a new scene
-
-1. Copy **`src/scenes/energyScene.js`** → **`src/scenes/moonScene.js`** (or similar)
-2. Register it in **`src/scenes/index.js`** → `sceneFactories`
-3. Add source data under **`public/data/sources/`** (or archive CSV under **`public/data/archive/`**) and a mapper in **`src/data/mapYearData.js`**
-4. Add **`DATA_SCENES`** entry in **`src/data/loadYearData.js`** if it uses CSV
-5. In **`src/App.jsx`**, add `<ThreePanel variant="moon" label="Moon scene" year={year} />`
-6. Update styles in **`App.css`** if layout changes
-
-For a scene without timeline/CSV, follow **`futureScene.js`** (no `year` argument, no-op `applyYear`).
-
-### Triptych camera framing (dev tool)
-
-The three main triptych scenes share one camera pose from **`public/data/runtime/co2-camera.json`** (via **`src/scenes/co2Camera.js`**). The Look Ahead scene has a separate committed pose in **`src/scenes/futureScene.js`**. Collaborators can nudge either framing in the browser without editing camera coordinates by hand.
-
-**Edit mode is off by default** so visitors don’t accidentally pan the map. Turn it on with either:
-
-| Method | How |
-|--------|-----|
-| Keyboard | **Shift+C** (toggles on/off; preference is remembered in `localStorage`) |
-| URL | Open the app with **`?triptychCamera=1`** (e.g. `http://localhost:5173/?triptychCamera=1`). Use **`?triptychCamera=0`** to force it off |
-
-When edit mode is on, a small HUD appears on the **energy** (left) panel and these keys work:
-
-| Key | Action |
-|-----|--------|
-| **Arrow keys** | Pan on X / Z (hold **Shift** for a larger step) |
-| **Q / E** | Raise / lower on Y |
-| **+ / −** | Zoom in / out |
-| **S** | Save the current pose (writes `localStorage` and logs JSON in the console) |
-| **R** | Reset to auto top-down fit |
-| **Shift+C** | Turn edit mode off |
-
-**To persist a new framing in the repo:**
-
-1. Enable edit mode and adjust until it looks right  
-2. Press **S**  
-3. Copy the JSON from the browser console  
-4. Paste it into **`public/data/runtime/co2-camera.json`** and commit  
-
-Until you update that file, a local **S** save still wins on refresh (so you can iterate). Clear site data for the app, or overwrite the JSON and remove the `solar-dinosaur.co2-camera` `localStorage` entry, if you need to fall back to the committed file only.
-
-#### Repositioning the Look Ahead scene
-
-1. Open **Look Ahead**.
-2. Press **Shift+C** to enable camera editing.
-3. Use the same controls listed above:
-   - **Arrow keys** pan the scene.
-   - **Q / E** raise or lower it.
-   - **+ / −** zoom.
-   - Hold **Shift** with a movement key for a larger step.
-4. Press **S** to print the current camera JSON in the browser console.
-5. Copy the `position`, `target`, and `up` values into `LOOK_AHEAD_CAMERA` near the top of **`src/scenes/futureScene.js`**:
-
-```js
-const LOOK_AHEAD_CAMERA = {
-  position: [-0.6, -7.633570423560478, 0.48],
-  target: [-0.6, 0, 0.48],
-  up: [0, 0, -1],
-}
-```
-
-Do **not** paste a Look Ahead-only pose into **`public/data/runtime/co2-camera.json`**. That file controls the three main triptych scenes. Note that pressing **S** also saves the temporary editor pose to the shared `solar-dinosaur.co2-camera` local-storage entry; remove that entry after copying the values if you do not want it to override the triptych camera during local testing.
-
-#### Repositioning the Fulton County backdrop
-
-Open Look Ahead and press **Shift+M** to toggle the backdrop editor. You can also open the app with **`?fultonBackdrop=1`**; use **`?fultonBackdrop=0`** to force the editor off.
-
-| Key | Action |
-|-----|--------|
-| **I / J / K / L** | Move up / left / down / right (hold **Shift** for a larger step) |
-| **U / O** | Make the backdrop smaller / larger |
-| **[ / ]** | Reduce / increase opacity |
-| **P** | Save to `localStorage` and print the values in the browser console |
-| **0** | Reset the live values to the committed defaults |
-| **Shift+M** | Turn edit mode off |
-
-To persist the placement in the repository, press **P**, copy the printed values, and replace `DEFAULT_BACKDROP` near the top of **`src/components/lookAhead/FultonCountyBackdrop.jsx`**.
-
-### Three.js reference
-
-Scene code uses the [Three.js API](https://threejs.org/docs/). Useful docs:
-
-- [Geometries](https://threejs.org/docs/#api/en/geometries/BoxGeometry)
-- [Materials](https://threejs.org/docs/#api/en/materials/MeshStandardMaterial)
-- [Lights](https://threejs.org/docs/#api/en/lights/DirectionalLight)
+When you use Update Desk **Publish** for data updates, that flow can handle commit, push, build, and deploy for you once you are signed in to GitHub.
 
 ---
 
@@ -904,13 +512,3 @@ Scene code uses the [Three.js API](https://threejs.org/docs/). Useful docs:
 - [React](https://react.dev/)
 - [Vite](https://vite.dev/)
 - [Three.js](https://threejs.org/)
-
-
-## Notes on Collaboration
-
-For collaborating, we are using Github. Please do the following whenever you plan to commit push something to the repository. 
-
-1. Fetch/pull from the origin of the repo. 
-2. Compare differences and accept mergers. 
-3. Do your commit and add a message for documentation
-4. Push to the origin
