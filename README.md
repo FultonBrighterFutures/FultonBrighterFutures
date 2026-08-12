@@ -1,4 +1,4 @@
-# solar-dinosaur
+# Fulton Brighter Future
 
 **Fulton Brighter Futures** is an interactive website that visualizes solar panel adoption across Fulton County government buildings. Visitors move through a **2021–2026** timeline to see energy generated, CO₂ reduced, and money saved. Then they can open **Look Ahead** to imagine how incorporating more buildings in the area can contribute to Fulton's Solar Program. The experience includes three side-by-side Three.js scenes (energy, CO₂, and saving), a menu of content pages (overview, references, team, and more), and a local **Update Desk** for refreshing building data from Excel without writing code.
 
