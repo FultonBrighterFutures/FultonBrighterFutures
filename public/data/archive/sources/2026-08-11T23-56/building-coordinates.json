@@ -1,7 +1,7 @@
 {
   "sourceFile": "solar-building-addresses.xlsx",
   "geocoder": "nominatim.openstreetmap.org",
-  "geocodedAt": "2026-08-12T00:19:51.172Z",
+  "geocodedAt": "2026-08-11T23:56:02.476Z",
   "buildings": [
     {
       "id": "adams-park-library",
@@ -371,6 +371,15 @@
       "lat": 33.6725487,
       "lng": -84.5739722,
       "geocodeLabel": "Wolf Creek Branch Library, 3100, Enon Road, Atlanta, Fulton County, Georgia, 30331, United States"
+    },
+    {
+      "id": "new-building",
+      "name": "New Building",
+      "systemName": "New Building",
+      "address": "251 10th Street NW, Atlanta GA 30318",
+      "lat": 33.7820059,
+      "lng": -84.3959145,
+      "geocodeLabel": "Tenth and Home Building A, 251, 10th Street Northwest, Home Park, Atlanta, Fulton County, Georgia, 30318, United States"
     }
   ]
 }

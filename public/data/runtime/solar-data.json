@@ -9348,11 +9348,12 @@
   },
   "savingsFormula": "kWh × (Elec Rate − CS Rate); each month uses that month’s rates when available",
   "savingsRates": {
-    "elecRate": 0.16792682926829267,
-    "csRate": 0.10869268292682936,
-    "savingsPerKwh": 0.059234146341463303,
+    "elecRate": 0.1679,
+    "csRate": 0.1087,
+    "savingsPerKwh": 0.05919999999999999,
     "year": 2026,
-    "month": 6
+    "month": 6,
+    "overrideSource": "savings-rate-overrides.json"
   },
   "totalCo2SavedLbs": 8728582,
   "co2ByYear": {
@@ -9379,9 +9380,10 @@
     "energy": "solar-data.xlsx",
     "cost": "Solar Monthly Savings 2026-7-24.xlsx",
     "emissionRate": "Solar Monthly Savings 2026-7-24.xlsx",
-    "savings": "Solar Monthly Savings 2026-7-24.xlsx"
+    "savings": "Solar Monthly Savings 2026-7-24.xlsx",
+    "rateOverrides": "savings-rate-overrides.json"
   },
-  "importedAt": "2026-08-04T18:55:02.113Z",
+  "importedAt": "2026-08-12T00:55:13.443Z",
   "sheetNames": [
     "2021",
     "2022",
