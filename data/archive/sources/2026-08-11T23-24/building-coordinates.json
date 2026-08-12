@@ -1,7 +1,7 @@
 {
   "sourceFile": "solar-building-addresses.xlsx",
   "geocoder": "nominatim.openstreetmap.org",
-  "geocodedAt": "2026-08-12T00:19:51.172Z",
+  "geocodedAt": "2026-08-03T20:51:09.098Z",
   "buildings": [
     {
       "id": "adams-park-library",

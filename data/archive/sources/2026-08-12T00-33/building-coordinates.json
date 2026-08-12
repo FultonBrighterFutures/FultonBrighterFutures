@@ -371,6 +371,15 @@
       "lat": 33.6725487,
       "lng": -84.5739722,
       "geocodeLabel": "Wolf Creek Branch Library, 3100, Enon Road, Atlanta, Fulton County, Georgia, 30331, United States"
+    },
+    {
+      "id": "test-lab-annex",
+      "name": "Test Lab Annex",
+      "systemName": "Test Lab Annex",
+      "address": "251 10th Street NW, Atlanta, GA 30318",
+      "lat": 33.7820059,
+      "lng": -84.3959145,
+      "geocodeLabel": "Tenth and Home Building A, 251, 10th Street Northwest, Home Park, Atlanta, Fulton County, Georgia, 30318, United States"
     }
   ]
 }
