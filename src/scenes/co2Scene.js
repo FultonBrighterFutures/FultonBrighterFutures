@@ -37,7 +37,7 @@ const getCo2Metric = (building) => building.annualCo2Lbs ?? building.annualKwh ?
 
 /**
  * CO2 scene — center triptych panel.
- * Building map driven by DataTest.csv via mapCo2YearData().
+ * Building map driven by solar-data.json via mapCo2YearData().
  */
 export function createCo2Scene(initialYear) {
   const scene = new THREE.Scene()

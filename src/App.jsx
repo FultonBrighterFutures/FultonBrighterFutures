@@ -27,6 +27,8 @@ import FultonCountyBackdrop from './components/lookAhead/FultonCountyBackdrop'
 const AUTO_ADVANCE_DELAY_MS = 30_000
 // Keep wheel/swipe timeline navigation available, but disabled for now.
 const TIMELINE_SCROLL_ENABLED = false
+// Debug: press C to clear persisted Look Ahead buildings (disabled for now).
+const LOOK_AHEAD_CLEAR_KEY_ENABLED = false
 
 function App() {
   const [year, setYear] = useState(DEFAULT_YEAR)
@@ -224,6 +226,8 @@ function App() {
 
   // Debug: press C to clear persisted Look Ahead buildings
   useEffect(() => {
+    if (!LOOK_AHEAD_CLEAR_KEY_ENABLED) return
+
     const handleClearBuildings = (event) => {
       if (event.key !== 'c' && event.key !== 'C') return
       if (event.metaKey || event.ctrlKey || event.altKey) return

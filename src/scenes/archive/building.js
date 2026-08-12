@@ -1,6 +1,9 @@
 /**
- * DK'S Note: 
- * This is the final building look. It has the color of the energy, co2, and money. 
+ * ARCHIVED — standalone OrbitControls + lil-gui playground (not wired into the app).
+ * Moved out of the live scene registry; keep for troubleshooting reference.
+ *
+ * DK'S Note:
+ * This is the final building look. It has the color of the energy, co2, and money.
  * I can remove the GUI controls but they are there rn for troubleshooting.
  */
 

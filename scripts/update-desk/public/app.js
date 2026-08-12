@@ -87,6 +87,60 @@ function formatBytes(size) {
   return `${(size / (1024 * 1024)).toFixed(1)} MB`
 }
 
+/** Guess simple role tags from a filename (live sources + pending uploads). */
+function guessFileTags(name) {
+  const lower = String(name || '').toLowerCase()
+  if (lower === 'solar-data.xlsx' || /energy|solar-data/.test(lower)) {
+    return ['Energy (kWh)']
+  }
+  if (/solar monthly savings|savings|rates/.test(lower)) {
+    return ['Rates & savings']
+  }
+  if (/address/.test(lower)) {
+    return ['Addresses']
+  }
+  if (lower === 'solar-cost.xlsx') {
+    return ['Legacy cost']
+  }
+  if (lower === 'building-display-names.json') {
+    return ['Display names']
+  }
+  if (lower === 'building-coordinates.json') {
+    return ['Map coordinates']
+  }
+  if (lower === 'building-position-projection.json') {
+    return ['Map projection']
+  }
+  if (lower === 'savings-rate-overrides.json') {
+    return ['Rate overrides']
+  }
+  if (lower.endsWith('.json')) {
+    return ['Config']
+  }
+  if (lower.endsWith('.xlsx')) {
+    return ['Detect on process']
+  }
+  return []
+}
+
+function renderFileTags(tags) {
+  if (!tags?.length) return ''
+  return `<span class="file-tags">${tags
+    .map((tag) => `<span class="badge role">${tag}</span>`)
+    .join('')}</span>`
+}
+
+function renderFileRow(file) {
+  const tags = file.tags?.length ? file.tags : guessFileTags(file.name)
+  return `<li>
+    <div class="file-main">
+      <span class="file-name">${file.name}</span>
+      ${renderFileTags(tags)}
+    </div>
+    <span class="file-size">${formatBytes(file.size)}</span>
+  </li>`
+}
+
 function formatNumber(value) {
   return Math.round(Number(value) || 0).toLocaleString()
 }
@@ -117,10 +171,7 @@ function renderLiveFiles(files) {
     return
   }
   els.liveFiles.innerHTML = `<p class="muted"><strong>Currently live</strong></p><ul class="file-list">${files
-    .map(
-      (file) =>
-        `<li><span class="file-name">${file.name}</span><span>${formatBytes(file.size)}</span></li>`,
-    )
+    .map((file) => renderFileRow(file))
     .join('')}</ul>`
 }
 
@@ -131,9 +182,12 @@ function renderPendingFiles() {
     return
   }
   els.pendingFiles.innerHTML = `<p class="muted"><strong>Selected for process</strong></p><ul class="file-list">${state.pendingFiles
-    .map(
-      (file) =>
-        `<li><span class="file-name">${file.name}</span><span>${formatBytes(file.size)}</span></li>`,
+    .map((file) =>
+      renderFileRow({
+        name: file.name,
+        size: file.size,
+        tags: guessFileTags(file.name),
+      }),
     )
     .join('')}</ul>`
 }

@@ -9,6 +9,12 @@ const EDIT_QUERY_PARAM = 'fultonBackdrop'
 // Set to true to show the Fulton County outline again.
 export const FULTON_COUNTY_OUTLINE_ENABLED = true
 
+/**
+ * Master kill switch for backdrop edit (Shift+M, ?fultonBackdrop=1).
+ * Set to true to re-enable developer positioning without restoring deleted code.
+ */
+export const FULTON_BACKDROP_EDIT_AVAILABLE = false
+
 const DEFAULT_BACKDROP = {
   "x": -40,
   "y": -8,
@@ -35,6 +41,8 @@ function loadBackdrop() {
 }
 
 function loadEditPreference() {
+  if (!FULTON_BACKDROP_EDIT_AVAILABLE) return false
+
   try {
     const queryValue = new URLSearchParams(window.location.search).get(EDIT_QUERY_PARAM)
     if (queryValue === '1' || queryValue === 'true') {
@@ -60,7 +68,7 @@ export default function FultonCountyBackdrop({ active = true }) {
   const [editEnabled, setEditEnabled] = useState(loadEditPreference)
 
   useEffect(() => {
-    if (!active || !FULTON_COUNTY_OUTLINE_ENABLED) return
+    if (!active || !FULTON_COUNTY_OUTLINE_ENABLED || !FULTON_BACKDROP_EDIT_AVAILABLE) return
 
     const handleKeyDown = (event) => {
       if (

@@ -1,15 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
 import { yearProgress } from '../constants/timeline'
-import { formatPartialYearSubtitle, loadSceneCsv, loadSolarDataset, mapSceneYearData } from '../data'
+import { formatPartialYearSubtitle, loadSolarDataset, mapSceneYearData } from '../data'
 import { sceneFactories } from '../scenes'
 import { formatCo2Equivalency, formatEnergyEquivalency } from '../utils/epaEquivalencies'
 import { formatCo2Lbs, formatDollars, formatEnergyKwh } from '../utils/formatMetrics'
 
 /**
- * Mounts a Three.js scene and wires the timeline + CSV data pipeline.
+ * Mounts a Three.js scene and wires the timeline + solar-data.json pipeline.
  *
  * On year change:
- * 1. loadSceneCsv(variant)  → public/data/{variant}.csv
+ * 1. loadSolarDataset()     → public/data/runtime/solar-data.json
  * 2. mapSceneYearData()     → src/data/mapYearData.js
  * 3. applyYear({ year, data, progress }) → src/scenes/{variant}Scene.js
  */
@@ -253,7 +253,7 @@ export default function ThreePanel({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [variant, label])
 
-  // Timeline + CSV → scene: loads data for the year, then calls applyYear()
+  // Timeline + solar-data.json → scene: loads data for the year, then calls applyYear()
   useEffect(() => {
     if (year === undefined) return
 
@@ -266,13 +266,13 @@ export default function ThreePanel({
 
       if (variant !== 'future') {
         try {
-          const [rows, dataset] = await Promise.all([loadSceneCsv(variant), loadSolarDataset()])
+          const dataset = await loadSolarDataset()
           if (cancelled) return
-          data = mapSceneYearData(variant, rows, year)
+          data = mapSceneYearData(variant, dataset, year)
           spanLabel = formatPartialYearSubtitle(dataset, year)
           progress = yearProgress(year, dataset.years)
         } catch (error) {
-          console.warn(`[data] Failed to load CSV for "${variant}" year ${year}`, error)
+          console.warn(`[data] Failed to load solar data for "${variant}" year ${year}`, error)
         }
       }
 

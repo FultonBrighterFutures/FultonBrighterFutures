@@ -106,6 +106,42 @@ function requireAuth(req, res) {
   return true
 }
 
+/** Short role tags for upload-section file lists. */
+function sourceFileTags(name) {
+  const lower = String(name || '').toLowerCase()
+  if (lower === 'solar-data.xlsx' || /energy|solar-data/.test(lower)) {
+    return ['Energy (kWh)']
+  }
+  if (/solar monthly savings|savings|rates/.test(lower)) {
+    return ['Rates & savings']
+  }
+  if (/address/.test(lower)) {
+    return ['Addresses']
+  }
+  if (lower === 'solar-cost.xlsx') {
+    return ['Legacy cost']
+  }
+  if (lower === 'building-display-names.json') {
+    return ['Display names']
+  }
+  if (lower === 'building-coordinates.json') {
+    return ['Map coordinates']
+  }
+  if (lower === 'building-position-projection.json') {
+    return ['Map projection']
+  }
+  if (lower === 'savings-rate-overrides.json') {
+    return ['Rate overrides']
+  }
+  if (lower.endsWith('.json')) {
+    return ['Config']
+  }
+  if (lower.endsWith('.xlsx')) {
+    return ['Excel']
+  }
+  return []
+}
+
 function listSourceFiles(dir) {
   if (!existsSync(dir)) return []
   return readdirSync(dir)
@@ -114,7 +150,12 @@ function listSourceFiles(dir) {
     .map((name) => {
       const full = join(dir, name)
       const stats = statSync(full)
-      return { name, size: stats.size, updatedAt: stats.mtime.toISOString() }
+      return {
+        name,
+        size: stats.size,
+        updatedAt: stats.mtime.toISOString(),
+        tags: sourceFileTags(name),
+      }
     })
 }
 

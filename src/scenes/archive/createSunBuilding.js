@@ -1,3 +1,7 @@
+/**
+ * ARCHIVED — older sun/orb building visual superseded by Building.js + particles.
+ * Not imported by the live app; kept for design/history reference.
+ */
 import * as THREE from 'three'
 
 const CO2_PER_PARTICLE = 7500

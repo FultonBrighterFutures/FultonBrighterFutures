@@ -6,6 +6,12 @@ const CO2_CAMERA_URL = publicUrl('/data/runtime/co2-camera.json')
 const EDIT_STORAGE_KEY = 'solar-dinosaur.triptych-camera-edit'
 const EDIT_QUERY_PARAM = 'triptychCamera'
 
+/**
+ * Master kill switch for triptych / Look Ahead camera edit (Shift+C, ?triptychCamera=1).
+ * Set to true to re-enable developer positioning without restoring deleted code.
+ */
+export const TRIPTYCH_CAMERA_EDIT_AVAILABLE = false
+
 const PAN_STEP = 0.12
 const ZOOM_STEP = 0.08
 
@@ -20,8 +26,11 @@ const subscribers = new Set()
 /**
  * URL `?triptychCamera=1|0` overrides and persists to localStorage.
  * Otherwise uses the last toggled preference (default: off).
+ * No-ops while TRIPTYCH_CAMERA_EDIT_AVAILABLE is false.
  */
 export function isTriptychCameraEditEnabled() {
+  if (!TRIPTYCH_CAMERA_EDIT_AVAILABLE) return false
+
   try {
     const fromUrl = new URLSearchParams(window.location.search).get(EDIT_QUERY_PARAM)
     if (fromUrl === '1' || fromUrl === 'true') {
@@ -168,7 +177,8 @@ function formatHud(state) {
 
 /**
  * Keyboard pan/zoom/save for the shared triptych camera.
- * Edit mode is off by default — toggle with Shift+C or `?triptychCamera=1`.
+ * Edit mode is gated by TRIPTYCH_CAMERA_EDIT_AVAILABLE (currently off).
+ * When available: toggle with Shift+C or `?triptychCamera=1`.
  * Call once (e.g. from the energy panel). All subscribed cameras stay in sync.
  *
  * @param {object} options
@@ -187,6 +197,10 @@ export function setupTriptychCameraControls({
   fitTopDown,
   hudParent,
 }) {
+  if (!TRIPTYCH_CAMERA_EDIT_AVAILABLE) {
+    return () => {}
+  }
+
   let editEnabled = isTriptychCameraEditEnabled()
   let hudEl = null
 

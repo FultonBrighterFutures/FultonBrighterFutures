@@ -1,28 +1,14 @@
 /**
- * Maps raw CSV rows → values each Three.js scene reads in applyYear().
+ * Maps solar-data.json → values each Three.js scene reads in applyYear().
  *
- * Flow: timeline year change → ThreePanel → loadSceneCsv() → mapSceneYearData() → applyYear({ data })
+ * Flow: timeline year change → ThreePanel → loadSolarDataset() → mapSceneYearData() → applyYear({ data })
  */
 
-import { mapDataTestCo2 } from './mapDataTestCo2'
 import { mapSolarCo2Year, mapSolarEnergyYear } from './parseSolarWorkbook'
 import { mapSolarSavingYear } from './parseSolarCostWorkbook'
 
-function rowForYear(rows, year) {
-  return rows.find((row) => Number(row.year) === year) ?? {}
-}
-
-function toNumber(value, fallback = 0) {
-  const parsed = Number(value)
-  return Number.isFinite(parsed) ? parsed : fallback
-}
-
 function isSolarDataset(value) {
   return Boolean(value?.buildings && value?.years && (value?.monthly || value?.monthlyCost))
-}
-
-function isDataTestDataset(value) {
-  return Boolean(value?.buildings && value?.monthly)
 }
 
 // Energy scene — solar-data.xlsx (via solar-data.json) → per-building kWh totals.
@@ -31,37 +17,28 @@ export function mapEnergyYearData(datasetOrRows, year) {
     return mapSolarEnergyYear(datasetOrRows, year)
   }
 
-  const rows = datasetOrRows
-  const row = rowForYear(rows, year)
-
   return {
     year,
-    generationTwh: toNumber(row.generation_twh ?? row.generationTwh),
-    capacityGw: toNumber(row.capacity_gw ?? row.capacityGw),
-    totalAnnualKwh: toNumber(row.generation_twh ?? row.generationTwh) * 1_000_000_000,
+    generationTwh: 0,
+    capacityGw: 0,
+    totalAnnualKwh: 0,
     buildings: [],
-    raw: row,
+    raw: {},
   }
 }
 
-// CO2 scene — solar-data.json kWh × $AM$3 → per-building CO₂ saved (lbs).
+// CO2 scene — solar-data.json kWh × emission rate → per-building CO₂ saved (lbs).
 export function mapCo2YearData(datasetOrRows, year) {
   if (isSolarDataset(datasetOrRows) && datasetOrRows.monthly?.length) {
     return mapSolarCo2Year(datasetOrRows, year)
   }
 
-  if (isDataTestDataset(datasetOrRows)) {
-    return mapDataTestCo2(datasetOrRows, year)
-  }
-
-  const row = rowForYear(datasetOrRows, year)
-
   return {
     year,
-    emissionsGt: toNumber(row.emissions_gt ?? row.emissionsGt),
-    reductionPct: toNumber(row.reduction_pct ?? row.reductionPct),
+    emissionsGt: 0,
+    reductionPct: 0,
     buildings: [],
-    raw: row,
+    raw: {},
   }
 }
 
@@ -82,14 +59,11 @@ export function mapSavingYearData(datasetOrRows, year) {
     }
   }
 
-  const rows = datasetOrRows
-  const row = rowForYear(rows, year)
-
   return {
     year,
-    savingsIndex: toNumber(row.savings_index ?? row.savingsIndex),
-    hectaresRestored: toNumber(row.hectares_restored ?? row.hectaresRestored),
-    raw: row,
+    savingsIndex: 0,
+    hectaresRestored: 0,
+    raw: {},
   }
 }
 
@@ -101,12 +75,12 @@ const mappers = {
 
 /**
  * @param {string} variant
- * @param {Record<string, string>[]} rows - All rows from the scene CSV
+ * @param {object} dataset - Parsed solar-data.json dataset
  * @param {number} year
  * @returns {Record<string, unknown>}
  */
-export function mapSceneYearData(variant, rows, year) {
+export function mapSceneYearData(variant, dataset, year) {
   const mapper = mappers[variant]
   if (!mapper) return { year }
-  return mapper(rows, year)
+  return mapper(dataset, year)
 }
